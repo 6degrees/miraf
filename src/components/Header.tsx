@@ -1,0 +1,106 @@
+"use client";
+
+import Image from "next/image";
+import {useState} from "react";
+import { useTranslation } from "react-i18next";
+import {useAppContext} from "@/context/AppContext";
+
+/*
+|--------------------------------------------------------------------------
+| $site-header
+|--------------------------------------------------------------------------
+|
+| Miraf top navigation (logo, links, language toggle, mobile drawer).
+| - Self-manages the mobile menu state.
+| - Receives `rtl` and `toggleDir` from the parent (page/layout).
+|
+| Usage:
+|   <Header rtl={rtl} toggleDir={toggleDir} />
+|
+*/
+export default function Header() {
+    /*
+    |--------------------------------------------------------------------------
+    | $nav-state & $i18n-handlers
+    |--------------------------------------------------------------------------
+    | - `t`                 : translator bound to current language (react-i18next)
+    | - `selectedLanguage`  : current app language from context ("en" | "ar")
+    | - `setSelectedLanguage`: toggles language via context (updates i18next)
+    | - `menuOpen`          : mobile drawer state
+    | - `rtl`               : local UI flag (optional if you derive from language)
+    | - `handleLanguageSelection`: toggles between "en" and "ar"
+    */
+    const { t } = useTranslation();
+    const { selectedLanguage, setSelectedLanguage } = useAppContext();
+    const [menuOpen, setMenuOpen] = useState(false);
+    const handleLanguageSelection = (lang: string) => {
+        setSelectedLanguage(lang === "ar" ? "en" : "ar");
+    };
+
+    /*
+    |--------------------------------------------------------------------------
+    | $site-header
+    |--------------------------------------------------------------------------
+    |
+    | Miraf top navigation (logo, localized links, language toggle, mobile drawer).
+    | - Uses Tailwind `container` for width/padding.
+    | - Desktop: inline nav; Mobile: hamburger → overlay drawer.
+    | - Language toggle calls `handleLanguageSelection(selectedLanguage)`.
+    |
+    */
+    return (
+        <header className={`relative z-10`}>
+            <div className="container">
+                <div className="flex items-start justify-between py-5">
+                    {/* Logo */}
+                    <a href="#" className="flex items-center select-none">
+                        <Image src="/icons/logo.png" alt="Miraf District Logo" width={100} height={60} priority className="h-auto w-auto object-contain"/>
+                    </a>
+
+                    {/* Desktop nav */}
+                    <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+                        <a href="#district"  className="hover:opacity-90">{t("nav.district")}</a>
+                        <a href="#overview"  className="hover:opacity-90">{t("nav.overview")}</a>
+                        <a href="#gallery"   className="hover:opacity-90">{t("nav.gallery")}</a>
+                        <a href="#developer" className="hover:opacity-90">{t("nav.developer")}</a>
+                        <a href="#register"  className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 transition">
+                            {t("nav.register")}
+                        </a>
+                        <button onClick={() => handleLanguageSelection(selectedLanguage)} className="cursor-pointer hover:opacity-90 bold">
+                            {selectedLanguage === 'ar' ? "English" : "عربي"}
+                        </button>
+                    </nav>
+
+                    {/* Mobile button */}
+                    <button onClick={() => setMenuOpen(o => !o)} className="md:hidden inline-flex items-center justify-center rounded-xl p-2 bg-white/10 ring-1 ring-white/15 backdrop-blur" aria-label="Open menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" className="h-6 w-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile drawer */}
+            {menuOpen && (
+                <div className="md:hidden absolute inset-x-4 top-20 z-20 rounded-2xl bg-neutral-900/70 backdrop-blur ring-1 ring-white/10">
+                    <div className="px-6 py-4 space-y-3 text-sm">
+                        <a className="block py-2" href="#district" onClick={() => setMenuOpen(false)}>The District</a>
+                        <a className="block py-2" href="#overview" onClick={() => setMenuOpen(false)}>Overview</a>
+                        <a className="block py-2" href="#gallery" onClick={() => setMenuOpen(false)}>Gallery</a>
+                        <a className="block py-2" href="#developer" onClick={() => setMenuOpen(false)}>The Developer</a>
+                        <a className="block py-2" href="#register" onClick={() => setMenuOpen(false)}>Register your interest</a>
+                        <button className="mt-2 w-full rounded-full border border-white/20 px-4 py-2"
+                                onClick={() => {
+                                    handleLanguageSelection(selectedLanguage)
+                                    setMenuOpen(false);
+                                }}
+                        >
+                            {selectedLanguage === 'ar' ? "English" : "عربي"}
+                        </button>
+                    </div>
+                </div>
+            )}
+        </header>
+    );
+}

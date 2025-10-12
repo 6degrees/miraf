@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+    --color-blush: #F6E6DA;
+    --color-burgundy: #571E1F;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Default font (for English) */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-angie-sans-pro), sans-serif;
 }
+
+/* Arabic text (RTL) */
+[dir="rtl"] body {
+    font-family: var(--font-graphik-arabic), var(--font-lyon-arabic), sans-serif;
+}
+
+/* Elegant Arabic display font */
+.ar-display {
+    font-family: var(--font-lyon-arabic), serif;
+}
+
+/* Kanun AR+ for accent text */
+.kanun {
+    font-family: var(--font-kanun-ar), sans-serif;
+}
+
+
+:root {
+    --container-x: 2rem;   /* mobile */
+    --container-x-sm: 4rem;/* ≥640px */
+    --container-x-lg: 8rem;/* ≥1024px */
+}
+.container { @apply mx-auto w-full; padding-inline: var(--container-x); }
+@media (min-width: 640px){ .container{ padding-inline: var(--container-x-sm);} }
+@media (min-width: 1024px){ .container{ padding-inline: var(--container-x-lg);} }
