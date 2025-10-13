@@ -27,10 +27,39 @@ body {
 
 
 :root {
-    --container-x: 2rem;   /* mobile */
-    --container-x-sm: 4rem;/* ≥640px */
-    --container-x-lg: 8rem;/* ≥1024px */
+    --container-x: 2rem; /* mobile */
+    --container-x-sm: 2rem; /* ≥640px */
+    --container-x-lg: 2rem; /* ≥1024px */
 }
-.container { @apply mx-auto w-full; padding-inline: var(--container-x); }
-@media (min-width: 640px){ .container{ padding-inline: var(--container-x-sm);} }
-@media (min-width: 1024px){ .container{ padding-inline: var(--container-x-lg);} }
+
+.container {
+    @apply mx-auto w-full;
+    padding-inline: var(--container-x);
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-inline: var(--container-x-sm);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding-inline: var(--container-x-lg);
+    }
+}
+
+
+#miraf-map .leaflet-pane.leaflet-tile-pane {
+    filter: sepia(0.95) saturate(6) hue-rotate(330deg) brightness(0.8);
+}
+
+.miraf-label {
+    color: #f9e8df;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.1;
+    text-align: center;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.45);
+    pointer-events: none;
+}

@@ -33,7 +33,7 @@ export default function Header() {
     const { t } = useTranslation();
     const { selectedLanguage, setSelectedLanguage } = useAppContext();
     const [menuOpen, setMenuOpen] = useState(false);
-    const handleLanguageSelection = (lang: string) => {
+    const handleLanguageSelection = (lang: string|null) => {
         setSelectedLanguage(lang === "ar" ? "en" : "ar");
     };
 

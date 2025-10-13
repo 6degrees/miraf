@@ -50,7 +50,7 @@ export default {
             cards: [
                 {
                     "title": {
-                        1: "Offices",
+                        0: "Offices",
                     },
                     "body": "Miraf Offices span 18 floors, blending refined design with panoramic views that inspire belonging and growth."
                 },
