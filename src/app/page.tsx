@@ -2,6 +2,7 @@
 
 import Banner from "@/components/Banner";
 import AboutDistrict from "@/components/AboutDistrict";
+import OverviewSection from "@/components/OverviewSection";
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ export default function HomePage() {
             {/* Primary hero section */}
             <Banner/>
             <AboutDistrict/>
+            <OverviewSection/>
         </main>
     );
 }
