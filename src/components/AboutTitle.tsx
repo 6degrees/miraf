@@ -67,7 +67,7 @@ export default function AboutTitle(
     |
     */
     return (
-        <div className={`flex flex-col w-full h-full justify-center items-center lg:items-start ${paddingStartClass} ${className}`}>
+        <div className={`flex flex-col w-full h-full justify-center ${paddingStartClass} ${className}`}>
             <h2 className={`leading-[0.95] tracking-tight text-burgundy ${titleSizeClass}`}>
                 <span className={`flex items-center ${gapClass}`}>
                     <span>{titleLine1}</span>
