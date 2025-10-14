@@ -20,6 +20,10 @@ body {
     font-family: var(--font-lyon-arabic), serif;
 }
 
+.en-display {
+    font-family: var(--font-angie-sans-pro), sans-serif;
+}
+
 /* Kanun AR+ for accent text */
 .kanun {
     font-family: var(--font-kanun-ar), sans-serif;

@@ -66,8 +66,8 @@ export default function Header() {
                         <a href="#register"  className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 transition">
                             {t("nav.register")}
                         </a>
-                        <button onClick={() => handleLanguageSelection(selectedLanguage)} className="cursor-pointer hover:opacity-90 bold">
-                            {selectedLanguage === 'ar' ? "English" : "عربي"}
+                        <button onClick={() => handleLanguageSelection(selectedLanguage)} className={`cursor-pointer hover:opacity-90 bold ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}>
+                            {selectedLanguage === 'ar' ? "En" : "عربي"}
                         </button>
                     </nav>
 
