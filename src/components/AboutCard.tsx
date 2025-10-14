@@ -93,13 +93,13 @@ export default function AboutCard(
                     alt="icon"
                     width={20}
                     height={20}
-                    className="h-8 w-8 object-contain"
+                    className="h-8 md:w-8 object-contain"
                 />
             </div>
-            <h3 className="mt-2 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight">
+            <h3 className="mt-2 text-5xl sm:text-7xl leading-tight">
                 {title}
             </h3>
-            <p className={`mt-3 text-burgundy/80 text-base sm:text-lg leading-relaxed ${bodyWidth}`}>
+            <p className={`mt-3 text-burgundy/80 text-base sm:text-md leading-relaxed ${bodyWidth}`}>
                 {body}
             </p>
         </div>

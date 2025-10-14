@@ -58,7 +58,7 @@ export default function Header() {
                     </a>
 
                     {/* Desktop nav */}
-                    <nav className="hidden lg:flex items-center gap-8 text-sm font-medium">
+                    <nav className="hidden lg:flex items-center gap-8 text-lg font-medium">
                         <a href="#district"  className="hover:opacity-90">{t("nav.district")}</a>
                         <a href="#overview"  className="hover:opacity-90">{t("nav.overview")}</a>
                         <a href="#gallery"   className="hover:opacity-90">{t("nav.gallery")}</a>
@@ -84,19 +84,19 @@ export default function Header() {
             {/* Mobile drawer */}
             {menuOpen && (
                 <div className="lg:hidden absolute inset-x-4 top-20 z-20 rounded-2xl bg-neutral-900/70 backdrop-blur ring-1 ring-white/10">
-                    <div className="px-6 py-4 space-y-3 text-sm">
+                    <div className="px-6 py-4 space-y-3 text-lg">
                         <a className="block py-2" href="#district" onClick={() => setMenuOpen(false)}>{t("nav.district")}</a>
                         <a className="block py-2" href="#overview" onClick={() => setMenuOpen(false)}>{t("nav.overview")}</a>
                         <a className="block py-2" href="#gallery" onClick={() => setMenuOpen(false)}>{t("nav.gallery")}</a>
                         <a className="block py-2" href="#developer" onClick={() => setMenuOpen(false)}>{t("nav.developer")}</a>
                         <a className="block py-2" href="#register" onClick={() => setMenuOpen(false)}>{t("nav.register")}</a>
-                        <button className="mt-2 w-full rounded-full border border-white/20 px-4 py-2"
+                        <button className={`mt-2 w-full rounded-full border border-white/20 px-4 py-2 ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}
                                 onClick={() => {
                                     handleLanguageSelection(selectedLanguage)
                                     setMenuOpen(false);
                                 }}
                         >
-                            {selectedLanguage === 'ar' ? "English" : "عربي"}
+                            {selectedLanguage === 'ar' ? "En" : "عربي"}
                         </button>
                     </div>
                 </div>

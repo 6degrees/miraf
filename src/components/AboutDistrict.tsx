@@ -55,7 +55,6 @@ export default function AboutDistrict() {
                     body={t("about.0.cards.0.body")}
                     iconSrc="/icons/ml_Icon_09.png"
                     iconAlt={t("about.0.cards.0.title.1")}
-                    titleSizeClass="text-5xl sm:text-6xl lg:text-7xl xl:text-9xl"
                     gapClass="gap-4 sm:gap-6"
                     iconSizeClass="h-12 w-12 sm:h-16 sm:w-16 md:h-24 md:w-24"
                 />,

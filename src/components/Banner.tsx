@@ -53,9 +53,9 @@ export default function Banner() {
             <div className="absolute bottom-0 left-0 right-0 z-10">
                 <div className="container-x">
                     <div className="pb-20 md:pb-28 lg:pb-32">
-                        <h1 className="max-w-5xl text-6xl sm:text-7xl md:text-8xl text-blush">
+                        <h1 className="w-full md:max-w-5xl text-6xl sm:text-7xl md:text-8xl text-blush">
                             <span className="flex items-center gap-3">
-                                <span className="block">{t("hero.line1")}</span>
+                                <span className="inline">{t("hero.line1")}</span>
                                 <Image src="/icons/ml_Icon_33.png" alt={t("hero.palmAlt")} height={80} width={80} className="inline-block h-12 w-12 md:h-16 md:w-16 object-contain"/>
                               </span>
                             <span className="block">{t("hero.line2")}</span>

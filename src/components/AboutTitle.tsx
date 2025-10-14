@@ -51,9 +51,9 @@ export default function AboutTitle(
         iconSrc,
         iconAlt = "",
         paddingStartClass = "",
-        titleSizeClass = "text-4xl sm:text-5xl lg:text-7xl xl:text-9xl",
+        titleSizeClass = "text-6xl sm:text-7xl md:text-8xl",
         gapClass = "gap-4 sm:gap-6",
-        iconSizeClass = "h-12 w-12 sm:h-16 sm:w-16 md:h-24 md:w-24",
+        iconSizeClass = "h-12 w-12 md:h-16 md:w-16",
         className = "",
     }: Props) {
     /*
@@ -82,7 +82,7 @@ export default function AboutTitle(
                 <span className="block mt-1 sm:mt-2">{titleLine2}</span>
             </h2>
 
-            <p className="mt-12 ltr:max-w-[38ch] rtl:max-w-[30ch] text-burgundy/80 text-base sm:text-lg md:text-2xl leading-relaxed">{body}</p>
+            <p className="mt-12 max-w-[50ch] lg:ltr:max-w-[38ch] md:rtl:max-w-[30ch] text-burgundy/80 text-xl md:text-2xl leading-relaxed">{body}</p>
         </div>
     );
 }

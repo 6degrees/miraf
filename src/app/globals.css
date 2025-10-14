@@ -31,7 +31,7 @@ body {
 
 
 :root {
-    --container-x: 4rem;
+    --container-x: 1rem;
     --container-x-sm: 2rem;
     --container-x-lg: 8rem;
 }
