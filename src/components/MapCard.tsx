@@ -19,7 +19,7 @@ type MapCardProps = {
 | $map-card
 |--------------------------------------------------------------------------
 |
-| Reusable card that mirrors AboutCard but accepts arbitrary media (e.g., a map).
+| Reusable card that mirrors DistrictCard but accepts arbitrary media (e.g., a map).
 | Layout:
 |   - Media block (fixed heights across breakpoints)
 |   - Text block (icon + multi-line title + optional body)

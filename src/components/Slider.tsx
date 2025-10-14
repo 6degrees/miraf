@@ -5,19 +5,22 @@ import {Autoplay} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import {useAppContext} from "@/context/AppContext";
-import {useEffect} from "react";
 
 /*
 |--------------------------------------------------------------------------
 | $slider:props
 |--------------------------------------------------------------------------
 | Props for a Swiper-based carousel that accepts an array of React nodes.
-| - items         : React nodes to render as slides
-| - dir           : "rtl" | "ltr" (default: "rtl")
-| - autoplayDelay : ms between slides (default: 5000)
-| - className     : wrapper classes (default: "w-full")
-| - navigation    : show next/prev controls (default: true)
+| - items          : React nodes to render as slides
+| - dir            : "rtl" | "ltr" (default: "rtl")
+| - autoplayDelay  : ms between slides (default: 5000)
+| - className      : wrapper classes (default: "w-full")
+| - navigation     : show next/prev controls (default: true)
+| - bgClass        : Tailwind class for background color/gradient
+| - textClass      : Tailwind class for text color
+| - style          : Inline style (useful for gradients)
+| - background     : Optional ReactNode background (image/gradient div)
+| - heightClass    : Tailwind height class for slides
 */
 type SliderProps = {
     items: React.ReactNode[];
@@ -25,55 +28,88 @@ type SliderProps = {
     autoplayDelay?: number;
     className?: string;
     navigation?: boolean;
+    bgClass?: string;
+    textClass?: string;
+    style?: React.CSSProperties;
+    background?: React.ReactNode;
+    heightClass?: string;
 };
 
 /*
 |--------------------------------------------------------------------------
 | $slider
 |--------------------------------------------------------------------------
-| Full-width carousel for “About the District”.
-| - Uses Swiper (Autoplay, loop, navigation)
-| - Renders each node in `items` as a <SwiperSlide>
-| - Direction defaults to RTL (Arabic); switch to LTR as needed
+| Full-width Swiper-based carousel.
+| - Supports custom background and text color via props
+| - Accepts optional background node (image, gradient, etc.)
+| - Uses Autoplay module for smooth auto transitions
+| - Displays a single slide at a time (slidesPerView = 1)
+| - Allows direction switching (RTL/LTR)
+| - Responsive layout with controlled height per slide
 |
 | Usage:
-|   <Slider items={[<SlideA/>, <SlideB/>, <SlideC/>]} />
+|   <Slider
+|       items={[<SlideA/>, <SlideB/>, <SlideC/>]}
+|       bgClass="bg-[#F3E6D6]"
+|       textClass="text-burgundy"
+|       heightClass="h-[600px] lg:h-[900px]"
+|       background={<Image src="/images/banner.png" fill className="object-cover"/>}
+|   />
 */
-export default function Slider({items, autoplayDelay = 5000, dir='ltr', className = "w-full", navigation = true}: SliderProps) {
+export default function Slider(
+    {
+        items,
+        autoplayDelay = 5000,
+        dir = "ltr",
+        className = "w-full",
+        navigation = true,
+        bgClass = "bg-[#F3E6D6]",
+        textClass = "text-burgundy",
+        style,
+        background,
+        heightClass = "h-[600px] lg:h-[900px]",
+    }: SliderProps)
+{
+
     /*
     |--------------------------------------------------------------------------
     | $slider-render
     |--------------------------------------------------------------------------
-    |
     | Renders the Swiper carousel:
-    | - Uses Autoplay module for automatic slide transitions
-    | - Displays a single slide at a time (slidesPerView = 1)
-    | - Enables infinite looping and optional navigation arrows
-    | - Direction set to RTL for Arabic content
-    | - Each element in `items` is wrapped in a <SwiperSlide>
-    |
+    | - Includes Autoplay module
+    | - Loops slides infinitely
+    | - Uses configurable background, text color, and height
+    | - Renders each node in `items` as a <SwiperSlide>
     */
     return (
-        <section className="bg-[#F3E6D6] text-burgundy">
+        <section className={`relative ${bgClass} ${textClass}`} style={style}>
+            {/* Optional absolute background */}
+            {background && (
+                <div className="absolute inset-0 -z-10 pointer-events-none">
+                    {background}
+                </div>
+            )}
+
             <Swiper
                 key={`swiper-${dir}`}
-                modules={[]}
+                modules={[Autoplay]}
                 spaceBetween={0}
-                autoplay={{ delay: autoplayDelay, disableOnInteraction: false }}
+                autoplay={{delay: autoplayDelay, disableOnInteraction: false}}
                 navigation={navigation}
                 dir={dir}
                 className={className}
                 breakpoints={{
-                    0:    { slidesPerView: 1,   spaceBetween: 0 },
-                    640:  { slidesPerView: 1,   spaceBetween: 0 },
-                    768:  { slidesPerView: 1,   spaceBetween: 0 },
-                    1024: { slidesPerView: 1.2, spaceBetween: 0 },
-                    1280: { slidesPerView: 1.4, spaceBetween: 0 },
-                }}>
+                    0: {slidesPerView: 1, spaceBetween: 0},
+                    640: {slidesPerView: 1, spaceBetween: 0},
+                    768: {slidesPerView: 1, spaceBetween: 0},
+                    1024: {slidesPerView: 1.2, spaceBetween: 0},
+                    1280: {slidesPerView: 1.4, spaceBetween: 0},
+                }}
+            >
                 {items.map((node, idx) => (
                     <SwiperSlide key={idx}>
                         <div className="container-x">
-                            <div className="relative h-[600px] lg:h-[900px] overflow-hidden">
+                            <div className={`relative ${heightClass} overflow-hidden`}>
                                 {node}
                             </div>
                         </div>

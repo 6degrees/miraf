@@ -43,7 +43,7 @@ type Props = {
 | Exposes sizing and spacing via utility props to keep markup stable.
 |
 */
-export default function AboutTitle(
+export default function DistrictTitleCard(
     {
         titleLine1,
         titleLine2,

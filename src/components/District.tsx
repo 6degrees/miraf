@@ -3,8 +3,8 @@
 import {useTranslation} from "react-i18next";
 import Slider from "@/components/Slider";
 import {useAppContext} from "@/context/AppContext";
-import AboutTitle from "@/components/AboutTitle";
-import AboutCard from "@/components/AboutCard";
+import DistrictTitleCard from "@/components/DistrictTitleCard";
+import DistrictCard from "@/components/DistrictCard";
 import MapMiraf from "@/components/MapMiraf";
 import MapCard from "@/components/MapCard";
 
@@ -21,7 +21,7 @@ import MapCard from "@/components/MapCard";
 | Uses Tailwind for responsive typography and layout.
 |
 */
-export default function AboutDistrict() {
+export default function District() {
     /*
     |--------------------------------------------------------------------------
     | $i18n-translator
@@ -48,7 +48,7 @@ export default function AboutDistrict() {
         <Slider
             dir={direction}
             items={[
-                <AboutTitle
+                <DistrictTitleCard
                     key="about-title"
                     titleLine1={t("about.0.cards.0.title.0")}
                     titleLine2={t("about.0.cards.0.title.1")}
@@ -59,7 +59,7 @@ export default function AboutDistrict() {
                     iconSizeClass="h-12 w-12 sm:h-16 sm:w-16 md:h-24 md:w-24"
                 />,
 
-                <AboutCard
+                <DistrictCard
                     key="residential-top"
                     imageSrc="/images/miraf_renders-09.png"
                     imageAlt={t("about.0.cards.1.title.0")}
@@ -70,7 +70,7 @@ export default function AboutDistrict() {
                     priorityImage
                 />,
 
-                <AboutCard
+                <DistrictCard
                     key="retail-bottom"
                     imageSrc="/images/cam10_open_retail_semi_bird_05.jpg"
                     imageAlt={t("about.1.cards.0.title.0")}
@@ -81,7 +81,7 @@ export default function AboutDistrict() {
                     imageOnTop={false}
                 />,
 
-                <AboutCard
+                <DistrictCard
                     key="hotel-top"
                     imageSrc="/images/01_cam_13_lobby hotel _02.jpg"
                     imageAlt={t("about.1.cards.1.title.0")}
@@ -92,7 +92,7 @@ export default function AboutDistrict() {
                     imageOnTop
                 />,
 
-                <AboutCard
+                <DistrictCard
                     key="retail-bottom-2"
                     imageSrc="/images/cam12_office landscape_view_05.jpg"
                     imageAlt={t("about.2.cards.0.title.0")}
