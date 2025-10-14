@@ -63,5 +63,15 @@ export default {
                 }
             ]
         },
-    ]
+    ],
+    overview: {
+        heading: "Overview",
+        cta: "Download Brochure",
+        pins: {
+            residences: { title: "Miraf Residences", value: "152", unit: "units" },
+            tower: { title: "Business Tower", subtitle: "Offices Area", value: "20,202", unit: "sqm" },
+            hotel: { title: "Hotel INDIGO", value: "240", unit: "keys" },
+            plaza: { title: "The Plaza at Miraf", subtitle: "Retail + Clinic NLA", value: "28,992", unit: "sqm" }
+        }
+    }
 };

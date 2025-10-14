@@ -12,7 +12,7 @@ body {
 
 /* Arabic text (RTL) */
 [dir="rtl"] body {
-    font-family: var(--font-graphik-arabic), var(--font-lyon-arabic), sans-serif;
+    font-family: var(--font-lyon-arabic), sans-serif;
 }
 
 /* Elegant Arabic display font */
@@ -27,24 +27,24 @@ body {
 
 
 :root {
-    --container-x: 2rem; /* mobile */
-    --container-x-sm: 2rem; /* ≥640px */
-    --container-x-lg: 2rem; /* ≥1024px */
+    --container-x: 4rem;
+    --container-x-sm: 2rem;
+    --container-x-lg: 8rem;
 }
 
-.container {
-    @apply mx-auto w-full;
+.container-x {
+    @apply w-full;
     padding-inline: var(--container-x);
 }
 
 @media (min-width: 640px) {
-    .container {
+    .container-x {
         padding-inline: var(--container-x-sm);
     }
 }
 
 @media (min-width: 1024px) {
-    .container {
+    .container-x {
         padding-inline: var(--container-x-lg);
     }
 }

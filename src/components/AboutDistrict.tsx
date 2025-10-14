@@ -1,10 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import Slider from "@/components/Slider";
-import MapMiraf from "@/components/MapMiraf";
 import {useAppContext} from "@/context/AppContext";
+import AboutTitle from "@/components/AboutTitle";
+import AboutCard from "@/components/AboutCard";
+import MapMiraf from "@/components/MapMiraf";
+import MapCard from "@/components/MapCard";
 
 /*
 |--------------------------------------------------------------------------
@@ -28,173 +30,93 @@ export default function AboutDistrict() {
     | Retrieve the `t` function from i18next for localized strings.
     |
     */
-    const { t } = useTranslation();
-    const { direction, } = useAppContext();
+    const {t} = useTranslation();
+    const {direction,} = useAppContext();
 
-   /*
-   |--------------------------------------------------------------------------
-   | $section-layout
-   |--------------------------------------------------------------------------
-   |
-   | Two-column grid layout:
-   | - Left: title and paragraph text
-   | - Right: image card with caption
-   | Background uses warm beige (#F3E6D6) to match Miraf branding.
-   |
-   */
+    /*
+    |--------------------------------------------------------------------------
+    | $section-layout
+    |--------------------------------------------------------------------------
+    |
+    | Two-column grid layout:
+    | - Left: title and paragraph text
+    | - Right: image card with caption
+    | Background uses warm beige (#F3E6D6) to match Miraf branding.
+    |
+    */
     return (
-       <Slider
-           dir={direction }
-           items={[
-               <section className="relative h-screen bg-[#F3E6D6] text-burgundy">
-                   <div className="container">
-                       <div className="grid lg:grid-cols-2 gap-12 md:gap-20 xl:gap-48 items-start py-16 md:py-24">
-                           {/* Left: Title + blurb */}
-                           <div className="order-2 lg:order-1">
-                               <h2 className="font-semibold leading-tight tracking-tight text-2xl md:text-3xl lg:text-5xl xl:text-7xl text-burgundy">
-                                   <span className="flex items-center gap-6 sm:gap-8">
-                                       <span className="block">{t("about.0.cards.0.title.0")}</span>
-                                       <Image src="/icons/ml_Icon_09.png" alt={t("about.0.cards.0.title.1")} height={96} width={96} className="inline-block h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 object-contain"/>
-                                   </span>
-                                   <span className="block mt-1 sm:mt-2">{t("about.0.cards.0.title.1")}</span>
-                               </h2>
-                               <p className="mt-6 max-w-md text-base sm:text-lg md:text-xl leading-relaxed">{t("about.0.cards.0.body")}</p>
-                           </div>
+        <Slider
+            dir={direction}
+            items={[
+                <AboutTitle
+                    key="about-title"
+                    titleLine1={t("about.0.cards.0.title.0")}
+                    titleLine2={t("about.0.cards.0.title.1")}
+                    body={t("about.0.cards.0.body")}
+                    iconSrc="/icons/ml_Icon_09.png"
+                    iconAlt={t("about.0.cards.0.title.1")}
+                    titleSizeClass="text-5xl sm:text-6xl lg:text-7xl xl:text-9xl"
+                    gapClass="gap-4 sm:gap-6"
+                    iconSizeClass="h-12 w-12 sm:h-16 sm:w-16 md:h-24 md:w-24"
+                />,
 
-                           {/* Right Section - Image + Card */}
-                           <div className="order-1 lg:order-2">
-                               <div className="w-full">
-                                   <div className="relative aspect-[16/10] rounded-3xl overflow-hidden">
-                                       <Image src="/images/miraf_renders_10edited.png" alt={t("about.0.cards.1.title.0")} fill className="object-cover" priority/>
-                                   </div>
+                <AboutCard
+                    key="residential-top"
+                    imageSrc="/images/miraf_renders-09.png"
+                    imageAlt={t("about.0.cards.1.title.0")}
+                    iconSrc="/icons/ml_icon_07.png"
+                    title={t("about.0.cards.1.title.0")}
+                    body={t("about.0.cards.1.body")}
+                    imageOnTop
+                    priorityImage
+                />,
 
-                                   {/* Caption / Text under Image */}
-                                   <div className="mt-10">
-                                       {/* Image */}
-                                       <Image src="/icons/ml_icon_07.png" alt="icon" width={32} height={32} className="h-6 w-6 md:h-8 md:w-8 object-contain"/>
+                <AboutCard
+                    key="retail-bottom"
+                    imageSrc="/images/cam10_open_retail_semi_bird_05.jpg"
+                    imageAlt={t("about.1.cards.0.title.0")}
+                    iconSrc="/icons/ml_icon_05.png"
+                    title={t("about.1.cards.0.title.0")}
+                    body={t("about.1.cards.0.body")}
+                    bodyWidth={'ltr:max-w-[45ch] rtl:max-w-[25ch]'}
+                    imageOnTop={false}
+                />,
 
-                                       {/* Title */}
-                                       <h3 className="text-2xl md:text-3xl lg:text-5xl xl:text-7xl font-semibold leading-tight">
-                                           {t("about.0.cards.1.title.0")}
-                                       </h3>
+                <AboutCard
+                    key="hotel-top"
+                    imageSrc="/images/01_cam_13_lobby hotel _02.jpg"
+                    imageAlt={t("about.1.cards.1.title.0")}
+                    iconSrc="/icons/ml_icon_08.png"
+                    title={t("about.1.cards.1.title.0")}
+                    body={t("about.1.cards.1.body")}
+                    bodyWidth={'ltr:max-w-[45ch] rtl:max-w-[26ch]'}
+                    imageOnTop
+                />,
 
-                                       {/* Description */}
-                                       <p className="mt-3 md:mt-4 max-w-md text-sm sm:text-base md:text-lg leading-relaxed">{t("about.0.cards.1.body")}</p>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </section>,
-               <section className="relative h-screen bg-[#F3E6D6] text-burgundy">
-                   <div className="container">
-                       <div className="grid lg:grid-cols-2 gap-12 md:gap-20 xl:gap-48 items-start py-16 md:py-24">
-                           {/* Left: - Image + Card */}
-                           <div className="w-full">
-                               {/* Caption / Text under Image */}
-                               <div className="mb-10">
-                                   {/* Image */}
-                                   <Image src="/icons/ml_icon_05.png" alt="icon" width={32} height={32} className="h-6 w-6 md:h-8 md:w-8 object-contain"/>
+                <AboutCard
+                    key="retail-bottom-2"
+                    imageSrc="/images/cam12_office landscape_view_05.jpg"
+                    imageAlt={t("about.2.cards.0.title.0")}
+                    iconSrc="/icons/ml_icon-06.png"
+                    title={t("about.2.cards.0.title.0")}
+                    body={t("about.2.cards.0.body")}
+                    bodyWidth={'ltr:max-w-[45ch] rtl:max-w-[26ch]'}
+                    imageOnTop={false}
+                />,
+                <MapCard
+                    media={<MapMiraf/>}
+                    iconSrc="/icons/ml_Icon.png"
+                    iconAlt="map icon"
+                    titles={{
+                        line1: t("about.2.cards.1.title.0"),
+                        line2: t("about.2.cards.1.title.1"),
+                        line3: t("about.2.cards.1.title.2"),
+                    }}
+                    mediaOnTop
+                />
 
-                                   {/* Title */}
-                                   <h3 className="text-2xl md:text-3xl lg:text-5xl xl:text-7xl font-semibold leading-tight">
-                                       {t("about.1.cards.0.title.0")}
-                                   </h3>
-
-                                   {/* Description */}
-                                   <p className="mt-3 md:mt-4 max-w-md text-sm sm:text-base md:text-lg leading-relaxed">{t("about.1.cards.0.body")}</p>
-                               </div>
-
-                               <div className="relative aspect-[16/10] rounded-3xl overflow-hidden">
-                                   <Image src="/images/cam10_open_retail_semi_bird_05.jpg" alt={t("about.1.cards.0.title.0")} fill className="object-cover" priority/>
-                               </div>
-                           </div>
-
-                           {/* Right Section - Image + Card */}
-                           <div className="w-full">
-                               <div className="relative aspect-[16/10] rounded-3xl overflow-hidden">
-                                   <Image src="/images/01_cam_13_lobby hotel _02.jpg" alt={t("about.1.cards.1.title.0")} fill className="object-cover" priority/>
-                               </div>
-
-                               {/* Caption / Text under Image */}
-                               <div className="mt-10">
-                                   {/* Image */}
-                                   <Image src="/icons/ml_icon_08.png" alt="icon" width={32} height={32} className="h-6 w-6 md:h-8 md:w-8 object-contain"/>
-
-                                   {/* Title */}
-                                   <h3 className="text-2xl md:text-3xl lg:text-5xl xl:text-7xl font-semibold leading-tight">
-                                       {t("about.1.cards.1.title.0")}
-                                   </h3>
-
-                                   {/* Description */}
-                                   <p className="mt-3 md:mt-4 max-w-md text-sm sm:text-base md:text-lg leading-relaxed">{t("about.1.cards.1.body")}</p>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </section>,
-               <section className="relative min-h-screen bg-[#F3E6D6] text-burgundy">
-                   <div className="container">
-                       <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 xl:gap-32 items-center py-16 md:py-24">
-                           {/* Left: Image + Card */}
-                           <div className="w-full space-y-8">
-                               <div>
-                                   <Image
-                                       src="/icons/ml_icon-06.png"
-                                       alt="icon"
-                                       width={32}
-                                       height={32}
-                                       className="h-6 w-6 md:h-8 md:w-8 object-contain"
-                                   />
-                                   <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight">
-                                       {t("about.2.cards.0.title.0")}
-                                   </h3>
-                                   <p className="mt-3 md:mt-4 max-w-md text-sm sm:text-base md:text-lg leading-relaxed">
-                                       {t("about.2.cards.0.body")}
-                                   </p>
-                               </div>
-
-                               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
-                                   <Image
-                                       src="/images/cam12_office landscape_view_05.jpg"
-                                       alt={t("about.1.cards.0.title.0")}
-                                       fill
-                                       className="object-cover"
-                                       priority
-                                   />
-                               </div>
-                           </div>
-
-                           {/* Right: Wide Map + Caption */}
-                           <div className="w-full">
-                               <div className="relative aspect-[21/9] rounded-3xl overflow-hidden shadow-lg">
-                                   <MapMiraf />
-                               </div>
-
-                               <div className="mt-10 ps-14">
-                                   <h2 className="font-semibold leading-tight tracking-tight text-2xl md:text-3xl lg:text-5xl xl:text-7xl text-burgundy">
-                                       <span className="block mt-1 sm:mt-2">{t("about.2.cards.1.title.0")}</span>
-                                       <span className="flex items-center gap-6 sm:gap-8">
-                                          <Image
-                                              src="/icons/ml_Icon.png"
-                                              alt={t("about.0.cards.0.title.1")}
-                                              height={96}
-                                              width={96}
-                                              className="inline-block h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 object-contain"
-                                          />
-                                           <span className="block">
-                                            {t("about.2.cards.1.title.1")}
-                                          </span>
-                                        </span>
-                                       <span className="block mt-1 sm:mt-2">{t("about.2.cards.1.title.2")}</span>
-                                   </h2>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </section>
-           ]}
-       />
+            ]}
+        />
     );
 
 }
