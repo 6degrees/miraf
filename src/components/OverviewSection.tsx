@@ -44,7 +44,7 @@ export default function OverviewSection() {
             <Image src="/images/full_project.png" alt="Miraf Overview" fill priority sizes="100vw" className="object-cover object-center -z-10"/>
             <div className="absolute inset-x-0 bottom-0 h-[45%] bg-[linear-gradient(180deg,rgba(56,7,9,0)_0%,rgba(56,7,9,0.55)_45%,rgba(56,7,9,0.85)_100%)] pointer-events-none" />
             <div className="container-x relative mx-auto px-4 sm:px-6 lg:px-8 min-h-[100vh] flex flex-col justify-between py-12 sm:py-16 lg:py-20">
-                <div className="flex lg:hidden flex-col items-center gap-6 sm:gap-8 pt-10">
+                <div className="grid lg:hidden grid-cols-2 gap-6 sm:gap-8 pt-10 text-center">
                     <div className="flex flex-col items-center gap-1 text-violet-200">
                         <Image src="/icons/ml_icon-12.png" alt="" width={40} height={40} className="w-8 h-8" />
                         <span className="text-sm sm:text-base">{t("overview.pins.residences.title")}</span>
@@ -53,6 +53,7 @@ export default function OverviewSection() {
                             <span className="ml-2 text-xs">{t("overview.pins.residences.unit")}</span>
                         </div>
                     </div>
+
                     <div className="flex flex-col items-center gap-1 text-amber-300">
                         <Image src="/icons/ml_icon-11.png" alt="" width={40} height={40} className="w-8 h-8" />
                         <span className="text-sm sm:text-base">{t("overview.pins.tower.title")}</span>
@@ -62,6 +63,7 @@ export default function OverviewSection() {
                             <span className="ml-2 text-xs">{t("overview.pins.tower.unit")}</span>
                         </div>
                     </div>
+
                     <div className="flex flex-col items-center gap-1 text-burgundy">
                         <Image src="/icons/ml_icon-13.png" alt="" width={40} height={40} className="w-8 h-8" />
                         <span className="text-sm sm:text-base">{t("overview.pins.hotel.title")}</span>
@@ -70,6 +72,7 @@ export default function OverviewSection() {
                             <span className="ml-2 text-xs">{t("overview.pins.hotel.unit")}</span>
                         </div>
                     </div>
+
                     <div className="flex flex-col items-center gap-1 text-[#de6b26]">
                         <Image src="/icons/ml_Icon-10.png" alt="" width={40} height={40} className="w-8 h-8" />
                         <span className="text-sm sm:text-base">{t("overview.pins.plaza.title")}</span>
@@ -80,7 +83,6 @@ export default function OverviewSection() {
                         </div>
                     </div>
                 </div>
-
                 <div className="hidden lg:block relative h-[78vh]">
                     <div className="absolute left-[18%] top-[15%] text-violet-200 text-center flex flex-col items-center space-y-1">
                         <Image src="/icons/ml_icon-12.png" alt="" width={30} height={30} className="w-8 h-8" />
