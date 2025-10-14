@@ -39,7 +39,7 @@ export default function Banner() {
     |
     */
     return (
-        <section className="relative min-h-screen text-white overflow-hidden">
+        <section className="relative h-[600px] sm:h-[700px] md:h-[900px] lg:h-[1000px] xl:h-screen text-white overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 -z-10">
                 <Image src="/images/miraf_renders_10edited.png" alt="Miraf District" fill priority className="object-cover"/>

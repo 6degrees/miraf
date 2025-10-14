@@ -46,8 +46,8 @@ export default function MapCard(
     |
     */
     const MediaBlock = (
-        <div className="relative h-[480px] md:h-[540px] xl:h-[415px] rounded-[22px] overflow-hidden">
-            <div className="absolute inset-0">{media}</div>
+        <div className="relative inset-0">
+            {media}
         </div>
     );
 
@@ -57,8 +57,8 @@ export default function MapCard(
     |--------------------------------------------------------------------------
     */
     const TextBlock = (
-        <div className="mt-8 sm:mt-10 ps-6 sm:ps-10 md:ps-14 text-burgundy">
-            <h2 className="font-semibold tracking-tight text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight">
+        <div className="mt-8 sm:mt-10 ps-0 md:ps-14 text-burgundy">
+            <h2 className="font-semibold tracking-tight text-5xl sm:text-7xl leading-tight">
                 {titles.line1 ? <span className="block mt-1 sm:mt-2">{titles.line1}</span> : null}
                 <span className="mt-2 flex items-center gap-4 sm:gap-8">
                     <Image
@@ -66,7 +66,7 @@ export default function MapCard(
                         alt={iconAlt}
                         width={96}
                         height={96}
-                        className="inline-block h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-32 object-contain"
+                        className="inline-block h-14 w-14 sm:h-24 sm:w-24 object-contain"
                     />
                     {titles.line2 ? <span className="block">{titles.line2}</span> : null}
                 </span>

@@ -73,7 +73,7 @@ export default function Slider({items, autoplayDelay = 5000, dir='ltr', classNam
                 {items.map((node, idx) => (
                     <SwiperSlide key={idx}>
                         <div className="container-x">
-                            <div className="relative h-[100svh] supports-[height:100svh]:h-[100svh] overflow-hidden">
+                            <div className="relative h-[600px] lg:h-[900px] overflow-hidden">
                                 {node}
                             </div>
                         </div>

@@ -99,7 +99,7 @@ export default function MapMiraf({center = [26.2959, 50.215], iconUrl = "/icons/
     return (
         <div
             id="miraf-map"
-            className="relative h-[60vh] min-h-[420px] rounded-3xl overflow-hidden"
+            className="relative h-[280px] md:h-[300px] lg:h-[320px] xl:h-[380px] rounded-3xl overflow-hidden"
         />
     );
 }

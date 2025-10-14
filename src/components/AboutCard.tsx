@@ -65,7 +65,7 @@ export default function AboutCard(
     |
     */
     const ImageBlock = (
-        <div className="relative h-[480px] md:h-[540px] xl:h-[415px] rounded-[22px] overflow-hidden">
+        <div className="relative h-[260px] md:h-[300px] lg:h-[320px] xl:h-[380px] rounded-[22px] overflow-hidden">
             <Image
                 src={imageSrc}
                 alt={imageAlt || title}
@@ -93,7 +93,7 @@ export default function AboutCard(
                     alt="icon"
                     width={20}
                     height={20}
-                    className="h-8 md:w-8 object-contain"
+                    className="h-8 w-8 object-contain"
                 />
             </div>
             <h3 className="mt-2 text-5xl sm:text-7xl leading-tight">
