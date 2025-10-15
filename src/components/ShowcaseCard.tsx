@@ -47,9 +47,9 @@ export default function ShowcaseCard(
         titleLine2,
         iconSrc = "/icons/ml_Icon_16.png",
         iconSizeClass = "h-12 w-12 sm:h-14 sm:w-14 xl:h-20 xl:w-20",
-        titleSizeClass = "text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]",
+        titleSizeClass = "text-[2.9rem] md:text-[3rem] lg:text-[4rem]",
         className = "",
-        imageHeightClass = "h-[260px] md:h-[360px] lg:h-[520px] xl:h-[650px]",
+        imageHeightClass = "h-[260px] md:h-[360px] lg:h-[520px] xl:h-[600px]",
         roundedClass = "rounded-2xl",
     }: ShowcaseCardProps) {
 
