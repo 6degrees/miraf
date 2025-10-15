@@ -108,7 +108,7 @@ export default function ShowcaseCard(
                     </div>
                 </div>
                 <div className="relative w-full md:w-1/2 flex items-start md:items-center justify-center md:justify-start">
-                    <div className="text-base sm:text-md md:text-2xl text-white mb-3 sm:mb-4 text-center md:text-left">
+                    <div className="text-base sm:text-md md:text-3xl text-white mb-3 sm:mb-4 text-center max-w-[18rem]">
                         {caption}
                     </div>
                 </div>
