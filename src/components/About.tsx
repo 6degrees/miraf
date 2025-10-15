@@ -7,8 +7,11 @@ import DistrictTitleCard from "@/components/DistrictTitleCard";
 import DistrictCard from "@/components/DistrictCard";
 import MapMiraf from "@/components/MapMiraf";
 import MapCard from "@/components/MapCard";
-import AboutCard from "@/components/AboutCard";
-import AboutShowcaseCard from "@/components/AboutCard";
+import AboutCard from "@/components/ShowcaseCard";
+import AboutShowcaseCard from "@/components/ShowcaseCard";
+import ShowcaseCard from "@/components/ShowcaseCard";
+import ShowcaseSplitCard from "@/components/ShowcaseSplitCard";
+import ShowcaseMosaicCard from "@/components/ShowcaseMosaicCard";
 
 /*
 |--------------------------------------------------------------------------
@@ -47,23 +50,45 @@ export default function About() {
     |
     */
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <AboutShowcaseCard
-              images={[{ src: "/images/02_Cam1_Road_Front_Building_06.jpg", priority: true }]}
-               icons={[
-                 { src: "/icons/blob-1.svg" },
-                 { src: "/icons/blob-2.svg" },
-              ]}
-              kicker="What does living in Miraf look like"
-             titleLines={["Flourishing Minds,", "Communities", "and Life"]}
-              layout="image-left"
-              blobs={[
-                { className: "absolute right-24 -top-3 w-6 h-6 rounded-[18px] bg-[#EAD5F9]" },
-                { className: "absolute right-10 top-14 w-12 h-6 rounded-full bg-[#EAD5F9] rotate-[-8deg]" },
-              ]}
-            />
+        <Slider
+            dir={direction}
+            bgClass={'bg-burgundy'}
+            heightClass={'h-[550px] lg:h-[800px] xl:h-[900px]'}
+            breakpoints= {{
+                0: { slidesPerView: 1, spaceBetween: 0 },
+                640: { slidesPerView: 1, spaceBetween: 0 },
+                768: { slidesPerView: 1, spaceBetween: 0 },
+                1024: { slidesPerView: 1.1, spaceBetween: 0 },
+                1280: { slidesPerView: 1.2, spaceBetween: 0 },
+            }}
+            items={[
+                <ShowcaseCard
+                    layout={'0'}
+                    imageSrc="/images/02_Cam1_Road_Front_Building_06.jpg"
+                    imageAlt="Miraf"
+                    caption={t("showcase.0.caption")}
+                    titleLine1={t("showcase.0.title.0")}
+                    titleLine2={t("showcase.0.title.1")}
+                />,
+                <ShowcaseCard
+                    layout={'1'}
+                    imageSrc="/images/cam09_retail_interior_06.jpg"
+                    imageAlt="Miraf"
+                    caption={t("showcase.1.caption")}
+                    roundedClass={'rounded-'}
+                />,
+                <ShowcaseCard
+                    layout={'2'}
+                    imageSrc="/images/cam12_office landscape_view_05.jpg"
+                    iconSrc="/icons/ML_icon-19.png"
+                    imageAlt="Miraf"
+                    titleLine1={t("showcase.2.title.0")}
+                    titleLine2={t("showcase.2.title.1")}
+                    iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-24 xl:w-24'}
+                />,
 
-        </div>
+            ]}
+        />
     );
 
 }

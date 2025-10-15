@@ -73,5 +73,24 @@ export default {
             hotel: { title: "Hotel INDIGO", value: "240", unit: "keys" },
             plaza: { title: "The Plaza at Miraf", subtitle: "Retail + Clinic NLA", value: "28,992", unit: "sqm" }
         }
-    }
+    },
+    showcase: [
+        {
+            caption: "What does living in Miraf look like",
+            title: { 0: "Connected Spaces", 1: "Flourishing Communities" }
+        },
+        {
+            caption: "What can working in Miraf add to you",
+        },
+        {
+            caption: "What can working in Miraf add to you",
+            title: { 0: "Empowering", 1: "your Daily Life"}
+        },
+        {
+            rightTitle: "Vibrant Daily Experience",
+            rightBody: "rich lifestyle with shopping, cinema, dining, and the elegant hospitality of INDIGO Hotel.",
+            leftTitle: "Integrated Lifestyle",
+            leftBody: "Bringing together modern living, a dynamic work environment, and green spaces all in one place."
+        }
+    ]
 };

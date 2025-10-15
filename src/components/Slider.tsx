@@ -33,6 +33,7 @@ type SliderProps = {
     style?: React.CSSProperties;
     background?: React.ReactNode;
     heightClass?: string;
+    breakpoints?: Record<number, { slidesPerView: number; spaceBetween?: number }>;
 };
 
 /*
@@ -67,7 +68,14 @@ export default function Slider(
         textClass = "text-burgundy",
         style,
         background,
-        heightClass = "h-[600px] lg:h-[900px]",
+        heightClass = "h-[600px] md:h-[700px] lg:h-[900px]",
+        breakpoints = {
+            0: { slidesPerView: 1, spaceBetween: 0 },
+            640: { slidesPerView: 1, spaceBetween: 0 },
+            768: { slidesPerView: 1, spaceBetween: 0 },
+            1024: { slidesPerView: 1.2, spaceBetween: 0 },
+            1280: { slidesPerView: 1.4, spaceBetween: 0 },
+        },
     }: SliderProps)
 {
 
@@ -92,19 +100,13 @@ export default function Slider(
 
             <Swiper
                 key={`swiper-${dir}`}
-                modules={[Autoplay]}
+                modules={[]}
                 spaceBetween={0}
                 autoplay={{delay: autoplayDelay, disableOnInteraction: false}}
                 navigation={navigation}
                 dir={dir}
                 className={className}
-                breakpoints={{
-                    0: {slidesPerView: 1, spaceBetween: 0},
-                    640: {slidesPerView: 1, spaceBetween: 0},
-                    768: {slidesPerView: 1, spaceBetween: 0},
-                    1024: {slidesPerView: 1.2, spaceBetween: 0},
-                    1280: {slidesPerView: 1.4, spaceBetween: 0},
-                }}
+                breakpoints={breakpoints}
             >
                 {items.map((node, idx) => (
                     <SwiperSlide key={idx}>

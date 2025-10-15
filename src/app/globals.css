@@ -32,8 +32,9 @@ body {
 
 :root {
     --container-x: 1rem;
-    --container-x-sm: 2rem;
-    --container-x-lg: 8rem;
+    --container-x-sm: 1rem;
+    --container-x-lg: 4rem;
+    --container-x-xl: 4rem;
 }
 
 .container-x {
@@ -50,6 +51,12 @@ body {
 @media (min-width: 1024px) {
     .container-x {
         padding-inline: var(--container-x-lg);
+    }
+}
+
+@media (min-width: 1500px) {
+    .container-x {
+        padding-inline: var(--container-x-xl);
     }
 }
 

@@ -49,8 +49,8 @@ export default function OverviewSection() {
                         <Image src="/icons/ml_icon-12.png" alt="" width={40} height={40} className="w-8 h-8" />
                         <span className="text-sm sm:text-base">{t("overview.pins.residences.title")}</span>
                         <div>
-                            <span className="text-3xl font-semibold">{t("overview.pins.residences.value")}</span>
-                            <span className="ml-2 text-xs">{t("overview.pins.residences.unit")}</span>
+                            <span className="text-3xl">{t("overview.pins.residences.value")}</span>
+                            <span className="ms-2 text-xs">{t("overview.pins.residences.unit")}</span>
                         </div>
                     </div>
 
@@ -59,8 +59,8 @@ export default function OverviewSection() {
                         <span className="text-sm sm:text-base">{t("overview.pins.tower.title")}</span>
                         <span className="text-xs sm:text-sm">{t("overview.pins.tower.subtitle")}</span>
                         <div>
-                            <span className="text-3xl font-semibold">{t("overview.pins.tower.value")}</span>
-                            <span className="ml-2 text-xs">{t("overview.pins.tower.unit")}</span>
+                            <span className="text-3xl">{t("overview.pins.tower.value")}</span>
+                            <span className="ms-2 text-xs">{t("overview.pins.tower.unit")}</span>
                         </div>
                     </div>
 
@@ -68,8 +68,8 @@ export default function OverviewSection() {
                         <Image src="/icons/ml_icon-13.png" alt="" width={40} height={40} className="w-8 h-8" />
                         <span className="text-sm sm:text-base">{t("overview.pins.hotel.title")}</span>
                         <div>
-                            <span className="text-3xl font-semibold">{t("overview.pins.hotel.value")}</span>
-                            <span className="ml-2 text-xs">{t("overview.pins.hotel.unit")}</span>
+                            <span className="text-3xl">{t("overview.pins.hotel.value")}</span>
+                            <span className="ms-2 text-xs">{t("overview.pins.hotel.unit")}</span>
                         </div>
                     </div>
 
@@ -78,51 +78,51 @@ export default function OverviewSection() {
                         <span className="text-sm sm:text-base">{t("overview.pins.plaza.title")}</span>
                         <span className="text-xs sm:text-sm">{t("overview.pins.plaza.subtitle")}</span>
                         <div>
-                            <span className="text-3xl font-semibold">{t("overview.pins.plaza.value")}</span>
-                            <span className="ml-2 text-xs">{t("overview.pins.plaza.unit")}</span>
+                            <span className="text-3xl">{t("overview.pins.plaza.value")}</span>
+                            <span className="ms-2 text-xs">{t("overview.pins.plaza.unit")}</span>
                         </div>
                     </div>
                 </div>
                 <div className="hidden lg:block relative h-[78vh]">
                     <div className="absolute left-[18%] top-[15%] text-violet-200 text-center flex flex-col items-center space-y-1">
                         <Image src="/icons/ml_icon-12.png" alt="" width={30} height={30} className="w-8 h-8" />
-                        <span className="text-xl font-medium">{t("overview.pins.residences.title")}</span>
+                        <span className="text-xl">{t("overview.pins.residences.title")}</span>
                         <div>
-                            <span className="text-4xl font-semibold">{t("overview.pins.residences.value")}</span>
-                            <span className="ml-2 text-base">{t("overview.pins.residences.unit")}</span>
+                            <span className="text-4xl">{t("overview.pins.residences.value")}</span>
+                            <span className="ms-2 text-base">{t("overview.pins.residences.unit")}</span>
                         </div>
                     </div>
                     <div className="absolute left-[58%] -translate-x-1/2 top-[10%] text-amber-300 text-center flex flex-col items-center space-y-1">
                         <Image src="/icons/ml_icon-11.png" alt="" width={30} height={30} className="w-8 h-8" />
-                        <span className="text-xl font-medium">{t("overview.pins.tower.title")}</span>
+                        <span className="text-xl">{t("overview.pins.tower.title")}</span>
                         <span className="text-base">{t("overview.pins.tower.subtitle")}</span>
                         <div>
-                            <span className="text-4xl font-semibold">{t("overview.pins.tower.value")}</span>
-                            <span className="ml-2 text-base">{t("overview.pins.tower.unit")}</span>
+                            <span className="text-4xl">{t("overview.pins.tower.value")}</span>
+                            <span className="ms-2 text-base">{t("overview.pins.tower.unit")}</span>
                         </div>
                     </div>
                     <div className="absolute right-[2%] top-[15%] text-burgundy text-center flex flex-col items-center space-y-1">
                         <Image src="/icons/ml_icon-13.png" alt="" width={30} height={30} className="w-8 h-8" />
-                        <span className="text-xl font-medium">{t("overview.pins.hotel.title")}</span>
+                        <span className="text-xl">{t("overview.pins.hotel.title")}</span>
                         <div>
-                            <span className="text-4xl font-semibold">{t("overview.pins.hotel.value")}</span>
-                            <span className="ml-2 text-base">{t("overview.pins.hotel.unit")}</span>
+                            <span className="text-4xl">{t("overview.pins.hotel.value")}</span>
+                            <span className="ms-2 text-base">{t("overview.pins.hotel.unit")}</span>
                         </div>
                     </div>
                     <div className="absolute left-[50%] -translate-x-1/2 top-[48%] text-[#de6b26] text-center flex flex-col items-center space-y-1">
                         <Image src="/icons/ml_Icon-10.png" alt="" width={30} height={30} className="w-8 h-8" />
-                        <span className="text-xl font-medium">{t("overview.pins.plaza.title")}</span>
+                        <span className="text-xl">{t("overview.pins.plaza.title")}</span>
                         <span className="text-base">{t("overview.pins.plaza.subtitle")}</span>
                         <div>
-                            <span className="text-4xl font-semibold">{t("overview.pins.plaza.value")}</span>
-                            <span className="ml-2 text-base">{t("overview.pins.plaza.unit")}</span>
+                            <span className="text-4xl">{t("overview.pins.plaza.value")}</span>
+                            <span className="ms-2 text-base">{t("overview.pins.plaza.unit")}</span>
                         </div>
                     </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between gap-4 pt-10">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold text-white/95">{t("nav.overview")}</h2>
-                    <a href="#" target="_blank" className="inline-flex items-center gap-2 rounded-full bg-white/20 text-white px-6 py-2.5 md:px-10 md:py-3 text-sm md:text-lg font-semibold shadow-[0_2px_12px_rgba(0,0,0,0.25)] backdrop-blur hover:bg-white/30 transition">{t("overview.cta")}</a>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white/95">{t("nav.overview")}</h2>
+                    <a href="#" target="_blank" className="inline-flex items-center gap-2 rounded-full bg-white/20 text-white px-6 py-2.5 md:px-10 md:py-3 text-sm md:text-lg shadow-[0_2px_12px_rgba(0,0,0,0.25)] backdrop-blur hover:bg-white/30 transition">{t("overview.cta")}</a>
                 </div>
             </div>
         </section>
