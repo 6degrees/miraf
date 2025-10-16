@@ -3,6 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
+/*
+|--------------------------------------------------------------------------
+| $residences-section:props
+|--------------------------------------------------------------------------
+|
+| Props definition for the ResidencesSection component.
+| - Defines configurable content for the “Miraf Residences” section.
+| - Includes image, title, subtitle, body text, and an optional CTA button.
+| - Supports custom background and wrapper classes for theme flexibility.
+|
+*/
 type ResidencesSectionProps = {
     imageSrc: string;
     imageAlt?: string;
@@ -16,7 +27,8 @@ type ResidencesSectionProps = {
 };
 
 export default function ResidencesSection(
-    {imageSrc,
+    {
+        imageSrc,
         imageAlt = "",
         title,
         subtitle,
@@ -26,6 +38,25 @@ export default function ResidencesSection(
         className = "",
         bgClass = "bg-[#B79A5C]",
     }: ResidencesSectionProps) {
+
+    /*
+    |--------------------------------------------------------------------------
+    | $residences-section:layout
+    |--------------------------------------------------------------------------
+    |
+    | Main layout for the “Miraf Residences” section.
+    |
+    | Structure:
+    | - Responsive two-column layout:
+    |     → Desktop: [ Text content | Image ]
+    |     → Mobile:  [ Image on top | Text content below ]
+    |
+    | Behavior:
+    | - Text is centered on smaller screens, left-aligned on larger ones.
+    | - Uses Tailwind utilities for spacing, alignment, and responsive scaling.
+    | - Background and text color are adjustable via props for brand consistency.
+    |
+    */
     return (
         <section className={`w-full ${bgClass} text-[#F6E6DA] pt-0 pb-10 lg:pt-10 ${className}`}>
             <div className="flex flex-col lg:flex-row w-full">
@@ -34,7 +65,14 @@ export default function ResidencesSection(
                     <h2 className="text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] font-semibold mb-4">{title}</h2>
                     {subtitle && <p className="text-xl sm:text-2xl md:text-4xl mb-6">{subtitle}</p>}
                     {body && <p className="text-md max-w-md leading-relaxed mb-8">{body}</p>}
-                    {ctaLabel && (<Link href={ctaHref} className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition">{ctaLabel}</Link>)}
+                    {ctaLabel && (
+                        <Link
+                            href={ctaHref}
+                            className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition"
+                        >
+                            {ctaLabel}
+                        </Link>
+                    )}
                 </div>
 
                 {/* Left: Full-height Image */}

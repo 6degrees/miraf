@@ -3,7 +3,7 @@ export default {
         district: "The District",
         overview: "Overview",
         gallery: "Gallery",
-        developer: "The Developer",
+        developer: "The Developer.tsx",
         register: "Register your interest",
     },
     hero: {
@@ -100,5 +100,11 @@ export default {
         subtitle: "Where Serenity Meets Growth",
         body: "Miraf Residences embody the perfect balance between comfort and elegance. Each space is thoughtfully designed to provide a tranquil environment, surrounded by green landscapes and exceptional amenities that meet your daily needs with ease and sophistication.",
         cta: "Download Miraf Residences Brochure"
+    },
+    developer: {
+        title: "About the Developer",
+        bodyTop: "Refad is the real estate development and investment arm of the esteemed Al Qahtani Holding (AQH). It is headquartered in Al Khobar, Kingdom of Saudi Arabia. Refad has established itself as a privately owned and thriving company, boasting a dedicated team of Real Estate and Investment professionals.",
+        bodyBottom: "Our mission is to lead the real estate development market in Saudi Arabia by specializing in lifestyle projects and collaborating with customers to uncover high-value real estate opportunities.",
+        cta: "Visit Refad’s page"
     },
 };

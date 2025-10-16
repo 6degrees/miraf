@@ -6,6 +6,7 @@ import OverviewSection from "@/components/OverviewSection";
 import District from "@/components/District";
 import Residences from "@/components/Residences";
 import {useTranslation} from "react-i18next";
+import Developer from "@/components/Developer";
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,17 @@ export default function HomePage() {
                 body={t("residences.body")}
                 ctaLabel={t("residences.cta")}
             />
+            <Developer
+                logoSrc="/icons/Refad Logo.png"
+                decoSrc="/icons/ML_Icon-22.png"
+                imageSrc="/images/clark_van_der_beken_KvuSeA5Ep4c_unsplash.jpg"
+                title={t("developer.title")}
+                bodyTop={t("developer.bodyTop")}
+                bodyBottom={t("developer.bodyBottom")}
+                ctaLabel={t("developer.cta")}
+                ctaHref="#"
+            />
+
         </main>
     );
 }
