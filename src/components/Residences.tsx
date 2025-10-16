@@ -27,7 +27,7 @@ export default function ResidencesSection(
         bgClass = "bg-[#B79A5C]",
     }: ResidencesSectionProps) {
     return (
-        <section className={`w-full ${bgClass} text-[#F6E6DA] py-0 pb-10 lg:pb-0 lg:py-10 ${className}`}>
+        <section className={`w-full ${bgClass} text-[#F6E6DA] pt-0 pb-10 lg:pt-10 ${className}`}>
             <div className="flex flex-col lg:flex-row w-full">
                 {/* Right: Text Content */}
                 <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-center lg:items-start px-6 sm:px-10 lg:px-16">
