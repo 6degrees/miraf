@@ -33,7 +33,7 @@ export default function ResidencesSection(
                 <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-center lg:items-start px-6 sm:px-10 lg:px-16">
                     <h2 className="text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] font-semibold mb-4">{title}</h2>
                     {subtitle && <p className="text-xl sm:text-2xl md:text-4xl mb-6">{subtitle}</p>}
-                    {body && <p className="text-lg max-w-md leading-relaxed mb-8">{body}</p>}
+                    {body && <p className="text-md max-w-md leading-relaxed mb-8">{body}</p>}
                     {ctaLabel && (<Link href={ctaHref} className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition">{ctaLabel}</Link>)}
                 </div>
 
