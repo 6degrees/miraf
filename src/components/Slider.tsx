@@ -23,6 +23,7 @@ import "swiper/css/navigation";
 | - heightClass    : Tailwind height class for slides
 */
 type SliderProps = {
+    id: string;
     items: React.ReactNode[];
     dir?: "rtl" | "ltr";
     autoplayDelay?: number;
@@ -59,6 +60,7 @@ type SliderProps = {
 */
 export default function Slider(
     {
+        id,
         items,
         autoplayDelay = 5000,
         dir = "ltr",
@@ -75,6 +77,7 @@ export default function Slider(
             768: { slidesPerView: 1, spaceBetween: 0 },
             1024: { slidesPerView: 1.2, spaceBetween: 0 },
             1280: { slidesPerView: 1.4, spaceBetween: 0 },
+            1400: { slidesPerView: 1.5, spaceBetween: 0 },
         },
     }: SliderProps)
 {
@@ -90,7 +93,7 @@ export default function Slider(
     | - Renders each node in `items` as a <SwiperSlide>
     */
     return (
-        <section className={`relative ${bgClass} ${textClass}`} style={style}>
+        <section id={id} className={`relative ${bgClass} ${textClass}`} style={style}>
             {/* Optional absolute background */}
             {background && (
                 <div className="absolute inset-0 -z-10 pointer-events-none">
@@ -99,7 +102,8 @@ export default function Slider(
             )}
 
             <Swiper
-                key={`swiper-${dir}`}
+                key={`swiper-${id}-${dir}`}
+                id={`swiper-${id}-${dir}`}
                 modules={[]}
                 spaceBetween={0}
                 autoplay={{delay: autoplayDelay, disableOnInteraction: false}}
@@ -109,7 +113,7 @@ export default function Slider(
                 breakpoints={breakpoints}
             >
                 {items.map((node, idx) => (
-                    <SwiperSlide key={idx}>
+                    <SwiperSlide key={`swiper-slide-${id}-${idx}`} id={`swiper-slide-${id}-${idx}`}>
                         <div className="container-x">
                             <div className={`relative ${heightClass} overflow-hidden`}>
                                 {node}

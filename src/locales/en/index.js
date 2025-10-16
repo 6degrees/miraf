@@ -87,10 +87,12 @@ export default {
             title: { 0: "Empowering", 1: "your Daily Life"}
         },
         {
-            rightTitle: "Vibrant Daily Experience",
-            rightBody: "rich lifestyle with shopping, cinema, dining, and the elegant hospitality of INDIGO Hotel.",
-            leftTitle: "Integrated Lifestyle",
-            leftBody: "Bringing together modern living, a dynamic work environment, and green spaces all in one place."
-        }
+            caption: "rich lifestyle with shopping, cinema, dining, and the elegant hospitality of INDIGO Hotel.",
+            title: { 0: "Vibrant Daily", 1: "Experience"}
+        },
+        {
+            caption: "Bringing together modern living, a dynamic work environment, and green spaces all in one place.",
+            title: { 0: "Integrated", 1: "Lifestyle"}
+        },
     ]
 };

@@ -46,6 +46,7 @@ export default function District() {
     */
     return (
         <Slider
+            id="district"
             dir={direction}
             items={[
                 <DistrictTitleCard

@@ -3,15 +3,7 @@
 import {useTranslation} from "react-i18next";
 import Slider from "@/components/Slider";
 import {useAppContext} from "@/context/AppContext";
-import DistrictTitleCard from "@/components/DistrictTitleCard";
-import DistrictCard from "@/components/DistrictCard";
-import MapMiraf from "@/components/MapMiraf";
-import MapCard from "@/components/MapCard";
-import AboutCard from "@/components/ShowcaseCard";
-import AboutShowcaseCard from "@/components/ShowcaseCard";
 import ShowcaseCard from "@/components/ShowcaseCard";
-import ShowcaseSplitCard from "@/components/ShowcaseSplitCard";
-import ShowcaseMosaicCard from "@/components/ShowcaseMosaicCard";
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +43,7 @@ export default function About() {
     */
     return (
         <Slider
+            id="about"
             dir={direction}
             bgClass={'bg-burgundy'}
             heightClass={'h-[550px] lg:h-[800px] xl:h-[900px]'}
@@ -75,18 +68,41 @@ export default function About() {
                     imageSrc="/images/cam09_retail_interior_06.jpg"
                     imageAlt="Miraf"
                     caption={t("showcase.1.caption")}
-                    roundedClass={'rounded-'}
+                    captionSizeClass ="text-2xl sm:text-md md:text-2xl"
+                    roundedClass="rounded-b-2xl lg:rounded-b-none lg:rounded-t-2xl"
                 />,
                 <ShowcaseCard
                     layout={'2'}
                     imageSrc="/images/cam12_office landscape_view_05.jpg"
                     iconSrc="/icons/ML_icon-19.png"
                     imageAlt="Miraf"
+                    roundedClass="rounded-t-2xl lg:rounded-t-none lg:rounded-b-2xl"
                     titleLine1={t("showcase.2.title.0")}
                     titleLine2={t("showcase.2.title.1")}
                     iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-24 xl:w-24'}
                 />,
-
+                <ShowcaseCard
+                    layout={'3'}
+                    imageSrc="/images/group_pilates_instructors_exercising_reformers.jpg"
+                    iconSrc="/icons/ML_icon-19.png"
+                    imageAlt="Miraf"
+                    titleLine1={t("showcase.3.title.0")}
+                    titleLine2={t("showcase.3.title.1")}
+                    caption={t("showcase.3.caption")}
+                    imageHeightClass ="h-[260px] md:h-[360px] lg:h-[300px] xl:h-[400px]"
+                    iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-24 xl:w-24'}
+                />,
+                <ShowcaseCard
+                    layout={'4'}
+                    imageSrc="/images/interior_design_with_photoframes_couch.jpg"
+                    iconSrc="/icons/ml_Icon_17.png"
+                    imageAlt="Miraf"
+                    titleLine1={t("showcase.4.title.0")}
+                    titleLine2={t("showcase.4.title.1")}
+                    caption={t("showcase.4.caption")}
+                    imageHeightClass ="h-[260px] md:h-[360px] lg:h-[380px] xl:h-[400px]"
+                    iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-16 xl:w-16 mb-10'}
+                />,
             ]}
         />
     );
