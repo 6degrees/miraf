@@ -27,6 +27,7 @@ type SliderProps = {
     items: React.ReactNode[];
     dir?: "rtl" | "ltr";
     autoplayDelay?: number;
+    containerClass?: string;
     className?: string;
     navigation?: boolean;
     bgClass?: string;
@@ -70,6 +71,7 @@ export default function Slider(
         textClass = "text-burgundy",
         style,
         background,
+        containerClass = "container-x",
         heightClass = "h-[600px] md:h-[700px] lg:h-[900px]",
         breakpoints = {
             0: { slidesPerView: 1, spaceBetween: 0 },
@@ -114,11 +116,11 @@ export default function Slider(
             >
                 {items.map((node, idx) => (
                     <SwiperSlide key={`swiper-slide-${id}-${idx}`} id={`swiper-slide-${id}-${idx}`}>
-                        <div className="container-x">
-                            <div className={`relative ${heightClass} overflow-hidden`}>
-                                {node}
-                            </div>
-                        </div>
+                      <div className={`${containerClass}`}>
+                          <div className={`relative ${heightClass} overflow-hidden`}>
+                              {node}
+                          </div>
+                      </div>
                     </SwiperSlide>
                 ))}
             </Swiper>

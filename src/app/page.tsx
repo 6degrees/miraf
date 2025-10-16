@@ -7,6 +7,7 @@ import District from "@/components/District";
 import Residences from "@/components/Residences";
 import {useTranslation} from "react-i18next";
 import Developer from "@/components/Developer";
+import Gallery from "@/components/Gallery";
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ export default function HomePage() {
                 body={t("residences.body")}
                 ctaLabel={t("residences.cta")}
             />
+            <Gallery/>
             <Developer
                 logoSrc="/icons/Refad Logo.png"
                 decoSrc="/icons/ML_Icon-22.png"
@@ -53,7 +55,6 @@ export default function HomePage() {
                 ctaLabel={t("developer.cta")}
                 ctaHref="#"
             />
-
         </main>
     );
 }
