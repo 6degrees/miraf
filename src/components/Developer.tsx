@@ -88,7 +88,7 @@ export default function Developer(
                 </div>
                 <div className="order-2 lg:order-none w-full px-6 sm:px-10 lg:px-0 flex justify-center lg:justify-start">
                     <div className="max-w-md">
-                        <h2 className="text-4xl sm:text-5xl lg:text-[56px] leading-tight mb-4">
+                        <h2 className="text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] mb-4">
                             {title}
                         </h2>
                         <p className="text-sm sm:text-base leading-6 mb-4">{bodyTop}</p>

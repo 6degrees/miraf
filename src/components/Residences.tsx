@@ -66,10 +66,7 @@ export default function ResidencesSection(
                     {subtitle && <p className="text-xl sm:text-2xl md:text-4xl mb-6">{subtitle}</p>}
                     {body && <p className="text-md max-w-md leading-relaxed mb-8">{body}</p>}
                     {ctaLabel && (
-                        <Link
-                            href={ctaHref}
-                            className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition"
-                        >
+                        <Link href={ctaHref} className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition">
                             {ctaLabel}
                         </Link>
                     )}
@@ -78,13 +75,7 @@ export default function ResidencesSection(
                 {/* Left: Full-height Image */}
                 <div className="w-full order-1 lg:order-2 lg:w-1/3">
                     <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
-                        <Image
-                            src={imageSrc}
-                            alt={imageAlt}
-                            fill
-                            className="object-cover"
-                            priority
-                        />
+                        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" priority/>
                     </div>
                 </div>
             </div>
