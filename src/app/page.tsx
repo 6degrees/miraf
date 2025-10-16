@@ -4,6 +4,8 @@ import Banner from "@/components/Banner";
 import About from "@/components/About";
 import OverviewSection from "@/components/OverviewSection";
 import District from "@/components/District";
+import Residences from "@/components/Residences";
+import {useTranslation} from "react-i18next";
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,16 @@ import District from "@/components/District";
 |
 */
 export default function HomePage() {
+    /*
+    |--------------------------------------------------------------------------
+    | $i18n-translator
+    |--------------------------------------------------------------------------
+    |
+    | Retrieve the `t` function from i18next for localized strings.
+    |
+    */
+    const {t} = useTranslation();
+
     return (
         <main>
             {/* Primary hero section */}
@@ -23,6 +35,13 @@ export default function HomePage() {
             <District/>
             <OverviewSection/>
             <About/>
+            <Residences
+                imageSrc="/images/Cam21_Pool_05.jpg"
+                title={t("residences.title")}
+                subtitle={t("residences.subtitle")}
+                body={t("residences.body")}
+                ctaLabel={t("residences.cta")}
+            />
         </main>
     );
 }
