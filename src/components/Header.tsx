@@ -4,6 +4,7 @@ import Image from "next/image";
 import {useState} from "react";
 import { useTranslation } from "react-i18next";
 import {useAppContext} from "@/context/AppContext";
+import Link from "next/link";
 
 /*
 |--------------------------------------------------------------------------
@@ -59,13 +60,13 @@ export default function Header() {
 
                     {/* Desktop nav */}
                     <nav className="hidden lg:flex items-center gap-8 text-md font-medium">
-                        <a href="#district"  className="hover:opacity-90">{t("nav.district")}</a>
-                        <a href="#overview"  className="hover:opacity-90">{t("nav.overview")}</a>
-                        <a href="#gallery"   className="hover:opacity-90">{t("nav.gallery")}</a>
-                        <a href="#developer" className="hover:opacity-90">{t("nav.developer")}</a>
-                        <a href="#register"  className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 transition">
+                        <Link href="/#district"  className="hover:opacity-90">{t("nav.district")}</Link>
+                        <Link href="/#overview"  className="hover:opacity-90">{t("nav.overview")}</Link>
+                        <Link href="/#gallery"   className="hover:opacity-90">{t("nav.gallery")}</Link>
+                        <Link href="/#developer" className="hover:opacity-90">{t("nav.developer")}</Link>
+                        <Link href="/#register"  className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 transition">
                             {t("nav.register")}
-                        </a>
+                        </Link>
                         <button
                             onClick={() => handleLanguageSelection(selectedLanguage)}
                             className={`cursor-pointer hover:opacity-90 bold ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}>
@@ -89,19 +90,18 @@ export default function Header() {
             {/* Sidebar (mobile) */}
             <div className={`fixed inset-y-0 left-0 z-40 w-64 bg-[rgba(74,17,18,0.92)] backdrop-blur-md ring-1 ring-white/10 transform transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}>
                 <div className="px-6 py-6 space-y-3 text-md text-white">
-                    <a className="block py-2" href="#district" onClick={() => setMenuOpen(false)}>{t("nav.district")}</a>
-                    <a className="block py-2" href="#overview" onClick={() => setMenuOpen(false)}>{t("nav.overview")}</a>
-                    <a className="block py-2" href="#gallery" onClick={() => setMenuOpen(false)}>{t("nav.gallery")}</a>
-                    <a className="block py-2" href="#developer" onClick={() => setMenuOpen(false)}>{t("nav.developer")}</a>
-                    <a className="block py-2" href="#register" onClick={() => setMenuOpen(false)}>{t("nav.register")}</a>
+                    <Link className="block py-2" href="/#district" onClick={() => setMenuOpen(false)}>{t("nav.district")}</Link>
+                    <Link className="block py-2" href="/#overview" onClick={() => setMenuOpen(false)}>{t("nav.overview")}</Link>
+                    <Link className="block py-2" href="/#gallery" onClick={() => setMenuOpen(false)}>{t("nav.gallery")}</Link>
+                    <Link className="block py-2" href="/#developer" onClick={() => setMenuOpen(false)}>{t("nav.developer")}</Link>
+                    <Link className="block py-2" href="/#register" onClick={() => setMenuOpen(false)}>{t("nav.register")}</Link>
 
                     <button
                         className={`mt-2 w-full rounded-full border border-white/20 px-4 py-2 ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}
                         onClick={() => {
                             handleLanguageSelection(selectedLanguage)
                             setMenuOpen(false);
-                        }}
-                    >
+                        }}>
                         {selectedLanguage === 'ar' ? "En" : "عربي"}
                     </button>
                 </div>

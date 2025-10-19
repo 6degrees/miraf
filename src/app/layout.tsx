@@ -7,6 +7,19 @@ import LangDirEffect from "@/components/LangDirEffect";
 
 /*
 |--------------------------------------------------------------------------
+| $metadata
+|--------------------------------------------------------------------------
+|
+| Global page metadata (applies to all pages unless overridden).
+| You can add title, description, and icons here.
+|
+*/
+export const metadata = {
+    title: "Miraf District",
+}
+
+/*
+|--------------------------------------------------------------------------
 | $fonts
 |--------------------------------------------------------------------------
 |

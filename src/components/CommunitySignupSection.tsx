@@ -98,7 +98,7 @@ export default function CommunitySignupSection(
     |
     */
     return (
-        <section className={`w-full ${bgClass} ${textClass} py-12 md:py-16 ${className} border-t-2 border-[#f4e8d5]`}>
+        <section id="register" className={`w-full ${bgClass} ${textClass} py-12 md:py-16 ${className} border-t-2 border-[#f4e8d5]`}>
             <div className="container-x">
                 <div className="flex flex-col md:flex-row items-start justify-between gap-10">
                     {/* Left: Heading + Form */}

@@ -5,6 +5,10 @@
     --color-burgundy: #471e1b;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Default font (for English) */
 body {
     font-family: var(--font-angie-sans-pro), sans-serif;

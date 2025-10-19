@@ -40,7 +40,7 @@ export default function OverviewSection() {
     | - Includes heading and CTA button at the bottom
     */
     return (
-        <section className="relative text-white overflow-hidden min-h-[100vh] supports-[height:100svh]:min-h-[100svh]">
+        <section id="overview" className="relative text-white overflow-hidden min-h-[100vh] supports-[height:100svh]:min-h-[100svh]">
             <Image src="/images/full_project.png" alt="Miraf Overview" fill priority sizes="100vw" className="object-cover object-center -z-10"/>
             <div className="absolute inset-x-0 bottom-0 h-[45%] bg-[linear-gradient(180deg,rgba(56,7,9,0)_0%,rgba(56,7,9,0.55)_45%,rgba(56,7,9,0.85)_100%)] pointer-events-none" />
             <div className="container-x relative mx-auto px-4 sm:px-6 lg:px-8 min-h-[100vh] flex flex-col justify-between py-12 sm:py-16 lg:py-20">

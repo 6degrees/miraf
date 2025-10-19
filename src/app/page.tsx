@@ -9,6 +9,7 @@ import {useTranslation} from "react-i18next";
 import Developer from "@/components/Developer";
 import Gallery from "@/components/Gallery";
 import CommunitySignupSection from "@/components/CommunitySignupSection";
+import Footer from "@/components/Footer";
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,28 @@ export default function HomePage() {
     */
     const {t} = useTranslation();
 
+    /*
+    |------------------------------------------------------------------------------
+    | $page-render
+    |------------------------------------------------------------------------------
+    | Renders the main structure of the landing page.
+    |------------------------------------------------------------------------------
+    |
+    | - Wraps all major homepage sections inside a <main> container.
+    | - Sequentially composes the full layout:
+    |     → Banner: hero introduction
+    |     → District: project overview
+    |     → OverviewSection: summary of core areas
+    |     → About: detailed description
+    |     → Residences: residential highlight section
+    |     → Gallery: image showcase
+    |     → Developer: developer information + call to action
+    |     → CommunitySignupSection: sign-up form for engagement
+    |     → Footer: bottom navigation + contact details
+    | - Uses translation keys (t) for localized content.
+    | - Ensures consistent structure across Arabic and English layouts.
+    |
+    */
     return (
         <main>
             {/* Primary hero section */}
@@ -46,8 +69,7 @@ export default function HomePage() {
                 ctaLabel={t("residences.cta")}
             />
             <Gallery/>
-            <Developer
-                logoSrc="/icons/Refad Logo.png"
+            <Developer logoSrc="/icons/Refad Logo.png"
                 decoSrc="/icons/ML_Icon-22.png"
                 imageSrc="/images/clark_van_der_beken_KvuSeA5Ep4c_unsplash.jpg"
                 title={t("developer.title")}
@@ -56,10 +78,8 @@ export default function HomePage() {
                 ctaLabel={t("developer.cta")}
                 ctaHref="#"
             />
-            <CommunitySignupSection
-                heading={t("signup.title")}
-                subheading={t("signup.subtitle")}
-            />
+            <CommunitySignupSection heading={t("signup.title")} subheading={t("signup.subtitle")}/>
+            <Footer/>
         </main>
     );
 }

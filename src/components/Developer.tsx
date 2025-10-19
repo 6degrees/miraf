@@ -78,7 +78,7 @@ export default function Developer(
     |
     */
     return (
-        <section className={`w-full ${bgClass} text-burgundy pt-10 pb-0 lg:pt-32 lg:pb-32 ${className}`}>
+        <section id="developer" className={`w-full ${bgClass} text-burgundy pt-10 pb-0 lg:pt-32 lg:pb-32 ${className}`}>
             <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)_minmax(0,1.15fr)] gap-8 lg:gap-10 items-start">
                 <div className="order-1 lg:order-none w-full flex flex-col items-center lg:items-start gap-6 px-6 sm:px-10 lg:px-16">
                     <div className="relative w-[180px] sm:w-[220px] lg:w-[140px] pt-0 lg:pt-9">

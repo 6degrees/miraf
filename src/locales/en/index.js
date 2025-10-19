@@ -140,4 +140,23 @@ export default {
             }
         }
     },
+    footer: {
+        nav: {
+            district: "The District",
+            overview: "Overview",
+            gallery: "Gallery",
+            developer: "The Developer",
+            register: "Register your interest",
+        },
+        addresses: {
+            0: [
+                "P.O. Box 3581, Khobar 7099,",
+                "Kingdom of Saudi Arabia"
+            ],
+            1: [
+                "King Faisal Bin Abd Al Aziz,",
+                "Al Yarmouk, Al Khobar 34422"
+            ]
+        }
+    }
 };
