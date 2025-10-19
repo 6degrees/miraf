@@ -8,6 +8,7 @@ import Residences from "@/components/Residences";
 import {useTranslation} from "react-i18next";
 import Developer from "@/components/Developer";
 import Gallery from "@/components/Gallery";
+import CommunitySignupSection from "@/components/CommunitySignupSection";
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,10 @@ export default function HomePage() {
                 bodyBottom={t("developer.bodyBottom")}
                 ctaLabel={t("developer.cta")}
                 ctaHref="#"
+            />
+            <CommunitySignupSection
+                heading={t("signup.title")}
+                subheading={t("signup.subtitle")}
             />
         </main>
     );

@@ -68,31 +68,33 @@ export default {
         heading: "Overview",
         cta: "Download Brochure",
         pins: {
-            residences: { title: "Miraf Residences", value: "152", unit: "units" },
-            tower: { title: "Business Tower", subtitle: "Offices Area", value: "20,202", unit: "sqm" },
-            hotel: { title: "Hotel INDIGO", value: "240", unit: "keys" },
-            plaza: { title: "The Plaza at Miraf", subtitle: "Retail + Clinic NLA", value: "28,992", unit: "sqm" }
+            residences: {title: "Miraf Residences", value: "152", unit: "units"},
+            tower: {title: "Business Tower", subtitle: "Offices Area", value: "20,202", unit: "sqm"},
+            hotel: {title: "Hotel INDIGO", value: "240", unit: "keys"},
+            plaza: {title: "The Plaza at Miraf", subtitle: "Retail + Clinic NLA", value: "28,992", unit: "sqm"}
         }
     },
     showcase: [
         {
             caption: "What does living in Miraf look like",
-            title: { 0: "Connected Spaces", 1: "Flourishing Communities" }
+            title: {0: "Connected Spaces", 1: "Flourishing Communities"}
         },
         {
             caption: "What can working in Miraf add to you",
         },
         {
             caption: "What can working in Miraf add to you",
-            title: { 0: "Empowering", 1: "your Daily Life"}
+            title: {0: "Empowering", 1: "your Daily Life"}
+
+
         },
         {
             caption: "rich lifestyle with shopping, cinema, dining, and the elegant hospitality of INDIGO Hotel.",
-            title: { 0: "Vibrant Daily", 1: "Experience"}
+            title: {0: "Vibrant Daily", 1: "Experience"}
         },
         {
             caption: "Bringing together modern living, a dynamic work environment, and green spaces all in one place.",
-            title: { 0: "Integrated", 1: "Lifestyle"}
+            title: {0: "Integrated", 1: "Lifestyle"}
         },
     ],
     residences: {
@@ -106,5 +108,36 @@ export default {
         bodyTop: "Refad is the real estate development and investment arm of the esteemed Al Qahtani Holding (AQH). It is headquartered in Al Khobar, Kingdom of Saudi Arabia. Refad has established itself as a privately owned and thriving company, boasting a dedicated team of Real Estate and Investment professionals.",
         bodyBottom: "Our mission is to lead the real estate development market in Saudi Arabia by specializing in lifestyle projects and collaborating with customers to uncover high-value real estate opportunities.",
         cta: "Visit Refad’s page"
+    },
+    signup: {
+        title: "Be Part of a Thriving Community",
+        subtitle: "Sign Up Today!",
+        form: {
+            firstName: {
+                label: "First Name"
+            },
+            surname: {
+                label: "Surname"
+            },
+            email: {
+                label: "Email"
+            },
+            phone: {
+                label: "Phone Number"
+            },
+            requestType: {
+                label: "Request Type",
+                options: [
+                    "Choose…",
+                    "Other"
+                ]
+            },
+            subject: {
+                label: "Subject",
+            },
+            send: {
+                label: "Send"
+            }
+        }
     },
 };

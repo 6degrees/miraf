@@ -56,7 +56,7 @@ export default function Gallery() {
             }}
             items={[
                 <ImageCard
-                    src="/images/miraf_renders_10.png"
+                    src="/images/full_project.png"
                     alt="Miraf Overview"
                     heightClass="h-[400px] sm:h-[500px] lg:h-[1100px]"
                 />,
@@ -66,7 +66,12 @@ export default function Gallery() {
                     heightClass="h-[400px] sm:h-[500px] lg:h-[1100px]"
                 />,
                 <ImageCard
-                    src="/images/miraf_renders_10.png"
+                    src="/images/02_Cam1_Road_Front_Building_06.jpg"
+                    alt="Miraf Overview"
+                    heightClass="h-[400px] sm:h-[500px] lg:h-[1100px]"
+                />,
+                <ImageCard
+                    src="/images/cam09_retail_interior_06.jpg"
                     alt="Miraf Overview"
                     heightClass="h-[400px] sm:h-[500px] lg:h-[1100px]"
                 />,

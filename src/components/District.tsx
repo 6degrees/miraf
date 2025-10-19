@@ -48,6 +48,13 @@ export default function District() {
         <Slider
             id="district"
             dir={direction}
+            breakpoints={{
+                0: {slidesPerView: 1, spaceBetween: 0},
+                640: {slidesPerView: 1, spaceBetween: 0},
+                768: {slidesPerView: 1, spaceBetween: 0},
+                1024: { slidesPerView: 1.2, spaceBetween: 0 },
+                1280: { slidesPerView: 1.4, spaceBetween: 0 },
+            }}
             items={[
                 <DistrictTitleCard
                     key="about-title"
