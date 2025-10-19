@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect} from "react";
+import {useEffect, useRef} from "react";
 import "leaflet/dist/leaflet.css";
 
 /*
@@ -34,7 +34,27 @@ interface MapMirafProps {
 | - No API keys required
 |
 */
-export default function MapMiraf({center = [26.2959, 50.215], iconUrl = "/icons/logo.png", iconSize = [60, 50], iconAnchor = [30, 25]}: MapMirafProps) {
+export default function MapMiraf({
+                                     center = [26.2959, 50.215],
+                                     iconUrl = "/icons/logo.png",
+                                     iconSize = [60, 50],
+                                     iconAnchor = [30, 25]
+                                 }: MapMirafProps) {
+
+    /*
+    |--------------------------------------------------------------------------
+    | $refs
+    |--------------------------------------------------------------------------
+    |
+    | Uses React refs to handle map initialization safely:
+    | - containerRef  → DOM node that holds the map
+    | - mapRef        → stores the Leaflet map instance
+    | Prevents re-initialization errors ("Map container is already initialized.")
+    |
+    */
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const mapRef = useRef<L.Map | null>(null);
+
     /*
     |--------------------------------------------------------------------------
     | $map-initialization
@@ -42,15 +62,33 @@ export default function MapMiraf({center = [26.2959, 50.215], iconUrl = "/icons/
     |
     | Dynamically imports Leaflet only on the client side.
     | - Prevents window-related errors during SSR
-    | - Initializes the map with custom coordinates and static view
-    | - Adds the provided image marker
+    | - Ensures that map initializes once (even under Strict Mode)
+    | - Removes previous map if component remounts
     |
     */
     useEffect(() => {
-        const init = async () => {
-            const L = await import("leaflet");
+        let cancelled = false;
 
-            const map = L.map("miraf-map", {
+        (async () => {
+            const L = await import("leaflet");
+            if (cancelled || !containerRef.current) return;
+
+            // Cleanup previous instance if it exists
+            if (mapRef.current) {
+                mapRef.current.remove();
+                mapRef.current = null;
+            }
+
+            // Fix Leaflet bug: remove _leaflet_id from the container
+            // (Prevents "Map container is already initialized" error)
+            // @ts-ignore
+            if ((containerRef.current as any)?._leaflet_id) {
+                // @ts-ignore
+                delete (containerRef.current as any)._leaflet_id;
+            }
+
+            // Create map
+            const map = L.map(containerRef.current, {
                 center,
                 zoom: 14,
                 zoomControl: false,
@@ -63,28 +101,28 @@ export default function MapMiraf({center = [26.2959, 50.215], iconUrl = "/icons/
                 touchZoom: false,
             });
 
+            // Apply base tile layer
             L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-                { maxZoom: 19 }
+                {maxZoom: 19}
             ).addTo(map);
 
-            const icon = L.icon({
-                iconUrl,
-                iconSize,
-                iconAnchor,
-            });
+            // Create and add marker
+            const icon = L.icon({iconUrl, iconSize, iconAnchor});
+            L.marker(center, {icon}).addTo(map);
 
-            L.marker(center, { icon }).addTo(map);
+            // Store instance for cleanup
+            mapRef.current = map;
+        })();
 
-            return () => {
-                map.remove();
-            };
+        // Cleanup on unmount
+        return () => {
+            cancelled = true;
+            if (mapRef.current) {
+                mapRef.current.remove();
+                mapRef.current = null;
+            }
         };
-
-        // Only run in the browser
-        if (typeof window !== "undefined") {
-            init();
-        }
     }, [center, iconUrl, iconSize, iconAnchor]);
 
     /*
@@ -92,13 +130,15 @@ export default function MapMiraf({center = [26.2959, 50.215], iconUrl = "/icons/
     | $miraf-map-container
     |--------------------------------------------------------------------------
     |
-    | Returns the container div that holds the Leaflet map.
-    | Styled with rounded corners and overflow hidden to maintain layout shape.
+    | Returns the container <div> that holds the Leaflet map.
+    | - Rounded corners and overflow-hidden styling
+    | - Responsive height based on screen size
     |
     */
     return (
         <div
-            id="miraf-map"
+            id={'miraf-map'}
+            ref={containerRef}
             className="relative h-[280px] md:h-[300px] lg:h-[320px] xl:h-[380px] rounded-3xl overflow-hidden"
         />
     );
