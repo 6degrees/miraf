@@ -134,7 +134,7 @@ export default function Slider(
         <section id={id} className={`relative ${bgClass} ${textClass}`} style={style} dir={dir}>
             {background && <div className="absolute inset-0 -z-10 pointer-events-none">{background}</div>}
 
-            <Swiper key={`swiper-${id}-${dir}`} modules={[]} dir={dir} loop={total > 1} autoplay={{ delay: autoplayDelay, disableOnInteraction: false }} spaceBetween={0} breakpoints={breakpoints} allowTouchMove={true} onBeforeInit={(swiper) => { swiperRef.current = swiper; }} onSwiper={(swiper) => { swiperRef.current = swiper; }} onSlideChange={(swiper) => setIndex(swiper.realIndex ?? swiper.activeIndex ?? 0)} className={className}>
+            <Swiper key={`swiper-${id}-${dir}`} modules={[]} dir={dir} autoplay={{ delay: autoplayDelay, disableOnInteraction: false }} spaceBetween={0} breakpoints={breakpoints} allowTouchMove={true} onBeforeInit={(swiper) => { swiperRef.current = swiper; }} onSwiper={(swiper) => { swiperRef.current = swiper; }} onSlideChange={(swiper) => setIndex(swiper.realIndex ?? swiper.activeIndex ?? 0)} className={className}>
                 {items.map((node, idx) => (
                     <SwiperSlide key={`slide-${id}-${idx}`}>
                         <div className={containerClass}>
