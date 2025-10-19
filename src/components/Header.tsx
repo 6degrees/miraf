@@ -55,7 +55,7 @@ export default function Header() {
                 <div className="flex items-start justify-between w-full py-5">
                     {/* Logo */}
                     <a href="#" className="flex items-center select-none">
-                        <Image src="/icons/logo.png" alt="Miraf District Logo" width={100} height={60} priority className="h-28 w-28 md:h-auto md:w-auto object-contain"/>
+                        <Image src="/icons/logo.png" alt="Miraf District Logo" width={100} height={60} priority className="h-28 w-28 md:h-32 md:w-32 object-contain"/>
                     </a>
 
                     {/* Desktop nav */}
