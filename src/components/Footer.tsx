@@ -75,15 +75,18 @@ export default function Footer(
     ];
     const email = "info@miraf.com.sa";
     const phone = "920031839";
+
     const socials = {
         linkedin: "https://www.linkedin.com/",
         instagram: "https://www.instagram.com/",
         x: "https://x.com/",
     };
+
     const addressPostal = [
         t("footer.addresses.0.0"),
         t("footer.addresses.0.1"),
     ];
+
     const addressStreet = [
         t("footer.addresses.1.0"),
         t("footer.addresses.1.1"),
@@ -108,7 +111,7 @@ export default function Footer(
 
                 {/* Content Section */}
                 <div className="py-8 md:py-10">
-                    <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-16">
+                    <div className="flex flex-col sm:flex-row justify-between gap-10 md:gap-16">
 
                         {/*
                         |----------------------------------------------------------
@@ -117,7 +120,7 @@ export default function Footer(
                         | Displays translated nav labels defined above.
                         |----------------------------------------------------------
                         */}
-                        <nav className="min-w-48">
+                        <nav className="flex-1 text-center sm:text-start">
                             <ul className="space-y-3 text-xl leading-7">
                                 {nav.map((item) => (
                                     <li key={item.label}>
@@ -140,7 +143,7 @@ export default function Footer(
                         | - Shows company email and phone below icons
                         |----------------------------------------------------------
                         */}
-                        <div className="flex-1 flex flex-col items-start md:items-center justify-center gap-3">
+                        <div className="flex-1 flex flex-col items-center justify-center gap-3">
                             {/* Social Icons */}
                             <div className="flex items-center gap-3">
                                 {/* LinkedIn */}
@@ -201,7 +204,7 @@ export default function Footer(
                         | Each array is rendered as a vertical block of text lines.
                         |----------------------------------------------------------
                         */}
-                        <div className="min-w-64 text-sm leading-6">
+                        <div className="flex-1 leading-6 text-center sm:text-end">
                             {/* Postal Address */}
                             <div className="space-y-1">
                                 {addressPostal.map((line, i) => (

@@ -102,7 +102,7 @@ export default function CommunitySignupSection(
             <div className="container-x">
                 <div className="flex flex-col md:flex-row items-start justify-between gap-10">
                     {/* Left: Heading + Form */}
-                    <div className="flex-1">
+                    <div className="w-full lg:w-auto lg:flex-1">
                         <h2 className="font-semibold tracking-tight text-3xl sm:text-4xl lg:text-5xl">
                             {heading}
                         </h2>
@@ -166,7 +166,7 @@ export default function CommunitySignupSection(
                     </div>
 
                     {/* Right: Decorative blobs */}
-                    <div className="flex-1 relative hidden md:flex justify-center items-center">
+                    <div className="relative hidden lg:flex md:flex-1 justify-center items-center">
                         <Image src="/icons/ml_Icon_32.png" alt="" height="500" width="500" className="object-contain"/>
                     </div>
                 </div>
