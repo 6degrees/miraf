@@ -34,12 +34,13 @@ interface MapMirafProps {
 | - No API keys required
 |
 */
-export default function MapMiraf({
-                                     center = [26.2959, 50.215],
-                                     iconUrl = "/icons/logo.png",
-                                     iconSize = [60, 50],
-                                     iconAnchor = [30, 25]
-                                 }: MapMirafProps) {
+export default function MapMiraf(
+    {
+        center = [26.2959, 50.215],
+        iconUrl = "/icons/logo.png",
+        iconSize = [60, 50],
+        iconAnchor = [30, 25]
+    }: MapMirafProps) {
 
     /*
     |--------------------------------------------------------------------------
