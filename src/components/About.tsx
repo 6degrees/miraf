@@ -58,6 +58,7 @@ export default function About() {
                 <ShowcaseCard
                     layout={'0'}
                     imageSrc="/images/02_Cam1_Road_Front_Building_06.jpg"
+                    iconSrc="/icons/ml_icon_16.png"
                     imageAlt="Miraf"
                     caption={t("showcase.0.caption")}
                     titleLine1={t("showcase.0.title.0")}
