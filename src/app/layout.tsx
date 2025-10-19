@@ -4,6 +4,7 @@ import {AppProvider} from "@/context/AppContext";
 import i18n from "i18next";
 import I18nProvider from "@/providers/I18nProvider";
 import LangDirEffect from "@/components/LangDirEffect";
+import AppLoaderProvider from "@/providers/AppLoaderProvider";
 
 /*
 |--------------------------------------------------------------------------
@@ -127,23 +128,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     |
     */
     return (
-        <AppProvider>
-            <html lang={i18n.language || "en"} dir={i18n.language === "ar" ? "rtl" : "ltr"}>
-            <body
-                className={[
-                    abcArizonaSerif.variable,
-                    angieSansPro.variable,
-                    graphikArabic.variable,
-                    kanunAR.variable,
-                    lyonArabic.variable,
-                ].join(" ")}
-            >
-            <I18nProvider>
-                <LangDirEffect />
-                {children}
-            </I18nProvider>
-            </body>
-            </html>
-        </AppProvider>
+        <html lang={i18n.language || "en"} dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+        <body className={[abcArizonaSerif.variable, angieSansPro.variable, graphikArabic.variable, kanunAR.variable, lyonArabic.variable,].join(" ")}>
+        <AppLoaderProvider>
+            <AppProvider>
+                <I18nProvider>
+                    <LangDirEffect />
+                    {children}
+                </I18nProvider>
+            </AppProvider>
+        </AppLoaderProvider>
+
+        </body>
+        </html>
     );
 }
