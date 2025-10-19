@@ -61,7 +61,7 @@ export default function ResidencesSection(
         <section className={`w-full ${bgClass} text-[#F6E6DA] pt-0 pb-10 lg:pt-10 ${className}`}>
             <div className="flex flex-col lg:flex-row w-full">
                 {/* Right: Text Content */}
-                <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-center lg:items-start px-6 sm:px-10 lg:px-16">
+                <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-center text-center lg:items-start lg:text-start px-6 sm:px-10 lg:px-16">
                     <h2 className="text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] font-semibold mb-4">{title}</h2>
                     {subtitle && <p className="text-xl sm:text-2xl md:text-4xl mb-6">{subtitle}</p>}
                     {body && <p className="text-md max-w-md leading-relaxed mb-8">{body}</p>}

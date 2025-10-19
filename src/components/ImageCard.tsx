@@ -45,7 +45,7 @@ export default function ImageCard(
         subtitle,
         overlay = false,
         className = "",
-        heightClass = "h-full",
+        heightClass = "aspect-[4/3] sm:aspect-[16/10] lg:h-full",
     }: ImageCardProps) {
 
     /*
@@ -60,9 +60,9 @@ export default function ImageCard(
     |
     */
     return (
-        <section className={`relative text-white w-full overflow-hidden rounded-[18px] ${heightClass} ${className}`}>
+        <section className={`relative text-white w-full overflow-hidden ${heightClass} ${className}`}>
             {/* Background Image */}
-            <Image src={src} alt={alt} fill priority sizes="100vw" className="-z-10"/>
+            <Image src={src} alt={alt} fill priority sizes="100vw" className="object-cover -z-10"/>
 
             {/* Optional overlay gradient */}
             {overlay && (
