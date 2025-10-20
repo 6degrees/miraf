@@ -58,7 +58,7 @@ export default function ResidencesSection(
     |
     */
     return (
-        <section className={`relative w-full h-[100svh]  max-h-[1000px] ${bgClass} text-[#F6E6DA] ${className}`}>
+        <section className={`relative w-full h-[100svh] max-h-[1000px] ${bgClass} text-[#F6E6DA] ${className}`}>
             <div className="w-full h-full flex flex-col lg:flex-row items-center justify-center">
                 {/* Right: Text Content */}
                 <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-center text-center lg:items-start lg:text-start px-6 sm:px-10 lg:px-16">
