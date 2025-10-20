@@ -3,7 +3,7 @@ export default {
         district: "The District",
         overview: "Overview",
         gallery: "Gallery",
-        developer: "The Developer.tsx",
+        developer: "The Developer",
         register: "Register your interest",
     },
     hero: {
