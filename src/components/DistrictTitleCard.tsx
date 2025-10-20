@@ -50,7 +50,7 @@ export default function DistrictTitleCard(
         body,
         iconSrc,
         iconAlt = "",
-        paddingStartClass = "",
+        paddingStartClass = "px-6 md:px-10 py-12",
         titleSizeClass = "text-6xl sm:text-7xl md:text-8xl",
         gapClass = "gap-4 sm:gap-6",
         iconSizeClass = "h-12 w-12 md:h-16 md:w-16",
@@ -67,7 +67,7 @@ export default function DistrictTitleCard(
     |
     */
     return (
-        <div className={`flex flex-col w-full h-full justify-center ${paddingStartClass} ${className}`}>
+        <div className={`flex flex-col w-full h-full justify-center min-h-[inherit]  ${paddingStartClass} ${className}`}>
             <h2 className={`leading-[0.95] tracking-tight text-burgundy ${titleSizeClass}`}>
                 <span className={`flex items-center ${gapClass}`}>
                     <span>{titleLine1}</span>

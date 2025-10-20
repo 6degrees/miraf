@@ -88,7 +88,7 @@ export default function MapCard(
     |--------------------------------------------------------------------------
     */
     return (
-        <div className={`w-full flex flex-col h-full justify-center ${className}`}>
+        <div className={`w-full min-h-[inherit] flex flex-col h-full justify-center px-6 md:px-10 py-12 ${className}`}>
             <div className="w-full max-w-[520px] sm:max-w-[900px]">
                 {mediaOnTop ? (
                     <>
