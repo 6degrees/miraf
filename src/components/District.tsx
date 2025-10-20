@@ -55,6 +55,7 @@ export default function District() {
                 1024: { slidesPerView: 1.2, spaceBetween: 0 },
                 1280: { slidesPerView: 1.4, spaceBetween: 0 },
             }}
+            heightClass="h-[100svh] max-h-[1000px]"
             items={[
                 <DistrictTitleCard
                     key="about-title"

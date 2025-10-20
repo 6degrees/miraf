@@ -48,7 +48,7 @@ export default function Gallery() {
             id="gallery"
             dir={direction}
             bgClass={'bg-blush'}
-            heightClass={'h-[400px] sm:h-[500px] lg:h-[1100px]'}
+            heightClass="h-[100svh] max-h-[1000px]"
             containerClass=""
             hasFooter={true}
             breakpoints= {{
@@ -58,22 +58,18 @@ export default function Gallery() {
                 <ImageCard
                     src="/images/full_project.png"
                     alt="Miraf Overview"
-                    heightClass="h-[400px] sm:h-[500px] lg:h-[1100px]"
                 />,
                 <ImageCard
                     src="/images/miraf_renders_10.png"
                     alt="Miraf Overview"
-                    heightClass="h-[400px] sm:h-[500px] lg:h-[1100px]"
                 />,
                 <ImageCard
                     src="/images/02_Cam1_Road_Front_Building_06.jpg"
                     alt="Miraf Overview"
-                    heightClass="h-[400px] sm:h-[500px] lg:h-[1100px]"
                 />,
                 <ImageCard
                     src="/images/cam09_retail_interior_06.jpg"
                     alt="Miraf Overview"
-                    heightClass="h-[400px] sm:h-[500px] lg:h-[1100px]"
                 />,
             ]}
         />
