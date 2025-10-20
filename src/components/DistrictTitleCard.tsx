@@ -69,20 +69,22 @@ export default function DistrictTitleCard(
     return (
         <div className={`flex flex-col w-full h-full justify-center min-h-[inherit]  ${paddingStartClass} ${className}`}>
             <h2 className={`leading-[0.95] tracking-tight text-burgundy ${titleSizeClass}`}>
-                <span className={`flex items-center ${gapClass}`}>
-                    <span>{titleLine1}</span>
+                <span className={`${gapClass}`}>
+                    <span className="inline">{titleLine1}&nbsp;</span>
                     <Image
                         src={iconSrc}
                         alt={iconAlt || titleLine2 || titleLine1}
                         width={92}
                         height={92}
-                        className={`${iconSizeClass} object-contain`}
+                        className={`${iconSizeClass} inline align-middle object-contain shrink-0`}
                     />
                 </span>
                 <span className="block mt-1 sm:mt-2">{titleLine2}</span>
             </h2>
 
-            <p className="mt-12 max-w-[50ch] lg:ltr:max-w-[38ch] md:rtl:max-w-[30ch] text-burgundy/80 text-xl md:text-2xl leading-relaxed">{body}</p>
+            <p className="mt-12 max-w-[50ch] lg:ltr:max-w-[38ch] md:rtl:max-w-[30ch] text-burgundy/80 text-xl md:text-2xl leading-relaxed">
+                {body}
+            </p>
         </div>
     );
 }

@@ -31,31 +31,29 @@ export default function ShowcaseCard(
         titleSizeClass = "text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]",
         captionSizeClass = "text-base sm:text-md md:text-2xl",
         className = "",
-        imageHeightClass = "h-[260px] md:h-[360px] lg:h-[520px] xl:h-[600px]",
+        imageHeightClass = "h-[40vh] md:h-[50vh] lg:h-[60vh] xl:h-[65vh]",
         roundedClass = "rounded-2xl",
     }: ShowcaseCardProps) {
 
     if (layout === "0")
         return (
-            <div
-                className={`flex flex-col md:flex-row w-full h-full items-center justify-evenly md:justify-start gap-0 md:gap-10 ${className}`}>
+            <div className={`w-full min-h-[inherit] flex flex-col md:flex-row items-center justify-evenly md:justify-start gap-0 md:gap-10 ${className}`}>
                 <div className="flex flex-col items-center md:items-start w-full md:w-1/2">
-                    <div
-                        className={`text-blush mb-3 sm:mb-4 text-center ${captionSizeClass}`}>{caption}</div>
+                    <div className={`text-blush mb-3 sm:mb-4 text-center ${captionSizeClass}`}>{caption}</div>
                     <div className={`relative w-full bg-black/10 overflow-hidden ${roundedClass}`}>
                         <div className={`relative ${imageHeightClass} overflow-hidden ${roundedClass}`}>
-                            <Image src={imageSrc} alt={imageAlt} fill className={`object-cover ${roundedClass}`}
-                                   priority/>
+                            <Image src={imageSrc} alt={imageAlt} fill className={`object-cover ${roundedClass}`} priority />
                         </div>
                     </div>
                 </div>
 
                 <div className="flex flex-col md:w-1/2">
                     <h2 className={`${titleSizeClass} leading-none tracking-tight text-blush`}>
-                        <span className="flex items-center justify-center md:justify-start mt-3 sm:mt-4">
-                            <span className="block">{titleLine1}</span>
-                            <Image src={iconSrc} alt="" width={92} height={92}
-                                   className={`${iconSizeClass} ms-8 object-contain`}/>
+                        <span className="flex items-center justify-center md:justify-start mt-3 sm:mt-4 flex-wrap gap-2">
+                            <span className="inline-flex items-center gap-2">
+                                <span className="block whitespace-nowrap">{titleLine1}</span>
+                                <Image src={iconSrc} alt="" width={92} height={92} className={`${iconSizeClass} object-contain`} />
+                            </span>
                         </span>
                         <span className="block">{titleLine2}</span>
                     </h2>
