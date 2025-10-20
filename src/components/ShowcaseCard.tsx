@@ -136,8 +136,7 @@ export default function ShowcaseCard(
                 <div className="w-full md:w-[40%] h-full md:h-auto flex items-center justify-center md:justify-start">
                     <div className="max-w-[40rem] text-center">
                         <h2 className={`${titleSizeClass} leading-tight tracking-tight text-blush`}>
-                            <span className="block">{titleLine1}</span>
-                            <span className="block">{titleLine2}</span>
+                            <span className="block">{titleLine1} {titleLine2}</span>
                         </h2>
                         {caption && <p className={`mt-4 md:mt-6 max-w-sm text-blush ${captionSizeClass}`}>{caption}</p>}
                         {iconSrc && (
