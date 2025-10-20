@@ -31,7 +31,7 @@ export default function ShowcaseCard(
         titleSizeClass = "text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]",
         captionSizeClass = "text-base sm:text-md md:text-2xl",
         className = "",
-        imageHeightClass = "h-[40vh] md:h-[50vh] lg:h-[60vh] xl:h-[65vh]",
+        imageHeightClass = "h-[40vh] md:h-[60vh] lg:h-[60vh] xl:h-[65vh]",
         roundedClass = "rounded-2xl",
     }: ShowcaseCardProps) {
 
@@ -110,15 +110,15 @@ export default function ShowcaseCard(
 
     else if (layout === "3")
         return (
-            <div className={`flex flex-col md:flex-row w-full h-full md:h-auto items-center md:items-stretch gap-0 md:gap-10 ${className}`}>
-                <div className="relative w-full md:w-1/2">
+            <div className={`w-full h-full md:h-auto flex flex-col md:flex-row items-center md:items-stretch gap-0 md:gap-24 ${className}`}>
+                <div className="relative w-full md:w-[60%]">
                     <div className="relative w-full overflow-hidden">
                         <div className={`relative ${imageHeightClass} overflow-hidden rounded-br-[36px]`}>
                             <Image src={imageSrc} alt={imageAlt} fill className="object-cover" priority/>
                         </div>
                     </div>
                 </div>
-                <div className="relative w-full h-full md:h-auto md:w-1/2 flex items-center justify-center md:justify-start">
+                <div className="relative w-full md:w-[40%] h-full flex items-center justify-center md:justify-start">
                     <div className="max-w-[40rem] text-center">
                         <h2 className={`${titleSizeClass} leading-tight tracking-tight text-blush`}>
                             <span className="block">{titleLine1}</span>
@@ -132,9 +132,8 @@ export default function ShowcaseCard(
 
     else if (layout === "4")
         return (
-            <div
-                className={`flex flex-col md:flex-row w-full h-full items-center md:items-end gap-0 md:gap-10 ${className}`}>
-                <div className="w-full md:w-1/2 flex items-center justify-center md:justify-start">
+            <div className={`flex flex-col md:flex-row w-full h-full items-center md:items-end gap-0 md:gap-10 ${className}`}>
+                <div className="w-full md:w-[40%] h-full md:h-auto flex items-center justify-center md:justify-start">
                     <div className="max-w-[40rem] text-center">
                         <h2 className={`${titleSizeClass} leading-tight tracking-tight text-blush`}>
                             <span className="block">{titleLine1}</span>
@@ -148,7 +147,7 @@ export default function ShowcaseCard(
                         )}
                     </div>
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-full md:w-[60%]">
                     <div className="relative w-full overflow-hidden">
                         <div
                             className={`relative ${imageHeightClass} overflow-hidden rounded-tl-[32px] rounded-tr-[32px]`}>

@@ -46,7 +46,7 @@ export default function About() {
             id="about"
             dir={direction}
             bgClass={'bg-burgundy'}
-            heightClass="h-[100svh] max-h-[1000px]"
+            heightClass="h-[100vh] min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px]"
             breakpoints= {{
                 0: { slidesPerView: 1, spaceBetween: 0 },
                 640: { slidesPerView: 1, spaceBetween: 0 },
@@ -90,7 +90,7 @@ export default function About() {
                     titleLine1={t("showcase.3.title.0")}
                     titleLine2={t("showcase.3.title.1")}
                     caption={t("showcase.3.caption")}
-                    imageHeightClass ="h-[260px] md:h-[360px] lg:h-[300px] xl:h-[400px]"
+                    imageHeightClass ="h-[40vh] md:h-[60vh] lg:h-[40vh] xl:h-[38vh] lg:[@media(max-height:700px)]:h-[30svh] lg:[@media(max-height:500px)]:h-[20svh]"
                     iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-24 xl:w-24'}
                 />,
                 <ShowcaseCard
@@ -101,7 +101,7 @@ export default function About() {
                     titleLine1={t("showcase.4.title.0")}
                     titleLine2={t("showcase.4.title.1")}
                     caption={t("showcase.4.caption")}
-                    imageHeightClass ="h-[260px] md:h-[360px] lg:h-[380px] xl:h-[400px]"
+                    imageHeightClass ="h-[40vh] md:h-[60vh] lg:h-[40vh] xl:h-[38vh] lg:[@media(max-height:700px)]:h-[30svh] lg:[@media(max-height:500px)]:h-[20svh]"
                     iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-16 xl:w-16 mb-10'}
                 />,
             ]}
