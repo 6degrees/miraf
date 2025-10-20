@@ -48,7 +48,7 @@ export default function Gallery() {
             id="gallery"
             dir={direction}
             bgClass={'bg-blush'}
-            heightClass="h-[100svh] max-h-[1000px]"
+            heightClass="h-[95svh] max-h-[1000px]"
             containerClass=""
             hasFooter={true}
             breakpoints= {{
