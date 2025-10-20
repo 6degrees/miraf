@@ -138,7 +138,7 @@ export default function Slider(
                 {items.map((node, idx) => (
                     <SwiperSlide key={`slide-${id}-${idx}`} id={`swiper-slide-${id}-${idx}`}>
                         <div className={containerClass}>
-                            <div className={`relative w-full ${heightClass} overflow-hidden`}>{node}</div>
+                            <div className={`relative w-full ${heightClass} py-2`}>{node}</div>
                         </div>
                     </SwiperSlide>
                 ))}

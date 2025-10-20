@@ -115,7 +115,7 @@ export default function DistrictCard(
     |
     */
     return (
-        <div className={`flex flex-col w-full min-h-[inherit] justify-center px-6 md:px-10 py-12 ${className}`}>
+        <div className={`flex flex-col w-full min-h-[inherit] justify-center ${className}`}>
             <div className="w-full max-w-[520px] md:max-w-full lg:max-w-[800px]">
                 {imageOnTop ? (
                     <>

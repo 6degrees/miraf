@@ -50,7 +50,7 @@ export default function DistrictTitleCard(
         body,
         iconSrc,
         iconAlt = "",
-        paddingStartClass = "px-6 md:px-10 py-12",
+        paddingStartClass = "",
         titleSizeClass = "text-6xl sm:text-7xl md:text-8xl",
         gapClass = "gap-4 sm:gap-6",
         iconSizeClass = "h-12 w-12 md:h-16 md:w-16",

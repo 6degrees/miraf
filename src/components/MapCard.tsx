@@ -58,7 +58,7 @@ export default function MapCard(
     */
     const TextBlock = (
         <div className="mt-8 sm:mt-10 ps-0 md:ps-14 text-burgundy">
-            <h2 className="font-semibold tracking-tight text-5xl sm:text-7xl leading-tight">
+            <h2 className="font-semibold tracking-tight text-5xl sm:text-6xl leading-tight">
                 {titles.line1 ? <span className="block mt-1 sm:mt-2">{titles.line1}</span> : null}
                 <span className="mt-2 flex items-center gap-4 sm:gap-8">
                     <Image
@@ -88,7 +88,7 @@ export default function MapCard(
     |--------------------------------------------------------------------------
     */
     return (
-        <div className={`w-full min-h-[inherit] flex flex-col h-full justify-center px-6 md:px-10 py-12 ${className}`}>
+        <div className={`w-full min-h-[inherit] flex flex-col h-full justify-center ${className}`}>
             <div className="w-full max-w-[520px] sm:max-w-[900px]">
                 {mediaOnTop ? (
                     <>
