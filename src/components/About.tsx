@@ -90,7 +90,7 @@ export default function About() {
                     titleLine1={t("showcase.3.title.0")}
                     titleLine2={t("showcase.3.title.1")}
                     caption={t("showcase.3.caption")}
-                    imageHeightClass ="h-[40vh] md:h-[60vh] lg:h-[40vh] xl:h-[38vh] lg:[@media(max-height:700px)]:h-[30svh] lg:[@media(max-height:500px)]:h-[20svh]"
+                    imageHeightClass ="h-[40vh] md:h-[60vh] lg:h-[40vh] xl:h-[35vh]"
                     iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-24 xl:w-24'}
                 />,
                 <ShowcaseCard
@@ -101,7 +101,7 @@ export default function About() {
                     titleLine1={t("showcase.4.title.0")}
                     titleLine2={t("showcase.4.title.1")}
                     caption={t("showcase.4.caption")}
-                    imageHeightClass ="h-[40vh] md:h-[60vh] lg:h-[40vh] xl:h-[38vh] lg:[@media(max-height:700px)]:h-[30svh] lg:[@media(max-height:500px)]:h-[20svh]"
+                    imageHeightClass ="h-[40vh] md:h-[60vh] lg:h-[40vh] xl:h-[35vh]"
                     iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-16 xl:w-16 mb-10'}
                 />,
             ]}
