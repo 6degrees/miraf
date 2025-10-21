@@ -58,7 +58,7 @@ export default function ResidencesSection(
     |
     */
     return (
-        <section className={`relative w-full h-[100svh] lg:h-[100svh] max-h-[1000px] ${bgClass} text-[#F6E6DA] ${className}`}>
+        <section className={`relative w-full h-full lg:h-[100svh] max-h-[1000px] pb-10 lg:pb-0 ${bgClass} text-[#F6E6DA] ${className}`}>
             <div className="w-full h-full flex flex-col lg:flex-row lg:items-center lg:justify-center">
                 {/* Right: Text Content */}
                 <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-center text-center lg:items-start lg:text-start px-6 sm:px-10 lg:px-16">
@@ -74,7 +74,7 @@ export default function ResidencesSection(
 
                 {/* Left: Full-height Image */}
                 <div className="w-full order-1 lg:order-2 lg:w-1/3">
-                    <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+                    <div className="relative w-full h-[60svh] lg:h-[70svh] overflow-hidden">
                         <Image src={imageSrc} alt={imageAlt} fill className="object-cover" priority/>
                     </div>
                 </div>
