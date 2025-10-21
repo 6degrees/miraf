@@ -69,7 +69,7 @@ export default function About() {
                     imageSrc="/images/cam09_retail_interior_06.jpg"
                     imageAlt="Miraf"
                     caption={t("showcase.1.caption")}
-                    captionSizeClass ="text-2xl sm:text-md md:text-2xl"
+                    captionSizeClass ="text-2xl md:text-lg lg:text-3xl"
                     roundedClass="rounded-b-2xl lg:rounded-b-none lg:rounded-t-2xl"
                 />,
                 <ShowcaseCard

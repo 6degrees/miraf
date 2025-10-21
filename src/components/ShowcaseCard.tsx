@@ -73,7 +73,7 @@ export default function ShowcaseCard(
                     </div>
                 </div>
                 <div className="relative w-full h-full md:h-auto md:w-1/2 flex items-center md:items-center justify-center md:justify-start">
-                    <div className={`text-blush mb-3 sm:mb-4 text-center md:max-w-[40rem] ${titleSizeClass}`}>{caption}</div>
+                    <div className={`text-blush mb-3 sm:mb-4 text-center md:max-w-[40rem]`}>{caption}</div>
                 </div>
             </div>
         );
