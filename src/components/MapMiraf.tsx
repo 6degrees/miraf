@@ -140,7 +140,7 @@ export default function MapMiraf(
         <div
             id={'miraf-map'}
             ref={containerRef}
-            className="relative h-[280px] md:h-[300px] lg:h-[320px] xl:h-[380px] rounded-3xl overflow-hidden"
+            className="relative h-[45svh] md:h-[45svh] lg:h-[45svh] xl:h-[45svh] rounded-3xl overflow-hidden"
         />
     );
 }

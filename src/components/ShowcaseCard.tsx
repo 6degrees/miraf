@@ -31,7 +31,7 @@ export default function ShowcaseCard(
         titleSizeClass = "text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]",
         captionSizeClass = "text-base sm:text-md md:text-2xl",
         className = "",
-        imageHeightClass = "h-[40vh] md:h-[60vh] lg:h-[60vh] xl:h-[65vh]",
+        imageHeightClass = "h-[40vh] md:h-[60vh] lg:h-[50vh] xl:h-[60vh]",
         roundedClass = "rounded-2xl",
     }: ShowcaseCardProps) {
 
@@ -73,7 +73,7 @@ export default function ShowcaseCard(
                     </div>
                 </div>
                 <div className="relative w-full h-full md:h-auto md:w-1/2 flex items-center md:items-center justify-center md:justify-start">
-                    <div className={`text-blush mb-3 sm:mb-4 text-center md:max-w-[40rem]`}>{caption}</div>
+                    <div className={`text-blush mb-3 sm:mb-4 md:max-w-[20rem] ${captionSizeClass}`}>{caption}</div>
                 </div>
             </div>
         );

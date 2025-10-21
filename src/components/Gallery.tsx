@@ -51,6 +51,7 @@ export default function Gallery() {
             heightClass="h-[50svh] md:h-[95svh] max-h-[1000px]"
             containerClass=""
             hasFooter={true}
+            isUseGSAP={false}
             breakpoints= {{
                 0: { slidesPerView: 1, spaceBetween: 0 },
             }}

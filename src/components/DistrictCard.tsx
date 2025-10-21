@@ -65,7 +65,7 @@ export default function DistrictCard(
     |
     */
     const ImageBlock = (
-        <div className="relative h-[260px] md:h-[300px] lg:h-[320px] xl:h-[380px] rounded-[22px] overflow-hidden">
+        <div className="relative h-[45svh] md:h-[45svh] lg:h-[45svh] xl:h-[45svh] rounded-[22px] overflow-hidden">
             <Image
                 src={imageSrc}
                 alt={imageAlt || title}
@@ -116,7 +116,7 @@ export default function DistrictCard(
     */
     return (
         <div className={`flex flex-col w-full min-h-[inherit] justify-center ${className}`}>
-            <div className="w-full max-w-[520px] md:max-w-full lg:max-w-[800px]">
+            <div className="w-full max-w-[80svh] md:max-w-full lg:max-w-[80svh]">
                 {imageOnTop ? (
                     <>
                         {ImageBlock}

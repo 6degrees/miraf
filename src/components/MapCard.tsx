@@ -89,7 +89,7 @@ export default function MapCard(
     */
     return (
         <div className={`w-full min-h-[inherit] flex flex-col h-full justify-center ${className}`}>
-            <div className="w-full max-w-[520px] sm:max-w-[900px]">
+            <div className="w-full max-w-[80svh] sm:max-w-[80svh]">
                 {mediaOnTop ? (
                     <>
                         {MediaBlock}

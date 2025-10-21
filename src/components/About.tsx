@@ -101,7 +101,7 @@ export default function About() {
                     titleLine1={t("showcase.4.title.0")}
                     titleLine2={t("showcase.4.title.1")}
                     caption={t("showcase.4.caption")}
-                    imageHeightClass ="h-[40vh] md:h-[60vh] lg:h-[40vh] xl:h-[35vh]"
+                    imageHeightClass ="h-[40vh] md:h-[60vh] lg:h-[50vh] xl:h-[45vh]"
                     iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-16 xl:w-16 mb-10'}
                 />,
             ]}

@@ -29,6 +29,7 @@ export type SliderProps = {
     background?: React.ReactNode;
     heightClass?: string;
     breakpoints?: Record<number, { slidesPerView: number; spaceBetween?: number }>;
+    isUseGSAP?: boolean
     hasFooter?: boolean;
 };
 
@@ -70,6 +71,7 @@ export default function Slider(
         heightClass = "h-[600px] md:h-[700px] lg:h-[900px]",
         breakpoints = defaultBreakpoints,
         hasFooter = false,
+        isUseGSAP = true
     }: SliderProps) {
     const total = items.length;
     const isRTL = dir === "rtl";
@@ -115,6 +117,10 @@ export default function Slider(
     | Counter updates from progress.
     */
     useEffect(() => {
+        if(!isUseGSAP){
+            setIsMobile(true)
+        }
+
         if (isMobile) {
             // tear down any desktop ST if switching to mobile
             ctxRef.current?.revert();
