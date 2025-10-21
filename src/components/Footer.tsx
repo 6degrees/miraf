@@ -120,7 +120,7 @@ export default function Footer(
                         | Displays translated nav labels defined above.
                         |----------------------------------------------------------
                         */}
-                        <nav className="flex-1 text-center sm:text-start">
+                        <nav className="flex-1">
                             <ul className="space-y-3 text-xl leading-7">
                                 {nav.map((item) => (
                                     <li key={item.label}>
@@ -143,7 +143,7 @@ export default function Footer(
                         | - Shows company email and phone below icons
                         |----------------------------------------------------------
                         */}
-                        <div className="flex-1 flex flex-col items-center justify-center gap-3">
+                        <div className="flex-1 grid grid-cols-2 gap-6 items-start sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-3">
                             {/* Social Icons */}
                             <div className="flex items-center gap-3">
                                 {/* LinkedIn */}
@@ -204,18 +204,18 @@ export default function Footer(
                         | Each array is rendered as a vertical block of text lines.
                         |----------------------------------------------------------
                         */}
-                        <div className="flex-1 leading-6 text-center sm:text-end">
+                        <div className="flex-1 leading-6 text-start sm:text-end">
                             {/* Postal Address */}
                             <div className="space-y-1">
                                 {addressPostal.map((line, i) => (
-                                    <div key={`p-${i}`}>{line}</div>
+                                    <div className="inline sm:block" key={`p-${i}`}>{line}</div>
                                 ))}
                             </div>
 
                             {/* Street Address */}
                             <div className="mt-6 space-y-1">
                                 {addressStreet.map((line, i) => (
-                                    <div key={`s-${i}`}>{line}</div>
+                                    <div className="inline sm:block" key={`s-${i}`}>{line}</div>
                                 ))}
                             </div>
                         </div>
