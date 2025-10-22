@@ -28,10 +28,10 @@ export default function ShowcaseCard(
         titleLine2,
         iconSrc = "/icons/ml_Icon_16.png",
         iconSizeClass = "h-12 w-12 sm:h-14 sm:w-14 xl:h-20 xl:w-20",
-        titleSizeClass = "text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem]",
-        captionSizeClass = "text-base sm:text-md md:text-2xl",
+        titleSizeClass = "text-[2.3rem] md:text-[3rem] lg:text-[2rem] xl:text-[3rem]",
+        captionSizeClass = "text-base sm:text-md md:text-2xl lg:text-lg",
         className = "",
-        imageHeightClass = "h-[40vh] md:h-[60vh] lg:h-[50vh] xl:h-[60vh]",
+        imageHeightClass = "h-[40svh] md:h-[60svh] lg:h-[55svh] xl:h-[60svh]",
         roundedClass = "rounded-2xl",
     }: ShowcaseCardProps) {
 
@@ -63,20 +63,35 @@ export default function ShowcaseCard(
 
     else if (layout === "1")
         return (
-            <div
-                className={`flex flex-col md:flex-row justify-between lg:justify-between w-full h-full md:h-auto lg:h-full gap-0 md:gap-5 lg:gap-16 xl:gap-28 ${className}`}>
-                <div className="relative w-full md:w-1/2 flex items-start lg:items-end">
-                    <div className={`relative w-full bg-black/10 overflow-hidden ${roundedClass}`}>
-                        <div className={`relative ${imageHeightClass} overflow-hidden ${roundedClass}`}>
-                            <Image src={imageSrc} alt={imageAlt} fill className={`object-cover ${roundedClass}`} priority/>
+            <div className="flex flex-col h-full md:justify-end">
+                <div
+                    className={`flex flex-col md:flex-row md:items-center justify-between w-full h-full md:h-auto gap-0 md:gap-5 lg:gap-8 xl:gap-28 ${className}`}
+                >
+                    {/* Image column */}
+                    <div className="relative w-full md:w-1/2 order-1 md:order-none">
+                        <div className={`relative w-full bg-black/10 overflow-hidden ${roundedClass}`}>
+                            <div className={`relative ${imageHeightClass} overflow-hidden ${roundedClass}`}>
+                                <Image
+                                    src={imageSrc}
+                                    alt={imageAlt}
+                                    fill
+                                    className={`object-cover ${roundedClass}`}
+                                    priority
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Caption column */}
+                    <div className="relative w-full md:w-1/2 flex items-center justify-center md:justify-start order-2 md:order-none">
+                        <div
+                            className={`text-blush mb-3 sm:mb-4 md:mb-0 md:max-w-[20rem] lg:max-w-[15rem] xl:max-w-[20rem] ${captionSizeClass}`}
+                        >
+                            {caption}
                         </div>
                     </div>
                 </div>
-                <div className="relative w-full h-full md:h-auto md:w-1/2 flex items-center md:items-center justify-center md:justify-start">
-                    <div className={`text-blush mb-3 sm:mb-4 md:max-w-[20rem] ${captionSizeClass}`}>{caption}</div>
-                </div>
-            </div>
-        );
+            </div>        );
 
     else if (layout === "2")
         return (

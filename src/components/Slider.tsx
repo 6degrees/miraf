@@ -40,7 +40,7 @@ const defaultBreakpoints: Required<SliderProps>["breakpoints"] = {
     1024: { slidesPerView: 1, spaceBetween: 0 },
 };
 
-const BREAKPOINT = 991;
+const BREAKPOINT = 1024;
 
 /*
 |----------------------------------------------------------------------
@@ -137,8 +137,14 @@ export default function Slider(
             const xPercent = isRTL ? xPercentTotal : -xPercentTotal;
 
             panels.forEach((el) => {
-                el.style.width = `${host.clientWidth}px`; // 1 panel = 100vw
-                el.style.marginRight = `0px`;
+                el.style.width = `${host.clientWidth / 1.5}px`; // 1 panel = 100vw
+                if(dir === 'ltr'){
+                    el.style.marginRight = `3%`;
+                } else {
+                    el.style.marginLeft = `3%`;
+
+                }
+
             });
 
             const tween = gsap.to(panels, {
