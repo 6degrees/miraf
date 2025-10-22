@@ -60,16 +60,28 @@ export default function Header() {
 
                     {/* Desktop nav */}
                     <nav className="hidden lg:flex items-center gap-8 text-md font-medium">
-                        <Link href="/#district"  className="hover:opacity-90">{t("nav.district")}</Link>
-                        <Link href="/#overview"  className="hover:opacity-90">{t("nav.overview")}</Link>
-                        <Link href="/#gallery"   className="hover:opacity-90">{t("nav.gallery")}</Link>
-                        <Link href="/#developer" className="hover:opacity-90">{t("nav.developer")}</Link>
-                        <Link href="/#register"  className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 transition">
+                        <Link href="/#district" className="relative text-white hover:text-blush transition-colors duration-300 group">
+                            {t("nav.district")}
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blush transition-all duration-300 group-hover:w-full"></span>
+                        </Link>
+                        <Link href="/#overview" className="relative text-white hover:text-blush transition-colors duration-300 group">
+                            {t("nav.overview")}
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blush transition-all duration-300 group-hover:w-full"></span>
+                        </Link>
+                        <Link href="/#gallery" className="relative text-white hover:text-blush transition-colors duration-300 group">
+                            {t("nav.gallery")}
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blush transition-all duration-300 group-hover:w-full"></span>
+                        </Link>
+                        <Link href="/#developer" className="relative text-white hover:text-blush transition-colors duration-300 group">
+                            {t("nav.developer")}
+                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blush transition-all duration-300 group-hover:w-full"></span>
+                        </Link>
+                        <Link href="/#register" className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 hover:border-blush/60 hover:text-blush transition-all duration-300">
                             {t("nav.register")}
                         </Link>
                         <button
                             onClick={() => handleLanguageSelection(selectedLanguage)}
-                            className={`cursor-pointer hover:opacity-90 bold ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}>
+                            className={`cursor-pointer text-white hover:text-blush transition-colors duration-300 bold ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}>
                             {selectedLanguage === 'ar' ? "En" : "عربي"}
                         </button>
                     </nav>
@@ -90,14 +102,14 @@ export default function Header() {
             {/* Sidebar (mobile) */}
             <div className={`fixed inset-y-0 left-0 z-40 w-64 bg-[rgba(74,17,18,0.92)] backdrop-blur-md ring-1 ring-white/10 transform transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}>
                 <div className="px-6 py-6 space-y-3 text-md text-white">
-                    <Link className="block py-2" href="/#district" onClick={() => setMenuOpen(false)}>{t("nav.district")}</Link>
-                    <Link className="block py-2" href="/#overview" onClick={() => setMenuOpen(false)}>{t("nav.overview")}</Link>
-                    <Link className="block py-2" href="/#gallery" onClick={() => setMenuOpen(false)}>{t("nav.gallery")}</Link>
-                    <Link className="block py-2" href="/#developer" onClick={() => setMenuOpen(false)}>{t("nav.developer")}</Link>
-                    <Link className="block py-2" href="/#register" onClick={() => setMenuOpen(false)}>{t("nav.register")}</Link>
+                    <Link className="block py-2 text-white hover:text-blush transition-colors duration-300" href="/#district" onClick={() => setMenuOpen(false)}>{t("nav.district")}</Link>
+                    <Link className="block py-2 text-white hover:text-blush transition-colors duration-300" href="/#overview" onClick={() => setMenuOpen(false)}>{t("nav.overview")}</Link>
+                    <Link className="block py-2 text-white hover:text-blush transition-colors duration-300" href="/#gallery" onClick={() => setMenuOpen(false)}>{t("nav.gallery")}</Link>
+                    <Link className="block py-2 text-white hover:text-blush transition-colors duration-300" href="/#developer" onClick={() => setMenuOpen(false)}>{t("nav.developer")}</Link>
+                    <Link className="block py-2 text-white hover:text-blush transition-colors duration-300" href="/#register" onClick={() => setMenuOpen(false)}>{t("nav.register")}</Link>
 
                     <button
-                        className={`mt-2 w-full rounded-full border border-white/20 px-4 py-2 ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}
+                        className={`mt-2 w-full rounded-full border border-white/20 px-4 py-2 text-white hover:text-blush hover:border-blush/60 transition-all duration-300 ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}
                         onClick={() => {
                             handleLanguageSelection(selectedLanguage)
                             setMenuOpen(false);

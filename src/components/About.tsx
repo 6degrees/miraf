@@ -46,7 +46,7 @@ export default function About() {
             id="about"
             dir={direction}
             bgClass={'bg-burgundy'}
-            heightClass="h-[100vh] min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px]"
+            heightClass="h-[100vh] min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px] pt-12"
             breakpoints= {{
                 0: { slidesPerView: 1, spaceBetween: 0 },
                 640: { slidesPerView: 1, spaceBetween: 0 },

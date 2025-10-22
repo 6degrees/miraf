@@ -59,8 +59,8 @@ export default function MapCard(
     const TextBlock = (
         <div className="mt-8 sm:mt-10 ps-0 md:ps-14 text-burgundy">
             <h2 className="font-semibold tracking-tight text-5xl sm:text-6xl leading-tight">
-                {titles.line1 ? <span className="block mt-1 sm:mt-2">{titles.line1}</span> : null}
-                <span className="mt-2 flex items-center gap-4 sm:gap-8">
+                {titles.line1 ? <span className="block">{titles.line1}</span> : null}
+                <span className="flex items-center gap-4 sm:gap-8">
                     <Image
                         src={iconSrc}
                         alt={iconAlt}
@@ -70,7 +70,7 @@ export default function MapCard(
                     />
                     {titles.line2 ? <span className="block">{titles.line2}</span> : null}
                 </span>
-                {titles.line3 ? <span className="block mt-1 sm:mt-2">{titles.line3}</span> : null}
+                {titles.line3 ? <span className="block">{titles.line3}</span> : null}
             </h2>
 
 

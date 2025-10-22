@@ -5,6 +5,7 @@ import i18n from "i18next";
 import I18nProvider from "@/providers/I18nProvider";
 import LangDirEffect from "@/components/LangDirEffect";
 import AppLoaderProvider from "@/providers/AppLoaderProvider";
+import CustomCursor from "@/components/CustomCursor";
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,80 @@ import AppLoaderProvider from "@/providers/AppLoaderProvider";
 |
 */
 export const metadata = {
-    title: "Miraf District",
+    title: {
+        default: "Miraf District - Premium Mixed-Use Development in Khobar, Saudi Arabia",
+        template: "%s | Miraf District"
+    },
+    description: "Discover Miraf District, a premium mixed-use development in Khobar featuring residential towers, business offices, retail spaces, and Hotel INDIGO. Experience luxury living and working in the heart of Saudi Arabia.",
+    keywords: [
+        "Miraf District",
+        "Khobar real estate",
+        "Saudi Arabia property",
+        "mixed-use development",
+        "residential towers",
+        "business offices",
+        "Hotel INDIGO",
+        "retail spaces",
+        "luxury living",
+        "premium apartments",
+        "office spaces",
+        "shopping mall",
+        "Refad development",
+        "Al Khobar",
+        "Eastern Province"
+    ],
+    authors: [{ name: "Refad Development" }],
+    creator: "Refad Development",
+    publisher: "Refad Development",
+    formatDetection: {
+        email: false,
+        address: false,
+        telephone: false,
+    },
+    metadataBase: new URL('https://your-domain.com'),
+    alternates: {
+        canonical: '/',
+        languages: {
+            'en': '/en',
+            'ar': '/ar',
+        },
+    },
+    openGraph: {
+        title: "Miraf District - Premium Mixed-Use Development in Khobar",
+        description: "Discover Miraf District, a premium mixed-use development in Khobar featuring residential towers, business offices, retail spaces, and Hotel INDIGO.",
+        url: 'https://your-domain.com',
+        siteName: 'Miraf District',
+        images: [
+            {
+                url: '/images/miraf-og.png',
+                width: 1200,
+                height: 630,
+                alt: 'Miraf District - Premium Mixed-Use Development',
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "Miraf District - Premium Mixed-Use Development in Khobar",
+        description: "Discover Miraf District, a premium mixed-use development in Khobar featuring residential towers, business offices, retail spaces, and Hotel INDIGO.",
+        images: ['/images/miraf-og.png'],
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    verification: {
+        google: 'your-google-verification-code',
+    },
 }
 
 /*
@@ -130,6 +204,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang={i18n.language || "en"} dir={i18n.language === "ar" ? "rtl" : "ltr"}>
         <body className={[abcArizonaSerif.variable, angieSansPro.variable, graphikArabic.variable, kanunAR.variable, lyonArabic.variable,].join(" ")}>
+        <CustomCursor />
         <AppLoaderProvider>
             <AppProvider>
                 <I18nProvider>

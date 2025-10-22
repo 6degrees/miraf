@@ -4,18 +4,18 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /*
-|--------------------------------------------------------------------------
-| $app-loader-provider
-|--------------------------------------------------------------------------
-|
-| Provides an initial full-screen loading screen for ~1s on first mount,
-| then fades out smoothly to reveal the main app content.
-|
-| Features:
-| - Animated logo/title and spinner
-| - Fade-out transition using Framer Motion
-| - Automatically hides after 1 second
-|
+||--------------------------------------------------------------------------
+|| $app-loader-provider
+||--------------------------------------------------------------------------
+||
+|| Provides an initial full-screen loading screen for ~1s on first mount,
+|| then fades out smoothly to reveal the main app content.
+||
+|| Features:
+|| - Animated logo/title and spinner
+|| - Fade-out transition using Framer Motion
+|| - Automatically hides after 1 second
+||
 */
 export default function AppLoaderProvider({ children }: { children: React.ReactNode }) {
     const [show, setShow] = useState(true);

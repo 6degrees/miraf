@@ -49,10 +49,10 @@ export default function ShowcaseCard(
 
                 <div className="flex flex-col md:w-1/2">
                     <h2 className={`${titleSizeClass} leading-none tracking-tight text-blush`}>
-                        <span className="flex items-center justify-center md:justify-start mt-3 sm:mt-4 flex-wrap gap-2">
+                        <span className="flex items-center justify-center md:justify-start flex-wrap gap-2">
                             <span className="inline-flex items-center gap-2">
                                 <span className="block whitespace-nowrap">{titleLine1}</span>
-                                <Image src={iconSrc} alt="" width={92} height={92} className={`${iconSizeClass} object-contain`} />
+                                <Image src={iconSrc} alt="Miraf District icon" width={92} height={92} className={`${iconSizeClass} object-contain`} loading="lazy" />
                             </span>
                         </span>
                         <span className="block">{titleLine2}</span>
@@ -100,7 +100,7 @@ export default function ShowcaseCard(
                     <h2 className={`${titleSizeClass} leading-none tracking-tight text-blush`}>
                       <span className="flex items-center justify-center mt-1 sm:mt-2">
                         <span className="block">{titleLine1}</span>
-                        <Image src={iconSrc} alt="" width={92} height={92} className={`${iconSizeClass} ms-4 sm:ms-6 object-contain`}/>
+                        <Image src={iconSrc} alt="Miraf District icon" width={92} height={92} className={`${iconSizeClass} ms-4 sm:ms-6 object-contain`} loading="lazy"/>
                       </span>
                         <span className="block">{titleLine2}</span>
                     </h2>
@@ -156,7 +156,7 @@ export default function ShowcaseCard(
                         {caption && <p className={`mt-4 md:mt-6 max-w-sm text-blush ${captionSizeClass}`}>{caption}</p>}
                         {iconSrc && (
                             <div className="mt-6 flex justify-center">
-                                <Image src={iconSrc} alt="" width={92} height={92} className={`${iconSizeClass} object-contain`} priority/>
+                                <Image src={iconSrc} alt="Miraf District icon" width={92} height={92} className={`${iconSizeClass} object-contain`} priority/>
                             </div>
                         )}
                     </div>
