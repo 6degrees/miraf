@@ -1,174 +1,136 @@
 "use client";
 
 import Image from "next/image";
+import React, { JSX } from "react";
 
-type ShowcaseCardProps = {
-    layout: string;
+type ShowcaseLayout = "0" | "1" | "2";
+
+export type ShowcaseCardProps = {
+    layout?: ShowcaseLayout;
     imageSrc: string;
     imageAlt: string;
     caption?: string;
     titleLine1?: string;
     titleLine2?: string;
-    iconSrc?: string;
-    iconSizeClass?: string;
+    titleLine3?: string;
+    iconSrc1?: string;
+    iconSrc2?: string;
+    iconSizeClass1?: string;
+    iconSizeClass2?: string;
     titleSizeClass?: string;
     captionSizeClass?: string;
     className?: string;
     imageHeightClass?: string;
     roundedClass?: string;
+    dir?: "ltr" | "rtl";
 };
 
 export default function ShowcaseCard(
     {
-        layout = "0",
-        imageSrc,
-        imageAlt,
-        caption,
-        titleLine1,
-        titleLine2,
-        iconSrc = "/icons/ml_Icon_16.png",
-        iconSizeClass = "h-12 w-12 sm:h-14 sm:w-14 xl:h-20 xl:w-20",
-        titleSizeClass = "text-[2.3rem] md:text-[3rem] lg:text-[2rem] xl:text-[3rem]",
-        captionSizeClass = "text-base sm:text-md md:text-2xl lg:text-lg",
-        className = "",
-        imageHeightClass = "h-[40svh] md:h-[60svh] lg:h-[55svh] xl:h-[60svh]",
-        roundedClass = "rounded-2xl",
+         layout = "0",
+         imageSrc,
+         imageAlt,
+         caption,
+         titleLine1,
+         titleLine2,
+         titleLine3,
+         iconSrc1 = "/icons/ml_Icon_16.png",
+         iconSrc2 = "/icons/ml_Icon_16.png",
+         iconSizeClass1 = "h-12 w-12 sm:h-10 sm:w-10 xl:h-12 xl:w-12",
+         iconSizeClass2 = "h-12 w-12 sm:h-10 sm:w-10 xl:h-12 xl:w-12",
+         titleSizeClass = "text-[2.3rem] md:text-[3rem] lg:text-[2.5rem] xl:text-[3.5rem]",
+         captionSizeClass = "text-base sm:text-md md:text-2xl lg:text-lg",
+         className = "",
+         imageHeightClass = "h-[60svh] xl:h-[70svh]",
+         roundedClass = "rounded-2xl",
     }: ShowcaseCardProps) {
+    const textColorClass = "text-blush";
+    const iconWrap = "inline-flex items-center gap-2";
+    const iconRow = "flex items-center flex-wrap mt-3 sm:mt-4 gap-2";
 
-    if (layout === "0")
-        return (
-            <div className={`w-full min-h-[inherit] flex flex-col md:flex-row items-center justify-evenly md:justify-start gap-0 md:gap-10 ${className}`}>
-                <div className="flex flex-col items-center md:items-start w-full md:w-1/2">
-                    <div className={`text-blush mb-3 sm:mb-4 text-center ${captionSizeClass}`}>{caption}</div>
-                    <div className={`relative w-full bg-black/10 overflow-hidden ${roundedClass}`}>
-                        <div className={`relative ${imageHeightClass} overflow-hidden ${roundedClass}`}>
-                            <Image src={imageSrc} alt={imageAlt} fill className={`object-cover ${roundedClass}`} priority />
-                        </div>
-                    </div>
+    const Icon = (src?: string, cls?: string) =>
+        src ? (
+            <Image src={src} alt="" width={92} height={92} className={`${cls} object-contain`} priority />
+        ) : null;
+
+    const Caption = (
+        <div className={`${textColorClass} mb-3 sm:mb-4 ${captionSizeClass}`}>{caption}</div>
+    );
+
+    const ImageBlock = (
+        <div className={`relative w-full overflow-hidden ${roundedClass}`}>
+            <div className={`relative overflow-hidden ${imageHeightClass} ${roundedClass}`}>
+                <Image src={imageSrc} alt={imageAlt} fill className={`object-cover ${roundedClass}`} priority />
+            </div>
+        </div>
+    );
+
+    const Title = (
+        <h2 className={`${titleSizeClass} leading-tight tracking-tight ${textColorClass}`}>
+            <span className="block">{titleLine1}</span>
+            <div className="ms-12">
+        <span className={iconRow}>
+          <span className={iconWrap}>
+            {Icon(iconSrc1, iconSizeClass1)}
+              <span className="block">{titleLine2}</span>
+          </span>
+        </span>
+                <span className={iconRow}>
+          <span className={iconWrap}>
+            <span className="block">{titleLine3}</span>
+              {Icon(iconSrc2, iconSizeClass2)}
+          </span>
+        </span>
+            </div>
+        </h2>
+    );
+
+    const layouts: Record<ShowcaseLayout, JSX.Element> = {
+        "0": (
+            <div className={`w-full h-full flex flex-col md:flex-row items-center justify-between gap-8 ${className}`}>
+                <div className="flex flex-col w-[50%] items-start">
+                    {Caption}
+                    {ImageBlock}
                 </div>
-
-                <div className="flex flex-col md:w-1/2">
-                    <h2 className={`${titleSizeClass} leading-none tracking-tight text-blush`}>
-                        <span className="flex items-center justify-center md:justify-start mt-3 sm:mt-4 flex-wrap gap-2">
-                            <span className="inline-flex items-center gap-2">
-                                <span className="block whitespace-nowrap">{titleLine1}</span>
-                                <Image src={iconSrc} alt="" width={92} height={92} className={`${iconSizeClass} object-contain`} />
-                            </span>
-                        </span>
-                        <span className="block">{titleLine2}</span>
-                    </h2>
+                <div className="flex flex-col md:w-[50%] items-start justify-center">
+                    {Title}
                 </div>
             </div>
-        );
+        ),
 
-    else if (layout === "1")
-        return (
-            <div className="flex flex-col h-full md:justify-end">
-                <div
-                    className={`flex flex-col md:flex-row md:items-center justify-between w-full h-full md:h-auto gap-0 md:gap-5 lg:gap-8 xl:gap-28 ${className}`}
-                >
-                    {/* Image column */}
-                    <div className="relative w-full md:w-1/2 order-1 md:order-none">
-                        <div className={`relative w-full bg-black/10 overflow-hidden ${roundedClass}`}>
-                            <div className={`relative ${imageHeightClass} overflow-hidden ${roundedClass}`}>
-                                <Image
-                                    src={imageSrc}
-                                    alt={imageAlt}
-                                    fill
-                                    className={`object-cover ${roundedClass}`}
-                                    priority
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Caption column */}
-                    <div className="relative w-full md:w-1/2 flex items-center justify-center md:justify-start order-2 md:order-none">
-                        <div
-                            className={`text-blush mb-3 sm:mb-4 md:mb-0 md:max-w-[20rem] lg:max-w-[15rem] xl:max-w-[20rem] ${captionSizeClass}`}
-                        >
-                            {caption}
-                        </div>
-                    </div>
-                </div>
-            </div>        );
-
-    else if (layout === "2")
-        return (
-            <div className={`flex flex-col md:flex-row lg:flex-col items-center md:items-end lg:items-start w-full lg:w-1/2 h-full ${className}`}>
-                <div className="w-full h-full flex flex-col items-center justify-center text-center mt-4 md:mt-6 order-1 md:order-2">
-                    <h2 className={`${titleSizeClass} leading-none tracking-tight text-blush`}>
-                      <span className="flex items-center justify-center mt-1 sm:mt-2">
-                        <span className="block">{titleLine1}</span>
-                        <Image src={iconSrc} alt="" width={92} height={92} className={`${iconSizeClass} ms-4 sm:ms-6 object-contain`}/>
-                      </span>
-                        <span className="block">{titleLine2}</span>
-                    </h2>
-                </div>
-
-                {/* Image bottom on mobile */}
-                <div className="w-full order-2 md:order-1">
-                    <div className={`relative w-full bg-black/10 overflow-hidden ${roundedClass}`}>
-                        <div className={`relative ${imageHeightClass} overflow-hidden ${roundedClass}`}>
-                            <Image
-                                src={imageSrc}
-                                alt={imageAlt}
-                                fill
-                                className={`object-cover ${roundedClass}`}
-                                priority
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-
-    else if (layout === "3")
-        return (
-            <div className={`w-full h-full md:h-auto flex flex-col md:flex-row items-center md:items-stretch gap-0 md:gap-24 ${className}`}>
-                <div className="relative w-full md:w-[60%]">
-                    <div className="relative w-full overflow-hidden">
-                        <div className={`relative ${imageHeightClass} overflow-hidden rounded-br-[36px]`}>
-                            <Image src={imageSrc} alt={imageAlt} fill className="object-cover" priority/>
-                        </div>
-                    </div>
-                </div>
-                <div className="relative w-full md:w-[40%] h-full flex items-center justify-center md:justify-start">
-                    <div className="max-w-[40rem] text-center">
-                        <h2 className={`${titleSizeClass} leading-tight tracking-tight text-blush`}>
+        "1": (
+            <div className="flex flex-col h-full justify-end">
+                <div className={`flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 lg:gap-12 mt-auto ${className}`}>
+                    <div className="w-[50%] flex flex-col items-center">{ImageBlock}</div>
+                    <div className="w-[50%] flex flex-col items-start justify-center">
+                        <h3 className={`${captionSizeClass} leading-tight tracking-tight ${textColorClass}`}>
                             <span className="block">{titleLine1}</span>
                             <span className="block">{titleLine2}</span>
-                        </h2>
-                        {caption && <p className={`mt-4 md:mt-6 max-w-sm text-blush ${captionSizeClass}`}>{caption}</p>}
+                        </h3>
                     </div>
                 </div>
             </div>
-        );
+        ),
 
-    else if (layout === "4")
-        return (
-            <div className={`flex flex-col md:flex-row w-full h-full items-center md:items-end gap-0 md:gap-10 ${className}`}>
-                <div className="w-full md:w-[40%] h-full md:h-auto flex items-center justify-center md:justify-start">
-                    <div className="max-w-[40rem] text-center">
-                        <h2 className={`${titleSizeClass} leading-tight tracking-tight text-blush`}>
-                            <span className="block">{titleLine1} {titleLine2}</span>
-                        </h2>
-                        {caption && <p className={`mt-4 md:mt-6 max-w-sm text-blush ${captionSizeClass}`}>{caption}</p>}
-                        {iconSrc && (
-                            <div className="mt-6 flex justify-center">
-                                <Image src={iconSrc} alt="" width={92} height={92} className={`${iconSizeClass} object-contain`} priority/>
-                            </div>
-                        )}
-                    </div>
-                </div>
-                <div className="w-full md:w-[60%]">
-                    <div className="relative w-full overflow-hidden">
-                        <div
-                            className={`relative ${imageHeightClass} overflow-hidden rounded-tl-[32px] rounded-tr-[32px]`}>
-                            <Image src={imageSrc} alt={imageAlt} fill className="object-cover" priority/>
-                        </div>
-                    </div>
+        "2": (
+            <div className={`flex flex-col ${className}`}>
+                <div className="w-[50%]">{ImageBlock}</div>
+                <div className="w-[50%] flex justify-center">
+                    <h2 className={`${titleSizeClass} leading-tight tracking-tight ${textColorClass}`}>
+                        <span className="block">{titleLine1}</span>
+                        <span className={iconRow}>
+                            <span className={iconWrap}>
+                                <span className="block">{titleLine2}</span>
+                                  {Icon(iconSrc1, iconSizeClass1)}
+                                  {Icon(iconSrc2, iconSizeClass2)}
+                                  <span className="block">{titleLine3}</span>
+                            </span>
+                        </span>
+                    </h2>
                 </div>
             </div>
-        );
+        )
+    };
+
+    return layouts[layout];
 }

@@ -4,6 +4,7 @@ import {useTranslation} from "react-i18next";
 import Slider from "@/components/Slider";
 import {useAppContext} from "@/context/AppContext";
 import ShowcaseCard from "@/components/ShowcaseCard";
+import DoubleShowcaseCard from "@/components/DoubleShowcaseCard";
 
 /*
 |--------------------------------------------------------------------------
@@ -58,52 +59,49 @@ export default function About() {
                 <ShowcaseCard
                     layout={'0'}
                     imageSrc="/images/02_Cam1_Road_Front_Building_06.jpg"
-                    iconSrc="/icons/ml_icon_16.png"
+                    iconSrc1="/icons/ml_icon_16.png"
+                    iconSrc2="/icons/ml_Icon_15.png"
                     imageAlt="Miraf"
                     caption={t("showcase.0.caption")}
                     titleLine1={t("showcase.0.title.0")}
                     titleLine2={t("showcase.0.title.1")}
+                    titleLine3={t("showcase.0.title.2")}
+                    iconSizeClass2={'h-12 w-12 sm:h-14 sm:w-16 xl:h-18 xl:w-18'}
                 />,
                 <ShowcaseCard
                     layout={'1'}
                     imageSrc="/images/cam09_retail_interior_06.jpg"
                     imageAlt="Miraf"
-                    caption={t("showcase.1.caption")}
+                    titleLine1={t("showcase.1.title.0")}
+                    titleLine2={t("showcase.1.title.1")}
                     captionSizeClass ="text-2xl md:text-lg lg:text-2xl xl:text-3xl"
                     roundedClass="rounded-b-2xl lg:rounded-b-none lg:rounded-t-2xl"
                 />,
                 <ShowcaseCard
                     layout={'2'}
                     imageSrc="/images/cam12_office landscape_view_05.jpg"
-                    iconSrc="/icons/ML_icon-19.png"
+                    iconSrc1="/icons/ML_icon-19.png"
+                    iconSrc2="/icons/ML Icon-18.png"
                     imageAlt="Miraf"
                     roundedClass="rounded-t-2xl lg:rounded-t-none lg:rounded-b-2xl"
                     titleLine1={t("showcase.2.title.0")}
                     titleLine2={t("showcase.2.title.1")}
-                    iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-24 xl:w-24'}
+                    titleLine3={t("showcase.2.title.2")}
+                    iconSizeClass1={'h-12 w-12 sm:h-14 sm:w-16 xl:h-18 xl:w-18'}
                 />,
-                <ShowcaseCard
-                    layout={'3'}
-                    imageSrc="/images/group_pilates_instructors_exercising_reformers.jpg"
-                    iconSrc="/icons/ML_icon-19.png"
-                    imageAlt="Miraf"
-                    titleLine1={t("showcase.3.title.0")}
-                    titleLine2={t("showcase.3.title.1")}
-                    caption={t("showcase.3.caption")}
-                    imageHeightClass ="h-[40vh] md:h-[40vh] lg:h-[40vh] xl:h-[35vh]"
-                    iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-24 xl:w-24'}
-                />,
-                <ShowcaseCard
-                    layout={'4'}
-                    imageSrc="/images/interior_design_with_photoframes_couch.jpg"
-                    iconSrc="/icons/ml_Icon_17.png"
-                    imageAlt="Miraf"
-                    titleLine1={t("showcase.4.title.0")}
-                    titleLine2={t("showcase.4.title.1")}
-                    caption={t("showcase.4.caption")}
-                    imageHeightClass ="h-[40vh] md:h-[40vh] lg:h-[50vh] xl:h-[45vh]"
-                    iconSizeClass={'h-12 w-12 sm:h-14 sm:w-14 xl:h-16 xl:w-16 mb-10'}
-                />,
+
+                <DoubleShowcaseCard
+                    imageLeftSrc="/images/group_pilates_instructors_exercising_reformers.jpg"
+                    imageRightSrc="/images/interior_design_with_photoframes_couch.jpg"
+                    imageLeftAlt="Pilates Studio"
+                    imageRightAlt="Indigo Hotel"
+                    titleLeft={t("showcase.3.title.0")}
+                    titleRight={t("showcase.4.title.0")}
+                    descriptionLeft={t("showcase.3.caption")}
+                    descriptionRight={t("showcase.4.caption")}
+                    iconLeft="/icons/ML_icon-19.png"
+                    iconRight="/icons/ML Icon-18.png"
+                />
             ]}
         />
     );
