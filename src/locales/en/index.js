@@ -77,14 +77,14 @@ export default {
     showcase: [
         {
             caption: "What does living in Miraf look like",
-            title: {0: "Connected Spaces", 1: "Flourishing Communities"}
+            title: {0: "Flourishing Minds,", 1: "Communities", 2: "and Life"}
+        },
+        {
+            title: {0: "What can working", 1: "in Miraf add to you"}
         },
         {
             caption: "What can working in Miraf add to you",
-        },
-        {
-            caption: "What can working in Miraf add to you",
-            title: {0: "Empowering", 1: "your Daily Life"}
+            title: {0: "Empowering your", 1: "Daily", 2: "Life"}
 
 
         },

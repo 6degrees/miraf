@@ -116,7 +116,7 @@ export default function DistrictCard(
     */
     return (
         <div className={`flex flex-col w-full min-h-[inherit] justify-center ${className}`}>
-            <div className="w-full max-w-[80svh] md:max-w-full lg:max-w-[80svh]">
+            <div className="w-full md:w-[80%] sm:w-full max-w-[80svh] md:max-w-full lg:max-w-[80svh]">
                 {imageOnTop ? (
                     <>
                         {ImageBlock}

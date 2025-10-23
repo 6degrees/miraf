@@ -100,9 +100,18 @@ body {
     padding-inline: var(--container-x);
 }
 
+.container-s {
+    @apply w-full;
+    padding-inline-start: 0;
+}
+
 @media (min-width: 640px) {
     .container-x {
         padding-inline: var(--container-x-sm);
+    }
+
+    .container-s {
+        padding-inline-start: var(--container-x-sm);
     }
 }
 
@@ -110,11 +119,19 @@ body {
     .container-x {
         padding-inline: var(--container-x-lg);
     }
+
+    .container-s {
+        padding-inline-start: var(--container-x-lg);
+    }
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1280px) {
     .container-x {
         padding-inline: var(--container-x-xl);
+    }
+
+    .container-s {
+        padding-inline-start: var(--container-x-xl);
     }
 }
 
