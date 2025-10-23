@@ -104,7 +104,7 @@ export default function Footer(
     |--------------------------------------------------------------------------
     */
     return (
-        <footer className={`${bgClass} ${textClass} ${className}`}>
+        <footer className={`${bgClass} ${textClass} ${className} font-kanun`}>
             <div className="container-x">
                 {/* Divider Line */}
                 <div className="border-t border-burgundy/20" />
@@ -126,9 +126,10 @@ export default function Footer(
                                     <li key={item.label}>
                                         <Link
                                             href={item.href}
-                                            className="hover:opacity-80 transition"
+                                            className="relative text-burgundy hover:text-burgundy/70 transition-colors duration-300 group"
                                         >
                                             {item.label}
+                                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-burgundy/70 transition-all duration-300 group-hover:w-full"></span>
                                         </Link>
                                     </li>
                                 ))}
@@ -151,7 +152,7 @@ export default function Footer(
                                     <Link
                                         href={socials.linkedin}
                                         aria-label="LinkedIn"
-                                        className="inline-flex h-6 w-6 items-center justify-center rounded-sm hover:opacity-80 transition"
+                                        className="inline-flex h-6 w-6 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                     >
                                         <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
@@ -165,7 +166,7 @@ export default function Footer(
                                     <Link
                                         href={socials.instagram}
                                         aria-label="Instagram"
-                                        className="inline-flex h-6 w-6 items-center justify-center rounded-sm hover:opacity-80 transition"
+                                        className="inline-flex h-6 w-6 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                     >
                                         <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
@@ -179,7 +180,7 @@ export default function Footer(
                                     <Link
                                         href={socials.x}
                                         aria-label="X"
-                                        className="inline-flex h-6 w-6 items-center justify-center rounded-sm hover:opacity-80 transition"
+                                        className="inline-flex h-6 w-6 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                     >
                                         <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">

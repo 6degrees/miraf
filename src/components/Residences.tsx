@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import AnimatedText from "@/components/AnimatedText";
 
 /*
 |--------------------------------------------------------------------------
@@ -62,20 +63,32 @@ export default function ResidencesSection(
             <div className="w-full h-full flex flex-col lg:flex-row lg:items-center lg:justify-center">
                 {/* Right: Text Content */}
                 <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-center text-center lg:items-start lg:text-start px-6 sm:px-10 lg:px-16">
-                    <h2 className="text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] font-semibold mb-4">{title}</h2>
-                    {subtitle && <p className="text-xl sm:text-2xl md:text-4xl mb-6">{subtitle}</p>}
-                    {body && <p className="text-md max-w-md leading-relaxed mb-8">{body}</p>}
+                    <AnimatedText delay={0.1} direction="up" duration={0.8}>
+                        <h2 className="text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] font-semibold mb-4">{title}</h2>
+                    </AnimatedText>
+                    {subtitle && (
+                        <AnimatedText delay={0.2} direction="up" duration={0.8}>
+                            <p className="text-xl sm:text-2xl md:text-4xl mb-6">{subtitle}</p>
+                        </AnimatedText>
+                    )}
+                    {body && (
+                        <AnimatedText delay={0.3} direction="up" duration={0.8}>
+                            <p className="text-md max-w-md leading-relaxed mb-8">{body}</p>
+                        </AnimatedText>
+                    )}
                     {ctaLabel && (
-                        <Link href={ctaHref} className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition">
-                            {ctaLabel}
-                        </Link>
+                        <AnimatedText delay={0.4} direction="up" duration={0.8}>
+                            <Link href={ctaHref} className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition">
+                                {ctaLabel}
+                            </Link>
+                        </AnimatedText>
                     )}
                 </div>
 
                 {/* Left: Full-height Image */}
                 <div className="w-full order-1 lg:order-2 lg:w-1/3">
                     <div className="relative w-full h-[60svh] lg:h-[70svh] overflow-hidden">
-                        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" priority/>
+                        <Image src={imageSrc} alt={imageAlt} fill className="object-cover image-hover" priority/>
                     </div>
                 </div>
             </div>

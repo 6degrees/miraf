@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import {useTranslation} from "react-i18next";
+import AnimatedText from "@/components/AnimatedText";
 
 /*
 |------------------------------------------------------------------------------
@@ -102,73 +103,77 @@ export default function CommunitySignupSection(
             <div className="container-x">
                 <div className="flex flex-col md:flex-row items-start justify-between gap-10">
                     {/* Left: Heading + Form */}
-                    <div className="w-full lg:w-auto lg:flex-1">
-                        <h2 className="font-semibold tracking-tight text-3xl sm:text-4xl lg:text-5xl">
-                            {heading}
-                        </h2>
-                        <p className="mt-2 text-xl sm:text-2xl opacity-90">{subheading}</p>
+                    <AnimatedText delay={0.1} direction="up" duration={0.8}>
+                        <div className="w-full lg:w-auto lg:flex-1">
+                            <h2 className="font-semibold tracking-tight text-3xl sm:text-4xl lg:text-5xl">
+                                {heading}
+                            </h2>
+                            <p className="mt-2 text-xl sm:text-2xl opacity-90">{subheading}</p>
 
-                        <form onSubmit={handleSubmit} className="mt-8">
-                            {/* Two-column form rows (still grid inside form) */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
-                                {/* First Name */}
-                                <div>
-                                    <label className="block text-sm mb-2">{t("signup.form.firstName.label")}</label>
-                                    <input type="text" name="firstName" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required/>
-                                </div>
+                            <form onSubmit={handleSubmit} className="mt-8">
+                                {/* Two-column form rows (still grid inside form) */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
+                                    {/* First Name */}
+                                    <div>
+                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.firstName.label")}</label>
+                                        <input type="text" name="firstName" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required/>
+                                    </div>
 
-                                {/* Surname */}
-                                <div>
-                                    <label className="block text-sm mb-2">{t("signup.form.surname.label")}</label>
-                                    <input type="text" name="surname" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required/>
-                                </div>
+                                    {/* Surname */}
+                                    <div>
+                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.surname.label")}</label>
+                                        <input type="text" name="surname" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required/>
+                                    </div>
 
-                                {/* Email */}
-                                <div>
-                                    <label className="block text-sm mb-2">{t("signup.form.email.label")}</label>
-                                    <input type="email" name="email" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required/>
-                                </div>
+                                    {/* Email */}
+                                    <div>
+                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.email.label")}</label>
+                                        <input type="email" name="email" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required/>
+                                    </div>
 
-                                {/* Phone Number */}
-                                <div>
-                                    <label className="block text-sm mb-2">{t("signup.form.phone.label")}</label>
-                                    <input type="tel" name="phone" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1"/>
-                                </div>
+                                    {/* Phone Number */}
+                                    <div>
+                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.phone.label")}</label>
+                                        <input type="tel" name="phone" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1"/>
+                                    </div>
 
-                                {/* Request Type */}
-                                <div>
-                                    <label className="block text-sm mb-2">{t("signup.form.requestType.label")}</label>
-                                    <div className="relative">
-                                        <select name="requestType" className="appearance-none w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1 pr-6" defaultValue="" required>
-                                            <option value="" disabled>
-                                                {t("signup.form.requestType.options.0")}
-                                            </option>
-                                            <option value="other">{t("signup.form.requestType.options.1")}</option>
-                                        </select>
-                                        <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-sm"></span>
+                                    {/* Request Type */}
+                                    <div>
+                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.requestType.label")}</label>
+                                        <div className="relative">
+                                            <select name="requestType" className="appearance-none w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1 pr-6" defaultValue="" required>
+                                                <option value="" disabled>
+                                                    {t("signup.form.requestType.options.0")}
+                                                </option>
+                                                <option value="other">{t("signup.form.requestType.options.1")}</option>
+                                            </select>
+                                            <span className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-sm"></span>
+                                        </div>
+                                    </div>
+
+                                    {/* Subject */}
+                                    <div className="sm:col-span-2">
+                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.subject.label")}</label>
+                                        <input type="text" name="subject" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1"/>
                                     </div>
                                 </div>
 
-                                {/* Subject */}
-                                <div className="sm:col-span-2">
-                                    <label className="block text-sm mb-2">{t("signup.form.subject.label")}</label>
-                                    <input type="text" name="subject" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1"/>
+                                {/* Send button */}
+                                <div className="mt-6 text-end">
+                                    <button type="submit" className="inline-flex items-center justify-center rounded-full border border-burgundy/60 px-5 py-1.5 text-sm hover:bg-burgundy/5 transition">
+                                        {t("signup.form.send.label")}
+                                    </button>
                                 </div>
-                            </div>
-
-                            {/* Send button */}
-                            <div className="mt-6 text-end">
-                                <button type="submit" className="inline-flex items-center justify-center rounded-full border border-burgundy/60 px-5 py-1.5 text-sm hover:bg-burgundy/5 transition">
-                                    {t("signup.form.send.label")}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
+                    </AnimatedText>
 
                     {/* Right: Decorative blobs */}
-                    <div className="relative hidden lg:flex md:flex-1 justify-center items-center">
-                        <Image src="/icons/ml_Icon_32.png" alt="" height="500" width="500" className="object-contain"/>
-                    </div>
+                    <AnimatedText delay={0.2} direction="up" duration={0.8}>
+                        <div className="relative hidden lg:flex md:flex-1 justify-center items-center">
+                            <Image src="/icons/ml_Icon_32.png" alt="Community signup icon" height="500" width="500" className="object-contain image-hover" loading="lazy"/>
+                        </div>
+                    </AnimatedText>
                 </div>
             </div>
         </section>

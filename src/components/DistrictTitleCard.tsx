@@ -79,7 +79,7 @@ export default function DistrictTitleCard(
                         className={`${iconSizeClass} inline align-middle object-contain shrink-0`}
                     />
                 </span>
-                <span className="block mt-1 sm:mt-2">{titleLine2}</span>
+                <span className="block">{titleLine2}</span>
             </h2>
 
             <p className="mt-12 max-w-[50ch] lg:ltr:max-w-[38ch] md:rtl:max-w-[30ch] text-burgundy/80 text-xl md:text-2xl leading-relaxed">
