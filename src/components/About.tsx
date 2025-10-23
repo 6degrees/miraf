@@ -47,7 +47,8 @@ export default function About() {
             id="about"
             dir={direction}
             bgClass={'bg-burgundy'}
-            heightClass="h-[100vh] min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px]"
+            heightClass="h-[100vh] min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px] py-2 sm:py-0"
+            containerClass={'container-s'}
             breakpoints= {{
                 0: { slidesPerView: 1, spaceBetween: 0 },
                 640: { slidesPerView: 1, spaceBetween: 0 },
@@ -66,6 +67,7 @@ export default function About() {
                     titleLine1={t("showcase.0.title.0")}
                     titleLine2={t("showcase.0.title.1")}
                     titleLine3={t("showcase.0.title.2")}
+                    roundedClass="rounded-b-2xl lg:rounded-2xl"
                     iconSizeClass2={'h-12 w-12 sm:h-14 sm:w-16 xl:h-18 xl:w-18'}
                 />,
                 <ShowcaseCard
@@ -83,7 +85,7 @@ export default function About() {
                     iconSrc1="/icons/ML_icon-19.png"
                     iconSrc2="/icons/ML Icon-18.png"
                     imageAlt="Miraf"
-                    roundedClass="rounded-t-2xl lg:rounded-t-none lg:rounded-b-2xl"
+                    roundedClass="rounded-b-2xl lg:rounded-b-2xl"
                     titleLine1={t("showcase.2.title.0")}
                     titleLine2={t("showcase.2.title.1")}
                     titleLine3={t("showcase.2.title.2")}
@@ -95,12 +97,12 @@ export default function About() {
                     imageRightSrc="/images/interior_design_with_photoframes_couch.jpg"
                     imageLeftAlt="Pilates Studio"
                     imageRightAlt="Indigo Hotel"
-                    titleLeft={t("showcase.3.title.0")}
-                    titleRight={t("showcase.4.title.0")}
+                    titleLeft={`${t("showcase.3.title.0")} ${t("showcase.3.title.1")}`}
+                    titleRight={`${t("showcase.4.title.0")} ${t("showcase.4.title.1")}`}
                     descriptionLeft={t("showcase.3.caption")}
                     descriptionRight={t("showcase.4.caption")}
-                    iconLeft="/icons/ML_icon-19.png"
-                    iconRight="/icons/ML Icon-18.png"
+                    iconLeft="/icons/ml_icon_14.png"
+                    iconRight="/icons/ml_Icon_17.png"
                 />
             ]}
         />

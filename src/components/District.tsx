@@ -56,7 +56,7 @@ export default function District() {
                 1280: { slidesPerView: 1.4, spaceBetween: 0 },
             }}
             heightClass="h-auto min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px] py-2"
-            gsapSize={1.5}
+            gsapSize={1.3}
             items={[
                 <DistrictTitleCard
                     key="about-title"

@@ -129,7 +129,7 @@ function Footer({total, index, onPrev, onNext, bgClass, dir,}: {total: number; i
 | - GSAP ScrollTrigger for ≥1024px
 |----------------------------------------------------------------------
 */
-export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", className = "w-full", bgClass = "bg-[#F3E6D6]", textClass = "text-burgundy", style, background, containerClass = "container-x", heightClass = "h-[600px] md:h-[700px] lg:h-[900px]", breakpoints = defaultBreakpoints, hasFooter = false, isUseGSAP = true, gsapSize=0}: SliderProps) {
+export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", className = "w-full", bgClass = "bg-[#F3E6D6]", textClass = "text-burgundy",  style, background, containerClass = "container-x", heightClass = "h-[600px] md:h-[700px] lg:h-[900px]", breakpoints = defaultBreakpoints, hasFooter = false, isUseGSAP = true, gsapSize=0}: SliderProps) {
     const total = items.length;
     const isRTL = dir === "rtl";
     const [isMobile, setIsMobile] = useIsMobile(true);
@@ -263,7 +263,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
                         <div className={cn("relative w-full overflow-hidden", heightClass)}>
                             <div className="absolute inset-0 flex will-change-transform">
                                 {items.map((node, idx) => (
-                                    <div key={`slide-${id}-${idx}`} ref={(el) => {if (el) slideRefs.current[idx] = el;}} className="panel h-full flex-shrink-0 w-[100vw]">
+                                    <div key={`slide-${id}-${idx}`} ref={(el) => {if (el) slideRefs.current[idx] = el;}} className={`panel h-full flex-shrink-0`}>
                                         <div className="h-full w-full">{node}</div>
                                     </div>
                                 ))}

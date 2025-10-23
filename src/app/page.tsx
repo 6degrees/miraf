@@ -57,29 +57,29 @@ export default function HomePage() {
     return (
         <main>
             {/* Primary hero section */}
-            {/*<Banner/>*/}
-            {/*<District/>*/}
-            {/*<OverviewSection/>*/}
+            <Banner/>
+            <District/>
+            <OverviewSection/>
             <About/>
-            {/*<Residences*/}
-            {/*    imageSrc="/images/Cam21_Pool_05.jpg"*/}
-            {/*    title={t("residences.title")}*/}
-            {/*    subtitle={t("residences.subtitle")}*/}
-            {/*    body={t("residences.body")}*/}
-            {/*    ctaLabel={t("residences.cta")}*/}
-            {/*/>*/}
-            {/*<Gallery/>*/}
-            {/*<Developer logoSrc="/icons/Refad Logo.png"*/}
-            {/*    decoSrc="/icons/ML_Icon-22.png"*/}
-            {/*    imageSrc="/images/clark_van_der_beken_KvuSeA5Ep4c_unsplash.jpg"*/}
-            {/*    title={t("developer.title")}*/}
-            {/*    bodyTop={t("developer.bodyTop")}*/}
-            {/*    bodyBottom={t("developer.bodyBottom")}*/}
-            {/*    ctaLabel={t("developer.cta")}*/}
-            {/*    ctaHref="#"*/}
-            {/*/>*/}
-            {/*<CommunitySignupSection heading={t("signup.title")} subheading={t("signup.subtitle")}/>*/}
-            {/*<Footer/>*/}
+            <Residences
+                imageSrc="/images/Cam21_Pool_05.jpg"
+                title={t("residences.title")}
+                subtitle={t("residences.subtitle")}
+                body={t("residences.body")}
+                ctaLabel={t("residences.cta")}
+            />
+            <Gallery/>
+            <Developer logoSrc="/icons/Refad Logo.png"
+                decoSrc="/icons/ML_Icon-22.png"
+                imageSrc="/images/clark_van_der_beken_KvuSeA5Ep4c_unsplash.jpg"
+                title={t("developer.title")}
+                bodyTop={t("developer.bodyTop")}
+                bodyBottom={t("developer.bodyBottom")}
+                ctaLabel={t("developer.cta")}
+                ctaHref="#"
+            />
+            <CommunitySignupSection heading={t("signup.title")} subheading={t("signup.subtitle")}/>
+            <Footer/>
         </main>
     );
 }
