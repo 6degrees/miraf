@@ -51,7 +51,7 @@ export default function OverviewSection() {
                             <Image src="/icons/ml_icon-12.png" alt="Residential buildings icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
                             <span className="text-sm sm:text-base">{t("overview.pins.residences.title")}</span>
                             <div>
-                                <span className="text-3xl uppercase">{t("overview.pins.residences.value")}</span>
+                                <span className="text-3xl uppercase kanun">{t("overview.pins.residences.value")}</span>
                                 <span className="ms-2 text-xs">{t("overview.pins.residences.unit")}</span>
                             </div>
                         </div>
@@ -63,7 +63,7 @@ export default function OverviewSection() {
                             <span className="text-sm sm:text-base">{t("overview.pins.tower.title")}</span>
                             <span className="text-xs sm:text-sm">{t("overview.pins.tower.subtitle")}</span>
                             <div>
-                                <span className="text-3xl uppercase">{t("overview.pins.tower.value")}</span>
+                                <span className="text-3xl uppercase kanun">{t("overview.pins.tower.value")}</span>
                                 <span className="ms-2 text-xs">{t("overview.pins.tower.unit")}</span>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ export default function OverviewSection() {
                             <Image src="/icons/ml_icon-13.png" alt="Hotel building icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
                             <span className="text-sm sm:text-base">{t("overview.pins.hotel.title")}</span>
                             <div>
-                                <span className="text-3xl uppercase">{t("overview.pins.hotel.value")}</span>
+                                <span className="text-3xl uppercase kanun">{t("overview.pins.hotel.value")}</span>
                                 <span className="ms-2 text-xs">{t("overview.pins.hotel.unit")}</span>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ export default function OverviewSection() {
                             <span className="text-sm sm:text-base">{t("overview.pins.plaza.title")}</span>
                             <span className="text-xs sm:text-sm">{t("overview.pins.plaza.subtitle")}</span>
                             <div>
-                                <span className="text-3xl uppercase">{t("overview.pins.plaza.value")}</span>
+                                <span className="text-3xl uppercase kanun">{t("overview.pins.plaza.value")}</span>
                                 <span className="ms-2 text-xs">{t("overview.pins.plaza.unit")}</span>
                             </div>
                         </div>
@@ -97,7 +97,7 @@ export default function OverviewSection() {
                             <Image src="/icons/ml_icon-12.png" alt="Residential buildings icon" width={30} height={30} className="w-8 h-8 image-hover" loading="lazy" />
                         <span className="text-xl">{t("overview.pins.residences.title")}</span>
                         <div>
-                            <span className="text-4xl uppercase">{t("overview.pins.residences.value")}</span>
+                            <span className="text-4xl uppercase kanun">{t("overview.pins.residences.value")}</span>
                             <span className="ms-2 text-base">{t("overview.pins.residences.unit")}</span>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ export default function OverviewSection() {
                         <span className="text-xl">{t("overview.pins.tower.title")}</span>
                         <span className="text-base">{t("overview.pins.tower.subtitle")}</span>
                         <div>
-                            <span className="text-4xl uppercase">{t("overview.pins.tower.value")}</span>
+                            <span className="text-4xl uppercase kanun">{t("overview.pins.tower.value")}</span>
                             <span className="ms-2 text-base">{t("overview.pins.tower.unit")}</span>
                         </div>
                     </div>
@@ -114,7 +114,7 @@ export default function OverviewSection() {
                             <Image src="/icons/ml_icon-13.png" alt="Hotel building icon" width={30} height={30} className="w-8 h-8 image-hover" loading="lazy" />
                         <span className="text-xl">{t("overview.pins.hotel.title")}</span>
                         <div>
-                            <span className="text-4xl uppercase">{t("overview.pins.hotel.value")}</span>
+                            <span className="text-4xl uppercase kanun">{t("overview.pins.hotel.value")}</span>
                             <span className="ms-2 text-base">{t("overview.pins.hotel.unit")}</span>
                         </div>
                     </div>
@@ -123,7 +123,7 @@ export default function OverviewSection() {
                         <span className="text-xl">{t("overview.pins.plaza.title")}</span>
                         <span className="text-base">{t("overview.pins.plaza.subtitle")}</span>
                         <div>
-                            <span className="text-4xl uppercase">{t("overview.pins.plaza.value")}</span>
+                            <span className="text-4xl uppercase kanun">{t("overview.pins.plaza.value")}</span>
                             <span className="ms-2 text-base">{t("overview.pins.plaza.unit")}</span>
                         </div>
                     </div>

@@ -152,12 +152,22 @@ export default function Footer(
                                     <Link
                                         href={socials.linkedin}
                                         aria-label="LinkedIn"
-                                        className="inline-flex h-6 w-6 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                     >
-                                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
-                                            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0zM8 8h4.8v2.2h.07c.67-1.2 2.3-2.47 4.73-2.47C21.4 7.73 24 10 24 14.2V24h-5v-8.6c0-2.05-.04-4.68-2.85-4.68-2.86 0-3.29 2.23-3.29 4.53V24H8z" />
-                                        </svg>
+                                        <div
+                                            className="flex items-center justify-center w-7 h-7 rounded-md bg-[#561721]">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 448 512"
+                                                fill="white"
+                                                className="w-5 h-5"
+                                            >
+                                                <path
+                                                    d="M100.28 448H7.4V149.5h92.88zm-46.44-338a53.66 53.66 0 1 1 53.66-53.66 53.67 53.67 0 0 1-53.66 53.66zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.3-79.3-48.3 0-55.7 37.7-55.7 76.6V448h-92.7V149.5h88.9v40.7h1.3c12.4-23.5 42.7-48.3 87.8-48.3 94 0 111.3 61.9 111.3 142.3V448z"
+                                                />
+                                            </svg>
+                                        </div>
                                     </Link>
                                 )}
 
@@ -166,10 +176,10 @@ export default function Footer(
                                     <Link
                                         href={socials.instagram}
                                         aria-label="Instagram"
-                                        className="inline-flex h-6 w-6 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                     >
-                                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+                                        <svg viewBox="0 0 24 24" className="h-7 w-7 fill-current">
                                             <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.4.3 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.4.2-1.1.3-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.4-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .4-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2m0 1.8c-3.2 0-3.5 0-4.7.1-1 .1-1.6.2-2 .3-.5.1-.8.3-1.1.6-.3.3-.5.6-.6 1.1-.1.4-.2 1-.3 2-.1 1.2-.1 1.5-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.3 2 .1.5.3.8.6 1.1.3.3.6.5 1.1.6.4.1 1 .2 2 .3 1.2.1 1.5.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.3.5-.1.8-.3 1.1-.6.3-.3.5-.6.6-1.1.1-.4.2-1 .3-2 .1-1.2.1-1.5.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.3-2-.1-.5-.3-.8-.6-1.1-.3-.3-.6-.5-1.1-.6-.4-.1-1-.2-2-.3-1.2-.1-1.5-.1-4.7-.1zm0 3.2a6.8 6.8 0 1 1 0 13.6A6.8 6.8 0 0 1 12 7.2m0 11.2a4.4 4.4 0 1 0 0-8.8 4.4 4.4 0 0 0 0 8.8zm5.2-11.9a1.6 1.6 0 1 1-3.2 0 1.6 1.6 0 0 1 3.2 0z" />
                                         </svg>
                                     </Link>
@@ -180,10 +190,10 @@ export default function Footer(
                                     <Link
                                         href={socials.x}
                                         aria-label="X"
-                                        className="inline-flex h-6 w-6 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                     >
-                                        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+                                        <svg viewBox="0 0 24 24" className="h-7 w-7 fill-current">
                                             <path d="M18.9 2H22l-6.9 7.9L23.5 22H16l-5-6.9L4 22H1l7.5-8.6L.8 2H8l4.6 6.2L18.9 2zM16.8 20h2.2L7.3 4H5.1l11.7 16z" />
                                         </svg>
                                     </Link>

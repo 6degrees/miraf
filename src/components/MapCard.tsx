@@ -57,23 +57,21 @@ export default function MapCard(
     |--------------------------------------------------------------------------
     */
     const TextBlock = (
-        <div className="mt-8 sm:mt-10 ps-0 md:ps-14 text-burgundy">
-            <h2 className="font-semibold tracking-tight text-5xl sm:text-6xl leading-tight">
+        <div className="text-burgundy">
+            <h2 className="text-6xl lg:text-7xl xl:text-8xl font-medium leading-tight text-center">
                 {titles.line1 ? <span className="block">{titles.line1}</span> : null}
-                <span className="flex items-center gap-4 sm:gap-8">
+                <span className="flex items-center justify-center gap-4 sm:gap-8 rtl:mr-10 rtl:md:mr-36 ltl:m;-10 ltr:md:ml-36">
                     <Image
                         src={iconSrc}
                         alt={iconAlt}
                         width={96}
                         height={96}
-                        className="inline-block h-14 w-14 sm:h-24 sm:w-24 object-contain"
+                        className="inline-block h-14 w-14 sm:h-28 sm:w-28 object-contain"
                     />
                     {titles.line2 ? <span className="block">{titles.line2}</span> : null}
                 </span>
                 {titles.line3 ? <span className="block">{titles.line3}</span> : null}
             </h2>
-
-
             {body ? (
                 <p className="mt-3 ltr:max-w-[45ch] rtl:max-w-[38ch] font-bold text-burgundy/80 text-base sm:text-lg leading-relaxed">
                     {body}
@@ -88,20 +86,18 @@ export default function MapCard(
     |--------------------------------------------------------------------------
     */
     return (
-        <div className={`w-full min-h-[inherit] flex flex-col h-full justify-center ${className}`}>
-            <div className="w-full max-w-[80svh] sm:max-w-[80svh]">
-                {mediaOnTop ? (
-                    <>
-                        {MediaBlock}
-                        <div className="mt-8 sm:mt-10 ps-6 sm:ps-10 md:ps-14">{TextBlock}</div>
-                    </>
-                ) : (
-                    <>
-                        <div className="mb-8 sm:mb-10 ps-6 sm:ps-10 md:ps-14">{TextBlock}</div>
-                        {MediaBlock}
-                    </>
-                )}
-            </div>
+        <div className={`w-full h-full flex flex-col justify-center ${className} ms-0 xl:ms-10`}>
+            {mediaOnTop ? (
+                <>
+                    {MediaBlock}
+                    <div className="">{TextBlock}</div>
+                </>
+            ) : (
+                <>
+                    <div className="">{TextBlock}</div>
+                    {MediaBlock}
+                </>
+            )}
         </div>
     );
 }

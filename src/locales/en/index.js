@@ -17,7 +17,8 @@ export default {
                 {
                     "title": {
                         0: "About",
-                        1: "the District"
+                        1: "the",
+                        2: "District"
 
                     },
                     "body": "Miraf District is a mixed-use development in Khobar featuring different components that are:"

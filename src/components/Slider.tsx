@@ -32,7 +32,7 @@ export type SliderProps = {
     heightClass?: string;
     breakpoints?: Record<number, { slidesPerView: number; spaceBetween: number }>;
     isUseGSAP?: boolean;
-    gsapSize?: number;
+    gsapSize?: any;
     hasFooter?: boolean;
 };
 
@@ -129,7 +129,7 @@ function Footer({total, index, onPrev, onNext, bgClass, dir,}: {total: number; i
 | - GSAP ScrollTrigger for ≥1024px
 |----------------------------------------------------------------------
 */
-export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", className = "w-full", bgClass = "bg-[#F3E6D6]", textClass = "text-burgundy",  style, background, containerClass = "container-x", heightClass = "h-[600px] md:h-[700px] lg:h-[900px]", breakpoints = defaultBreakpoints, hasFooter = false, isUseGSAP = true, gsapSize=0}: SliderProps) {
+export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", className = "w-full", bgClass = "bg-[#F3E6D6]", textClass = "text-burgundy",  style, background, containerClass = "container-x", heightClass = "", breakpoints = defaultBreakpoints, hasFooter = false, isUseGSAP = true, gsapSize=0}: SliderProps) {
     const total = items.length;
     const isRTL = dir === "rtl";
     const [isMobile, setIsMobile] = useIsMobile(true);
@@ -162,8 +162,9 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
             const panels = slideRefs.current.filter(Boolean);
             const xPercentTotal = (panels.length - 1) * 100;
             const xPercent = isRTL ? xPercentTotal : -xPercentTotal;
-            panels.forEach((el) => {
-                el.style.width = `${host.clientWidth / gsapSize}px`;
+            panels.forEach((el, i) => {
+                let size = Array.isArray(gsapSize) ? gsapSize[i] || gsapSize[0] : gsapSize;
+                el.style.width = `${host.clientWidth / size}px`;
                 (el.style as any)[isRTL ? "marginLeft" : "marginRight"] = "0%";
             });
             const tween = gsap.to(panels, {

@@ -36,7 +36,8 @@ type DoubleShowcaseCardProps = {
     iconLeft?: string;                  // Left icon path (optional)
     iconRight?: string;                 // Right icon path (optional)
     className?: string;                 // Wrapper custom class
-    roundedClass?: string;              // Rounded corners for sections
+    roundedClass1?: string;              // Rounded corners for sections
+    roundedClass2?: string;              // Rounded corners for sections
     bgClass?: string;                   // Background color for text area
     heightClass?: string;               // Fixed height applied from md+
     mobileImageHeightClass?: string;    // Height for image on mobile only
@@ -95,7 +96,7 @@ function Section(
         mobileImageHeightClass,
     }: SectionProps) {
     return (
-        <div className={`relative w-full overflow-hidden ${roundedClass} flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"}`}>
+        <div className={`relative w-full overflow-hidden flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"}`}>
             {/*
             |--------------------------------------------------------------------------
             | $image-block
@@ -111,7 +112,7 @@ function Section(
             |   └──────────────────────┘
             |
             */}
-            <div className={`w-full md:w-[50%] ${mobileImageHeightClass} md:${heightClass} relative overflow-hidden`}>
+            <div className={`w-full md:w-[50%] ${mobileImageHeightClass} md:${heightClass} relative overflow-hidden ${roundedClass}`}>
                 <Image src={imageSrc} alt={imageAlt} fill priority className="object-cover"/></div>
 
             {/*
@@ -184,7 +185,8 @@ export default function DoubleShowcaseCard(
         iconLeft = "/icons/ml_Icon_16.png",
         iconRight = "/icons/ml_Icon_16.png",
         className = "",
-        roundedClass = "rounded-2xl",
+        roundedClass1 = "rounded-b-4xl",
+        roundedClass2 = "rounded-t-4xl",
         bgClass = "",
         heightClass = "h-[50svh] lg:h-[50svh] xl:h-[60svh]",
         mobileImageHeightClass = "h-[60svh] sm:h-[50svh]",
@@ -197,7 +199,7 @@ export default function DoubleShowcaseCard(
             |--------------------------------------------------------------------------
             | [ IMAGE (left) ] | [ TEXT (right) ]
             */}
-            <Section imageSrc={imageLeftSrc} imageAlt={imageLeftAlt} title={titleLeft} description={descriptionLeft} icon={iconLeft} bgClass={bgClass} roundedClass={roundedClass} heightClass={heightClass} mobileImageHeightClass={mobileImageHeightClass}/>
+            <Section imageSrc={imageLeftSrc} imageAlt={imageLeftAlt} title={titleLeft} description={descriptionLeft} icon={iconLeft} bgClass={bgClass} roundedClass={roundedClass1} heightClass={heightClass} mobileImageHeightClass={mobileImageHeightClass}/>
 
             {/*
             |--------------------------------------------------------------------------
@@ -205,7 +207,7 @@ export default function DoubleShowcaseCard(
             |--------------------------------------------------------------------------
             | [ TEXT (left) ] | [ IMAGE (right) ]
             */}
-            <Section reverse imageSrc={imageRightSrc} imageAlt={imageRightAlt} title={titleRight} description={descriptionRight} icon={iconRight} bgClass={bgClass} roundedClass={roundedClass} heightClass={heightClass} mobileImageHeightClass={mobileImageHeightClass}/>
+            <Section reverse imageSrc={imageRightSrc} imageAlt={imageRightAlt} title={titleRight} description={descriptionRight} icon={iconRight} bgClass={bgClass} roundedClass={roundedClass2} heightClass={heightClass} mobileImageHeightClass={mobileImageHeightClass}/>
         </div>
     );
 }

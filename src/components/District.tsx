@@ -55,13 +55,14 @@ export default function District() {
                 1024: { slidesPerView: 1.2, spaceBetween: 0 },
                 1280: { slidesPerView: 1.4, spaceBetween: 0 },
             }}
-            heightClass="h-auto min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px] py-2"
-            gsapSize={1.3}
+            heightClass="h-auto min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px] py-5 lg:py-14 xl:py-16"
+            gsapSize={1.6}
             items={[
                 <DistrictTitleCard
                     key="about-title"
                     titleLine1={t("about.0.cards.0.title.0")}
                     titleLine2={t("about.0.cards.0.title.1")}
+                    titleLine3={t("about.0.cards.0.title.2")}
                     body={t("about.0.cards.0.body")}
                     iconSrc="/icons/ml_Icon_09.png"
                     iconAlt={t("about.0.cards.0.title.1")}
@@ -87,7 +88,6 @@ export default function District() {
                     iconSrc="/icons/ml_icon_05.png"
                     title={t("about.1.cards.0.title.0")}
                     body={t("about.1.cards.0.body")}
-                    bodyWidth={'ltr:max-w-[45ch] rtl:max-w-[25ch]'}
                     imageOnTop={false}
                 />,
 
@@ -98,7 +98,6 @@ export default function District() {
                     iconSrc="/icons/ml_icon_08.png"
                     title={t("about.1.cards.1.title.0")}
                     body={t("about.1.cards.1.body")}
-                    bodyWidth={'ltr:max-w-[45ch] rtl:max-w-[26ch]'}
                     imageOnTop
                 />,
 
@@ -109,7 +108,6 @@ export default function District() {
                     iconSrc="/icons/ml_icon-06.png"
                     title={t("about.2.cards.0.title.0")}
                     body={t("about.2.cards.0.body")}
-                    bodyWidth={'ltr:max-w-[45ch] rtl:max-w-[26ch]'}
                     imageOnTop={false}
                 />,
                 <MapCard

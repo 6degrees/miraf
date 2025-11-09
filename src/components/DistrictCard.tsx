@@ -2,21 +2,6 @@
 
 import Image from "next/image";
 
-/*
-|--------------------------------------------------------------------------
-| $props
-|--------------------------------------------------------------------------
-|
-| imageSrc      : main image path
-| imageAlt      : alt text for main image
-| iconSrc       : small icon above the title
-| title         : card heading
-| body          : card description
-| imageOnTop    : if true, image appears above text (default: true)
-| priorityImage : pass through to Next/Image for LCP optimization
-| className     : optional wrapper classes
-|
-*/
 type AboutCardProps = {
     imageSrc: string;
     imageAlt: string;
@@ -29,43 +14,27 @@ type AboutCardProps = {
     bodyWidth?: string;
 };
 
-/*
-|--------------------------------------------------------------------------
-| $about-card
-|--------------------------------------------------------------------------
-|
-| Reusable card for the About section.
-| Allows toggling the image position (top/bottom) via `imageOnTop`.
-| Layout:
-|   - Image block (fixed heights across breakpoints)
-|   - Text block (icon, title, body)
-|
-*/
+export default function DistrictCard({
+                                         imageSrc,
+                                         imageAlt,
+                                         iconSrc,
+                                         title,
+                                         body,
+                                         imageOnTop = true,
+                                         priorityImage = false,
+                                         className = "",
+                                         bodyWidth = 'ltr:max-w-[45ch] rtl:max-w-[36ch]',
+                                     }: AboutCardProps) {
 
-export default function DistrictCard(
-    {
-        imageSrc,
-        imageAlt,
-        iconSrc,
-        title,
-        body,
-        imageOnTop = true,
-        priorityImage = false,
-        className = "",
-        bodyWidth = 'ltr:max-w-[45ch] rtl:max-w-[36ch]',
-    }: AboutCardProps
-) {
     /*
-    |--------------------------------------------------------------------------
-    | $image-block
-    |--------------------------------------------------------------------------
-    |
-    | Fixed-height, rounded container that preserves aspect via explicit heights.
-    | Uses `fill` for responsive coverage, with `object-cover` to avoid distortion.
-    |
+    |-----------------------------------------------------------------------
+    | Image Block
+    |-----------------------------------------------------------------------
+    | Uses aspect-ratio to maintain image proportions.
+    | No fixed height in `svh`. Image shrinks naturally on small screens.
     */
     const ImageBlock = (
-        <div className="relative h-[45svh] md:h-[45svh] lg:h-[45svh] xl:h-[45svh] rounded-[22px] overflow-hidden">
+        <div className="relative w-full rounded-[22px] overflow-hidden aspect-[16/10]">
             <Image
                 src={imageSrc}
                 alt={imageAlt || title}
@@ -77,13 +46,11 @@ export default function DistrictCard(
     );
 
     /*
-    |--------------------------------------------------------------------------
-    | $text-block
-    |--------------------------------------------------------------------------
-    |
-    | Icon + title + body.
-    | Body width is constrained differently for LTR/RTL to keep ~optimal line length.
-    |
+    |-----------------------------------------------------------------------
+    | Text Block
+    |-----------------------------------------------------------------------
+    | Icon + title + body
+    | Body width constrained for readability.
     */
     const TextBlock = (
         <div className="text-burgundy">
@@ -91,40 +58,40 @@ export default function DistrictCard(
                 <Image
                     src={iconSrc}
                     alt="icon"
-                    width={20}
-                    height={20}
+                    width={32}
+                    height={32}
                     className="h-8 w-8 object-contain"
                 />
             </div>
-            <h3 className="mt-2 text-5xl sm:text-7xl leading-tight">
+            <h3 className="mt-2 text-5xl sm:text-6xl font-semibold">
                 {title}
             </h3>
-            <p className={`mt-3 text-burgundy/80 text-base sm:text-md leading-relaxed ${bodyWidth}`}>
+            <p className={`mt-3 xl:mt-6 text-burgundy/80 text-base sm:text-md leading-relaxed ${bodyWidth}`}>
                 {body}
             </p>
         </div>
     );
 
     /*
-    |--------------------------------------------------------------------------
-    | $render
-    |--------------------------------------------------------------------------
-    |
-    | Centers the card and switches order based on `imageOnTop`.
-    | The inner wrapper clamps max width to match the design.
-    |
+    |-----------------------------------------------------------------------
+    | Render
+    |-----------------------------------------------------------------------
+    | Flexible layout:
+    | - Image and text flow naturally
+    | - No fixed heights
+    | - Works on very short screens
     */
     return (
-        <div className={`flex flex-col w-full min-h-[inherit] justify-center ${className}`}>
-            <div className="w-full md:w-[80%] sm:w-full max-w-[80svh] md:max-w-full lg:max-w-[80svh]">
+        <div className={`flex flex-col w-full justify-center ${className}`}>
+            <div className="w-full md:w-[80%] sm:w-full max-w-[90svh] md:max-w-full lg:max-w-[80svh] mx-auto">
                 {imageOnTop ? (
                     <>
                         {ImageBlock}
-                        <div className="mt-8 sm:mt-14">{TextBlock}</div>
+                        <div className="mt-6 sm:mt-10">{TextBlock}</div>
                     </>
                 ) : (
                     <>
-                        <div className="mb-8 sm:mb-14">{TextBlock}</div>
+                        <div className="mb-6 sm:mb-10">{TextBlock}</div>
                         {ImageBlock}
                     </>
                 )}
