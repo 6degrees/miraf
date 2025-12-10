@@ -11,6 +11,7 @@ import Gallery from "@/components/Gallery";
 import CommunitySignupSection from "@/components/CommunitySignupSection";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
+import PinnedButtons from "@/components/PinnedButtons";
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,7 @@ export default function HomePage() {
     return (
         <>
             <StructuredData />
+            <PinnedButtons />
             <main>
                 {/* Primary hero section */}
                 <Banner/>

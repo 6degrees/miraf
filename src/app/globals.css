@@ -31,6 +31,19 @@ p {
   line-height: 1.4;
 }
 
+/* Arabic body text styling */
+[dir="rtl"] p {
+  font-family: var(--font-kanun-ar), sans-serif;
+  line-height: 1.6;
+}
+
+/* Enhanced Arabic body text styling for content sections */
+[dir="rtl"] .arabic-body {
+  font-family: var(--font-kanun-ar), sans-serif;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
 label {
   font-family: var(--font-kanun-ar);
 }
@@ -85,6 +98,63 @@ body {
 /* Kanun AR+ for accent text */
 .kanun {
     font-family: var(--font-kanun-ar), sans-serif;
+}
+
+/* Kanun font for showcase captions in Arabic */
+[dir="rtl"] .showcase-caption {
+    font-family: var(--font-kanun-ar), sans-serif;
+    font-size: clamp(1rem, 2.5vw, 30px);
+    line-height: clamp(1.1rem, 2.6vw, 31.36px);
+    font-weight: 500;
+    text-align: start;
+}
+
+/* Bold Arabic display font for showcase titles */
+[dir="rtl"] .showcase-title {
+    font-family: var(--font-lyon-arabic), serif;
+    font-weight: 500;
+    font-size: clamp(2.5rem, 8vw, 106.46px);
+    line-height: clamp(2.6rem, 8.2vw, 108px);
+    letter-spacing: normal;
+}
+
+/* English display font for showcase titles */
+[dir="ltr"] .showcase-title {
+    font-family: var(--font-angie-sans-pro), sans-serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 7vw, 90.9px);
+    line-height: clamp(2rem, 6.8vw, 86.23px);
+    letter-spacing: normal;
+}
+
+/* Bold Arabic display font for showcase titles layout 2 */
+[dir="rtl"] .showcase-title-layout2 {
+    font-family: var(--font-lyon-arabic), serif;
+    font-weight: 500;
+    font-size: clamp(2.5rem, 8vw, 106.46px);
+    line-height: clamp(2.6rem, 8.2vw, 108px);
+    letter-spacing: normal;
+    font-style: normal;
+}
+
+/* Bold Arabic display font for double showcase titles */
+[dir="rtl"] .double-showcase-title {
+    font-family: var(--font-lyon-arabic), serif !important;
+    font-weight: 500 !important;
+    font-size: clamp(1.8rem, 6vw, 75px) !important;
+    line-height: clamp(2rem, 6.5vw, 87px) !important;
+    letter-spacing: normal !important;
+    font-style: normal !important;
+}
+
+/* English display font for double showcase titles */
+[dir="ltr"] .double-showcase-title {
+    font-family: var(--font-angie-sans-pro), sans-serif !important;
+    font-weight: 400 !important;
+    font-size: clamp(1.6rem, 5.5vw, 70px) !important;
+    line-height: clamp(1.7rem, 5.8vw, 73px) !important;
+    letter-spacing: normal !important;
+    font-style: normal !important;
 }
 
 

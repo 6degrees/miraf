@@ -73,7 +73,7 @@ export default function ResidencesSection(
                     )}
                     {body && (
                         <AnimatedText delay={0.3} direction="up" duration={0.8}>
-                            <p className="text-md max-w-md leading-relaxed mb-8">{body}</p>
+                            <p className="text-md max-w-md leading-relaxed mb-8 arabic-body">{body}</p>
                         </AnimatedText>
                     )}
                     {ctaLabel && (

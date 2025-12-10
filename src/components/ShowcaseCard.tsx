@@ -108,7 +108,7 @@ export default function ShowcaseCard(
     |
     */
     const Caption = (
-        <div className={`${textColorClass} mb-3 sm:mb-4 ${captionSizeClass}`}>
+        <div className={`${textColorClass} mb-3 sm:mb-4 ${captionSizeClass} showcase-caption`}>
             {caption}
         </div>
     );
@@ -123,14 +123,15 @@ export default function ShowcaseCard(
     |
     */
     const ImageBlock = (
-        <div className={`relative w-full overflow-hidden ${roundedClass}`}>
-            <div className={`relative overflow-hidden ${imageHeightClass} ${roundedClass}`}>
+        <div className={`relative w-full overflow-hidden ${roundedClass} mb-0 pb-0 leading-none block`} style={{ marginBottom: 0, paddingBottom: 0 }}>
+            <div className={`relative overflow-hidden ${imageHeightClass} ${roundedClass} mb-0 pb-0 leading-none block`} style={{ marginBottom: 0, paddingBottom: 0 }}>
                 <Image
                     src={imageSrc}
                     alt={imageAlt}
                     fill
-                    className={`object-cover ${roundedClass}`}
+                    className={`object-cover ${roundedClass} leading-none`}
                     priority
+                    style={{ display: 'block' }}
                 />
             </div>
         </div>
@@ -146,23 +147,27 @@ export default function ShowcaseCard(
     |
     */
     const Title = (
-        <h2 className={`${titleSizeClass} leading-tight tracking-tight ${textColorClass}`}>
-            <span className="block">{titleLine1}</span>
+        <h2 className={`${titleSizeClass} leading-[0.65] tracking-tight ${textColorClass} showcase-title`}>
+            <div className="ms-0 sm:ms-1 md:ms-4 lg:ms-12 px-2 sm:px-0">
+                <span className="block">{titleLine1}</span>
 
-            <div className="ms-1 md:ms-4 lg:ms-12">
-                <span className={iconRow}>
-                    <span className={iconWrap}>
-                        {Icon(iconSrc1, iconSizeClass1)}
-                        <span className="block">{titleLine2}</span>
+                {titleLine2 && (
+                    <span className={`${iconRow} -mt-2`}>
+                        <span className={iconWrap}>
+                            {Icon(iconSrc1, iconSizeClass1)}
+                            <span className="block">{titleLine2}</span>
+                        </span>
                     </span>
-                </span>
+                )}
 
-                <span className={iconRow}>
-                    <span className={iconWrap}>
-                        <span className="block">{titleLine3}</span>
-                        {Icon(iconSrc2, iconSizeClass2)}
+                {titleLine3 && (
+                    <span className={`${iconRow} -mt-2`}>
+                        <span className={iconWrap}>
+                            <span className="block">{titleLine3}</span>
+                            {Icon(iconSrc2, iconSizeClass2)}
+                        </span>
                     </span>
-                </span>
+                )}
             </div>
         </h2>
     );
@@ -181,7 +186,7 @@ export default function ShowcaseCard(
     const layouts: Record<ShowcaseLayout, JSX.Element> = {
         "0": (
             <div className={`w-[100vw] h-full flex flex-col sm:flex-row items-center justify-start sm:justify-between gap-8 ${className}`}>
-                <div className="flex flex-col w-[80%] sm:w-[50%] items-center sm:justify-start">
+                <div className="flex flex-col w-[80%] sm:w-[50%] items-start sm:justify-start">
                     {Caption}
                     {ImageBlock}
                 </div>
@@ -192,33 +197,31 @@ export default function ShowcaseCard(
         ),
 
         "1": (
-            <div className="w-[100vw] h-full flex flex-col justify-end">
-                <div className={`flex flex-col sm:flex-row items-center justify-between gap-6 md:gap-8 lg:gap-12 mt-auto ${className}`}>
-                    <div className="w-[80%] sm:w-[50%] flex flex-col items-center">{ImageBlock}</div>
-                    <div className="w-full sm:w-[50%] flex flex-col items-center sm:items-start justify-center">
-                        <h3 className={`${captionSizeClass} leading-tight tracking-tight ${textColorClass}`}>
-                            <span className="block">{titleLine1}</span>
-                            <span className="block">{titleLine2}</span>
-                        </h3>
-                    </div>
+            <div className={`w-[100vw] h-full flex flex-col sm:flex-row items-center justify-between gap-0 ${className}`}>
+                <div className="w-[80%] sm:w-[50%] flex flex-col items-center justify-end self-end">{ImageBlock}</div>
+                <div className="w-full sm:w-[50%] flex flex-col items-center justify-center flex-1">
+                    <h3 className={`${captionSizeClass} leading-tight tracking-tight ${textColorClass} text-center showcase-title-layout1`}>
+                        {titleLine1 && <span className="block">{titleLine1}</span>}
+                        {titleLine2 && <span className="block">{titleLine2}</span>}
+                    </h3>
                 </div>
             </div>
         ),
 
         "2": (
-            <div className={`w-[100vw] h-full flex flex-col items-center sm:items-start ${className}`}>
-                <div className="w-[80%] sm:w-[50%]">{ImageBlock}</div>
-                <div className="w-full sm:w-[50%] flex justify-center">
-                    <h2 className={`${titleSizeClass} leading-tight tracking-tight ${textColorClass}`}>
+            <div className={`w-[100vw] h-full flex flex-col items-center sm:items-start gap-0 ${className}`}>
+                <div className="w-[80%] sm:w-[50%] mb-0 pb-0 leading-none block">{ImageBlock}</div>
+                <div className="w-full sm:w-[50%] flex justify-center mt-0 pt-0 leading-none">
+                    <h2 className={`${titleSizeClass} leading-[0.65] tracking-tight ${textColorClass} showcase-title-layout2 flex flex-col items-center`}>
                         <span className="block">{titleLine1}</span>
-                        <span className={iconRow}>
-                            <span className={iconWrap}>
+                        {titleLine2 && (
+                            <span className={`flex items-center gap-3 -mt-2`}>
                                 <span className="block">{titleLine2}</span>
                                 {Icon(iconSrc1, iconSizeClass1)}
                                 {Icon(iconSrc2, iconSizeClass2)}
-                                <span className="block">{titleLine3}</span>
+                                {titleLine3 && <span className="block">{titleLine3}</span>}
                             </span>
-                        </span>
+                        )}
                     </h2>
                 </div>
             </div>

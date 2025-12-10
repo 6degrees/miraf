@@ -169,6 +169,7 @@ const lyonArabic = localFont({
     src: [
         { path: "./fonts/LyonArabicDisplay-Light.otf", weight: "300", style: "normal" },
         { path: "./fonts/LyonArabicDisplay-Regular.otf", weight: "400", style: "normal" },
+        { path: "./fonts/LyonArabicDisplay-Medium.otf", weight: "500", style: "normal" },
     ],
     variable: "--font-lyon-arabic",
     display: "swap",

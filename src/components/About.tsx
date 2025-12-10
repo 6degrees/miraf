@@ -68,6 +68,7 @@ export default function About() {
                     titleLine2={t("showcase.0.title.1")}
                     titleLine3={t("showcase.0.title.2")}
                     roundedClass="rounded-b-2xl lg:rounded-2xl"
+                    iconSizeClass1={'h-14 w-14 sm:h-16 sm:w-16 xl:h-20 xl:w-20'}
                     iconSizeClass2={'h-12 w-12 sm:h-14 sm:w-16 xl:h-18 xl:w-18'}
                 />,
                 <ShowcaseCard
@@ -96,12 +97,15 @@ export default function About() {
                     imageLeftSrc="/images/group_pilates_instructors_exercising_reformers.jpg"
                     imageRightSrc="/images/interior_design_with_photoframes_couch.jpg"
                     imageLeftAlt="Pilates Studio"
-                    imageRightAlt="Indigo Hotel"
+                    imageRightAlt="Living room interior"
                     titleLeft={`${t("showcase.3.title.0")} ${t("showcase.3.title.1")}`}
-                    titleRight={`${t("showcase.4.title.0")} ${t("showcase.4.title.1")}`}
+                    titleLeftLine1={t("showcase.3.title.0")}
+                    titleLeftLine2={t("showcase.3.title.1")}
+                    titleRight={t("showcase.4.title.0")}
                     descriptionLeft={t("showcase.3.caption")}
                     descriptionRight={t("showcase.4.caption")}
-                    iconLeft="/icons/ml_icon_14.png"
+                    descriptionRightLine2={t("showcase.4.captionLine2", { defaultValue: "" })}
+                    iconLeft={undefined}
                     iconRight="/icons/ml_Icon_17.png"
                 />
             ]}

@@ -41,95 +41,114 @@ export default function OverviewSection() {
     | - Includes heading and CTA button at the bottom
     */
     return (
-        <section id="overview" className="relative min-h-[100vh] supports-[height:100svh]:min-h-[100svh] max-h-[1000px] text-white overflow-hidden">
-            <Image src="/images/full_project.png" alt="Miraf Overview" fill priority sizes="100vw" className="object-cover object-center -z-10"/>
-            <div className="absolute inset-x-0 bottom-0 h-[45%] bg-[linear-gradient(180deg,rgba(56,7,9,0)_0%,rgba(56,7,9,0.55)_45%,rgba(56,7,9,0.85)_100%)] pointer-events-none" />
-            <div className="container-x relative mx-auto px-4 sm:px-6 lg:px-8 min-h-[100vh] flex flex-col justify-between py-12 sm:py-16 lg:py-20">
+        <section id="overview" className="relative min-h-[100vh] supports-[height:100svh]:min-h-[100svh] text-white overflow-hidden">
+            <Image src="/images/overview.png" alt="Miraf Overview" fill priority sizes="100vw" className="object-cover object-center -z-10"/>
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(87,30,31,0)_0%,rgba(87,30,31,0)_40%,rgba(87,30,31,0.3)_70%,rgba(87,30,31,0.6)_100%)] pointer-events-none" />
+            <div className="container-x relative mx-auto px-4 sm:px-6 lg:px-8 min-h-[100vh] flex flex-col justify-between py-12 sm:py-16 lg:py-20 pb-8 lg:pb-10">
                 <div className="grid lg:hidden grid-cols-2 gap-6 sm:gap-8 pt-10 text-center">
                     <AnimatedText delay={0.1} direction="up" duration={0.8}>
-                        <div className="flex flex-col items-center gap-1 text-violet-200">
-                            <Image src="/icons/ml_icon-12.png" alt="Residential buildings icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
-                            <span className="text-sm sm:text-base">{t("overview.pins.residences.title")}</span>
+                        <div className="flex flex-col items-center gap-1 text-burgundy">
+                            <Image src="/images/residence.png" alt="Residential buildings icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
+                            <span className="text-sm sm:text-base text-burgundy">{t("overview.pins.residences.title")}</span>
                             <div>
-                                <span className="text-3xl uppercase kanun">{t("overview.pins.residences.value")}</span>
-                                <span className="ms-2 text-xs">{t("overview.pins.residences.unit")}</span>
+                                <span className="text-3xl uppercase kanun text-burgundy">{t("overview.pins.residences.value")}</span>
+                                <span className="ms-2 text-xs text-burgundy/80">{t("overview.pins.residences.unit")}</span>
                             </div>
                         </div>
                     </AnimatedText>
 
                     <AnimatedText delay={0.2} direction="up" duration={0.8}>
-                        <div className="flex flex-col items-center gap-1 text-amber-300">
-                            <Image src="/icons/ml_icon-11.png" alt="Business tower icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
-                            <span className="text-sm sm:text-base">{t("overview.pins.tower.title")}</span>
-                            <span className="text-xs sm:text-sm">{t("overview.pins.tower.subtitle")}</span>
+                        <div className="flex flex-col items-center gap-1 text-burgundy">
+                            <Image src="/images/business.png" alt="Business tower icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
+                            <span className="text-sm sm:text-base text-burgundy">{t("overview.pins.tower.title")}</span>
+                            <span className="text-xs sm:text-sm text-burgundy/80">{t("overview.pins.tower.subtitle")}</span>
                             <div>
-                                <span className="text-3xl uppercase kanun">{t("overview.pins.tower.value")}</span>
-                                <span className="ms-2 text-xs">{t("overview.pins.tower.unit")}</span>
+                                <span className="text-3xl uppercase kanun text-burgundy">{t("overview.pins.tower.value")}</span>
+                                <span className="ms-2 text-xs text-burgundy/80">{t("overview.pins.tower.unit")}</span>
                             </div>
                         </div>
                     </AnimatedText>
 
                     <AnimatedText delay={0.3} direction="up" duration={0.8}>
                         <div className="flex flex-col items-center gap-1 text-burgundy">
-                            <Image src="/icons/ml_icon-13.png" alt="Hotel building icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
-                            <span className="text-sm sm:text-base">{t("overview.pins.hotel.title")}</span>
+                            <Image src="/images/hotel.png" alt="Hotel building icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
+                            <span className="text-sm sm:text-base text-burgundy">{t("overview.pins.hotel.title")}</span>
                             <div>
-                                <span className="text-3xl uppercase kanun">{t("overview.pins.hotel.value")}</span>
-                                <span className="ms-2 text-xs">{t("overview.pins.hotel.unit")}</span>
+                                <span className="text-3xl uppercase kanun text-burgundy">{t("overview.pins.hotel.value")}</span>
+                                <span className="ms-2 text-xs text-burgundy/80">{t("overview.pins.hotel.unit")}</span>
                             </div>
                         </div>
                     </AnimatedText>
 
                     <AnimatedText delay={0.4} direction="up" duration={0.8}>
-                        <div className="flex flex-col items-center gap-1 text-[#de6b26]">
-                            <Image src="/icons/ml_Icon-10.png" alt="Shopping plaza icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
-                            <span className="text-sm sm:text-base">{t("overview.pins.plaza.title")}</span>
-                            <span className="text-xs sm:text-sm">{t("overview.pins.plaza.subtitle")}</span>
+                        <div className="flex flex-col items-center gap-1 text-burgundy">
+                            <Image src="/images/plaza.png" alt="Shopping plaza icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
+                            <span className="text-sm sm:text-base text-burgundy">{t("overview.pins.plaza.title")}</span>
+                            <span className="text-xs sm:text-sm text-burgundy/80">{t("overview.pins.plaza.subtitle")}</span>
                             <div>
-                                <span className="text-3xl uppercase kanun">{t("overview.pins.plaza.value")}</span>
-                                <span className="ms-2 text-xs">{t("overview.pins.plaza.unit")}</span>
+                                <span className="text-3xl uppercase kanun text-burgundy">{t("overview.pins.plaza.value")}</span>
+                                <span className="ms-2 text-xs text-burgundy/80">{t("overview.pins.plaza.unit")}</span>
                             </div>
                         </div>
                     </AnimatedText>
                 </div>
                 <div className="hidden lg:block relative h-[78vh]">
-                    <div className="absolute left-[18%] top-[15%] text-violet-200 text-center flex flex-col items-center space-y-1">
-                            <Image src="/icons/ml_icon-12.png" alt="Residential buildings icon" width={30} height={30} className="w-8 h-8 image-hover" loading="lazy" />
-                        <span className="text-xl">{t("overview.pins.residences.title")}</span>
-                        <div>
-                            <span className="text-4xl uppercase kanun">{t("overview.pins.residences.value")}</span>
-                            <span className="ms-2 text-base">{t("overview.pins.residences.unit")}</span>
+                    {/* Miraf Residences - Left */}
+                    <div className="absolute left-[10%] top-[8%] text-center flex flex-col items-center space-y-1">
+                        <div className="flex flex-col items-center space-y-1 text-burgundy">
+                            <Image src="/images/residence.png" alt="Residential buildings icon" width={30} height={30} className="w-8 h-8" loading="lazy" />
+                            <span className="text-xl font-medium text-burgundy">{t("overview.pins.residences.title")}</span>
+                            <div>
+                                <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.residences.value")}</span>
+                                <span className="ms-2 text-base text-burgundy">{t("overview.pins.residences.unit")}</span>
+                            </div>
                         </div>
+                        <div className="absolute top-full mt-2 w-[1px] h-[120px] bg-burgundy"></div>
                     </div>
-                    <div className="absolute left-[58%] -translate-x-1/2 top-[10%] text-amber-300 text-center flex flex-col items-center space-y-1">
-                            <Image src="/icons/ml_icon-11.png" alt="Business tower icon" width={30} height={30} className="w-8 h-8 image-hover" loading="lazy" />
-                        <span className="text-xl">{t("overview.pins.tower.title")}</span>
-                        <span className="text-base">{t("overview.pins.tower.subtitle")}</span>
-                        <div>
-                            <span className="text-4xl uppercase kanun">{t("overview.pins.tower.value")}</span>
-                            <span className="ms-2 text-base">{t("overview.pins.tower.unit")}</span>
+                    
+                    {/* The Plaza at Miraf - Center Left */}
+                    <div className="absolute left-[35%] top-[8%] text-center flex flex-col items-center space-y-1">
+                        <div className="flex flex-col items-center space-y-1 text-burgundy">
+                            <Image src="/images/plaza.png" alt="Shopping plaza icon" width={30} height={30} className="w-8 h-8" loading="lazy" />
+                            <span className="text-xl font-medium text-burgundy">{t("overview.pins.plaza.title")}</span>
+                            <span className="text-base text-burgundy">{t("overview.pins.plaza.subtitle")}</span>
+                            <div>
+                                <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.plaza.value")}</span>
+                                <span className="ms-2 text-base text-burgundy">{t("overview.pins.plaza.unit")}</span>
+                            </div>
                         </div>
+                        <div className="absolute top-full mt-2 w-[1px] h-[450px] bg-burgundy"></div>
                     </div>
-                    <div className="absolute right-[2%] top-[15%] text-burgundy text-center flex flex-col items-center space-y-1">
-                            <Image src="/icons/ml_icon-13.png" alt="Hotel building icon" width={30} height={30} className="w-8 h-8 image-hover" loading="lazy" />
-                        <span className="text-xl">{t("overview.pins.hotel.title")}</span>
-                        <div>
-                            <span className="text-4xl uppercase kanun">{t("overview.pins.hotel.value")}</span>
-                            <span className="ms-2 text-base">{t("overview.pins.hotel.unit")}</span>
+                    
+                    {/* Business Tower - Center Right */}
+                    <div className="absolute left-[60%] top-[8%] text-center flex flex-col items-center space-y-1">
+                        <div className="flex flex-col items-center space-y-1 text-burgundy">
+                            <Image src="/images/business.png" alt="Business tower icon" width={30} height={30} className="w-8 h-8" loading="lazy" />
+                            <span className="text-xl font-medium text-burgundy">{t("overview.pins.tower.title")}</span>
+                            <span className="text-base text-burgundy">{t("overview.pins.tower.subtitle")}</span>
+                            <div>
+                                <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.tower.value")}</span>
+                                <span className="ms-2 text-base text-burgundy">{t("overview.pins.tower.unit")}</span>
+                            </div>
                         </div>
+                        <div className="absolute top-full mt-2 w-[1px] h-[60px] bg-burgundy"></div>
                     </div>
-                    <div className="absolute left-[50%] -translate-x-1/2 top-[48%] text-[#de6b26] text-center flex flex-col items-center space-y-1">
-                            <Image src="/icons/ml_Icon-10.png" alt="Shopping plaza icon" width={30} height={30} className="w-8 h-8 image-hover" loading="lazy" />
-                        <span className="text-xl">{t("overview.pins.plaza.title")}</span>
-                        <span className="text-base">{t("overview.pins.plaza.subtitle")}</span>
-                        <div>
-                            <span className="text-4xl uppercase kanun">{t("overview.pins.plaza.value")}</span>
-                            <span className="ms-2 text-base">{t("overview.pins.plaza.unit")}</span>
+                    
+                    {/* Hotel INDIGO - Right */}
+                    <div className="absolute right-[10%] top-[8%] text-center flex flex-col items-center space-y-1">
+                        <div className="flex flex-col items-center space-y-1 text-burgundy">
+                            <Image src="/images/hotel.png" alt="Hotel building icon" width={30} height={30} className="w-8 h-8" loading="lazy" />
+                            <span className="text-xl font-medium text-burgundy">{t("overview.pins.hotel.title")}</span>
+                            <div>
+                                <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.hotel.value")}</span>
+                                <span className="ms-2 text-base text-burgundy">{t("overview.pins.hotel.unit")}</span>
+                            </div>
                         </div>
+                        <div className="absolute top-full mt-2 w-[1px] h-[150px] bg-burgundy"></div>
                     </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between gap-4 pt-10">
+                <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between gap-4 pt-10 pb-3 mb-2">
                     <AnimatedText delay={0.5} direction="up" duration={0.8}>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-blush">{t("nav.overview")}</h2>
                     </AnimatedText>

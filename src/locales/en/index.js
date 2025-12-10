@@ -95,14 +95,14 @@ export default {
         },
         {
             caption: "Bringing together modern living, a dynamic work environment, and green spaces all in one place.",
-            title: {0: "Integrated", 1: "Lifestyle"}
+            title: {0: "Integrated Lifestyle"}
         },
     ],
     residences: {
         title: "Miraf Residences",
         subtitle: "Where Serenity Meets Growth",
         body: "Miraf Residences embody the perfect balance between comfort and elegance. Each space is thoughtfully designed to provide a tranquil environment, surrounded by green landscapes and exceptional amenities that meet your daily needs with ease and sophistication.",
-        cta: "Download Miraf Residences Brochure"
+        cta: "Register Your Interest"
     },
     developer: {
         title: "About the Developer",

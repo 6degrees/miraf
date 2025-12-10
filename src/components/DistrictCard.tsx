@@ -66,7 +66,7 @@ export default function DistrictCard({
             <h3 className="mt-2 text-5xl sm:text-6xl font-semibold">
                 {title}
             </h3>
-            <p className={`mt-3 xl:mt-6 text-burgundy/80 text-base sm:text-md leading-relaxed ${bodyWidth}`}>
+            <p className={`mt-3 xl:mt-6 text-burgundy/80 text-base sm:text-md leading-relaxed ${bodyWidth} arabic-body`}>
                 {body}
             </p>
         </div>

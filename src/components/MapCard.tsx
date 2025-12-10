@@ -58,9 +58,9 @@ export default function MapCard(
     */
     const TextBlock = (
         <div className="text-burgundy">
-            <h2 className="text-6xl lg:text-7xl xl:text-8xl font-medium leading-tight text-center">
-                {titles.line1 ? <span className="block">{titles.line1}</span> : null}
-                <span className="flex items-center justify-center gap-4 sm:gap-8 rtl:mr-10 rtl:md:mr-36 ltl:m;-10 ltr:md:ml-36">
+            <h2 className="text-6xl lg:text-7xl xl:text-8xl rtl:text-5xl rtl:lg:text-6xl rtl:xl:text-7xl font-medium leading-[0.65] text-center">
+                {titles.line1 ? <span className="block -mb-2">{titles.line1}</span> : null}
+                <span className="flex items-center justify-center gap-4 sm:gap-8 rtl:mr-10 rtl:md:mr-36 ltl:m;-10 ltr:md:ml-36 -mt-2">
                     <Image
                         src={iconSrc}
                         alt={iconAlt}
@@ -70,7 +70,7 @@ export default function MapCard(
                     />
                     {titles.line2 ? <span className="block">{titles.line2}</span> : null}
                 </span>
-                {titles.line3 ? <span className="block">{titles.line3}</span> : null}
+                {titles.line3 ? <span className="block -mt-2">{titles.line3}</span> : null}
             </h2>
             {body ? (
                 <p className="mt-3 ltr:max-w-[45ch] rtl:max-w-[38ch] font-bold text-burgundy/80 text-base sm:text-lg leading-relaxed">
