@@ -72,7 +72,7 @@ export default {
         pins: {
             residences: {title: "مساكن مراف", value: "152", unit: "وحدة سكنية"},
             tower: {title: "برج الأعمال", subtitle: "المساحة الصافية", value: "20,202", unit: "متر مربع"},
-            hotel: {title: "فندق انديغية", value: "240", unit: "غرفة"},
+            hotel: {title: "فندق إنديغو", value: "240", unit: "غرفة"},
             plaza: {title: "سوق مراف", subtitle: "المساحة الصافية", value: "28,992", unit: "متر مربع"}
         }
     },

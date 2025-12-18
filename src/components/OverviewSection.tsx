@@ -52,7 +52,7 @@ export default function OverviewSection() {
                             <span className="text-sm sm:text-base text-burgundy">{t("overview.pins.residences.title")}</span>
                             <div>
                                 <span className="text-3xl uppercase kanun text-burgundy">{t("overview.pins.residences.value")}</span>
-                                <span className="ms-2 text-xs text-burgundy/80">{t("overview.pins.residences.unit")}</span>
+                                <span className="ms-2 text-xs text-burgundy/80 kanun">{t("overview.pins.residences.unit")}</span>
                             </div>
                         </div>
                     </AnimatedText>
@@ -61,10 +61,10 @@ export default function OverviewSection() {
                         <div className="flex flex-col items-center gap-1 text-burgundy">
                             <Image src="/images/business.png" alt="Business tower icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
                             <span className="text-sm sm:text-base text-burgundy">{t("overview.pins.tower.title")}</span>
-                            <span className="text-xs sm:text-sm text-burgundy/80">{t("overview.pins.tower.subtitle")}</span>
+                            <span className="text-xs sm:text-sm text-burgundy/80 kanun">{t("overview.pins.tower.subtitle")}</span>
                             <div>
                                 <span className="text-3xl uppercase kanun text-burgundy">{t("overview.pins.tower.value")}</span>
-                                <span className="ms-2 text-xs text-burgundy/80">{t("overview.pins.tower.unit")}</span>
+                                <span className="ms-2 text-xs text-burgundy/80 kanun">{t("overview.pins.tower.unit")}</span>
                             </div>
                         </div>
                     </AnimatedText>
@@ -75,7 +75,7 @@ export default function OverviewSection() {
                             <span className="text-sm sm:text-base text-burgundy">{t("overview.pins.hotel.title")}</span>
                             <div>
                                 <span className="text-3xl uppercase kanun text-burgundy">{t("overview.pins.hotel.value")}</span>
-                                <span className="ms-2 text-xs text-burgundy/80">{t("overview.pins.hotel.unit")}</span>
+                                <span className="ms-2 text-xs text-burgundy/80 kanun">{t("overview.pins.hotel.unit")}</span>
                             </div>
                         </div>
                     </AnimatedText>
@@ -84,10 +84,10 @@ export default function OverviewSection() {
                         <div className="flex flex-col items-center gap-1 text-burgundy">
                             <Image src="/images/plaza.png" alt="Shopping plaza icon" width={40} height={40} className="w-8 h-8 image-hover" loading="lazy" />
                             <span className="text-sm sm:text-base text-burgundy">{t("overview.pins.plaza.title")}</span>
-                            <span className="text-xs sm:text-sm text-burgundy/80">{t("overview.pins.plaza.subtitle")}</span>
+                            <span className="text-xs sm:text-sm text-burgundy/80 kanun">{t("overview.pins.plaza.subtitle")}</span>
                             <div>
                                 <span className="text-3xl uppercase kanun text-burgundy">{t("overview.pins.plaza.value")}</span>
-                                <span className="ms-2 text-xs text-burgundy/80">{t("overview.pins.plaza.unit")}</span>
+                                <span className="ms-2 text-xs text-burgundy/80 kanun">{t("overview.pins.plaza.unit")}</span>
                             </div>
                         </div>
                     </AnimatedText>
@@ -100,7 +100,7 @@ export default function OverviewSection() {
                             <span className="text-xl font-medium text-burgundy">{t("overview.pins.residences.title")}</span>
                             <div>
                                 <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.residences.value")}</span>
-                                <span className="ms-2 text-base text-burgundy">{t("overview.pins.residences.unit")}</span>
+                                <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.residences.unit")}</span>
                             </div>
                         </div>
                         <div className="absolute top-full mt-2 w-[1px] h-[120px] bg-burgundy"></div>
@@ -111,10 +111,10 @@ export default function OverviewSection() {
                         <div className="flex flex-col items-center space-y-1 text-burgundy">
                             <Image src="/images/plaza.png" alt="Shopping plaza icon" width={30} height={30} className="w-8 h-8" loading="lazy" />
                             <span className="text-xl font-medium text-burgundy">{t("overview.pins.plaza.title")}</span>
-                            <span className="text-base text-burgundy">{t("overview.pins.plaza.subtitle")}</span>
+                            <span className="text-base text-burgundy kanun">{t("overview.pins.plaza.subtitle")}</span>
                             <div>
                                 <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.plaza.value")}</span>
-                                <span className="ms-2 text-base text-burgundy">{t("overview.pins.plaza.unit")}</span>
+                                <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.plaza.unit")}</span>
                             </div>
                         </div>
                         <div className="absolute top-full mt-2 w-[1px] h-[450px] bg-burgundy"></div>
@@ -125,10 +125,10 @@ export default function OverviewSection() {
                         <div className="flex flex-col items-center space-y-1 text-burgundy">
                             <Image src="/images/business.png" alt="Business tower icon" width={30} height={30} className="w-8 h-8" loading="lazy" />
                             <span className="text-xl font-medium text-burgundy">{t("overview.pins.tower.title")}</span>
-                            <span className="text-base text-burgundy">{t("overview.pins.tower.subtitle")}</span>
+                            <span className="text-base text-burgundy kanun">{t("overview.pins.tower.subtitle")}</span>
                             <div>
                                 <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.tower.value")}</span>
-                                <span className="ms-2 text-base text-burgundy">{t("overview.pins.tower.unit")}</span>
+                                <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.tower.unit")}</span>
                             </div>
                         </div>
                         <div className="absolute top-full mt-2 w-[1px] h-[60px] bg-burgundy"></div>
@@ -141,7 +141,7 @@ export default function OverviewSection() {
                             <span className="text-xl font-medium text-burgundy">{t("overview.pins.hotel.title")}</span>
                             <div>
                                 <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.hotel.value")}</span>
-                                <span className="ms-2 text-base text-burgundy">{t("overview.pins.hotel.unit")}</span>
+                                <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.hotel.unit")}</span>
                             </div>
                         </div>
                         <div className="absolute top-full mt-2 w-[1px] h-[150px] bg-burgundy"></div>
@@ -153,7 +153,7 @@ export default function OverviewSection() {
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-blush">{t("nav.overview")}</h2>
                     </AnimatedText>
                     <AnimatedText delay={0.6} direction="up" duration={0.8}>
-                        <a href="#" target="_blank" className="inline-flex items-center gap-2 rounded-full bg-white/20 text-blush border border-blush px-6 py-2.5 md:px-10 md:py-3 text-sm md:text-lg shadow-[0_2px_12px_rgba(0,0,0,0.25)] backdrop-blur hover:bg-white/30 transition">{t("overview.cta")}</a>
+                        <a href="#" target="_blank" className="inline-flex items-center gap-2 rounded-full bg-white/20 text-blush border border-blush px-6 py-2.5 md:px-10 md:py-3 text-sm md:text-lg shadow-[0_2px_12px_rgba(0,0,0,0.25)] backdrop-blur hover:bg-white/30 transition kanun">{t("overview.cta")}</a>
                     </AnimatedText>
                 </div>
             </div>

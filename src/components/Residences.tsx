@@ -62,7 +62,7 @@ export default function ResidencesSection(
         <section className={`relative w-full h-full lg:h-[100svh] max-h-[1000px] pb-10 lg:pb-0 ${bgClass} text-[#F6E6DA] ${className}`}>
             <div className="w-full h-full flex flex-col lg:flex-row lg:items-center lg:justify-center">
                 {/* Right: Text Content */}
-                <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-center text-center lg:items-start lg:text-start px-6 sm:px-10 lg:px-16">
+                <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-start text-left lg:items-start lg:text-start px-6 sm:px-10 lg:px-16 mt-6 lg:mt-0">
                     <AnimatedText delay={0.1} direction="up" duration={0.8}>
                         <h2 className="text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] font-semibold mb-4">{title}</h2>
                     </AnimatedText>
@@ -78,7 +78,7 @@ export default function ResidencesSection(
                     )}
                     {ctaLabel && (
                         <AnimatedText delay={0.4} direction="up" duration={0.8}>
-                            <Link href={ctaHref} className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition">
+                            <Link href={ctaHref} className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition kanun mb-8">
                                 {ctaLabel}
                             </Link>
                         </AnimatedText>

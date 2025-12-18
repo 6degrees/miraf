@@ -160,7 +160,7 @@ export default function CommunitySignupSection(
 
                                 {/* Send button */}
                                 <div className="mt-6 text-end">
-                                    <button type="submit" className="inline-flex items-center justify-center rounded-full border border-burgundy/60 px-5 py-1.5 text-sm hover:bg-burgundy/5 transition">
+                                    <button type="submit" className="inline-flex items-center justify-center rounded-full border border-burgundy/60 px-5 py-1.5 text-sm hover:bg-burgundy/5 transition kanun">
                                         {t("signup.form.send.label")}
                                     </button>
                                 </div>

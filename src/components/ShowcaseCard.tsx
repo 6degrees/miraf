@@ -108,7 +108,7 @@ export default function ShowcaseCard(
     |
     */
     const Caption = (
-        <div className={`${textColorClass} mb-3 sm:mb-4 ${captionSizeClass} showcase-caption`}>
+        <div className={`${textColorClass} mt-6 sm:mt-0 mb-3 sm:mb-4 ${captionSizeClass} showcase-caption`}>
             {caption}
         </div>
     );
@@ -209,9 +209,9 @@ export default function ShowcaseCard(
         ),
 
         "2": (
-            <div className={`w-[100vw] h-full flex flex-col items-center sm:items-start gap-0 ${className}`}>
+            <div className={`w-[100vw] h-full flex flex-col items-center sm:items-start gap-4 sm:gap-6 ${className}`}>
                 <div className="w-[80%] sm:w-[50%] mb-0 pb-0 leading-none block">{ImageBlock}</div>
-                <div className="w-full sm:w-[50%] flex justify-center mt-0 pt-0 leading-none">
+                <div className="w-full sm:w-[50%] flex justify-center mt-4 sm:mt-6 pt-0 leading-none">
                     <h2 className={`${titleSizeClass} leading-[0.65] tracking-tight ${textColorClass} showcase-title-layout2 flex flex-col items-center`}>
                         <span className="block">{titleLine1}</span>
                         {titleLine2 && (

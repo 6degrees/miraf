@@ -104,7 +104,7 @@ function IconButton({onClick, dir, kind,}: { onClick: () => void; dir: "rtl" | "
 */
 function Footer({total, index, onPrev, onNext, bgClass, dir,}: {total: number; index: number; onPrev: () => void; onNext: () => void; bgClass?: string; dir: "rtl" | "ltr"; }) {
     return (
-        <div className={cn("hidden md:block absolute -bottom-0 lg:-bottom-10 left-0 right-0 z-30", bgClass)}>
+        <div className={cn("block absolute -bottom-0 lg:-bottom-10 left-0 right-0 z-30", bgClass)}>
             <div className="container-x">
                 <div className="w-full py-1 flex items-center justify-between">
                     <div className="text-sm md:text-base opacity-80 select-none">

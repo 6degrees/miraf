@@ -76,12 +76,12 @@ export default function Header() {
                             {t("nav.developer")}
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blush transition-all duration-300 group-hover:w-full"></span>
                         </Link>
-                        <Link href="/#register" className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 hover:border-blush/60 hover:text-blush transition-all duration-300">
+                        <Link href="/#register" className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 hover:border-blush/60 hover:text-blush transition-all duration-300 kanun">
                             {t("nav.register")}
                         </Link>
                         <button
                             onClick={() => handleLanguageSelection(selectedLanguage)}
-                            className={`cursor-pointer text-white hover:text-blush transition-colors duration-300 bold ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}>
+                            className={`cursor-pointer text-white hover:text-blush transition-colors duration-300 bold kanun ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}>
                             {selectedLanguage === 'ar' ? "En" : "عربي"}
                         </button>
                     </nav>
@@ -109,7 +109,7 @@ export default function Header() {
                     <Link className="block py-2 text-white hover:text-blush transition-colors duration-300" href="/#register" onClick={() => setMenuOpen(false)}>{t("nav.register")}</Link>
 
                     <button
-                        className={`mt-2 w-full rounded-full border border-white/20 px-4 py-2 text-white hover:text-blush hover:border-blush/60 transition-all duration-300 ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}
+                        className={`mt-2 w-full rounded-full border border-white/20 px-4 py-2 text-white hover:text-blush hover:border-blush/60 transition-all duration-300 kanun ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}
                         onClick={() => {
                             handleLanguageSelection(selectedLanguage)
                             setMenuOpen(false);
