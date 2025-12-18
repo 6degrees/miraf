@@ -89,9 +89,18 @@ function ArrowIcon({ dir, kind }: { dir: "rtl" | "ltr"; kind: "prev" | "next" })
     );
 }
 
-function IconButton({onClick, dir, kind,}: { onClick: () => void; dir: "rtl" | "ltr"; kind: "prev" | "next"; }) {
+function IconButton({onClick, dir, kind, disabled = false}: { onClick: () => void; dir: "rtl" | "ltr"; kind: "prev" | "next"; disabled?: boolean; }) {
     return (
-        <button type="button" aria-label={kind === "prev" ? "Previous" : "Next"} onClick={onClick} className="grid h-6 w-6 place-items-center rounded-full bg-burgundy/95 text-[#F6E6DA] hover:opacity-85 transition">
+        <button 
+            type="button" 
+            aria-label={kind === "prev" ? "Previous" : "Next"} 
+            onClick={disabled ? undefined : onClick} 
+            disabled={disabled}
+            className={cn(
+                "grid h-6 w-6 place-items-center rounded-full bg-burgundy/95 text-[#F6E6DA] transition",
+                disabled ? "opacity-30 cursor-not-allowed" : "hover:opacity-85 cursor-pointer"
+            )}
+        >
             <ArrowIcon dir={dir} kind={kind} />
         </button>
     );
@@ -103,16 +112,18 @@ function IconButton({onClick, dir, kind,}: { onClick: () => void; dir: "rtl" | "
 |----------------------------------------------------------------------
 */
 function Footer({total, index, onPrev, onNext, bgClass, dir,}: {total: number; index: number; onPrev: () => void; onNext: () => void; bgClass?: string; dir: "rtl" | "ltr"; }) {
+    const isFirstSlide = index === 0;
+    const isLastSlide = index === total - 1;
+    const currentIndex = total > 0 ? (index % Math.max(total, 1)) : 0;
+    
     return (
         <div className={cn("block absolute -bottom-0 lg:-bottom-10 left-0 right-0 z-30", bgClass)}>
             <div className="container-x">
-                <div className="w-full py-1 flex items-center justify-between">
-                    <div className="text-sm md:text-base opacity-80 select-none">
-                        {total > 0 ? `${(index % Math.max(total, 1)) + 1} / ${total}` : "0 / 0"}
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <IconButton onClick={onPrev} dir={dir} kind="prev" />
-                        <IconButton onClick={onNext} dir={dir} kind="next" />
+                <div className="w-full py-1 flex items-center justify-center gap-2">
+                    <IconButton onClick={onPrev} dir={dir} kind="prev" disabled={isFirstSlide} />
+                    <IconButton onClick={onNext} dir={dir} kind="next" disabled={isLastSlide} />
+                    <div className="text-sm md:text-base opacity-80 select-none ms-2">
+                        {total > 0 ? `${currentIndex + 1} / ${total}` : "0 / 0"}
                     </div>
                 </div>
             </div>
