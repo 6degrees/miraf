@@ -60,7 +60,7 @@ export default function ImageCard(
     return (
         <section className={`relative w-full h-full text-white overflow-hidden ${className}`}>
             {/* Background Image */}
-            <Image src={src} alt={alt} fill priority sizes="100vw" className="object-center -z-10"/>
+            <Image src={src} alt={alt} fill priority sizes="100vw" className="object-cover object-center -z-10"/>
 
             {/* Optional overlay gradient */}
             {overlay && (

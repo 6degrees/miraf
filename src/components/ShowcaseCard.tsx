@@ -185,7 +185,7 @@ export default function ShowcaseCard(
     */
     const layouts: Record<ShowcaseLayout, JSX.Element> = {
         "0": (
-            <div className={`w-[100vw] h-full flex flex-col sm:flex-row items-center justify-start sm:justify-between gap-8 ${className}`}>
+            <div className={`w-[100vw] h-full flex flex-col sm:flex-row items-center justify-start sm:justify-between gap-8 pt-8 sm:pt-0 ${className}`}>
                 <div className="flex flex-col w-[80%] sm:w-[50%] items-start sm:justify-start">
                     {Caption}
                     {ImageBlock}

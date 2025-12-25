@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 /*
 ||--------------------------------------------------------------------------
@@ -29,9 +30,16 @@ export default function AppLoaderProvider({ children }: { children: React.ReactN
         <AnimatePresence>
             {show ? (
                 <motion.div key="loader" initial={{ opacity: 1 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, ease: "easeOut" }} className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-burgundy text-blush">
-                    {/* App name or logo */}
-                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="en-display text-3xl md:text-5xl font-semibold tracking-tight">
-                        Miraf&nbsp;District
+                    {/* Miraf Logo */}
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+                        <Image 
+                            src="/icons/logo.png" 
+                            alt="Miraf District Logo" 
+                            width={200} 
+                            height={120} 
+                            className="w-48 md:w-64 h-auto object-contain"
+                            priority
+                        />
                     </motion.div>
 
                     {/* Spinner */}

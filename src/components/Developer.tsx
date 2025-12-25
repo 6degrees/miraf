@@ -82,7 +82,7 @@ export default function Developer(
         <section id="developer" className={`w-full ${bgClass} text-burgundy pt-10 pb-0 lg:pt-32 lg:pb-32 ${className}`}>
             <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)_minmax(0,1.15fr)] gap-8 lg:gap-10 items-start">
                 <AnimatedText delay={0.1} direction="up" duration={0.8}>
-                    <div className="order-1 lg:order-none w-full flex flex-col items-start lg:items-start gap-6 px-6 sm:px-10 lg:px-16">
+                    <div className="order-1 lg:order-none w-full flex flex-col items-start lg:items-start gap-6 px-6 sm:px-10 lg:px-16 pt-8 lg:pt-0">
                         <div className="relative w-[180px] sm:w-[220px] lg:w-[140px] pt-0 lg:pt-9">
                             <Image src={logoSrc} alt={logoAlt} width={180} height={180} className="object-contain image-hover"/>
                         </div>
@@ -90,14 +90,14 @@ export default function Developer(
                     </div>
                 </AnimatedText>
                 <AnimatedText delay={0.2} direction="up" duration={0.8}>
-                    <div className="order-2 lg:order-none w-full px-6 sm:px-10 lg:px-0 flex justify-start text-left lg:justify-start lg:text-start">
+                    <div className="order-2 lg:order-none w-full px-6 sm:px-10 lg:px-0 flex justify-start text-start lg:justify-start lg:text-start">
                         <div className="max-w-md">
                             <h2 className="text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] mb-16" style={{ lineHeight: '0.95' }}>
                                 {title}
                             </h2>
                             <p className="text-sm sm:text-base leading-6 mb-4 mt-8 arabic-body">{bodyTop}</p>
                             {bodyBottom && (<p className="text-sm sm:text-base leading-6 mb-6 arabic-body">{bodyBottom}</p>)}
-                            {ctaLabel && (<Link href={ctaHref} className="inline-block rounded-full border border-burgundy px-4 py-2 text-sm hover:bg-burgundy/10 transition kanun">{ctaLabel}</Link>)}
+                            {ctaLabel && (<Link href={ctaHref} target="_blank" rel="noopener noreferrer" className="inline-block rounded-full border border-burgundy px-4 py-2 text-sm hover:bg-burgundy/10 transition kanun mb-8 lg:mb-0">{ctaLabel}</Link>)}
                         </div>
                     </div>
                 </AnimatedText>

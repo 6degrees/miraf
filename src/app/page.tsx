@@ -72,6 +72,7 @@ export default function HomePage() {
                     subtitle={t("residences.subtitle")}
                     body={t("residences.body")}
                     ctaLabel={t("residences.cta")}
+                    ctaHref="#register"
                 />
                 <Gallery/>
                 <Developer logoSrc="/icons/Refad Logo.png"
@@ -81,7 +82,7 @@ export default function HomePage() {
                     bodyTop={t("developer.bodyTop")}
                     bodyBottom={t("developer.bodyBottom")}
                     ctaLabel={t("developer.cta")}
-                    ctaHref="#"
+                    ctaHref="https://www.refad.com.sa/en"
                 />
                 <CommunitySignupSection heading={t("signup.title")} subheading={t("signup.subtitle")}/>
                 <Footer/>

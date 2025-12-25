@@ -59,10 +59,10 @@ export default function ResidencesSection(
     |
     */
     return (
-        <section className={`relative w-full h-full lg:h-[100svh] max-h-[1000px] pb-10 lg:pb-0 ${bgClass} text-[#F6E6DA] ${className}`}>
+        <section className={`relative w-full h-full lg:h-[100svh] max-h-[1000px] pb-10 lg:pb-0 pt-12 lg:pt-0 ${bgClass} text-[#F6E6DA] ${className}`}>
             <div className="w-full h-full flex flex-col lg:flex-row lg:items-center lg:justify-center">
                 {/* Right: Text Content */}
-                <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-start text-left lg:items-start lg:text-start px-6 sm:px-10 lg:px-16 mt-6 lg:mt-0">
+                <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-start text-start lg:items-start lg:text-start px-6 sm:px-10 lg:px-16 mt-6 lg:mt-0">
                     <AnimatedText delay={0.1} direction="up" duration={0.8}>
                         <h2 className="text-[2.9rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] font-semibold mb-4">{title}</h2>
                     </AnimatedText>
@@ -73,7 +73,7 @@ export default function ResidencesSection(
                     )}
                     {body && (
                         <AnimatedText delay={0.3} direction="up" duration={0.8}>
-                            <p className="text-md max-w-md leading-relaxed mb-8 arabic-body">{body}</p>
+                            <p className="text-md leading-relaxed mb-8 arabic-body">{body}</p>
                         </AnimatedText>
                     )}
                     {ctaLabel && (
@@ -87,8 +87,8 @@ export default function ResidencesSection(
 
                 {/* Left: Full-height Image */}
                 <div className="w-full order-1 lg:order-2 lg:w-1/3">
-                    <div className="relative w-full h-[60svh] lg:h-[70svh] overflow-hidden">
-                        <Image src={imageSrc} alt={imageAlt} fill className="object-cover image-hover" priority/>
+                    <div className="relative w-full h-[60svh] lg:h-[70svh] overflow-hidden rounded-b-2xl lg:rounded-l-3xl lg:rounded-bl-3xl lg:rounded-br-none lg:rounded-r-none lg:rounded-t-none">
+                        <Image src={imageSrc} alt={imageAlt} fill className="object-cover image-hover rounded-b-2xl lg:rounded-l-3xl lg:rounded-bl-3xl lg:rounded-br-none lg:rounded-r-none lg:rounded-t-none" priority/>
                     </div>
                 </div>
             </div>
