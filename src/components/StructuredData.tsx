@@ -19,7 +19,6 @@ export default function StructuredData() {
         "@type": "RealEstateProject",
         "name": "Miraf District",
         "description": t("about.0.cards.0.body"),
-        // "url": "https://miraf-district.com",
         "image": [
             "https://miraf-district.com/images/miraf_renders_10edited.png",
             "https://miraf-district.com/images/full_project.png",
@@ -67,8 +66,8 @@ export default function StructuredData() {
             "availableLanguage": ["English", "Arabic"]
         },
         "sameAs": [
-            "https://www.instagram.com/mirafdistrict",
-            "https://www.linkedin.com/company/miraf-district"
+            "https://www.instagram.com/refad_ksa/",
+            "https://www.linkedin.com/company/refad-for-real-estate-investment-and-development/posts/?feedView=all"
         ]
     };
 

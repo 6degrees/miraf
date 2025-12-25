@@ -78,9 +78,9 @@ export default function Footer(
     const phone = "920031839";
 
     const socials = {
-        linkedin: "https://www.linkedin.com/",
-        instagram: "https://www.instagram.com/",
-        x: "https://x.com/",
+        linkedin: "https://www.linkedin.com/company/refad-for-real-estate-investment-and-development/posts/?feedView=all",
+        instagram: "https://www.instagram.com/refad_ksa/",
+        x: "https://x.com/Refad_ksa",
     };
 
     const addressPostal = [
@@ -207,8 +207,16 @@ export default function Footer(
 
                             {/* Contact Info */}
                             <div className="text-sm leading-6">
-                                <div>{email}</div>
-                                <div>{phone}</div>
+                                <div>
+                                    <a href={`mailto:${email}`} className="text-burgundy hover:text-burgundy/70 transition-colors duration-300">
+                                        {email}
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href={`tel:${phone}`} className="text-burgundy hover:text-burgundy/70 transition-colors duration-300">
+                                        {phone}
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
