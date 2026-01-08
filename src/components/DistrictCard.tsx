@@ -63,10 +63,10 @@ export default function DistrictCard({
                     className="h-8 w-8 object-contain"
                 />
             </div>
-            <h3 className="mt-2 text-5xl sm:text-6xl font-semibold">
+            <h3 className="mt-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold">
                 {title}
             </h3>
-            <p className={`mt-3 xl:mt-6 text-burgundy/80 text-base sm:text-md leading-relaxed ${bodyWidth} arabic-body`}>
+            <p className={`mt-3 xl:mt-6 text-burgundy/80 text-base sm:text-lg leading-relaxed ${bodyWidth} arabic-body`}>
                 {body}
             </p>
         </div>
@@ -82,16 +82,16 @@ export default function DistrictCard({
     | - Works on very short screens
     */
     return (
-        <div className={`flex flex-col w-full justify-center ${className}`}>
-            <div className="w-full md:w-[80%] sm:w-full max-w-[90svh] md:max-w-full lg:max-w-[80svh] mx-auto">
+        <div className={`flex flex-col w-full justify-start sm:justify-center ${className}`}>
+            <div className="w-full md:w-[80%] sm:w-full max-w-full md:max-w-full lg:max-w-[80svh] mx-auto px-4 sm:px-6 md:px-0 py-4 sm:py-0">
                 {imageOnTop ? (
                     <>
                         {ImageBlock}
-                        <div className="mt-6 sm:mt-10">{TextBlock}</div>
+                        <div className="mt-3 sm:mt-4 md:mt-6">{TextBlock}</div>
                     </>
                 ) : (
                     <>
-                        <div className="mb-6 sm:mb-10">{TextBlock}</div>
+                        <div className="mb-3 sm:mb-4 md:mb-6">{TextBlock}</div>
                         {ImageBlock}
                     </>
                 )}

@@ -95,7 +95,7 @@ export default function ShowcaseCard(
     */
     const Icon = (src?: string, cls?: string) =>
         src ? (
-            <Image src={src} alt="" width={92} height={92} className={`${cls} object-contain`} priority/>
+            <Image src={src} alt="" width={92} height={92} className={`${cls} object-contain`} loading="lazy"/>
         ) : null;
 
     /*
@@ -185,20 +185,20 @@ export default function ShowcaseCard(
     */
     const layouts: Record<ShowcaseLayout, JSX.Element> = {
         "0": (
-            <div className={`w-[100vw] h-full flex flex-col sm:flex-row items-center justify-start sm:justify-between gap-8 pt-8 sm:pt-0 ${className}`}>
-                <div className="flex flex-col w-[80%] sm:w-[50%] items-start sm:justify-start">
+            <div className={`w-[100vw] h-full flex flex-col sm:flex-row items-center justify-start sm:justify-between gap-8 pt-8 sm:pt-0 px-4 sm:px-0 ${className}`}>
+                <div className="flex flex-col w-full sm:w-[50%] items-start sm:justify-start">
                     {Caption}
                     {ImageBlock}
                 </div>
-                <div className="flex flex-col w-full sm:w-[50%]  items-center sm:justify-start justify-center">
+                <div className="flex flex-col w-full sm:w-[50%] items-center sm:items-start sm:justify-start justify-center">
                     {Title}
                 </div>
             </div>
         ),
 
         "1": (
-            <div className={`w-[100vw] h-full flex flex-col sm:flex-row items-center justify-between gap-0 ${className}`}>
-                <div className="w-[80%] sm:w-[50%] flex flex-col items-center justify-end self-end">{ImageBlock}</div>
+            <div className={`w-[100vw] h-full flex flex-col sm:flex-row items-center justify-between gap-0 px-4 sm:px-0 ${className}`}>
+                <div className="w-full sm:w-[50%] flex flex-col items-center justify-end self-end">{ImageBlock}</div>
                 <div className="w-full sm:w-[50%] flex flex-col items-center justify-center flex-1">
                     <h3 className={`${captionSizeClass} leading-tight tracking-tight ${textColorClass} text-center showcase-title-layout1`}>
                         {titleLine1 && <span className="block">{titleLine1}</span>}
@@ -209,8 +209,8 @@ export default function ShowcaseCard(
         ),
 
         "2": (
-            <div className={`w-[100vw] h-full flex flex-col items-center sm:items-start gap-4 sm:gap-6 ${className}`}>
-                <div className="w-[80%] sm:w-[50%] mb-0 pb-0 leading-none block">{ImageBlock}</div>
+            <div className={`w-[100vw] h-full flex flex-col items-center sm:items-start gap-4 sm:gap-6 px-4 sm:px-0 ${className}`}>
+                <div className="w-full sm:w-[50%] mb-0 pb-0 leading-none block">{ImageBlock}</div>
                 <div className="w-full sm:w-[50%] flex justify-center mt-4 sm:mt-6 pt-0 leading-none">
                     <h2 className={`${titleSizeClass} leading-[0.65] tracking-tight ${textColorClass} showcase-title-layout2 flex flex-col items-center`}>
                         <span className="block">{titleLine1}</span>

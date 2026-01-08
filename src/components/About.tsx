@@ -5,6 +5,8 @@ import Slider from "@/components/Slider";
 import {useAppContext} from "@/context/AppContext";
 import ShowcaseCard from "@/components/ShowcaseCard";
 import DoubleShowcaseCard from "@/components/DoubleShowcaseCard";
+import SingleShowcaseCard from "@/components/SingleShowcaseCard";
+import { useEffect, useState } from "react";
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,16 @@ export default function About() {
     */
     const {t} = useTranslation();
     const {direction,} = useAppContext();
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 1024);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +79,7 @@ export default function About() {
                     titleLine1={t("showcase.0.title.0")}
                     titleLine2={t("showcase.0.title.1")}
                     titleLine3={t("showcase.0.title.2")}
-                    roundedClass="rounded-b-2xl lg:rounded-2xl"
+                    roundedClass="rounded-2xl"
                     iconSizeClass1={'h-14 w-14 sm:h-16 sm:w-16 xl:h-20 xl:w-20'}
                     iconSizeClass2={'h-12 w-12 sm:h-14 sm:w-16 xl:h-18 xl:w-18'}
                 />,
@@ -78,7 +90,7 @@ export default function About() {
                     titleLine1={t("showcase.1.title.0")}
                     titleLine2={t("showcase.1.title.1")}
                     captionSizeClass ="text-2xl md:text-lg lg:text-2xl xl:text-3xl"
-                    roundedClass="rounded-b-2xl lg:rounded-b-none lg:rounded-t-2xl"
+                    roundedClass="rounded-2xl"
                 />,
                 <ShowcaseCard
                     layout={'2'}
@@ -86,28 +98,56 @@ export default function About() {
                     iconSrc1="/icons/ML_icon-19.png"
                     iconSrc2="/icons/ML Icon-18.png"
                     imageAlt="Miraf"
-                    roundedClass="rounded-b-2xl lg:rounded-b-2xl"
+                    roundedClass="rounded-2xl"
                     titleLine1={t("showcase.2.title.0")}
                     titleLine2={t("showcase.2.title.1")}
                     titleLine3={t("showcase.2.title.2")}
                     iconSizeClass1={'h-12 w-12 sm:h-14 sm:w-16 xl:h-18 xl:w-18'}
                 />,
 
-                <DoubleShowcaseCard
-                    imageLeftSrc="/images/group_pilates_instructors_exercising_reformers.jpg"
-                    imageRightSrc="/images/interior_design_with_photoframes_couch.jpg"
-                    imageLeftAlt="Pilates Studio"
-                    imageRightAlt="Living room interior"
-                    titleLeft={`${t("showcase.3.title.0")} ${t("showcase.3.title.1")}`}
-                    titleLeftLine1={t("showcase.3.title.0")}
-                    titleLeftLine2={t("showcase.3.title.1")}
-                    titleRight={t("showcase.4.title.0")}
-                    descriptionLeft={t("showcase.3.caption")}
-                    descriptionRight={t("showcase.4.caption")}
-                    descriptionRightLine2={t("showcase.4.captionLine2", { defaultValue: "" })}
-                    iconLeft={undefined}
-                    iconRight="/icons/ml_Icon_17.png"
-                />
+                ...(isMobile ? [
+                    <SingleShowcaseCard
+                        key="pilates-mobile"
+                        stacked
+                        imageSrc="/images/group_pilates_instructors_exercising_reformers.jpg"
+                        imageAlt="Pilates Studio"
+                        title={`${t("showcase.3.title.0")} ${t("showcase.3.title.1")}`}
+                        titleLine1={t("showcase.3.title.0")}
+                        titleLine2={t("showcase.3.title.1")}
+                        description={t("showcase.3.caption")}
+                        bgClass="bg-burgundy"
+                        roundedClass="rounded-2xl"
+                    />,
+                    <SingleShowcaseCard
+                        key="lifestyle-mobile"
+                        stacked
+                        imageSrc="/images/interior_design_with_photoframes_couch.jpg"
+                        imageAlt="Living room interior"
+                        title={t("showcase.4.title.0")}
+                        description={t("showcase.4.caption")}
+                        descriptionLine2={t("showcase.4.captionLine2", { defaultValue: "" })}
+                        icon="/icons/ml_Icon_17.png"
+                        bgClass="bg-burgundy"
+                        roundedClass="rounded-2xl"
+                    />
+                ] : [
+                    <DoubleShowcaseCard
+                        key="double-desktop"
+                        imageLeftSrc="/images/group_pilates_instructors_exercising_reformers.jpg"
+                        imageRightSrc="/images/interior_design_with_photoframes_couch.jpg"
+                        imageLeftAlt="Pilates Studio"
+                        imageRightAlt="Living room interior"
+                        titleLeft={`${t("showcase.3.title.0")} ${t("showcase.3.title.1")}`}
+                        titleLeftLine1={t("showcase.3.title.0")}
+                        titleLeftLine2={t("showcase.3.title.1")}
+                        titleRight={t("showcase.4.title.0")}
+                        descriptionLeft={t("showcase.3.caption")}
+                        descriptionRight={t("showcase.4.caption")}
+                        descriptionRightLine2={t("showcase.4.captionLine2", { defaultValue: "" })}
+                        iconLeft={undefined}
+                        iconRight="/icons/ml_Icon_17.png"
+                    />
+                ])
             ]}
         />
     );
