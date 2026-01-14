@@ -64,7 +64,7 @@ export default function ResidencesSection(
     |
     */
     return (
-        <section className={`relative w-full min-h-0 lg:h-[100svh] lg:max-h-[1000px] pb-8 sm:pb-12 md:pb-16 lg:pb-0 pt-8 sm:pt-10 md:pt-12 lg:pt-0 ${bgClass} text-[#F6E6DA] ${className} overflow-x-hidden`}>
+        <section className={`relative w-full min-h-0 lg:h-[100svh] lg:max-h-[1000px] pb-8 sm:pb-12 md:pb-16 lg:pb-0 pt-0 sm:pt-10 md:pt-12 lg:pt-0 ${bgClass} text-[#F6E6DA] ${className} overflow-x-hidden`}>
             <div className="w-full min-h-0 lg:h-full flex flex-col lg:flex-row lg:items-center lg:justify-center">
                 {/* Right: Text Content */}
                 <div className="w-full lg:w-2/3 order-2 lg:order-1 flex flex-col justify-center items-start text-start lg:items-start lg:text-start px-4 sm:px-6 md:px-10 lg:px-16 mt-4 sm:mt-6 lg:mt-0 pb-4 sm:pb-6 lg:pb-0">

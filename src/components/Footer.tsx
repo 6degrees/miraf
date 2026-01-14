@@ -155,17 +155,17 @@ export default function Footer(
                                     <Link
                                         href={socials.linkedin}
                                         aria-label="Visit Miraf on LinkedIn"
-                                        className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <div
-                                            className="flex items-center justify-center w-7 h-7 rounded-md bg-[#561721]">
+                                            className="flex items-center justify-center w-7 h-7 sm:w-9 sm:h-9 rounded-md bg-[#561721]">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 448 512"
                                                 fill="white"
-                                                className="w-5 h-5"
+                                                className="w-4 h-4 sm:w-6 sm:h-6"
                                             >
                                                 <path
                                                     d="M100.28 448H7.4V149.5h92.88zm-46.44-338a53.66 53.66 0 1 1 53.66-53.66 53.67 53.67 0 0 1-53.66 53.66zM447.9 448h-92.68V302.4c0-34.7-.7-79.3-48.3-79.3-48.3 0-55.7 37.7-55.7 76.6V448h-92.7V149.5h88.9v40.7h1.3c12.4-23.5 42.7-48.3 87.8-48.3 94 0 111.3 61.9 111.3 142.3V448z"
@@ -180,7 +180,7 @@ export default function Footer(
                                     <Link
                                         href={socials.instagram}
                                         aria-label="Follow Miraf on Instagram"
-                                        className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -189,7 +189,7 @@ export default function Footer(
                                             alt="Instagram"
                                             width={28}
                                             height={28}
-                                            className="h-7 w-7 object-contain"
+                                            className="h-7 w-7 sm:h-9 sm:w-9 object-contain"
                                         />
                                     </Link>
                                 )}
@@ -199,11 +199,11 @@ export default function Footer(
                                     <Link
                                         href={socials.x}
                                         aria-label="Follow Miraf on X (Twitter)"
-                                        className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <svg viewBox="0 0 24 24" className="h-7 w-7 fill-current">
+                                        <svg viewBox="0 0 24 24" className="h-7 w-7 sm:h-9 sm:w-9 fill-current">
                                             <path d="M18.9 2H22l-6.9 7.9L23.5 22H16l-5-6.9L4 22H1l7.5-8.6L.8 2H8l4.6 6.2L18.9 2zM16.8 20h2.2L7.3 4H5.1l11.7 16z" />
                                         </svg>
                                     </Link>
@@ -214,7 +214,7 @@ export default function Footer(
                                     <Link
                                         href={socials.whatsapp}
                                         aria-label="Contact Miraf on WhatsApp"
-                                        className="inline-flex h-7 w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -223,7 +223,7 @@ export default function Footer(
                                             alt="WhatsApp"
                                             width={40}
                                             height={40}
-                                            className="h-9 w-9 object-contain"
+                                            className="h-9 w-9 sm:h-10 sm:w-10 object-contain"
                                         />
                                     </Link>
                                 )}
