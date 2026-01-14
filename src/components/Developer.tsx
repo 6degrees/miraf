@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedText from "@/components/AnimatedText";
+import { useAppContext } from "@/context/AppContext";
 
 
 /*
@@ -64,6 +65,8 @@ export default function Developer(
         className = "",
         bgClass = "bg-blush",
     }: DeveloperSectionProps) {
+    const { direction } = useAppContext();
+    const isRTL = direction === "rtl";
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +78,7 @@ export default function Developer(
     |     → Mobile / tablet: stacked (logo → text → image)
     |     → Desktop: three columns (logo | text | image)
     | - Each part (logo stack, content, image) adapts seamlessly across breakpoints.
-    | - Keeps proportions and spacing consistent with Miraf’s design system.
+    | - Keeps proportions and spacing consistent with Miraf's design system.
     |
     */
     return (
@@ -104,12 +107,20 @@ export default function Developer(
                 <AnimatedText delay={0.3} direction="up" duration={0.8}>
                     <div className="order-3 lg:order-none w-full px-0 sm:px-6 md:px-0 relative">
                         <div className="relative h-[280px] sm:h-[380px] md:h-[480px] lg:h-[620px] w-full sm:w-full md:w-full lg:w-full">
-                            <div className="absolute left-1/2 -ml-[50vw] w-screen sm:absolute sm:left-auto sm:ml-0 sm:w-full md:relative md:left-auto md:ml-0 md:w-full lg:relative lg:left-auto lg:ml-0 lg:w-full h-full overflow-hidden lg:rounded-l-2xl">
+                            <div className={`absolute left-1/2 -ml-[50vw] w-screen sm:absolute sm:left-auto sm:ml-0 sm:w-full md:relative md:left-auto md:ml-0 md:w-full lg:relative lg:left-auto lg:ml-0 lg:w-full h-full overflow-hidden ${
+                                isRTL 
+                                    ? "lg:rounded-r-2xl" 
+                                    : "lg:rounded-l-2xl"
+                            }`}>
                                 <Image
                                     src={imageSrc}
                                     alt={imageAlt}
                                     fill
-                                    className="object-cover image-hover lg:rounded-l-2xl"
+                                    className={`object-cover image-hover ${
+                                        isRTL 
+                                            ? "lg:rounded-r-2xl" 
+                                            : "lg:rounded-l-2xl"
+                                    }`}
                                     priority
                                 />
                             </div>
