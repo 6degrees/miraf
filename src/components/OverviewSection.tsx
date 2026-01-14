@@ -42,7 +42,7 @@ export default function OverviewSection() {
     */
     return (
         <section id="overview" className="relative min-h-[90vh] sm:min-h-[90vh] supports-[height:100svh]:min-h-[90svh] text-white overflow-hidden">
-            <Image src="/images/overview.png" alt="Aerial view of Miraf development showing modern buildings, green spaces, and urban landscape" fill priority sizes="100vw" className="object-cover object-center -z-10"/>
+            <Image src="/images/overviewBG.png" alt="Aerial view of Miraf development showing modern buildings, green spaces, and urban landscape" fill priority sizes="100vw" className="object-cover object-[center_80%] -z-10"/>
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(87,30,31,0)_0%,rgba(87,30,31,0)_40%,rgba(87,30,31,0.3)_70%,rgba(87,30,31,0.6)_100%)] pointer-events-none" />
             <div className="container-x relative mx-auto px-4 sm:px-6 lg:px-8 min-h-0 sm:min-h-[90vh] supports-[height:100svh]:sm:min-h-[90svh] flex flex-col justify-between py-8 sm:py-12 lg:py-20 pb-8 lg:pb-10">
                 <div className="grid lg:hidden grid-cols-2 gap-4 sm:gap-6 pt-6 sm:pt-8 text-center">
