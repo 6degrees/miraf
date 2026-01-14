@@ -126,7 +126,7 @@ function Section(
             |
             */}
             <div className={`w-full ${imageWidthClass} ${mobileImageHeightClass} md:${heightClass} relative overflow-hidden ${roundedClass}`}>
-                <Image src={imageSrc} alt={imageAlt} fill priority className={`object-cover object-bottom ${roundedClass}`}/></div>
+                <Image src={imageSrc} alt={imageAlt} fill loading="lazy" sizes="(max-width: 768px) 100vw, 50vw" className={`object-cover object-bottom ${roundedClass}`}/></div>
 
             {/*
             |--------------------------------------------------------------------------

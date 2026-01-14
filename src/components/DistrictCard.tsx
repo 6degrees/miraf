@@ -41,6 +41,8 @@ export default function DistrictCard({
                 fill
                 className="object-cover"
                 priority={priorityImage}
+                loading={priorityImage ? undefined : "lazy"}
+                sizes="(max-width: 768px) 100vw, 80vw"
             />
         </div>
     );

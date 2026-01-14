@@ -87,7 +87,7 @@ export default function SingleShowcaseCard(
             |
             */}
             <div className={`w-full ${stacked ? "w-full" : imageWidthClass} ${mobileImageHeightClass} ${stacked ? "" : `md:${heightClass}`} relative overflow-hidden ${roundedClass}`}>
-                <Image src={imageSrc} alt={imageAlt} fill priority className={`object-cover object-bottom ${roundedClass}`}/>
+                <Image src={imageSrc} alt={imageAlt} fill loading="lazy" sizes="(max-width: 768px) 100vw, 50vw" className={`object-cover object-bottom ${roundedClass}`}/>
             </div>
 
             {/*

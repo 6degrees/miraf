@@ -121,7 +121,8 @@ export default function Developer(
                                             ? "lg:rounded-r-2xl" 
                                             : "lg:rounded-l-2xl"
                                     }`}
-                                    priority
+                                    loading="lazy"
+                                    sizes="(max-width: 1024px) 100vw, 33vw"
                                 />
                             </div>
                         </div>

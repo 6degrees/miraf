@@ -130,7 +130,8 @@ export default function ShowcaseCard(
                     alt={imageAlt}
                     fill
                     className={`object-cover ${roundedClass} leading-none`}
-                    priority
+                    loading="lazy"
+                    sizes="100vw"
                     style={{ display: 'block' }}
                 />
             </div>
