@@ -149,7 +149,7 @@ export default function Footer(
                         */}
                         <div className="flex-1 grid grid-cols-2 gap-6 items-start sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-3">
                             {/* Social Icons */}
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-2">
                                 {/* LinkedIn */}
                                 {socials.linkedin && (
                                     <Link
@@ -214,16 +214,16 @@ export default function Footer(
                                     <Link
                                         href={socials.whatsapp}
                                         aria-label="Contact Miraf on WhatsApp"
-                                        className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
                                         <Image
                                             src="/icons/whatsapp.png"
                                             alt="WhatsApp"
-                                            width={40}
-                                            height={40}
-                                            className="h-9 w-9 sm:h-10 sm:w-10 object-contain"
+                                            width={60}
+                                            height={60}
+                                            className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
                                         />
                                     </Link>
                                 )}
