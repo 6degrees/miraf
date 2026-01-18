@@ -71,7 +71,7 @@ export default function PinnedButtons() {
                     title="Contact Miraf on WhatsApp"
                 >
                     <Image
-                        src="/icons/whatsapp.png"
+                        src="/icons/whatsapp-miraf.png"
                         alt="WhatsApp"
                         width={28}
                         height={28}
