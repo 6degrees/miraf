@@ -95,7 +95,7 @@ export default function ShowcaseCard(
     */
     const Icon = (src?: string, cls?: string) =>
         src ? (
-            <Image src={src} alt="" width={92} height={92} className={`${cls} object-contain`} loading="lazy"/>
+            <Image src={src} alt="Decorative icon" width={92} height={92} className={`${cls} object-contain`} loading="lazy"/>
         ) : null;
 
     /*

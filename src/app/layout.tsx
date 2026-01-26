@@ -17,11 +17,17 @@ import CustomCursor from "@/components/CustomCursor";
 |
 */
 export const metadata = {
+    metadataBase: new URL('https://miraf-district.com'),
     title: {
         default: "Miraf District - Premium Mixed-Use Development in Khobar, Saudi Arabia",
         template: "%s | Miraf District"
     },
-    description: "Discover Miraf District, a premium mixed-use development in Khobar featuring residential towers, business offices, retail spaces, and Hotel INDIGO. Experience luxury living and working in the heart of Saudi Arabia.",
+    description: "Discover Miraf District, a premium mixed-use development in Khobar featuring 152 residential units, 20,202 sqm of business offices, retail spaces, and Hotel INDIGO with 240 keys. Experience luxury living in the heart of Saudi Arabia.",
+    viewport: {
+        width: 'device-width',
+        initialScale: 1,
+        maximumScale: 5,
+    },
     keywords: [
         "Miraf District",
         "Khobar real estate",
@@ -47,7 +53,6 @@ export const metadata = {
         address: false,
         telephone: false,
     },
-    metadataBase: new URL('https://your-domain.com'),
     alternates: {
         canonical: '/',
         languages: {
@@ -57,8 +62,8 @@ export const metadata = {
     },
     openGraph: {
         title: "Miraf District - Premium Mixed-Use Development in Khobar",
-        description: "Discover Miraf District, a premium mixed-use development in Khobar featuring residential towers, business offices, retail spaces, and Hotel INDIGO.",
-        url: 'https://your-domain.com',
+        description: "Discover Miraf District, a premium mixed-use development in Khobar featuring 152 residential units, 20,202 sqm of business offices, retail spaces, and Hotel INDIGO with 240 keys.",
+        url: 'https://miraf-district.com',
         siteName: 'Miraf District',
         images: [
             {
@@ -74,7 +79,7 @@ export const metadata = {
     twitter: {
         card: 'summary_large_image',
         title: "Miraf District - Premium Mixed-Use Development in Khobar",
-        description: "Discover Miraf District, a premium mixed-use development in Khobar featuring residential towers, business offices, retail spaces, and Hotel INDIGO.",
+        description: "Discover Miraf District, a premium mixed-use development in Khobar featuring 152 residential units, 20,202 sqm of business offices, retail spaces, and Hotel INDIGO.",
         images: ['/images/miraf-og.png'],
     },
     robots: {
@@ -90,6 +95,20 @@ export const metadata = {
     },
     verification: {
         google: 'your-google-verification-code',
+    },
+    other: {
+        'theme-color': '#471e1b',
+        'mobile-web-app-capable': 'yes',
+        'apple-mobile-web-app-capable': 'yes',
+        'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    },
+    category: 'real estate',
+    classification: 'Mixed-Use Development',
+    applicationName: 'Miraf District',
+    manifest: '/manifest.json',
+    icons: {
+        icon: '/icons/favicon.ico',
+        apple: '/icons/apple-touch-icon.png',
     },
 }
 

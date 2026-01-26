@@ -170,7 +170,7 @@ function Section(
                     {/* Icon centered below description */}
                     {icon && (
                         <div className="mt-3 sm:mt-4 flex items-center justify-center">
-                            <Image src={icon} alt="" width={80} height={80} className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 xl:h-18 xl:w-18 object-contain"/>
+                            <Image src={icon} alt="Decorative icon" width={80} height={80} className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 xl:h-18 xl:w-18 object-contain"/>
                         </div>
                     )}
                 </div>

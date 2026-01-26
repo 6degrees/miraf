@@ -161,7 +161,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
     |----------------------------------------------------------------------
     */
     useEffect(() => {
-        if (isMobile) {
+        if (!isUseGSAP) {
             ctxRef.current?.revert();
             stRef.current = null;
             return;
@@ -173,11 +173,22 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
             const panels = slideRefs.current.filter(Boolean);
             const xPercentTotal = (panels.length - 1) * 100;
             const xPercent = isRTL ? xPercentTotal : -xPercentTotal;
+            
+            // Calculate panel width and height based on screen size
             panels.forEach((el, i) => {
                 let size = Array.isArray(gsapSize) ? gsapSize[i] || gsapSize[0] : gsapSize;
-                el.style.width = `${host.clientWidth / size}px`;
+                if (isMobile) {
+                    // On mobile, each panel takes full width and height
+                    el.style.width = `${host.clientWidth}px`;
+                    el.style.height = `${host.clientHeight}px`;
+                } else {
+                    // On desktop, use the gsapSize calculation
+                    el.style.width = `${host.clientWidth / size}px`;
+                    el.style.height = "100%";
+                }
                 (el.style as any)[isRTL ? "marginLeft" : "marginRight"] = "0%";
             });
+            
             const tween = gsap.to(panels, {
                 xPercent,
                 ease: "none",
@@ -186,7 +197,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
                     trigger: host,
                     pin: true,
                     scrub: 1,
-                    end: () => "+=" + host.offsetWidth,
+                    end: () => "+=" + (isMobile ? host.offsetWidth * (panels.length - 1) : host.offsetWidth),
                     onUpdate: (self) => {
                         const i = Math.round(self.progress * (Math.max(1, panels.length) - 1));
                         setIndex(i);
@@ -206,7 +217,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
             ctxRef.current?.revert();
             stRef.current = null;
         };
-    }, [id, dir, isRTL, isMobile, total]);
+    }, [id, dir, isRTL, isMobile, total, isUseGSAP, gsapSize]);
 
     /*
     |----------------------------------------------------------------------
@@ -232,13 +243,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
     };
     const go = (delta: -1 | 1) => {
         if (total <= 1) return;
-        if (isMobile) {
-            const s = swiperRef.current;
-            if (!s) return;
-            delta === -1 ? s.slidePrev() : s.slideNext();
-        } else {
-            goToDesktopIndex(currentIndexDesktop() + delta);
-        }
+        goToDesktopIndex(currentIndexDesktop() + delta);
     };
 
     /*
@@ -256,14 +261,32 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
     return (
         <section 
             id={id} 
-            className={cn("thecontainer relative", bgClass, textClass, heightClass, className)} 
+            className={cn("thecontainer relative", bgClass, textClass, isMobile && isUseGSAP ? "h-screen h-dvh" : heightClass, className)} 
             style={style} 
             dir={dir} 
-            ref={!isMobile ? (hostRef as any) : undefined}
+            ref={isUseGSAP ? (hostRef as any) : undefined}
         >
             {background && <div className="absolute inset-0 -z-10 pointer-events-none">{background}</div>}
 
-            {isMobile && (
+            {isUseGSAP ? (
+                <div className="overflow-hidden w-full">
+                    <div className={containerClass}>
+                        <div className={cn("relative w-full overflow-hidden", isMobile ? "h-screen h-dvh" : heightClass)}>
+                            <div className={cn("will-change-transform", isMobile ? "flex h-full" : "absolute inset-0 flex")}>
+                                {items.map((node, idx) => (
+                                    <div 
+                                        key={`slide-${id}-${idx}`} 
+                                        ref={(el) => {if (el) slideRefs.current[idx] = el;}} 
+                                        className={cn("panel flex-shrink-0", isMobile ? "w-full h-full" : "h-full")}
+                                    >
+                                        <div className="h-full w-full">{node}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ) : (
                 <Swiper 
                     key={`swiper-${id}-${dir}`} 
                     id={`swiper-${id}-${dir}`} 
@@ -285,22 +308,6 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
                         </SwiperSlide>
                     ))}
                 </Swiper>
-            )}
-
-            {!isMobile && (
-                <div className="overflow-hidden w-full">
-                    <div className={containerClass}>
-                        <div className={cn("relative w-full overflow-hidden", heightClass)}>
-                            <div className="absolute inset-0 flex will-change-transform">
-                                {items.map((node, idx) => (
-                                    <div key={`slide-${id}-${idx}`} ref={(el) => {if (el) slideRefs.current[idx] = el;}} className={`panel h-full flex-shrink-0`}>
-                                        <div className="h-full w-full">{node}</div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
             )}
 
             {hasFooter && (
