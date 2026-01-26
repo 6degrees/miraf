@@ -35,12 +35,19 @@ export default function About() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 1024);
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                setIsMobile(window.innerWidth < 1024);
+            }, 150); // Debounce resize events
         };
         checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
+        window.addEventListener('resize', checkMobile, { passive: true });
+        return () => {
+            clearTimeout(timeoutId);
+            window.removeEventListener('resize', checkMobile);
+        };
     }, []);
 
     /*

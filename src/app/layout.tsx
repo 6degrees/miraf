@@ -17,7 +17,7 @@ import CustomCursor from "@/components/CustomCursor";
 |
 */
 export const metadata = {
-    metadataBase: new URL('https://miraf-district.com'),
+    metadataBase: new URL('https://miraf.refad.com.sa'),
     title: {
         default: "Miraf District - Premium Mixed-Use Development in Khobar, Saudi Arabia",
         template: "%s | Miraf District"
@@ -54,26 +54,28 @@ export const metadata = {
         telephone: false,
     },
     alternates: {
-        canonical: '/',
+        canonical: 'https://miraf.refad.com.sa/',
         languages: {
-            'en': '/en',
-            'ar': '/ar',
+            'en': 'https://miraf.refad.com.sa/?lang=en',
+            'ar': 'https://miraf.refad.com.sa/?lang=ar',
+            'x-default': 'https://miraf.refad.com.sa/',
         },
     },
     openGraph: {
         title: "Miraf District - Premium Mixed-Use Development in Khobar",
         description: "Discover Miraf District, a premium mixed-use development in Khobar featuring 152 residential units, 20,202 sqm of business offices, retail spaces, and Hotel INDIGO with 240 keys.",
-        url: 'https://miraf-district.com',
+        url: 'https://miraf.refad.com.sa',
         siteName: 'Miraf District',
         images: [
             {
-                url: '/images/miraf-og.png',
+                url: 'https://miraf.refad.com.sa/images/miraf-og.png',
                 width: 1200,
                 height: 630,
                 alt: 'Miraf District - Premium Mixed-Use Development',
             },
         ],
         locale: 'en_US',
+        alternateLocale: ['ar_SA'],
         type: 'website',
     },
     twitter: {

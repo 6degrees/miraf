@@ -28,7 +28,8 @@ export default function CustomCursor() {
         let mouseY = 0;
         let cursorX = 0;
         let cursorY = 0;
-
+        let animationFrameId: number | null = null;
+        
         const updateCursor = () => {
             const diffX = mouseX - cursorX;
             const diffY = mouseY - cursorY;
@@ -39,7 +40,7 @@ export default function CustomCursor() {
             cursor.style.left = cursorX + 'px';
             cursor.style.top = cursorY + 'px';
             
-            requestAnimationFrame(updateCursor);
+            animationFrameId = requestAnimationFrame(updateCursor);
         };
 
         const handleMouseMove = (e: MouseEvent) => {
@@ -49,10 +50,17 @@ export default function CustomCursor() {
 
         const handleMouseEnter = () => {
             setIsVisible(true);
+            if (animationFrameId === null) {
+                animationFrameId = requestAnimationFrame(updateCursor);
+            }
         };
 
         const handleMouseLeave = () => {
             setIsVisible(false);
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
         };
 
         const handleMouseOver = (e: MouseEvent) => {
@@ -70,17 +78,17 @@ export default function CustomCursor() {
         };
 
         // Add event listeners
-        document.addEventListener('mousemove', handleMouseMove);
+        document.addEventListener('mousemove', handleMouseMove, { passive: true });
         document.addEventListener('mouseenter', handleMouseEnter);
         document.addEventListener('mouseleave', handleMouseLeave);
-        document.addEventListener('mouseover', handleMouseOver);
-        document.addEventListener('mouseout', handleMouseOut);
-
-        // Start cursor animation
-        updateCursor();
+        document.addEventListener('mouseover', handleMouseOver, { passive: true });
+        document.addEventListener('mouseout', handleMouseOut, { passive: true });
 
         // Cleanup
         return () => {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseenter', handleMouseEnter);
             document.removeEventListener('mouseleave', handleMouseLeave);

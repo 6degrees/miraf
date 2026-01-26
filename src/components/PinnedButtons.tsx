@@ -48,6 +48,7 @@ export default function PinnedButtons() {
                 <Link
                     href="/documents/miraf.pdf"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blush hover:bg-blush/80 flex items-center justify-center transition-colors duration-300 group"
                     aria-label={t("overview.cta")}
                     title={t("overview.cta")}

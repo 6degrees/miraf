@@ -103,7 +103,8 @@ export default function ResidencesSection(
                                 )}
                                 <Link 
                                     href="/documents/miraf.pdf" 
-                                    target="_blank" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2.5 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition kanun text-center whitespace-nowrap"
                                 >
                                     {t("overview.cta")}

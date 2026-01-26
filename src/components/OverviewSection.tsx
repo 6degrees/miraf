@@ -153,7 +153,7 @@ export default function OverviewSection() {
                         <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-blush font-bold text-center sm:text-left">{t("nav.overview")}</h2>
                     </AnimatedText>
                     <AnimatedText delay={0.25} direction="up" duration={0.5}>
-                        <a href="/documents/miraf.pdf" target="_blank" className="inline-flex items-center gap-2 rounded-full bg-white/20 text-blush border-2 border-blush px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-base sm:text-lg font-medium shadow-[0_4px_16px_rgba(0,0,0,0.3)] backdrop-blur-sm hover:bg-white/30 hover:scale-105 transition-all duration-300 kanun">{t("overview.cta")}</a>
+                        <a href="/documents/miraf.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white/20 text-blush border-2 border-blush px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-base sm:text-lg font-medium shadow-[0_4px_16px_rgba(0,0,0,0.3)] backdrop-blur-sm hover:bg-white/30 hover:scale-105 transition-all duration-300 kanun">{t("overview.cta")}</a>
                     </AnimatedText>
                 </div>
             </div>

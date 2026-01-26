@@ -16,18 +16,21 @@ export default function StructuredData() {
 
     const structuredData = {
         "@context": "https://schema.org",
-        "@type": "RealEstateProject",
+        "@type": ["RealEstateProject", "LocalBusiness"],
         "name": "Miraf District",
         "description": t("about.0.cards.0.body"),
+        "url": "https://miraf.refad.com.sa",
         "image": [
-            "https://miraf-district.com/images/miraf_renders_10edited.png",
-            "https://miraf-district.com/images/full_project.png",
-            "https://miraf-district.com/images/02_Cam1_Road_Front_Building_06.jpg"
+            "https://miraf.refad.com.sa/images/miraf_renders_10edited.png",
+            "https://miraf.refad.com.sa/images/full_project.png",
+            "https://miraf.refad.com.sa/images/02_Cam1_Road_Front_Building_06.jpg"
         ],
         "address": {
             "@type": "PostalAddress",
+            "streetAddress": "King Faisal Bin Abd Al Aziz, Al Yarmouk",
             "addressLocality": "Al Khobar",
             "addressRegion": "Eastern Province",
+            "postalCode": "34422",
             "addressCountry": "SA"
         },
         "geo": {
@@ -38,8 +41,9 @@ export default function StructuredData() {
         "developer": {
             "@type": "Organization",
             "name": "Refad Development",
-            "url": "https://refad.com",
-            "description": t("developer.bodyTop")
+            "url": "https://refad.com.sa",
+            "description": t("developer.bodyTop"),
+            "logo": "https://miraf.refad.com.sa/icons/Refad%20Logo.png"
         },
         "amenities": [
             "Residential Towers",
@@ -60,15 +64,18 @@ export default function StructuredData() {
         },
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+966-13-XXX-XXXX",
+            "telephone": "+966920031839",
+            "email": "info@miraf.com.sa",
             "contactType": "sales",
             "areaServed": "SA",
             "availableLanguage": ["English", "Arabic"]
         },
         "sameAs": [
             "https://www.instagram.com/refad_ksa/",
-            "https://www.linkedin.com/company/refad-for-real-estate-investment-and-development/posts/?feedView=all"
-        ]
+            "https://www.linkedin.com/company/refad-for-real-estate-investment-and-development/posts/?feedView=all",
+            "https://x.com/Refad_ksa"
+        ],
+        "openingHours": "Mo-Su 00:00-23:59"
     };
 
     return (

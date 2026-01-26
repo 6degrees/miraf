@@ -50,8 +50,8 @@ export default function Banner() {
                     muted
                     loop
                     playsInline
-                    preload="none"
-                    aria-hidden="true"
+                    preload="metadata"
+                    aria-label="Miraf District promotional video showing modern architecture and lifestyle"
                     title="Miraf District promotional video showing modern architecture and lifestyle"
                 />
                 <div className="absolute inset-0" style={{background: "linear-gradient(180deg, rgba(26,13,13,0) 0%, rgba(87,30,31,0.34) 46%, rgba(87,30,31,0.62) 70%, rgba(74,17,18,0.78) 85%, rgba(56,7,9,0.92) 100%)",}}/>

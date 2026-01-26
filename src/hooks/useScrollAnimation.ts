@@ -58,6 +58,8 @@ export function useScrollAnimation<T extends HTMLElement = HTMLDivElement>(
         const delayMs = Math.max(0, delay) * 1000;
 
         // Initialize IntersectionObserver
+        let timeoutId: NodeJS.Timeout | null = null;
+        
         const io = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -70,13 +72,15 @@ export function useScrollAnimation<T extends HTMLElement = HTMLDivElement>(
                     };
 
                     if (delayMs > 0) {
+                        // Clear any existing timeout
+                        if (timeoutId) {
+                            clearTimeout(timeoutId);
+                        }
                         // Add delay before triggering the animation
-                        const timeout = window.setTimeout(() => {
+                        timeoutId = window.setTimeout(() => {
                             requestAnimationFrame(trigger);
+                            timeoutId = null;
                         }, delayMs);
-
-                        // Cleanup timeout if component unmounts early
-                        return () => window.clearTimeout(timeout);
                     } else {
                         requestAnimationFrame(trigger);
                     }
@@ -92,6 +96,9 @@ export function useScrollAnimation<T extends HTMLElement = HTMLDivElement>(
 
         // Cleanup observer on unmount
         return () => {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
             io.disconnect();
         };
     }, [threshold, rootMargin, triggerOnce, delay]);

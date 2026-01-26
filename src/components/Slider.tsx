@@ -61,9 +61,18 @@ function useIsMobile(initial = true) {
         typeof window !== "undefined" ? window.innerWidth < BREAKPOINT : initial
     );
     useEffect(() => {
-        const onResize = () => setIsMobile(window.innerWidth < BREAKPOINT);
+        let timeoutId: NodeJS.Timeout;
+        const onResize = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                setIsMobile(window.innerWidth < BREAKPOINT);
+            }, 150); // Debounce resize events
+        };
         window.addEventListener("resize", onResize, { passive: true });
-        return () => window.removeEventListener("resize", onResize);
+        return () => {
+            clearTimeout(timeoutId);
+            window.removeEventListener("resize", onResize);
+        };
     }, []);
     return [isMobile, setIsMobile] as const;
 }
@@ -146,7 +155,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
     const [isMobile, setIsMobile] = useIsMobile(true);
     useEffect(() => {
         if (!isUseGSAP) setIsMobile(true);
-    }, [isUseGSAP, setIsMobile]);
+    }, [isUseGSAP]);
     const [index, setIndex] = useState(0);
     const swiperRef = useRef<SwiperCore | null>(null);
     const hostRef = useRef<HTMLElement | null>(null);
@@ -154,6 +163,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
     const stRef = useRef<ScrollTrigger | null>(null);
     const ctxRef = useRef<gsap.Context | null>(null);
     const bpMemo = useMemo(() => breakpoints ?? defaultBreakpoints, [breakpoints]);
+    const gsapSizeMemo = useMemo(() => gsapSize, [gsapSize]);
 
     /*
     |----------------------------------------------------------------------
@@ -171,12 +181,14 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
         ctxRef.current?.revert();
         ctxRef.current = gsap.context(() => {
             const panels = slideRefs.current.filter(Boolean);
+            if (panels.length === 0) return;
+            
             const xPercentTotal = (panels.length - 1) * 100;
             const xPercent = isRTL ? xPercentTotal : -xPercentTotal;
             
             // Calculate panel width and height based on screen size
             panels.forEach((el, i) => {
-                let size = Array.isArray(gsapSize) ? gsapSize[i] || gsapSize[0] : gsapSize;
+                let size = Array.isArray(gsapSizeMemo) ? gsapSizeMemo[i] || gsapSizeMemo[0] : gsapSizeMemo;
                 if (isMobile) {
                     // On mobile, each panel takes full width and height
                     el.style.width = `${host.clientWidth}px`;
@@ -186,7 +198,11 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
                     el.style.width = `${host.clientWidth / size}px`;
                     el.style.height = "100%";
                 }
-                (el.style as any)[isRTL ? "marginLeft" : "marginRight"] = "0%";
+                if (isRTL) {
+                    el.style.marginLeft = "0%";
+                } else {
+                    el.style.marginRight = "0%";
+                }
             });
             
             const tween = gsap.to(panels, {
@@ -217,7 +233,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
             ctxRef.current?.revert();
             stRef.current = null;
         };
-    }, [id, dir, isRTL, isMobile, total, isUseGSAP, gsapSize]);
+    }, [id, isRTL, isMobile, total, isUseGSAP, gsapSizeMemo]);
 
     /*
     |----------------------------------------------------------------------
@@ -264,7 +280,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
             className={cn("thecontainer relative", bgClass, textClass, isMobile && isUseGSAP ? "h-screen h-dvh" : heightClass, className)} 
             style={style} 
             dir={dir} 
-            ref={isUseGSAP ? (hostRef as any) : undefined}
+            ref={isUseGSAP ? (hostRef as React.RefObject<HTMLElement>) : undefined}
         >
             {background && <div className="absolute inset-0 -z-10 pointer-events-none">{background}</div>}
 
