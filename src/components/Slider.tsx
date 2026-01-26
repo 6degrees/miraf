@@ -256,7 +256,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
     return (
         <section 
             id={id} 
-            className={cn("thecontainer relative", bgClass, textClass, isMobile ? "h-screen h-dvh overflow-hidden" : heightClass, className)} 
+            className={cn("thecontainer relative", bgClass, textClass, heightClass, className)} 
             style={style} 
             dir={dir} 
             ref={!isMobile ? (hostRef as any) : undefined}
@@ -273,22 +273,14 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
                     spaceBetween={0} 
                     breakpoints={bpMemo} 
                     allowTouchMove={true}
-                    speed={600}
-                    resistance={true}
-                    resistanceRatio={0.85}
-                    touchReleaseOnEdges={true}
                     onBeforeInit={(s) => (swiperRef.current = s as unknown as SwiperCore)} 
                     onSlideChange={(s) => setIndex(s.realIndex ?? s.activeIndex ?? 0)} 
-                    className={cn(className, "h-screen h-dvh")}
+                    className={className}
                 >
                     {items.map((node, idx) => (
-                        <SwiperSlide 
-                            key={`slide-${id}-${idx}`} 
-                            id={`swiper-slide-${id}-${idx}`}
-                            className="h-screen h-dvh"
-                        >
-                            <div className={cn(containerClass, "h-full")}>
-                                <div className={cn("relative w-full h-full", heightClass)}>{node}</div>
+                        <SwiperSlide key={`slide-${id}-${idx}`} id={`swiper-slide-${id}-${idx}`}>
+                            <div className={containerClass}>
+                                <div className={cn("relative w-full", heightClass)}>{node}</div>
                             </div>
                         </SwiperSlide>
                     ))}

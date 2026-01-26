@@ -55,7 +55,7 @@ export default function District() {
                 1024: { slidesPerView: 1.2, spaceBetween: 0 },
                 1280: { slidesPerView: 1.4, spaceBetween: 0 },
             }}
-            heightClass="h-full min-h-0 sm:min-h-[100vh] supports-[height:100svh]:sm:min-h-[100svh] xl:max-h-[1000px] py-4 sm:py-5 md:py-8 lg:py-14 xl:py-16"
+            heightClass="h-auto min-h-0 sm:min-h-[100vh] supports-[height:100svh]:sm:min-h-[100svh] xl:max-h-[1000px] py-4 sm:py-5 md:py-8 lg:py-14 xl:py-16"
             gsapSize={1.6}
             autoplayDelay={0}
             items={[
