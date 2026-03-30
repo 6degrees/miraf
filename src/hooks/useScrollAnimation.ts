@@ -58,7 +58,7 @@ export function useScrollAnimation<T extends HTMLElement = HTMLDivElement>(
         const delayMs = Math.max(0, delay) * 1000;
 
         // Initialize IntersectionObserver
-        let timeoutId: NodeJS.Timeout | null = null;
+        let timeoutId: number | null = null;
         
         const io = new IntersectionObserver(
             ([entry]) => {
