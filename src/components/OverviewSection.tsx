@@ -94,58 +94,66 @@ export default function OverviewSection() {
                 </div>
                 <div className="hidden lg:block relative h-[78vh]">
                     {/* Miraf Residences - Left */}
-                    <div className="absolute left-[10%] top-[8%] text-center flex flex-col items-center space-y-1">
-                        <div className="flex flex-col items-center space-y-1 text-burgundy">
-                            <Image src="/images/residence.png" alt="Residential buildings icon" width={30} height={30} className="w-8 h-8" priority />
-                            <span className="text-xl font-medium text-burgundy">{t("overview.pins.residences.title")}</span>
-                            <div>
-                                <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.residences.value")}</span>
-                                <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.residences.unit")}</span>
+                    <AnimatedText delay={0} direction="up" duration={0.6}>
+                        <div className="absolute left-[10%] top-[8%] text-center flex flex-col items-center space-y-1">
+                            <div className="flex flex-col items-center space-y-1 text-burgundy">
+                                <Image src="/images/residence.png" alt="Residential buildings icon" width={30} height={30} className="w-8 h-8" priority />
+                                <span className="text-xl font-medium text-burgundy">{t("overview.pins.residences.title")}</span>
+                                <div>
+                                    <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.residences.value")}</span>
+                                    <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.residences.unit")}</span>
+                                </div>
                             </div>
+                            <div className="absolute top-full mt-2 w-[1px] h-[120px] bg-burgundy"></div>
                         </div>
-                        <div className="absolute top-full mt-2 w-[1px] h-[120px] bg-burgundy"></div>
-                    </div>
-                    
+                    </AnimatedText>
+
                     {/* The Plaza at Miraf - Center Left */}
-                    <div className="absolute left-[35%] top-[8%] text-center flex flex-col items-center space-y-1">
-                        <div className="flex flex-col items-center space-y-1 text-burgundy">
-                            <Image src="/images/plaza.png" alt="Shopping plaza icon" width={30} height={30} className="w-8 h-8" priority />
-                            <span className="text-xl font-medium text-burgundy">{t("overview.pins.plaza.title")}</span>
-                            <span className="text-base text-burgundy kanun">{t("overview.pins.plaza.subtitle")}</span>
-                            <div>
-                                <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.plaza.value")}</span>
-                                <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.plaza.unit")}</span>
+                    <AnimatedText delay={0.1} direction="up" duration={0.6}>
+                        <div className="absolute left-[35%] top-[8%] text-center flex flex-col items-center space-y-1">
+                            <div className="flex flex-col items-center space-y-1 text-burgundy">
+                                <Image src="/images/plaza.png" alt="Shopping plaza icon" width={30} height={30} className="w-8 h-8" priority />
+                                <span className="text-xl font-medium text-burgundy">{t("overview.pins.plaza.title")}</span>
+                                <span className="text-base text-burgundy kanun">{t("overview.pins.plaza.subtitle")}</span>
+                                <div>
+                                    <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.plaza.value")}</span>
+                                    <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.plaza.unit")}</span>
+                                </div>
                             </div>
+                            <div className="absolute top-full mt-2 w-[1px] h-[450px] bg-burgundy"></div>
                         </div>
-                        <div className="absolute top-full mt-2 w-[1px] h-[450px] bg-burgundy"></div>
-                    </div>
-                    
+                    </AnimatedText>
+
                     {/* Business Tower - Center Right */}
-                    <div className="absolute left-[60%] top-[8%] text-center flex flex-col items-center space-y-1">
-                        <div className="flex flex-col items-center space-y-1 text-burgundy">
-                            <Image src="/images/business.png" alt="Business tower icon" width={30} height={30} className="w-8 h-8" priority />
-                            <span className="text-xl font-medium text-burgundy">{t("overview.pins.tower.title")}</span>
-                            <span className="text-base text-burgundy kanun">{t("overview.pins.tower.subtitle")}</span>
-                            <div>
-                                <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.tower.value")}</span>
-                                <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.tower.unit")}</span>
+                    <AnimatedText delay={0.2} direction="up" duration={0.6}>
+                        <div className="absolute left-[60%] top-[8%] text-center flex flex-col items-center space-y-1">
+                            <div className="flex flex-col items-center space-y-1 text-burgundy">
+                                <Image src="/images/business.png" alt="Business tower icon" width={30} height={30} className="w-8 h-8" priority />
+                                <span className="text-xl font-medium text-burgundy">{t("overview.pins.tower.title")}</span>
+                                <span className="text-base text-burgundy kanun">{t("overview.pins.tower.subtitle")}</span>
+                                <div>
+                                    <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.tower.value")}</span>
+                                    <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.tower.unit")}</span>
+                                </div>
                             </div>
+                            <div className="absolute top-full mt-2 w-[1px] h-[60px] bg-burgundy"></div>
                         </div>
-                        <div className="absolute top-full mt-2 w-[1px] h-[60px] bg-burgundy"></div>
-                    </div>
-                    
+                    </AnimatedText>
+
                     {/* Hotel INDIGO - Right */}
-                    <div className="absolute right-[10%] top-[8%] text-center flex flex-col items-center space-y-1">
-                        <div className="flex flex-col items-center space-y-1 text-burgundy">
-                            <Image src="/images/hotel.png" alt="Hotel building icon" width={30} height={30} className="w-8 h-8" priority />
-                            <span className="text-xl font-medium text-burgundy">{t("overview.pins.hotel.title")}</span>
-                            <div>
-                                <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.hotel.value")}</span>
-                                <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.hotel.unit")}</span>
+                    <AnimatedText delay={0.3} direction="up" duration={0.6}>
+                        <div className="absolute right-[10%] top-[8%] text-center flex flex-col items-center space-y-1">
+                            <div className="flex flex-col items-center space-y-1 text-burgundy">
+                                <Image src="/images/hotel.png" alt="Hotel building icon" width={30} height={30} className="w-8 h-8" priority />
+                                <span className="text-xl font-medium text-burgundy">{t("overview.pins.hotel.title")}</span>
+                                <div>
+                                    <span className="text-4xl font-bold uppercase kanun text-burgundy">{t("overview.pins.hotel.value")}</span>
+                                    <span className="ms-2 text-base text-burgundy kanun">{t("overview.pins.hotel.unit")}</span>
+                                </div>
                             </div>
+                            <div className="absolute top-full mt-2 w-[1px] h-[150px] bg-burgundy"></div>
                         </div>
-                        <div className="absolute top-full mt-2 w-[1px] h-[150px] bg-burgundy"></div>
-                    </div>
+                    </AnimatedText>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center sm:items-end justify-center sm:justify-between gap-6 sm:gap-8 pt-8 sm:pt-10 pb-3 mb-2">

@@ -231,14 +231,11 @@ export default function CommunitySignupSection(
                                         <label className="block text-sm mb-2 font-kanun">{t("signup.form.requestType.label")}</label>
                                         <select name="inp_9143" className={`appearance-none pr-6 ${inputClass("inp_9143")}`} defaultValue="" aria-required="true" aria-describedby={fieldErrors.inp_9143 ? "err-requestType" : undefined}>
                                             <option value="" disabled>{t("signup.form.requestType.options.0")}</option>
-                                            <option value="1">Miraf District</option>
-                                            <option value="2">Merkan Quarter</option>
-                                            <option value="3">Refad Compound</option>
-                                            <option value="4">Logistics Solutions</option>
-                                            <option value="5">Partnership & Investment</option>
-                                            <option value="6">Support</option>
-                                            <option value="7">HR Department</option>
-                                            <option value="8">Vendor Registration</option>
+                                            {[1, 2, 3, 4, 5].map((i) => (
+                                                <option key={i} value={t(`signup.form.requestType.options.${i}`)}>
+                                                    {t(`signup.form.requestType.options.${i}`)}
+                                                </option>
+                                            ))}
                                         </select>
                                         {fieldErrors.inp_9143 && <p id="err-requestType" className="mt-1 text-xs text-red-600">{fieldErrors.inp_9143}</p>}
                                     </div>
