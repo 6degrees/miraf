@@ -90,7 +90,9 @@ export default function Header() {
                     <button
                         onClick={() => setMenuOpen(o => !o)}
                         className="lg:hidden inline-flex items-center justify-center rounded-xl p-2 bg-white/10 ring-1 ring-white/15 backdrop-blur"
-                        aria-label="Open menu">
+                        aria-label={menuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={menuOpen}
+                        aria-controls="mobile-menu">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" className="h-8 w-8">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16" />
@@ -100,7 +102,7 @@ export default function Header() {
             </div>
 
             {/* Sidebar (mobile) */}
-            <div className={`fixed inset-y-0 left-0 z-40 w-64 bg-[rgba(74,17,18,0.92)] backdrop-blur-md ring-1 ring-white/10 transform transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}>
+            <div id="mobile-menu" className={`fixed inset-y-0 left-0 z-40 w-64 bg-[rgba(74,17,18,0.92)] backdrop-blur-md ring-1 ring-white/10 transform transition-transform duration-300 ease-in-out ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}>
                 <div className="px-6 py-6 space-y-3 text-md text-white">
                     <Link className="block py-2 text-white hover:text-blush transition-colors duration-300" href="/#district" onClick={() => setMenuOpen(false)}>{t("nav.district")}</Link>
                     <Link className="block py-2 text-white hover:text-blush transition-colors duration-300" href="/#overview" onClick={() => setMenuOpen(false)}>{t("nav.overview")}</Link>

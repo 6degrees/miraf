@@ -6,6 +6,7 @@ import I18nProvider from "@/providers/I18nProvider";
 import LangDirEffect from "@/components/LangDirEffect";
 import AppLoaderProvider from "@/providers/AppLoaderProvider";
 import CustomCursor from "@/components/CustomCursor";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +17,19 @@ import CustomCursor from "@/components/CustomCursor";
 | You can add title, description, and icons here.
 |
 */
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+};
+
 export const metadata = {
-    metadataBase: new URL('https://miraf.refad.com.sa'),
+    metadataBase: new URL('https://mirafdistrict.refad.com.sa'),
     title: {
         default: "Miraf District - Premium Mixed-Use Development in Khobar, Saudi Arabia",
         template: "%s | Miraf District"
     },
     description: "Discover Miraf District, a premium mixed-use development in Khobar featuring 152 residential units, 20,202 sqm of business offices, retail spaces, and Hotel INDIGO with 240 keys. Experience luxury living in the heart of Saudi Arabia.",
-    viewport: {
-        width: 'device-width',
-        initialScale: 1,
-        maximumScale: 5,
-    },
     keywords: [
         "Miraf District",
         "Khobar real estate",
@@ -54,21 +56,21 @@ export const metadata = {
         telephone: false,
     },
     alternates: {
-        canonical: 'https://miraf.refad.com.sa/',
+        canonical: 'https://mirafdistrict.refad.com.sa/',
         languages: {
-            'en': 'https://miraf.refad.com.sa/?lang=en',
-            'ar': 'https://miraf.refad.com.sa/?lang=ar',
-            'x-default': 'https://miraf.refad.com.sa/',
+            'en': 'https://mirafdistrict.refad.com.sa/?lang=en',
+            'ar': 'https://mirafdistrict.refad.com.sa/?lang=ar',
+            'x-default': 'https://mirafdistrict.refad.com.sa/',
         },
     },
     openGraph: {
         title: "Miraf District - Premium Mixed-Use Development in Khobar",
         description: "Discover Miraf District, a premium mixed-use development in Khobar featuring 152 residential units, 20,202 sqm of business offices, retail spaces, and Hotel INDIGO with 240 keys.",
-        url: 'https://miraf.refad.com.sa',
+        url: 'https://mirafdistrict.refad.com.sa',
         siteName: 'Miraf District',
         images: [
             {
-                url: 'https://miraf.refad.com.sa/images/miraf-og.png',
+                url: 'https://mirafdistrict.refad.com.sa/images/miraf-og.png',
                 width: 1200,
                 height: 630,
                 alt: 'Miraf District - Premium Mixed-Use Development',
@@ -95,9 +97,7 @@ export const metadata = {
             'max-snippet': -1,
         },
     },
-    verification: {
-        google: 'your-google-verification-code',
-    },
+    // verification: { google: 'INSERT_GOOGLE_SEARCH_CONSOLE_CODE_HERE' },
     other: {
         'theme-color': '#471e1b',
         'mobile-web-app-capable': 'yes',
@@ -227,14 +227,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang={i18n.language || "en"} dir={i18n.language === "ar" ? "rtl" : "ltr"}>
         <body className={[abcArizonaSerif.variable, angieSansPro.variable, graphikArabic.variable, kanunAR.variable, lyonArabic.variable,].join(" ")}>
         <CustomCursor />
-        <AppLoaderProvider>
-            <AppProvider>
-                <I18nProvider>
-                    <LangDirEffect />
-                    {children}
-                </I18nProvider>
-            </AppProvider>
-        </AppLoaderProvider>
+        <ErrorBoundary>
+            <AppLoaderProvider>
+                <AppProvider>
+                    <I18nProvider>
+                        <LangDirEffect />
+                        {children}
+                    </I18nProvider>
+                </AppProvider>
+            </AppLoaderProvider>
+        </ErrorBoundary>
 
         </body>
         </html>

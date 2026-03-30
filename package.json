@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -21,6 +22,7 @@
     "swiper": "^12.0.2"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.5.14",
     "@tailwindcss/postcss": "^4",
     "@types/leaflet": "^1.9.21",
     "@types/node": "^20",
