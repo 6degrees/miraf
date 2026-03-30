@@ -65,6 +65,7 @@ export default function About() {
         <Slider
             id="about"
             dir={direction}
+            fadeIn
             bgClass={'bg-burgundy'}
             heightClass="h-[100vh] min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px] py-2 sm:py-0"
             containerClass={'container-s'}

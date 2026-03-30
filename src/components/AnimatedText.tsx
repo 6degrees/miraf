@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 /*
@@ -20,7 +21,7 @@ interface AnimatedTextProps {
     duration?: number; // Transition duration (in seconds)
 }
 
-export default function AnimatedText({
+function AnimatedText({
                                          children,
                                          className = '',
                                          delay = 0,
@@ -87,3 +88,5 @@ export default function AnimatedText({
         </div>
     );
 }
+
+export default memo(AnimatedText);

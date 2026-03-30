@@ -1,5 +1,6 @@
 "use client";
 
+import { memo, useState } from "react";
 import Image from "next/image";
 
 /*
@@ -36,7 +37,7 @@ type ImageCardProps = {
 | - Fully responsive with adjustable height via Tailwind props
 |
 */
-export default function ImageCard(
+function ImageCard(
     {
         src,
         alt = "",
@@ -45,6 +46,7 @@ export default function ImageCard(
         overlay = false,
         className = "",
     }: ImageCardProps) {
+    const [imgError, setImgError] = useState(false);
 
     /*
     |--------------------------------------------------------------------------
@@ -60,7 +62,11 @@ export default function ImageCard(
     return (
         <section className={`relative w-full h-full text-white overflow-hidden ${className}`}>
             {/* Background Image */}
-            <Image src={src} alt={alt} fill loading="lazy" sizes="100vw" className="object-cover object-center -z-10"/>
+            {imgError ? (
+                <div className="absolute inset-0 bg-stone-200 -z-10" aria-hidden="true" />
+            ) : (
+                <Image src={src} alt={alt} fill loading="lazy" sizes="100vw" className="object-cover object-center -z-10" onError={() => setImgError(true)}/>
+            )}
 
             {/* Optional overlay gradient */}
             {overlay && (
@@ -82,3 +88,5 @@ export default function ImageCard(
         </section>
     );
 }
+
+export default memo(ImageCard);

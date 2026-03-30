@@ -130,15 +130,27 @@ export default {
                 label: "Request Type",
                 options: [
                     "Choose…",
-                    "Other"
+                    "Residential units sales",
+                    "Offices leasing",
+                    "Retail leasing",
+                    "Investment & Partnerships",
+                    "Suppliers"
                 ]
             },
             subject: {
                 label: "Subject",
             },
             send: {
-                label: "Send"
-            }
+                label: "Send",
+                sending: "Sending…"
+            },
+            errors: {
+                required: "This field is required",
+                email: "Please enter a valid email address",
+                phone: "Please enter a valid phone number",
+            },
+            success: "Thank you! We'll be in touch soon.",
+            error: "Something went wrong. Please try again.",
         }
     },
     footer: {

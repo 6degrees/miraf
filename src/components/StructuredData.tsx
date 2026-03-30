@@ -19,11 +19,11 @@ export default function StructuredData() {
         "@type": ["RealEstateProject", "LocalBusiness"],
         "name": "Miraf District",
         "description": t("about.0.cards.0.body"),
-        "url": "https://miraf.refad.com.sa",
+        "url": "https://mirafdistrict.refad.com.sa",
         "image": [
-            "https://miraf.refad.com.sa/images/miraf_renders_10edited.png",
-            "https://miraf.refad.com.sa/images/full_project.png",
-            "https://miraf.refad.com.sa/images/02_Cam1_Road_Front_Building_06.jpg"
+            "https://mirafdistrict.refad.com.sa/images/miraf_renders_10edited.png",
+            "https://mirafdistrict.refad.com.sa/images/full_project.png",
+            "https://mirafdistrict.refad.com.sa/images/02_Cam1_Road_Front_Building_06.jpg"
         ],
         "address": {
             "@type": "PostalAddress",
@@ -43,7 +43,7 @@ export default function StructuredData() {
             "name": "Refad Development",
             "url": "https://refad.com.sa",
             "description": t("developer.bodyTop"),
-            "logo": "https://miraf.refad.com.sa/icons/Refad%20Logo.png"
+            "logo": "https://mirafdistrict.refad.com.sa/icons/Refad%20Logo.png"
         },
         "amenities": [
             "Residential Towers",

@@ -48,6 +48,7 @@ export default function District() {
         <Slider
             id="district"
             dir={direction}
+            fadeIn
             breakpoints={{
                 0: {slidesPerView: 1, spaceBetween: 0},
                 640: {slidesPerView: 1, spaceBetween: 0},

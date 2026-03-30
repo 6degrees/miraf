@@ -21,8 +21,12 @@ export default function CustomCursor() {
 
     useEffect(() => {
         const cursor = cursorRef.current;
-        
+
         if (!cursor) return;
+
+        // Respect user's motion preference — don't render a custom cursor if they
+        // prefer reduced motion, as the continuous rAF loop could be distracting.
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
         let mouseX = 0;
         let mouseY = 0;
