@@ -31,7 +31,7 @@ export default function PinnedButtons() {
                 {/* Register Interest Button */}
                 <Link
                     href="#register"
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blush hover:bg-blush/80 flex items-center justify-center transition-colors duration-300 group"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blush hover:bg-blush/80 flex items-center justify-center transition-colors duration-300 group focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2"
                     aria-label={t("nav.register")}
                     title={t("nav.register")}
                 >
@@ -49,7 +49,7 @@ export default function PinnedButtons() {
                     href="/documents/miraf.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blush hover:bg-blush/80 flex items-center justify-center transition-colors duration-300 group"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blush hover:bg-blush/80 flex items-center justify-center transition-colors duration-300 group focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2"
                     aria-label={t("overview.cta")}
                     title={t("overview.cta")}
                 >
@@ -67,7 +67,7 @@ export default function PinnedButtons() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blush hover:bg-blush/80 flex items-center justify-center transition-colors duration-300 group"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blush hover:bg-blush/80 flex items-center justify-center transition-colors duration-300 group focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2"
                     aria-label="Contact Miraf on WhatsApp"
                     title="Contact Miraf on WhatsApp"
                 >

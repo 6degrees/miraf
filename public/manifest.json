@@ -1,0 +1,13 @@
+{
+  "name": "Miraf District",
+  "short_name": "Miraf",
+  "description": "Premium Mixed-Use Development in Khobar",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F3E6D6",
+  "theme_color": "#471e1b",
+  "icons": [
+    { "src": "/icons/favicon.ico", "sizes": "48x48", "type": "image/x-icon" },
+    { "src": "/icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

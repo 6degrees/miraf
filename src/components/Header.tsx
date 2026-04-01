@@ -54,34 +54,34 @@ export default function Header() {
             <div className="container-x">
                 <div className="flex items-start justify-between w-full py-5">
                     {/* Logo */}
-                    <a href="#" className="flex items-center select-none">
+                    <Link href="/" className="flex items-center select-none focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2 rounded">
                         <Image src="/icons/logo.png" alt="Miraf District Logo" width={100} height={60} priority className="h-28 w-28 md:h-32 md:w-32 object-contain"/>
-                    </a>
+                    </Link>
 
                     {/* Desktop nav */}
                     <nav className="hidden lg:flex items-center gap-8 text-md font-medium">
-                        <Link href="/#district" className="relative text-white hover:text-blush transition-colors duration-300 group">
+                        <Link href="/#district" className="relative text-white hover:text-blush transition-colors duration-300 group focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded">
                             {t("nav.district")}
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blush transition-all duration-300 group-hover:w-full"></span>
                         </Link>
-                        <Link href="/#overview" className="relative text-white hover:text-blush transition-colors duration-300 group">
+                        <Link href="/#overview" className="relative text-white hover:text-blush transition-colors duration-300 group focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded">
                             {t("nav.overview")}
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blush transition-all duration-300 group-hover:w-full"></span>
                         </Link>
-                        <Link href="/#gallery" className="relative text-white hover:text-blush transition-colors duration-300 group">
+                        <Link href="/#gallery" className="relative text-white hover:text-blush transition-colors duration-300 group focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded">
                             {t("nav.gallery")}
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blush transition-all duration-300 group-hover:w-full"></span>
                         </Link>
-                        <Link href="/#developer" className="relative text-white hover:text-blush transition-colors duration-300 group">
+                        <Link href="/#developer" className="relative text-white hover:text-blush transition-colors duration-300 group focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded">
                             {t("nav.developer")}
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blush transition-all duration-300 group-hover:w-full"></span>
                         </Link>
-                        <Link href="/#register" className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 hover:border-blush/60 hover:text-blush transition-all duration-300 kanun">
+                        <Link href="/#register" className="rounded-full border border-white/40 px-4 py-2 hover:bg-white/10 hover:border-blush/60 hover:text-blush transition-all duration-300 kanun focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2 focus-visible:ring-offset-transparent">
                             {t("nav.register")}
                         </Link>
                         <button
                             onClick={() => handleLanguageSelection(selectedLanguage)}
-                            className={`cursor-pointer text-white hover:text-blush transition-colors duration-300 bold kanun ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}>
+                            className={`cursor-pointer text-white hover:text-blush transition-colors duration-300 bold kanun focus-visible:ring-2 focus-visible:ring-blush focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded ${selectedLanguage === 'ar' ? "en-display" : "ar-display"}`}>
                             {selectedLanguage === 'ar' ? "En" : "عربي"}
                         </button>
                     </nav>
@@ -89,7 +89,7 @@ export default function Header() {
                     {/* Mobile button */}
                     <button
                         onClick={() => setMenuOpen(o => !o)}
-                        className="lg:hidden inline-flex items-center justify-center rounded-xl p-2 bg-white/10 ring-1 ring-white/15 backdrop-blur"
+                        className="lg:hidden inline-flex items-center justify-center rounded-xl p-2 bg-white/10 ring-1 ring-white/15 backdrop-blur focus-visible:ring-2 focus-visible:ring-blush"
                         aria-label={menuOpen ? "Close menu" : "Open menu"}
                         aria-expanded={menuOpen}
                         aria-controls="mobile-menu">
