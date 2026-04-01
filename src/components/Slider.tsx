@@ -32,7 +32,7 @@ export type SliderProps = {
     heightClass?: string;
     breakpoints?: Record<number, { slidesPerView: number; spaceBetween: number }>;
     isUseGSAP?: boolean;
-    gsapSize?: any;
+    gsapSize?: number | number[];
     hasFooter?: boolean;
     fadeIn?: boolean;
 };

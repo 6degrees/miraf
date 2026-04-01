@@ -129,7 +129,7 @@ export default function Footer(
                                     <li key={item.label}>
                                         <Link
                                             href={item.href}
-                                            className="relative text-burgundy hover:text-burgundy/70 transition-colors duration-300 group"
+                                            className="relative text-burgundy hover:text-burgundy/70 transition-colors duration-300 group focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
                                         >
                                             {item.label}
                                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-burgundy/70 transition-all duration-300 group-hover:w-full"></span>
@@ -155,7 +155,7 @@ export default function Footer(
                                     <Link
                                         href={socials.linkedin}
                                         aria-label="Visit Miraf on LinkedIn"
-                                        className="inline-flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -174,7 +174,7 @@ export default function Footer(
                                     <Link
                                         href={socials.instagram}
                                         aria-label="Follow Miraf on Instagram"
-                                        className="inline-flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -193,7 +193,7 @@ export default function Footer(
                                     <Link
                                         href={socials.x}
                                         aria-label="Follow Miraf on X (Twitter)"
-                                        className="inline-flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -212,7 +212,7 @@ export default function Footer(
                                     <Link
                                         href={socials.whatsapp}
                                         aria-label="Contact Miraf on WhatsApp"
-                                        className="inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300"
+                                        className="inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -230,12 +230,12 @@ export default function Footer(
                             {/* Contact Info */}
                             <div className="text-sm leading-6">
                                 <div>
-                                    <a href={`mailto:${email}`} className="text-burgundy hover:text-burgundy/70 transition-colors duration-300">
+                                    <a href={`mailto:${email}`} className="text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded">
                                         {email}
                                     </a>
                                 </div>
                                 <div>
-                                    <a href={`tel:${phone}`} className="text-burgundy hover:text-burgundy/70 transition-colors duration-300">
+                                    <a href={`tel:${phone}`} className="text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded">
                                         {phone}
                                     </a>
                                 </div>

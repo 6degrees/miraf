@@ -89,7 +89,7 @@ export default function Developer(
                         <div className="relative w-[180px] sm:w-[220px] lg:w-[140px] pt-0 lg:pt-9">
                             <Image src={logoSrc} alt={logoAlt} width={180} height={180} className="object-contain image-hover"/>
                         </div>
-                        {decoSrc && (<Image src={decoSrc} alt="Decorative element" width={100} height={40} className="object-contain image-hover" loading="lazy"/>)}
+                        {decoSrc && (<Image src={decoSrc} alt="" aria-hidden="true" width={100} height={40} className="object-contain image-hover" loading="lazy"/>)}
                     </div>
                 </AnimatedText>
                 <AnimatedText delay={0.2} direction="up" duration={0.8}>

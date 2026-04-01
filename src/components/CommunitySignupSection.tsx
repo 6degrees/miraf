@@ -143,7 +143,7 @@ export default function CommunitySignupSection(
         formData.forEach((value, key) => params.append(key, value.toString()));
 
         try {
-            // Send GET request to Emarsys
+            // Send GET request to Emarsys (no-cors: response is opaque, so always treat as success)
             await fetch(`https://link.by.refad.com.sa/u/register.php?${params.toString()}`, {
                 method: "GET",
                 mode: "no-cors",
@@ -153,6 +153,7 @@ export default function CommunitySignupSection(
             form.reset();
             setCountryCode("+966");
         } catch {
+            // Network failure (offline, DNS error, etc.)
             setIsError(true);
         } finally {
             setIsLoading(false);
@@ -200,36 +201,36 @@ export default function CommunitySignupSection(
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
                                     {/* First Name */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.firstName.label")}</label>
-                                        <input type="text" name="inp_1" className={inputClass("inp_1")} aria-required="true" aria-describedby={fieldErrors.inp_1 ? "err-firstName" : undefined}/>
+                                        <label htmlFor="inp_1" className="block text-sm mb-2 font-kanun">{t("signup.form.firstName.label")}</label>
+                                        <input id="inp_1" type="text" name="inp_1" className={inputClass("inp_1")} aria-required="true" aria-describedby={fieldErrors.inp_1 ? "err-firstName" : undefined}/>
                                         {fieldErrors.inp_1 && <p id="err-firstName" className="mt-1 text-xs text-red-600">{fieldErrors.inp_1}</p>}
                                     </div>
 
                                     {/* Last Name */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.surname.label")}</label>
-                                        <input type="text" name="inp_2" className={inputClass("inp_2")} aria-required="true" aria-describedby={fieldErrors.inp_2 ? "err-surname" : undefined}/>
+                                        <label htmlFor="inp_2" className="block text-sm mb-2 font-kanun">{t("signup.form.surname.label")}</label>
+                                        <input id="inp_2" type="text" name="inp_2" className={inputClass("inp_2")} aria-required="true" aria-describedby={fieldErrors.inp_2 ? "err-surname" : undefined}/>
                                         {fieldErrors.inp_2 && <p id="err-surname" className="mt-1 text-xs text-red-600">{fieldErrors.inp_2}</p>}
                                     </div>
 
                                     {/* Email */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.email.label")}</label>
-                                        <input type="email" name="inp_3" className={inputClass("inp_3")} aria-required="true" aria-describedby={fieldErrors.inp_3 ? "err-email" : undefined}/>
+                                        <label htmlFor="inp_3" className="block text-sm mb-2 font-kanun">{t("signup.form.email.label")}</label>
+                                        <input id="inp_3" type="email" name="inp_3" className={inputClass("inp_3")} aria-required="true" aria-describedby={fieldErrors.inp_3 ? "err-email" : undefined}/>
                                         {fieldErrors.inp_3 && <p id="err-email" className="mt-1 text-xs text-red-600">{fieldErrors.inp_3}</p>}
                                     </div>
 
                                     {/* Phone */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.phone.label")}</label>
-                                        <input type="tel" name="inp_15" className={inputClass("inp_15")} aria-describedby={fieldErrors.inp_15 ? "err-phone" : undefined}/>
+                                        <label htmlFor="inp_15" className="block text-sm mb-2 font-kanun">{t("signup.form.phone.label")}</label>
+                                        <input id="inp_15" type="tel" name="inp_15" className={inputClass("inp_15")} aria-describedby={fieldErrors.inp_15 ? "err-phone" : undefined}/>
                                         {fieldErrors.inp_15 && <p id="err-phone" className="mt-1 text-xs text-red-600">{fieldErrors.inp_15}</p>}
                                     </div>
 
                                     {/* Request Type */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.requestType.label")}</label>
-                                        <select name="inp_9143" className={`appearance-none pr-6 ${inputClass("inp_9143")}`} defaultValue="" aria-required="true" aria-describedby={fieldErrors.inp_9143 ? "err-requestType" : undefined}>
+                                        <label htmlFor="inp_9143" className="block text-sm mb-2 font-kanun">{t("signup.form.requestType.label")}</label>
+                                        <select id="inp_9143" name="inp_9143" className={`appearance-none pr-6 ${inputClass("inp_9143")}`} defaultValue="" aria-required="true" aria-describedby={fieldErrors.inp_9143 ? "err-requestType" : undefined}>
                                             <option value="" disabled>{t("signup.form.requestType.options.0")}</option>
                                             {[1, 2, 3, 4, 5].map((i) => (
                                                 <option key={i} value={t(`signup.form.requestType.options.${i}`)}>
@@ -242,8 +243,8 @@ export default function CommunitySignupSection(
 
                                     {/* Subject */}
                                     <div className="sm:col-span-2">
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.subject.label")}</label>
-                                        <input type="text" name="inp_9141" className={inputClass("inp_9141")}/>
+                                        <label htmlFor="inp_9141" className="block text-sm mb-2 font-kanun">{t("signup.form.subject.label")}</label>
+                                        <input id="inp_9141" type="text" name="inp_9141" className={inputClass("inp_9141")}/>
                                     </div>
                                 </div>
 
