@@ -36,7 +36,7 @@ function DistrictCard({
     | No fixed height in `svh`. Image shrinks naturally on small screens.
     */
     const ImageBlock = (
-        <div className="relative w-full rounded-[22px] overflow-hidden aspect-[16/10]">
+        <div className="relative w-full rounded-[22px] overflow-hidden aspect-[4/4] sm:aspect-[16/10]">
             {imgError ? (
                 <div className="absolute inset-0 bg-stone-200 rounded-[22px]" aria-hidden="true" />
             ) : (
