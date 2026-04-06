@@ -151,7 +151,7 @@ export default function District({section}: { section: any }) {
                 */
                 (() => {
                     const last = items[items.length - 1];
-                    const t = splitTitle(getTitle(last));
+                    const t = getTitle(last).split(' ');
 
                     return (
                         <MapCard
@@ -160,9 +160,9 @@ export default function District({section}: { section: any }) {
                             iconSrc={getIcon(last) || undefined}
                             iconAlt="map"
                             titles={{
-                                line1: t.line1,
-                                line2: t.line2,
-                                line3: t.line3,
+                                line1: selectedLanguage === 'en'? `${t[0]} ${t[1]}` : t[0],
+                                line2: selectedLanguage === 'en'? `${t[2]}` : t[1],
+                                line3: selectedLanguage === 'en'? t.slice(3).join(" "): t.slice(2).join(" "),
                             }}
                             mediaOnTop
                         />
