@@ -46,7 +46,7 @@ export default function MapCard(
     |
     */
     const MediaBlock = (
-        <div className="relative w-full rounded-[22px] overflow-hidden aspect-[16/10]">
+        <div className="relative w-full rounded-[22px] overflow-hidden aspect-[3/4] sm:aspect-[16/10]">
             {media}
         </div>
     );

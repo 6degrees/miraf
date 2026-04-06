@@ -2,11 +2,11 @@
 
 import {useTranslation} from "react-i18next";
 import Slider from "@/components/Slider";
-import {useAppContext} from "@/context/AppContext";
+import {getBaseUrl, useAppContext} from "@/context/AppContext";
 import ShowcaseCard from "@/components/ShowcaseCard";
 import DoubleShowcaseCard from "@/components/DoubleShowcaseCard";
 import SingleShowcaseCard from "@/components/SingleShowcaseCard";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,7 @@ import { useEffect, useState } from "react";
 | Uses Tailwind for responsive typography and layout.
 |
 */
-export default function About() {
+export default function About({section}: { section: any }) {
     /*
     |--------------------------------------------------------------------------
     | $i18n-translator
@@ -31,9 +31,52 @@ export default function About() {
     |
     */
     const {t} = useTranslation();
-    const {direction,} = useAppContext();
+    const {selectedLanguage, direction,} = useAppContext();
     const [isMobile, setIsMobile] = useState(false);
 
+    /*
+    |--------------------------------------------------------------------------
+    | $responsive-detection
+    |--------------------------------------------------------------------------
+    |
+    | Detect screen size to toggle between mobile and desktop layouts.
+    | Uses debounced resize listener to improve performance.
+    |
+    */
+    if (!section) return null;
+    const items = section?.items || [];
+
+    /*
+    |--------------------------------------------------------------------------
+    | $helpers
+    |--------------------------------------------------------------------------
+    |
+    | Resolve localized fields + media URLs
+    |
+    */
+    const getFirstTitle = (item: any) => selectedLanguage === "ar" ? item?.title_1_ar : item?.title_1_en;
+
+    const getSecondTitle = (item: any) => selectedLanguage === "ar" ? item?.title_2_ar : item?.title_2_en;
+
+    const getThirdTitle = (item: any) => selectedLanguage === "ar" ? item?.title_3_ar : item?.title_3_en;
+
+    const getDescription = (item: any) => selectedLanguage === "ar" ? item?.description_ar : item?.description_en;
+
+    const getImage = (item: any) => item?.image?.url ? `${getBaseUrl()}${item.image.url}` : null;
+
+    const getFirstIcon = (item: any) => item?.icons[0]?.url ? `${getBaseUrl()}${item?.icons[0]?.url}` : null;
+
+    const getSecondIcon = (item: any) => item?.icons[1]?.url ? `${getBaseUrl()}${item?.icons[1]?.url}` : null;
+
+    /*
+    |--------------------------------------------------------------------------
+    | $responsive-detection
+    |--------------------------------------------------------------------------
+    |
+    | Detect screen size to toggle between mobile and desktop layouts.
+    | Uses debounced resize listener to improve performance.
+    |
+    */
     useEffect(() => {
         let timeoutId: NodeJS.Timeout;
         const checkMobile = () => {
@@ -43,7 +86,7 @@ export default function About() {
             }, 150); // Debounce resize events
         };
         checkMobile();
-        window.addEventListener('resize', checkMobile, { passive: true });
+        window.addEventListener('resize', checkMobile, {passive: true});
         return () => {
             clearTimeout(timeoutId);
             window.removeEventListener('resize', checkMobile);
@@ -65,50 +108,51 @@ export default function About() {
         <Slider
             id="about"
             dir={direction}
+            fadeIn
             bgClass={'bg-burgundy'}
             heightClass="h-[100vh] min-h-[100vh] supports-[height:100svh]:min-h-[100svh] xl:max-h-[1000px] py-2 sm:py-0"
             containerClass={'container-s'}
-            breakpoints= {{
-                0: { slidesPerView: 1, spaceBetween: 0 },
-                640: { slidesPerView: 1, spaceBetween: 0 },
-                768: { slidesPerView: 1, spaceBetween: 0 },
-                1024: { slidesPerView: 1.1, spaceBetween: 0 },
-                1280: { slidesPerView: 1.2, spaceBetween: 0 },
+            breakpoints={{
+                0: {slidesPerView: 1, spaceBetween: 0},
+                640: {slidesPerView: 1, spaceBetween: 0},
+                768: {slidesPerView: 1, spaceBetween: 0},
+                1024: {slidesPerView: 1.1, spaceBetween: 0},
+                1280: {slidesPerView: 1.2, spaceBetween: 0},
             }}
             items={[
                 <ShowcaseCard
                     layout={'0'}
-                    imageSrc="/images/02_Cam1_Road_Front_Building_06.jpg"
-                    iconSrc1="/icons/ml_icon_16.png"
-                    iconSrc2="/icons/ml_Icon_15.png"
+                    imageSrc={getImage(items[0]) || ''}
+                    iconSrc1={getFirstIcon(items[0]) || ''}
+                    iconSrc2={getSecondIcon(items[0]) || ''}
                     imageAlt="Miraf"
                     caption={t("showcase.0.caption")}
-                    titleLine1={t("showcase.0.title.0")}
-                    titleLine2={t("showcase.0.title.1")}
-                    titleLine3={t("showcase.0.title.2")}
+                    titleLine1={getFirstTitle(items[0])}
+                    titleLine2={getSecondTitle(items[0])}
+                    titleLine3={getThirdTitle(items[0])}
                     roundedClass="rounded-2xl"
                     iconSizeClass1={'h-14 w-14 sm:h-16 sm:w-16 xl:h-20 xl:w-20'}
                     iconSizeClass2={'h-12 w-12 sm:h-14 sm:w-16 xl:h-18 xl:w-18'}
                 />,
                 <ShowcaseCard
                     layout={'1'}
-                    imageSrc="/images/cam09_retail_interior_06.jpg"
+                    imageSrc={getImage(items[1]) || ''}
                     imageAlt="Miraf"
-                    titleLine1={t("showcase.1.title.0")}
-                    titleLine2={t("showcase.1.title.1")}
-                    captionSizeClass ="text-2xl md:text-lg lg:text-2xl xl:text-3xl"
+                    titleLine1={getFirstTitle(items[1])}
+                    titleLine2={getSecondTitle(items[1])}
+                    captionSizeClass="text-2xl md:text-lg lg:text-2xl xl:text-3xl"
                     roundedClass="rounded-2xl"
                 />,
                 <ShowcaseCard
                     layout={'2'}
-                    imageSrc="/images/cam12_office landscape_view_05.jpg"
-                    iconSrc1="/icons/ML_icon-19.png"
-                    iconSrc2="/icons/ML Icon-18.png"
+                    imageSrc={getImage(items[2]) || ''}
+                    iconSrc1={getFirstIcon(items[2]) || ''}
+                    iconSrc2={getSecondIcon(items[2]) || ''}
                     imageAlt="Miraf"
                     roundedClass="rounded-2xl"
-                    titleLine1={t("showcase.2.title.0")}
-                    titleLine2={t("showcase.2.title.1")}
-                    titleLine3={t("showcase.2.title.2")}
+                    titleLine1={getFirstTitle(items[2]) || ''}
+                    titleLine2={getSecondTitle(items[2]) || ''}
+                    titleLine3={getThirdTitle(items[2]) || ''}
                     iconSizeClass1={'h-12 w-12 sm:h-14 sm:w-16 xl:h-18 xl:w-18'}
                 />,
 
@@ -116,24 +160,26 @@ export default function About() {
                     <SingleShowcaseCard
                         key="pilates-mobile"
                         stacked
-                        imageSrc="/images/group_pilates_instructors_exercising_reformers.jpg"
+                        imageSrc={getImage(items[3]) || ''}
                         imageAlt="Pilates Studio"
-                        title={`${t("showcase.3.title.0")} ${t("showcase.3.title.1")}`}
-                        titleLine1={t("showcase.3.title.0")}
-                        titleLine2={t("showcase.3.title.1")}
-                        description={t("showcase.3.caption")}
+                        title={`${getFirstTitle(items[3])} ${getSecondTitle(items[3])}`}
+                        titleLine1={getFirstTitle(items[3]) || ''}
+                        titleLine2={getSecondTitle(items[3]) || ''}
+                        description={getDescription(items[3]) || ''}
                         bgClass="bg-burgundy"
                         roundedClass="rounded-2xl"
                     />,
                     <SingleShowcaseCard
                         key="lifestyle-mobile"
                         stacked
-                        imageSrc="/images/interior_design_with_photoframes_couch.jpg"
+                        imageSrc={getImage(items[4]) || ''}
                         imageAlt="Living room interior"
-                        title={t("showcase.4.title.0")}
-                        description={t("showcase.4.caption")}
-                        descriptionLine2={t("showcase.4.captionLine2", { defaultValue: "" })}
-                        icon="/icons/ml_Icon_17.png"
+                        title={`${getFirstTitle(items[4])} ${getSecondTitle(items[4])}`}
+                        titleLine1={getFirstTitle(items[4]) || ''}
+                        titleLine2={getSecondTitle(items[4]) || ''}
+                        description={getDescription(items[4]) || ''}
+                        descriptionLine2={t("showcase.4.captionLine2", {defaultValue: ""})}
+                        icon={getFirstIcon(items[4]) || ''}
                         bgClass="bg-burgundy"
                         roundedClass="rounded-2xl"
                     />
@@ -144,15 +190,14 @@ export default function About() {
                         imageRightSrc="/images/interior_design_with_photoframes_couch.jpg"
                         imageLeftAlt="Pilates Studio"
                         imageRightAlt="Living room interior"
-                        titleLeft={`${t("showcase.3.title.0")} ${t("showcase.3.title.1")}`}
-                        titleLeftLine1={t("showcase.3.title.0")}
-                        titleLeftLine2={t("showcase.3.title.1")}
-                        titleRight={t("showcase.4.title.0")}
-                        descriptionLeft={t("showcase.3.caption")}
-                        descriptionRight={t("showcase.4.caption")}
-                        descriptionRightLine2={t("showcase.4.captionLine2", { defaultValue: "" })}
+                        titleLeft={`${getFirstTitle(items[4])} ${getSecondTitle(items[4])}`}
+                        titleLeftLine1={getFirstTitle(items[4]) || ''}
+                        titleLeftLine2={getSecondTitle(items[4]) || ''}
+                        titleRight={`${getFirstTitle(items[3])}`}
+                        descriptionLeft={getDescription(items[4]) || ''}
+                        descriptionRight={getDescription(items[3]) || ''}
                         iconLeft={undefined}
-                        iconRight="/icons/ml_Icon_17.png"
+                        iconRight={getFirstIcon(items[3]) || ''}
                     />
                 ])
             ]}

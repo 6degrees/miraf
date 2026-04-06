@@ -162,15 +162,14 @@ function Section(
                     {/* Description (optional) */}
                     {description && (
                         <p className="text-base sm:text-lg xl:text-xl opacity-80 mt-1 arabic-body showcase-description">
-                            <span className="block">{description}</span>
-                            {descriptionLine2 && <span className="block">{descriptionLine2}</span>}
+                            <span className="block whitespace-pre-line">{description}</span>
                         </p>
                     )}
 
                     {/* Icon centered below description */}
                     {icon && (
                         <div className="mt-3 sm:mt-4 flex items-center justify-center">
-                            <Image src={icon} alt="Decorative icon" width={80} height={80} className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 xl:h-18 xl:w-18 object-contain"/>
+                            <Image src={icon} alt="" aria-hidden="true" width={80} height={80} className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 xl:h-18 xl:w-18 object-contain"/>
                         </div>
                     )}
                 </div>

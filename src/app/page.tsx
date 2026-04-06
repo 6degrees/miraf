@@ -44,7 +44,10 @@ export default function HomePage() {
     |
     */
     const { siteData } = useAppContext();
+
     const page = siteData?.page;
+
+    if(!page) return null
 
     /*
     |------------------------------------------------------------------------------
@@ -76,28 +79,13 @@ export default function HomePage() {
                 {/* Primary hero section */}
                 <Banner header={siteData?.header} hero={page?.sections?.find((s: any) => s.__component === "sections.hero")}/>
                 <District section={page?.sections?.find((s: any) => s.__component === "sections.feature")}/>
-                <OverviewSection/>
-                <About/>
-                <Residences
-                    imageSrc="/images/Cam21_Pool_05.jpg"
-                    title={t("residences.title")}
-                    subtitle={t("residences.subtitle")}
-                    body={t("residences.body")}
-                    ctaLabel={t("residences.cta")}
-                    ctaHref="#register"
-                />
-                <Gallery/>
-                <Developer logoSrc="/icons/Refad Logo.png"
-                    decoSrc="/icons/ML_Icon-22.png"
-                    imageSrc="/images/clark_van_der_beken_KvuSeA5Ep4c_unsplash.jpg"
-                    title={t("developer.title")}
-                    bodyTop={t("developer.bodyTop")}
-                    bodyBottom={t("developer.bodyBottom")}
-                    ctaLabel={t("developer.cta")}
-                    ctaHref="https://www.refad.com.sa/en"
-                />
+                <OverviewSection section={page?.sections?.find((s: any) => s.__component === "sections.overview")}/>
+                <About section={page?.sections?.find((s: any) => s.__component === "sections.alternating")}/>
+                <Residences section={page?.sections?.find( (s: any) => s.__component === "sections.project" )} />
+                <Gallery section={page?.sections?.find( (s: any) => s.__component === "sections.gallery" )}/>
+                <Developer section={page?.sections?.find((s: any) => s.__component === "sections.developer")}/>
                 <CommunitySignupSection heading={t("signup.title")} subheading={t("signup.subtitle")}/>
-                <Footer/>
+                <Footer footer={siteData?.footer}/>
             </main>
         </>
     );

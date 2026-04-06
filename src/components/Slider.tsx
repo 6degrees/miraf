@@ -32,8 +32,9 @@ export type SliderProps = {
     heightClass?: string;
     breakpoints?: Record<number, { slidesPerView: number; spaceBetween: number }>;
     isUseGSAP?: boolean;
-    gsapSize?: any;
+    gsapSize?: number | number[];
     hasFooter?: boolean;
+    fadeIn?: boolean;
 };
 
 /*
@@ -149,7 +150,7 @@ function Footer({total, index, onPrev, onNext, bgClass, dir,}: {total: number; i
 | - GSAP ScrollTrigger for ≥1024px
 |----------------------------------------------------------------------
 */
-export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", className = "w-full", bgClass = "bg-[#F3E6D6]", textClass = "text-burgundy",  style, background, containerClass = "container-x", heightClass = "", breakpoints = defaultBreakpoints, hasFooter = false, isUseGSAP = true, gsapSize=0}: SliderProps) {
+export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", className = "w-full", bgClass = "bg-[#F3E6D6]", textClass = "text-burgundy",  style, background, containerClass = "container-x", heightClass = "", breakpoints = defaultBreakpoints, hasFooter = false, isUseGSAP = true, gsapSize=0, fadeIn = false}: SliderProps) {
     const total = items.length;
     const isRTL = dir === "rtl";
     const [isMobile, setIsMobile] = useIsMobile(true);
@@ -162,6 +163,8 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
     const slideRefs = useRef<HTMLDivElement[]>([]);
     const stRef = useRef<ScrollTrigger | null>(null);
     const ctxRef = useRef<gsap.Context | null>(null);
+    const revealedPanelsRef = useRef<Set<number>>(new Set());
+    const sectionVisibleRef = useRef(false);
     const bpMemo = useMemo(() => breakpoints ?? defaultBreakpoints, [breakpoints]);
     const gsapSizeMemo = useMemo(() => gsapSize, [gsapSize]);
 
@@ -205,6 +208,41 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
                 }
             });
             
+            // Hide panels initially when fadeIn is enabled
+            if (fadeIn) {
+                revealedPanelsRef.current = new Set();
+                sectionVisibleRef.current = false;
+                panels.forEach((panel) => gsap.set(panel, { opacity: 0, y: 30 }));
+            }
+
+            const revealVisiblePanels = () => {
+                if (!fadeIn || !sectionVisibleRef.current) return;
+                const vw = window.innerWidth;
+                panels.forEach((panel, i) => {
+                    if (revealedPanelsRef.current.has(i)) return;
+                    const rect = panel.getBoundingClientRect();
+                    if (rect.left < vw && rect.right > 0) {
+                        revealedPanelsRef.current.add(i);
+                        gsap.to(panel, { opacity: 1, y: 0, duration: 0.7, delay: i * 0.15, ease: "power2.out" });
+                    }
+                });
+            };
+
+            // Use IntersectionObserver to gate the reveal until section is in viewport
+            let io: IntersectionObserver | null = null;
+            if (fadeIn) {
+                io = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting && !sectionVisibleRef.current) {
+                            sectionVisibleRef.current = true;
+                            revealVisiblePanels();
+                        }
+                    },
+                    { threshold: 0.1 }
+                );
+                io.observe(host);
+            }
+
             const tween = gsap.to(panels, {
                 xPercent,
                 ease: "none",
@@ -218,13 +256,18 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
                         const i = Math.round(self.progress * (Math.max(1, panels.length) - 1));
                         setIndex(i);
                         stRef.current = self;
+                        revealVisiblePanels();
                     },
+                    onEnter: revealVisiblePanels,
                     onRefresh: (self) => {
                         stRef.current = self;
+                        revealVisiblePanels();
                     },
                 },
             });
+
             return () => {
+                io?.disconnect();
                 tween?.scrollTrigger?.kill();
                 tween?.kill();
             };
@@ -233,7 +276,7 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
             ctxRef.current?.revert();
             stRef.current = null;
         };
-    }, [id, isRTL, isMobile, total, isUseGSAP, gsapSizeMemo]);
+    }, [id, isRTL, isMobile, total, isUseGSAP, gsapSizeMemo, fadeIn]);
 
     /*
     |----------------------------------------------------------------------
@@ -259,6 +302,12 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
     };
     const go = (delta: -1 | 1) => {
         if (total <= 1) return;
+        // When GSAP is disabled, navigate via Swiper API
+        if (!isUseGSAP && swiperRef.current) {
+            if (delta === 1) swiperRef.current.slideNext();
+            else swiperRef.current.slidePrev();
+            return;
+        }
         goToDesktopIndex(currentIndexDesktop() + delta);
     };
 
@@ -275,11 +324,11 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
     |
     */
     return (
-        <section 
-            id={id} 
-            className={cn("thecontainer relative", bgClass, textClass, isMobile && isUseGSAP ? "h-screen h-dvh" : heightClass, className)} 
-            style={style} 
-            dir={dir} 
+        <section
+            id={id}
+            className={cn("thecontainer relative", bgClass, textClass, isMobile && isUseGSAP ? "h-screen h-dvh" : heightClass, className)}
+            style={style}
+            dir={dir}
             ref={isUseGSAP ? (hostRef as React.RefObject<HTMLElement>) : undefined}
         >
             {background && <div className="absolute inset-0 -z-10 pointer-events-none">{background}</div>}
@@ -290,9 +339,9 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
                         <div className={cn("relative w-full overflow-hidden", isMobile ? "h-screen h-dvh" : heightClass)}>
                             <div className={cn("will-change-transform", isMobile ? "flex h-full" : "absolute inset-0 flex")}>
                                 {items.map((node, idx) => (
-                                    <div 
-                                        key={`slide-${id}-${idx}`} 
-                                        ref={(el) => {if (el) slideRefs.current[idx] = el;}} 
+                                    <div
+                                        key={`slide-${id}-${idx}`}
+                                        ref={(el) => {if (el) slideRefs.current[idx] = el;}}
                                         className={cn("panel flex-shrink-0", isMobile ? "w-full h-full" : "h-full")}
                                     >
                                         <div className="h-full w-full">{node}</div>

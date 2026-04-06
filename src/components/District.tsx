@@ -78,6 +78,7 @@ export default function District({section}: { section: any }) {
         <Slider
             id="district"
             dir={direction}
+            fadeIn
             breakpoints={{
                 0: {slidesPerView: 1, spaceBetween: 0},
                 640: {slidesPerView: 1, spaceBetween: 0},
@@ -139,7 +140,6 @@ export default function District({section}: { section: any }) {
                             |
                             */
                             imageOnTop={isFirstCard ? true : index % 2 === 0}
-                            priorityImage={isFirstCard}
                         />
                     );
                 }),

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { JSX } from "react";
+import React, { JSX, memo, useState } from "react";
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ export type ShowcaseCardProps = {
 |
 */
 
-export default function ShowcaseCard(
+function ShowcaseCard(
     {
         layout = "0",
         imageSrc,
@@ -71,6 +71,8 @@ export default function ShowcaseCard(
         imageHeightClass = "h-[50svh] sm:h-[60svh] xl:h-[70svh]",
         roundedClass = "rounded-none sm:rounded-2xl",
     }: ShowcaseCardProps) {
+    const [imgError, setImgError] = useState(false);
+
     /*
     |--------------------------------------------------------------------------
     | $constants
@@ -95,7 +97,7 @@ export default function ShowcaseCard(
     */
     const Icon = (src?: string, cls?: string) =>
         src ? (
-            <Image src={src} alt="Decorative icon" width={92} height={92} className={`${cls} object-contain`} loading="lazy"/>
+            <Image src={src} alt="" aria-hidden="true" width={92} height={92} className={`${cls} object-contain`} loading="lazy"/>
         ) : null;
 
     /*
@@ -125,15 +127,20 @@ export default function ShowcaseCard(
     const ImageBlock = (
         <div className={`relative w-full overflow-hidden ${roundedClass} mb-0 pb-0 leading-none block`} style={{ marginBottom: 0, paddingBottom: 0 }}>
             <div className={`relative overflow-hidden ${imageHeightClass} ${roundedClass} mb-0 pb-0 leading-none block`} style={{ marginBottom: 0, paddingBottom: 0 }}>
-                <Image
-                    src={imageSrc}
-                    alt={imageAlt}
-                    fill
-                    className={`object-cover ${roundedClass} leading-none`}
-                    loading="lazy"
-                    sizes="100vw"
-                    style={{ display: 'block' }}
-                />
+                {imgError ? (
+                    <div className={`absolute inset-0 bg-stone-200 ${roundedClass}`} aria-hidden="true" />
+                ) : (
+                    <Image
+                        src={imageSrc}
+                        alt={imageAlt}
+                        fill
+                        className={`object-cover ${roundedClass} leading-none`}
+                        loading="lazy"
+                        sizes="100vw"
+                        style={{ display: 'block' }}
+                        onError={() => setImgError(true)}
+                    />
+                )}
             </div>
         </div>
     );
@@ -253,3 +260,5 @@ export default function ShowcaseCard(
     */
     return layouts[layout];
 }
+
+export default memo(ShowcaseCard);

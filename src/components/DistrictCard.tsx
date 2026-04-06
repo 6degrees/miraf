@@ -1,5 +1,6 @@
 "use client";
 
+import {memo, useState} from "react";
 import Image from "next/image";
 
 type AboutCardProps = {
@@ -14,7 +15,7 @@ type AboutCardProps = {
     bodyWidth?: string;
 };
 
-export default function DistrictCard(
+function DistrictCard(
     {
         imageSrc,
         imageAlt,
@@ -26,6 +27,7 @@ export default function DistrictCard(
         className = "",
         bodyWidth = 'ltr:max-w-[45ch] rtl:max-w-[36ch]',
     }: AboutCardProps) {
+    const [imgError, setImgError] = useState(false);
 
     /*
     |-----------------------------------------------------------------------
@@ -35,8 +37,21 @@ export default function DistrictCard(
     | No fixed height in `svh`. Image shrinks naturally on small screens.
     */
     const ImageBlock = (
-        <div className="relative w-full rounded-[22px] overflow-hidden aspect-[16/10]">
-            {imageSrc && <Image src={imageSrc} alt={imageAlt || title} fill className="object-cover" priority={priorityImage} loading={priorityImage ? undefined : "lazy"} sizes="(max-width: 768px) 100vw, 80vw"/>}
+        <div className="relative w-full rounded-[22px] overflow-hidden aspect-[4/4] sm:aspect-[16/10]">
+            {imgError ? (
+                <div className="absolute inset-0 bg-stone-200 rounded-[22px]" aria-hidden="true"/>
+            ) : (
+                <Image
+                    src={imageSrc || ''}
+                    alt={imageAlt || title}
+                    fill
+                    className="object-cover"
+                    priority={priorityImage}
+                    loading={priorityImage ? undefined : "lazy"}
+                    sizes="(max-width: 768px) 100vw, 80vw"
+                    onError={() => setImgError(true)}
+                />
+            )}
         </div>
     );
 
@@ -89,3 +104,5 @@ export default function DistrictCard(
         </div>
     );
 }
+
+export default memo(DistrictCard);

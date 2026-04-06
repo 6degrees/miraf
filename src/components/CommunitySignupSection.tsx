@@ -13,7 +13,6 @@ import AnimatedText from "@/components/AnimatedText";
 |
 | heading       : main title text (left)
 | subheading    : subtitle text (left)
-| onSubmit      : optional submit handler
 | className     : wrapper classes override
 | bgClass       : background color class
 | textClass     : text color class
@@ -27,20 +26,15 @@ type CommunitySignupSectionProps = {
     textClass?: string;
 };
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^[+\d][\d\s\-(). ]{5,19}$/;
+
 /*
 |------------------------------------------------------------------------------
 | $community-signup:component
 |------------------------------------------------------------------------------
 | Main React component for the "Be Part of a Thriving Community" section.
 |------------------------------------------------------------------------------
-|
-| - Renders a responsive layout with two columns:
-|     • Left: heading text and a sign-up form
-|     • Right: decorative abstract SVG shapes
-| - Uses TailwindCSS utilities for spacing, alignment, and responsiveness
-| - Customizable via props for heading, subheading, colors, and handlers
-| - Ideal for contact or marketing signup sections on landing pages
-|
 */
 export default function CommunitySignupSection(
     {
@@ -55,6 +49,46 @@ export default function CommunitySignupSection(
     // State to manage default country code
     const [countryCode, setCountryCode] = useState("+966");
 
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isError, setIsError] = useState(false);
+
+    /*
+    |------------------------------------------------------------------------------
+    | $form:validate
+    |------------------------------------------------------------------------------
+    | Returns a map of field name → error message for any invalid fields.
+    | Sanitizes values by trimming whitespace before checking.
+    */
+    const validate = (form: HTMLFormElement): Record<string, string> => {
+        const errors: Record<string, string> = {};
+        const required = t("signup.form.errors.required");
+
+        const firstName = (form.elements.namedItem("inp_1") as HTMLInputElement).value.trim();
+        const surname   = (form.elements.namedItem("inp_2") as HTMLInputElement).value.trim();
+        const email     = (form.elements.namedItem("inp_3") as HTMLInputElement).value.trim();
+        const phone     = (form.elements.namedItem("inp_15") as HTMLInputElement).value.trim();
+        const reqType   = (form.elements.namedItem("inp_9143") as HTMLSelectElement).value;
+
+        if (!firstName) errors.inp_1 = required;
+        if (!surname)   errors.inp_2 = required;
+
+        if (!email) {
+            errors.inp_3 = required;
+        } else if (!EMAIL_RE.test(email)) {
+            errors.inp_3 = t("signup.form.errors.email");
+        }
+
+        if (phone && !PHONE_RE.test(phone)) {
+            errors.inp_15 = t("signup.form.errors.phone");
+        }
+
+        if (!reqType) errors.inp_9143 = required;
+
+        return errors;
+    };
+
     /*
     |------------------------------------------------------------------------------
     | handleSubmit
@@ -62,7 +96,7 @@ export default function CommunitySignupSection(
     | Handles the form submission process.
     |
     | Steps:
-    | 1. Prevent default browser form submission
+    | 1. Validate inputs client-side
     | 2. Collect all form input values using FormData API
     | 3. Combine country code with phone number
     | 4. Add hidden fields required by Emarsys (CID, campaign params, opt-in, etc.)
@@ -76,6 +110,18 @@ export default function CommunitySignupSection(
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
+
+        const errors = validate(form);
+        if (Object.keys(errors).length > 0) {
+            setFieldErrors(errors);
+            return;
+        }
+
+        setFieldErrors({});
+        setIsLoading(true);
+        setIsError(false);
+        setIsSuccess(false);
+
         const formData = new FormData(form);
 
         // Append country code to phone number
@@ -97,21 +143,34 @@ export default function CommunitySignupSection(
         formData.forEach((value, key) => params.append(key, value.toString()));
 
         try {
-            // Send GET request to Emarsys
+            // Send GET request to Emarsys (no-cors: response is opaque, so always treat as success)
             await fetch(`https://link.by.refad.com.sa/u/register.php?${params.toString()}`, {
                 method: "GET",
                 mode: "no-cors",
             });
 
-            // Show success message
-            alert("Your registration has been submitted successfully!");
+            setIsSuccess(true);
             form.reset();
-            setCountryCode("+966"); // Reset country code
-        } catch (error) {
-            console.error(error);
-            alert("Failed to send. Please try again later.");
+            setCountryCode("+966");
+        } catch {
+            // Network failure (offline, DNS error, etc.)
+            setIsError(true);
+        } finally {
+            setIsLoading(false);
         }
     };
+
+    /*
+    |------------------------------------------------------------------------------
+    | $helpers
+    |------------------------------------------------------------------------------
+    */
+    const inputClass = (field: string) =>
+        `w-full bg-transparent border-0 border-b py-1 focus:outline-none transition-colors ${
+            fieldErrors[field]
+                ? "border-red-500 focus:border-red-600"
+                : "border-burgundy/40 focus:border-burgundy"
+        }`;
 
     return (
         <section id="register" className={`w-full ${bgClass} ${textClass} py-12 md:py-16 ${className} border-t-2 border-[#f4e8d5]`}>
@@ -127,7 +186,7 @@ export default function CommunitySignupSection(
                             <p className="mt-2 text-xl sm:text-2xl opacity-90">{subheading}</p>
 
                             {/* Sign-up Form */}
-                            <form onSubmit={handleSubmit} className="mt-8">
+                            <form onSubmit={handleSubmit} noValidate className="mt-8">
                                 {/* Hidden Fields for Emarsys */}
                                 <input type="hidden" name="CID" value="788929414" />
                                 <input type="hidden" name="f" value="1069" />
@@ -142,55 +201,73 @@ export default function CommunitySignupSection(
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6">
                                     {/* First Name */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.firstName.label")}</label>
-                                        <input type="text" name="inp_1" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required />
+                                        <label htmlFor="inp_1" className="block text-sm mb-2 font-kanun">{t("signup.form.firstName.label")}</label>
+                                        <input id="inp_1" type="text" name="inp_1" className={inputClass("inp_1")} aria-required="true" aria-describedby={fieldErrors.inp_1 ? "err-firstName" : undefined}/>
+                                        {fieldErrors.inp_1 && <p id="err-firstName" className="mt-1 text-xs text-red-600">{fieldErrors.inp_1}</p>}
                                     </div>
 
                                     {/* Last Name */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.surname.label")}</label>
-                                        <input type="text" name="inp_2" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required />
+                                        <label htmlFor="inp_2" className="block text-sm mb-2 font-kanun">{t("signup.form.surname.label")}</label>
+                                        <input id="inp_2" type="text" name="inp_2" className={inputClass("inp_2")} aria-required="true" aria-describedby={fieldErrors.inp_2 ? "err-surname" : undefined}/>
+                                        {fieldErrors.inp_2 && <p id="err-surname" className="mt-1 text-xs text-red-600">{fieldErrors.inp_2}</p>}
                                     </div>
 
                                     {/* Email */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.email.label")}</label>
-                                        <input type="email" name="inp_3" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required />
+                                        <label htmlFor="inp_3" className="block text-sm mb-2 font-kanun">{t("signup.form.email.label")}</label>
+                                        <input id="inp_3" type="email" name="inp_3" className={inputClass("inp_3")} aria-required="true" aria-describedby={fieldErrors.inp_3 ? "err-email" : undefined}/>
+                                        {fieldErrors.inp_3 && <p id="err-email" className="mt-1 text-xs text-red-600">{fieldErrors.inp_3}</p>}
                                     </div>
 
                                     {/* Phone */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.phone.label")}</label>
-                                        <input type="tel" name="inp_15" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required />
+                                        <label htmlFor="inp_15" className="block text-sm mb-2 font-kanun">{t("signup.form.phone.label")}</label>
+                                        <input id="inp_15" type="tel" name="inp_15" className={inputClass("inp_15")} aria-describedby={fieldErrors.inp_15 ? "err-phone" : undefined}/>
+                                        {fieldErrors.inp_15 && <p id="err-phone" className="mt-1 text-xs text-red-600">{fieldErrors.inp_15}</p>}
                                     </div>
 
                                     {/* Request Type */}
                                     <div>
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.requestType.label")}</label>
-                                        <select name="inp_9143" className="appearance-none w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1 pr-6" defaultValue="" required>
+                                        <label htmlFor="inp_9143" className="block text-sm mb-2 font-kanun">{t("signup.form.requestType.label")}</label>
+                                        <select id="inp_9143" name="inp_9143" className={`appearance-none pr-6 ${inputClass("inp_9143")}`} defaultValue="" aria-required="true" aria-describedby={fieldErrors.inp_9143 ? "err-requestType" : undefined}>
                                             <option value="" disabled>{t("signup.form.requestType.options.0")}</option>
-                                            <option value="1">Miraf District</option>
-                                            <option value="2">Merkan Quarter</option>
-                                            <option value="3">Refad Compound</option>
-                                            <option value="4">Logistics Solutions</option>
-                                            <option value="5">Partnership & Investment</option>
-                                            <option value="6">Support</option>
-                                            <option value="7">HR Department</option>
-                                            <option value="8">Vendor Registration</option>
+                                            {[1, 2, 3, 4, 5].map((i) => (
+                                                <option key={i} value={t(`signup.form.requestType.options.${i}`)}>
+                                                    {t(`signup.form.requestType.options.${i}`)}
+                                                </option>
+                                            ))}
                                         </select>
+                                        {fieldErrors.inp_9143 && <p id="err-requestType" className="mt-1 text-xs text-red-600">{fieldErrors.inp_9143}</p>}
                                     </div>
 
                                     {/* Subject */}
                                     <div className="sm:col-span-2">
-                                        <label className="block text-sm mb-2 font-kanun">{t("signup.form.subject.label")}</label>
-                                        <input type="text" name="inp_9141" className="w-full bg-transparent border-0 border-b border-burgundy/40 focus:border-burgundy focus:outline-none py-1" required />
+                                        <label htmlFor="inp_9141" className="block text-sm mb-2 font-kanun">{t("signup.form.subject.label")}</label>
+                                        <input id="inp_9141" type="text" name="inp_9141" className={inputClass("inp_9141")}/>
                                     </div>
                                 </div>
 
+                                {/* Success / Error banners */}
+                                {isSuccess && (
+                                    <p role="status" className="mt-4 text-sm text-green-700 bg-green-50 border border-green-200 rounded px-3 py-2">
+                                        {t("signup.form.success")}
+                                    </p>
+                                )}
+                                {isError && (
+                                    <p role="alert" className="mt-4 text-sm text-red-700 bg-red-50 border border-red-200 rounded px-3 py-2">
+                                        {t("signup.form.error")}
+                                    </p>
+                                )}
+
                                 {/* Submit Button */}
                                 <div className="mt-6 text-end">
-                                    <button type="submit" className="inline-flex items-center justify-center rounded-full border border-burgundy/60 px-5 py-1.5 text-sm hover:bg-burgundy/5 transition kanun">
-                                        {t("signup.form.send.label")}
+                                    <button
+                                        type="submit"
+                                        disabled={isLoading}
+                                        className="inline-flex items-center justify-center rounded-full border border-burgundy/60 px-5 py-1.5 text-sm hover:bg-burgundy/5 transition kanun disabled:opacity-60 disabled:cursor-not-allowed"
+                                    >
+                                        {isLoading ? t("signup.form.send.sending") : t("signup.form.send.label")}
                                     </button>
                                 </div>
                             </form>
