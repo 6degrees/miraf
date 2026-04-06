@@ -18,7 +18,7 @@
 |
 */
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import {createContext, useContext, useEffect, useMemo, useRef, useState} from "react";
 import i18next from "i18next";
 
 /*
@@ -42,9 +42,13 @@ const STORAGE_KEY = "miraf-lang";
 |
 */
 export function langToDir(lang?: string): "rtl" | "ltr" {
-  const rtlLangs = new Set(["ar", "fa", "ur", "he"]);
-  const base = (lang ?? "").toLowerCase().split("-")[0]; // e.g. "ar-SA" -> "ar"
-  return rtlLangs.has(base) ? "rtl" : "ltr";
+    const rtlLangs = new Set(["ar", "fa", "ur", "he"]);
+    const base = (lang ?? "").toLowerCase().split("-")[0];
+    return rtlLangs.has(base) ? "rtl" : "ltr";
+}
+
+export function getBaseUrl() {
+    return process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 }
 
 /*
@@ -56,9 +60,10 @@ export function langToDir(lang?: string): "rtl" | "ltr" {
 |
 */
 type AppContextValue = {
-  selectedLanguage: string | null;
-  setSelectedLanguage: (lang: string | null) => void;
-  direction: "rtl" | "ltr";
+    selectedLanguage: string | null;
+    setSelectedLanguage: (lang: string | null) => void;
+    direction: "rtl" | "ltr";
+    siteData: any;
 };
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -76,60 +81,99 @@ const AppContext = createContext<AppContextValue | null>(null);
 | - Exposes `direction` derived via langToDir()
 |
 */
-export function AppProvider({ children }: { children: React.ReactNode }) {
-  const [selectedLanguage, _setSelectedLanguage] = useState<string | null>(null);
+export function AppProvider({children}: { children: React.ReactNode }) {
+    const [selectedLanguage, _setSelectedLanguage] = useState<string | null>(null);
+    const [siteData, setSiteData] = useState<any>(null);
 
-  // Load initial language from localStorage or default to "ar"
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      _setSelectedLanguage(saved || i18next.language || "ar");
-    } catch {
-      _setSelectedLanguage("ar");
-    }
-  }, []);
+    const hasFetched = useRef(false);
 
-  // Whenever selectedLanguage changes:
-  // - Notify i18next
-  // - Update document attributes
-  // - Save to localStorage
-  useEffect(() => {
-    if (!selectedLanguage) return;
+    // Load initial language from localStorage or default to "ar"
+    useEffect(() => {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            _setSelectedLanguage(saved || i18next.language || "ar");
+        } catch {
+            _setSelectedLanguage("ar");
+        }
+    }, []);
 
-    // Switch i18n language
-    if (i18next.language !== selectedLanguage) {
-      i18next.changeLanguage(selectedLanguage);
-    }
+    // Whenever selectedLanguage changes:
+    // - Notify i18next
+    // - Update document attributes
+    // - Save to localStorage
+    useEffect(() => {
+        if (!selectedLanguage) return;
 
-    // Update document direction + language
-    const dir = langToDir(selectedLanguage);
-    const html = document.documentElement;
-    html.setAttribute("dir", dir);
-    html.setAttribute("lang", selectedLanguage);
+        if (i18next.language !== selectedLanguage) {
+            i18next.changeLanguage(selectedLanguage);
+        }
 
-    // Persist to localStorage
-    try {
-      localStorage.setItem(STORAGE_KEY, selectedLanguage);
-    } catch {
-      // Ignore storage errors (private mode, etc.)
-    }
-  }, [selectedLanguage]);
+        const dir = langToDir(selectedLanguage);
+        const html = document.documentElement;
 
-  const setSelectedLanguage = (lang: string | null) => {
-    if (!lang) return;
-    _setSelectedLanguage(lang);
-  };
+        html.setAttribute("dir", dir);
+        html.setAttribute("lang", selectedLanguage);
 
-  const direction = useMemo<"rtl" | "ltr">(
-      () => langToDir(selectedLanguage ?? undefined),
-      [selectedLanguage]
-  );
+        try {
+            localStorage.setItem(STORAGE_KEY, selectedLanguage);
+        } catch {
+        }
+    }, [selectedLanguage]);
 
-  return (
-      <AppContext.Provider value={{ selectedLanguage, setSelectedLanguage, direction }}>
-        {children}
-      </AppContext.Provider>
-  );
+    /*
+    |--------------------------------------------------------------------------
+    | fetch site data once
+    |--------------------------------------------------------------------------
+    */
+    useEffect(() => {
+        if (hasFetched.current) return;
+        hasFetched.current = true;
+
+        const fetchData = async () => {
+            try {
+                const res = await fetch(
+                        `${getBaseUrl()}/api/site-full?slug=miraf`,
+                        {
+                            headers: {
+                                Authorization: "Bearer 5b6ff71de44462fa60d99e7762a4ea6e361e6bad3c486f4d7d7438f2775d7049230192c4e89366000d37d530b5970c6d5a40fe931172159a0793eddcd8adc2ccf1db361de4587b2e3a82e042be0ce916724e658a1df01acfc2aa6b5f2f8a486de1fbee9407d47f331a4e0232dc660030596fc7f71a039389309100bbf9c1b54d",
+                            }
+                            ,
+                        }
+                    )
+                ;
+
+                const data = await res.json();
+                setSiteData(data);
+            } catch (err) {
+                console.error("Error fetching site data:", err);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const setSelectedLanguage = (lang: string | null) => {
+        if (!lang) return;
+        _setSelectedLanguage(lang);
+    };
+
+    const direction = useMemo<"rtl" | "ltr">(
+        () => langToDir(selectedLanguage ?? undefined),
+        [selectedLanguage]
+    );
+
+    return (
+        <AppContext.Provider
+            value={{
+                selectedLanguage,
+                setSelectedLanguage,
+                direction,
+                siteData,
+            }}
+        >
+            {children}
+        </AppContext.Provider>
+    );
 }
 
 /*
@@ -141,9 +185,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 |
 */
 export function useAppContext() {
-  const ctx = useContext(AppContext);
-  if (!ctx) throw new Error("useAppContext must be used within <AppProvider />");
-  return ctx;
+    const ctx = useContext(AppContext);
+    if (!ctx) throw new Error("useAppContext must be used within <AppProvider />");
+    return ctx;
 }
 
 /*
@@ -156,6 +200,6 @@ export function useAppContext() {
 |
 */
 export function useDir(): "rtl" | "ltr" {
-  const { direction } = useAppContext();
-  return direction ?? "ltr";
+    const {direction} = useAppContext();
+    return direction ?? "ltr";
 }

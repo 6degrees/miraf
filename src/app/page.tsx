@@ -12,6 +12,7 @@ import CommunitySignupSection from "@/components/CommunitySignupSection";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 import PinnedButtons from "@/components/PinnedButtons";
+import {useAppContext} from "@/context/AppContext";
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,17 @@ export default function HomePage() {
     |
     */
     const {t} = useTranslation();
+
+    /*
+    |--------------------------------------------------------------------------
+    | $page-resolver
+    |--------------------------------------------------------------------------
+    |
+    | Finds page by slug instead of relying on index
+    |
+    */
+    const { siteData } = useAppContext();
+    const page = siteData?.page;
 
     /*
     |------------------------------------------------------------------------------
@@ -62,8 +74,8 @@ export default function HomePage() {
             <PinnedButtons />
             <main>
                 {/* Primary hero section */}
-                <Banner/>
-                <District/>
+                <Banner header={siteData?.header} hero={page?.sections?.find((s: any) => s.__component === "sections.hero")}/>
+                <District section={page?.sections?.find((s: any) => s.__component === "sections.feature")}/>
                 <OverviewSection/>
                 <About/>
                 <Residences
