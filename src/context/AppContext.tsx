@@ -135,7 +135,7 @@ export function AppProvider({children}: { children: React.ReactNode }) {
                         `${getBaseUrl()}/api/site-full?slug=miraf`,
                         {
                             headers: {
-                                Authorization: "Bearer 5b6ff71de44462fa60d99e7762a4ea6e361e6bad3c486f4d7d7438f2775d7049230192c4e89366000d37d530b5970c6d5a40fe931172159a0793eddcd8adc2ccf1db361de4587b2e3a82e042be0ce916724e658a1df01acfc2aa6b5f2f8a486de1fbee9407d47f331a4e0232dc660030596fc7f71a039389309100bbf9c1b54d",
+                                Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
                             }
                             ,
                         }
