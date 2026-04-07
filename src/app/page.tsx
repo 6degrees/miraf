@@ -74,7 +74,7 @@ export default function HomePage() {
     return (
         <>
             <StructuredData />
-            <PinnedButtons />
+            <PinnedButtons data={siteData.floating_action_button} />
             <main>
                 {/* Primary hero section */}
                 <Banner header={siteData?.header} hero={page?.sections?.find((s: any) => s.__component === "sections.hero")}/>
