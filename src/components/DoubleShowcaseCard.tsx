@@ -162,8 +162,7 @@ function Section(
                     {/* Description (optional) */}
                     {description && (
                         <p className="text-base sm:text-lg xl:text-xl opacity-80 mt-1 arabic-body showcase-description">
-                            <span className="block">{description}</span>
-                            {descriptionLine2 && <span className="block">{descriptionLine2}</span>}
+                            <span className="block whitespace-pre-line">{description}</span>
                         </p>
                     )}
 

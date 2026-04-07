@@ -6,7 +6,7 @@ import React from "react";
 
 type MapCardProps = {
     media: React.ReactNode;
-    iconSrc: string;
+    iconSrc?: string;
     titles: { line1?: string; line2?: string; line3?: string };
     body?: string;
     mediaOnTop?: boolean;
@@ -61,13 +61,13 @@ export default function MapCard(
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl rtl:text-3xl rtl:sm:text-4xl rtl:md:text-5xl rtl:lg:text-6xl rtl:xl:text-7xl font-medium leading-[0.75] sm:leading-[0.7] md:leading-[0.65] text-center">
                 {titles.line1 ? <span className="block -mb-1">{titles.line1}</span> : null}
                 <span className="flex items-center justify-center gap-4 sm:gap-8 rtl:mr-10 rtl:md:mr-36 ltr:ml-10 ltr:md:ml-36 -mt-1">
-                    <Image
+                    {iconSrc && <Image
                         src={iconSrc}
                         alt={iconAlt}
                         width={96}
                         height={96}
                         className="inline-block h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 xl:h-28 xl:w-28 object-contain"
-                    />
+                    />}
                     {titles.line2 ? <span className="block">{titles.line2}</span> : null}
                 </span>
                 {titles.line3 ? <span className="block -mt-1">{titles.line3}</span> : null}

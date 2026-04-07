@@ -339,9 +339,9 @@ export default function Slider({id, items, autoplayDelay = 5000, dir = "ltr", cl
                         <div className={cn("relative w-full overflow-hidden", isMobile ? "h-screen h-dvh" : heightClass)}>
                             <div className={cn("will-change-transform", isMobile ? "flex h-full" : "absolute inset-0 flex")}>
                                 {items.map((node, idx) => (
-                                    <div 
-                                        key={`slide-${id}-${idx}`} 
-                                        ref={(el) => {if (el) slideRefs.current[idx] = el;}} 
+                                    <div
+                                        key={`slide-${id}-${idx}`}
+                                        ref={(el) => {if (el) slideRefs.current[idx] = el;}}
                                         className={cn("panel flex-shrink-0", isMobile ? "w-full h-full" : "h-full")}
                                     >
                                         <div className="h-full w-full">{node}</div>

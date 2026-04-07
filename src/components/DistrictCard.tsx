@@ -1,12 +1,12 @@
 "use client";
 
-import { memo, useState } from "react";
+import {memo, useState} from "react";
 import Image from "next/image";
 
 type AboutCardProps = {
-    imageSrc: string;
-    imageAlt: string;
-    iconSrc: string;
+    imageSrc?: string;
+    imageAlt?: string;
+    iconSrc?: string;
     title: string;
     body: string;
     imageOnTop?: boolean;
@@ -15,17 +15,18 @@ type AboutCardProps = {
     bodyWidth?: string;
 };
 
-function DistrictCard({
-                                         imageSrc,
-                                         imageAlt,
-                                         iconSrc,
-                                         title,
-                                         body,
-                                         imageOnTop = true,
-                                         priorityImage = false,
-                                         className = "",
-                                         bodyWidth = 'ltr:max-w-[45ch] rtl:max-w-[36ch]',
-                                     }: AboutCardProps) {
+function DistrictCard(
+    {
+        imageSrc,
+        imageAlt,
+        iconSrc,
+        title,
+        body,
+        imageOnTop = true,
+        priorityImage = false,
+        className = "",
+        bodyWidth = 'ltr:max-w-[45ch] rtl:max-w-[36ch]',
+    }: AboutCardProps) {
     const [imgError, setImgError] = useState(false);
 
     /*
@@ -38,10 +39,10 @@ function DistrictCard({
     const ImageBlock = (
         <div className="relative w-full rounded-[22px] overflow-hidden aspect-[4/4] sm:aspect-[16/10]">
             {imgError ? (
-                <div className="absolute inset-0 bg-stone-200 rounded-[22px]" aria-hidden="true" />
+                <div className="absolute inset-0 bg-stone-200 rounded-[22px]" aria-hidden="true"/>
             ) : (
                 <Image
-                    src={imageSrc}
+                    src={imageSrc || ''}
                     alt={imageAlt || title}
                     fill
                     className="object-cover"
@@ -64,13 +65,7 @@ function DistrictCard({
     const TextBlock = (
         <div className="text-burgundy">
             <div className="flex items-center gap-2">
-                <Image
-                    src={iconSrc}
-                    alt="icon"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 object-contain"
-                />
+                {iconSrc && <Image src={iconSrc} alt="icon" width={32} height={32} className="h-8 w-8 object-contain"/>}
             </div>
             <h3 className="mt-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold">
                 {title}
@@ -92,7 +87,8 @@ function DistrictCard({
     */
     return (
         <div className={`flex flex-col w-full justify-start sm:justify-center ${className}`}>
-            <div className="w-full md:w-[80%] sm:w-full max-w-full md:max-w-full lg:max-w-[80svh] mx-auto px-4 sm:px-6 md:px-0 py-4 sm:py-0">
+            <div
+                className="w-full md:w-[80%] sm:w-full max-w-full md:max-w-full lg:max-w-[80svh] mx-auto px-4 sm:px-6 md:px-0 py-4 sm:py-0">
                 {imageOnTop ? (
                     <>
                         {ImageBlock}

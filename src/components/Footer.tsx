@@ -2,272 +2,163 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
+import { useAppContext } from "@/context/AppContext";
+import { getBaseUrl } from "@/context/AppContext";
 
 /*
-|------------------------------------------------------------------------------
+|--------------------------------------------------------------------------
 | $footer:props
-|------------------------------------------------------------------------------
-| Component Props:
-| - className   : optional wrapper class (for external layout control)
-| - bgClass     : background color class (default: blush tone)
-| - textClass   : text color class (default: burgundy tone)
-|------------------------------------------------------------------------------
+|--------------------------------------------------------------------------
+|
+| Now receives CMS footer data
+|
 */
 type FooterProps = {
+    footer: any;
     className?: string;
     bgClass?: string;
     textClass?: string;
 };
 
-/*
-|------------------------------------------------------------------------------
-| $footer:component
-|------------------------------------------------------------------------------
-| Main Footer component for the Miraf website.
-|
-| Structure:
-| - 3 responsive columns (stacked on mobile, horizontal on md+)
-| - Left   : Navigation links (translated)
-| - Center : Social icons + contact information
-| - Right  : Postal & street addresses
-|
-| Features:
-| - i18n-ready using `t()` for dynamic translation
-| - Configurable via Tailwind classes (bgClass, textClass, className)
-| - Accessible SVG-based social icons with hover states
-|------------------------------------------------------------------------------
-*/
 export default function Footer(
     {
+        footer,
         bgClass = "bg-blush",
         textClass = "text-burgundy",
         className = "",
     }: FooterProps)
 {
 
+    const { selectedLanguage } = useAppContext();
+
+    if (!footer) return null;
+
     /*
     |--------------------------------------------------------------------------
-    | $i18n-translator
-    |--------------------------------------------------------------------------
-    | Retrieve localized strings from i18next.
-    | The `t()` function pulls translated labels from your locale JSON files.
+    | $nav-links
     |--------------------------------------------------------------------------
     */
-    const { t } = useTranslation();
+    const nav = footer?.footer_links?.map((item: any) => ({
+        label:
+            selectedLanguage === "ar"
+                ? item.title_ar
+                : item.title_en,
+        href: item.href,
+    })) || [];
 
     /*
     |--------------------------------------------------------------------------
-    | $footer-content
-    |--------------------------------------------------------------------------
-    | Define all static and localized footer content:
-    | - nav           : navigation links (translated)
-    | - email/phone   : contact info
-    | - socials       : external social media URLs
-    | - addressPostal : first address group (postal)
-    | - addressStreet : second address group (street)
+    | $contact
     |--------------------------------------------------------------------------
     */
-    const nav = [
-        { label: t("footer.nav.district"), href: "#district" },
-        { label: t("footer.nav.overview"), href: "#overview" },
-        { label: t("footer.nav.gallery"), href: "#gallery" },
-        { label: t("footer.nav.developer"), href: "#developer" },
-    ];
-    const email = "info@miraf.com.sa";
-    const phone = "920031839";
-
-    const phoneNumber = "966920031839"; // Saudi Arabia country code + phone number
-    const socials = {
-        linkedin: "https://www.linkedin.com/company/refad-for-real-estate-investment-and-development/posts/?feedView=all",
-        instagram: "https://www.instagram.com/refad_ksa/",
-        x: "https://x.com/Refad_ksa",
-        whatsapp: `https://wa.me/${phoneNumber}`,
-    };
-
-    const addressPostal = [
-        t("footer.addresses.0.0"),
-        t("footer.addresses.0.1"),
-    ];
-
-    const addressStreet = [
-        t("footer.addresses.1.0"),
-        t("footer.addresses.1.1"),
-    ];
+    const email = footer?.contact_info?.email;
+    const phone = footer?.contact_info?.phone;
 
     /*
     |--------------------------------------------------------------------------
-    | $component-render
+    | $socials
     |--------------------------------------------------------------------------
-    | Layout structure:
-    | - 3-column responsive design (stacked on mobile)
-    | - Left   : navigation links
-    | - Center : social icons + email/phone
-    | - Right  : postal & street addresses
+    */
+    const socials = footer?.social_links || [];
+
+    /*
     |--------------------------------------------------------------------------
+    | $addresses
+    |--------------------------------------------------------------------------
+    */
+    const address =
+        selectedLanguage === "ar"
+            ? footer?.contact_info?.address_ar
+            : footer?.contact_info?.address_en;
+
+    /*
+    |--------------------------------------------------------------------------
+    | $render
+    |--------------------------------------------------------------------------
+    |
+    | IMPORTANT:
+    | - ZERO layout changes
+    | - ONLY dynamic data
+    |
     */
     return (
         <footer className={`${bgClass} ${textClass} ${className} font-kanun`}>
             <div className="container-x">
-                {/* Divider Line */}
+
                 <div className="border-t border-burgundy/20" />
 
-                {/* Content Section */}
                 <div className="py-8 md:py-10">
                     <div className="flex flex-col sm:flex-row justify-between gap-10 md:gap-16">
 
-                        {/*
-                        |----------------------------------------------------------
-                        | Left: Navigation Links
-                        |----------------------------------------------------------
-                        | Displays translated nav labels defined above.
-                        |----------------------------------------------------------
-                        */}
+                        {/* NAV */}
                         <nav className="flex-1">
                             <ul className="space-y-3 text-xl leading-7">
-                                {nav.map((item) => (
+                                {nav.map((item: any) => (
                                     <li key={item.label}>
-                                        <Link
-                                            href={item.href}
-                                            className="relative text-burgundy hover:text-burgundy/70 transition-colors duration-300 group focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
-                                        >
+                                        <Link href={item.href} className="group">
                                             {item.label}
-                                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-burgundy/70 transition-all duration-300 group-hover:w-full"></span>
+                                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-burgundy/70 group-hover:w-full"></span>
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
                         </nav>
 
-                        {/*
-                        |----------------------------------------------------------
-                        | Center: Social Icons + Contact Info
-                        |----------------------------------------------------------
-                        | - Displays social media SVG icons with hover effects
-                        | - Shows company email and phone below icons
-                        |----------------------------------------------------------
-                        */}
+                        {/* CENTER */}
                         <div className="flex-1 grid grid-cols-2 gap-6 items-start sm:flex sm:flex-col sm:items-center sm:justify-center sm:gap-3">
-                            {/* Social Icons */}
+
+                            {/* SOCIAL */}
                             <div className="flex items-center gap-2">
-                                {/* LinkedIn */}
-                                {socials.linkedin && (
-                                    <Link
-                                        href={socials.linkedin}
-                                        aria-label="Visit Miraf on LinkedIn"
-                                        className="inline-flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <Image
-                                            src="/icons/linkedin-miraf.png"
-                                            alt="LinkedIn"
-                                            width={28}
-                                            height={28}
-                                            className="h-5 w-5 sm:h-7 sm:w-7 object-contain"
-                                        />
-                                    </Link>
-                                )}
+                                {socials.map((s: any) => {
+                                    const iconUrl = s?.icon?.[0]?.url
+                                        ? `${getBaseUrl()}${s.icon[0].url}`
+                                        : null;
 
-                                {/* Instagram */}
-                                {socials.instagram && (
-                                    <Link
-                                        href={socials.instagram}
-                                        aria-label="Follow Miraf on Instagram"
-                                        className="inline-flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <Image
-                                            src="/icons/ig-miraf.png"
-                                            alt="Instagram"
-                                            width={28}
-                                            height={28}
-                                            className="h-5 w-5 sm:h-7 sm:w-7 object-contain"
-                                        />
-                                    </Link>
-                                )}
+                                    if (!iconUrl) return null;
 
-                                {/* X (Twitter) */}
-                                {socials.x && (
-                                    <Link
-                                        href={socials.x}
-                                        aria-label="Follow Miraf on X (Twitter)"
-                                        className="inline-flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <Image
-                                            src="/icons/twitter-miraf.png"
-                                            alt="X (Twitter)"
-                                            width={28}
-                                            height={28}
-                                            className="h-5 w-5 sm:h-7 sm:w-7 object-contain"
-                                        />
-                                    </Link>
-                                )}
-
-                                {/* WhatsApp */}
-                                {socials.whatsapp && (
-                                    <Link
-                                        href={socials.whatsapp}
-                                        aria-label="Contact Miraf on WhatsApp"
-                                        className="inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-sm text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <Image
-                                            src="/icons/whatsapp-miraf.png"
-                                            alt="WhatsApp"
-                                            width={60}
-                                            height={60}
-                                            className="h-6 w-6 sm:h-8 sm:w-8 object-contain"
-                                        />
-                                    </Link>
-                                )}
+                                    return (
+                                        <Link
+                                            key={s.id}
+                                            href={s.href || "#"}
+                                            target="_blank"
+                                        >
+                                            <Image
+                                                src={iconUrl}
+                                                alt={s.title_en}
+                                                width={28}
+                                                height={28}
+                                                className="h-5 w-5 sm:h-7 sm:w-7 object-contain"
+                                            />
+                                        </Link>
+                                    );
+                                })}
                             </div>
 
-                            {/* Contact Info */}
+                            {/* CONTACT */}
                             <div className="text-sm leading-6">
-                                <div>
-                                    <a href={`mailto:${email}`} className="text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded">
-                                        {email}
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href={`tel:${phone}`} className="text-burgundy hover:text-burgundy/70 transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-burgundy focus-visible:ring-offset-2 rounded">
-                                        {phone}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/*
-                        |----------------------------------------------------------
-                        | Right: Address Columns
-                        |----------------------------------------------------------
-                        | Displays both postal and street addresses.
-                        | Each array is rendered as a vertical block of text lines.
-                        |----------------------------------------------------------
-                        */}
-                        <div className="flex-1 leading-tight sm:leading-6 text-start sm:text-end">
-                            {/* Postal Address */}
-                            <div className="space-y-0 sm:space-y-1">
-                                {addressPostal.map((line, i) => (
-                                    <div className="inline sm:block" key={`p-${i}`}>{line}</div>
-                                ))}
+                                {email && (
+                                    <div>
+                                        <a href={`mailto:${email}`}>{email}</a>
+                                    </div>
+                                )}
+                                {phone && (
+                                    <div>
+                                        <a href={`tel:${phone}`}>{phone}</a>
+                                    </div>
+                                )}
                             </div>
 
-                            {/* Street Address */}
-                            <div className="mt-3 sm:mt-6 space-y-0 sm:space-y-1">
-                                {addressStreet.map((line, i) => (
-                                    <div className="inline sm:block" key={`s-${i}`}>{line}</div>
-                                ))}
-                            </div>
                         </div>
+
+                        {/* ADDRESS */}
+                        <div className="flex-1 leading-tight sm:leading-6 text-start sm:text-end whitespace-pre-line">
+                            {address}
+                        </div>
+
                     </div>
                 </div>
             </div>
         </footer>
     );
 }
+

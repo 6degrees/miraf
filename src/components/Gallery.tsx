@@ -3,77 +3,82 @@
 import {useTranslation} from "react-i18next";
 import Slider from "@/components/Slider";
 import {useAppContext} from "@/context/AppContext";
-import ShowcaseCard from "@/components/ShowcaseCard";
-import Image from "next/image";
 import ImageCard from "@/components/ImageCard";
+import {getBaseUrl} from "@/context/AppContext";
 
 /*
 |--------------------------------------------------------------------------
-| $about-district
+| $gallery-section
 |--------------------------------------------------------------------------
 |
-| Section describing the “About the District” part of the Miraf site.
-| Contains:
-| - Left column: localized title + subtitle text
-| - Right column: showcase image + icon + heading + description
-|
-| Uses Tailwind for responsive typography and layout.
+| Same layout — dynamic images from API
 |
 */
-export default function Gallery() {
+export default function Gallery({section}: { section: any }) {
+
     /*
     |--------------------------------------------------------------------------
     | $i18n-translator
     |--------------------------------------------------------------------------
+    */
+    const {direction} = useAppContext();
+
+    /*
+    |--------------------------------------------------------------------------
+    | $guard
+    |--------------------------------------------------------------------------
+    */
+    if (!section || !section.items) return null;
+
+    /*
+    |--------------------------------------------------------------------------
+    | $images
+    |--------------------------------------------------------------------------
     |
-    | Retrieve the `t` function from i18next for localized strings.
+    | Map API images safely
     |
     */
-    const {t} = useTranslation();
-    const {direction,} = useAppContext();
+    const images = section.items
+        .filter((item: any) => item?.url)
+        .map((item: any) => ({
+            id: item.id,
+            src: `${getBaseUrl()}${item.url}`,
+        }));
+
+    if (images.length === 0) return null;
 
     /*
     |--------------------------------------------------------------------------
     | $section-layout
     |--------------------------------------------------------------------------
     |
-    | Two-column grid layout:
-    | - Left: title and paragraph text
-    | - Right: image card with caption
-    | Background uses warm beige (#F3E6D6) to match Miraf branding.
+    | IMPORTANT:
+    | - HTML is NOT changed
+    | - Only images replaced from API
     |
     */
     return (
         <Slider
             id="gallery"
             dir={direction}
-            bgClass={'bg-blush'}
+            bgClass={"bg-blush"}
             heightClass="h-[50svh] md:h-[95svh] max-h-[1000px]"
             containerClass=""
             hasFooter={true}
             isUseGSAP={false}
-            breakpoints= {{
-                0: { slidesPerView: 1, spaceBetween: 0 },
+            breakpoints={{
+                0: {slidesPerView: 1, spaceBetween: 0},
             }}
-            items={[
-                <ImageCard
-                    src="/images/full_project.png"
-                    alt="Miraf Overview"
-                />,
-                <ImageCard
-                    src="/images/miraf_renders_10.png"
-                    alt="Miraf Overview"
-                />,
-                <ImageCard
-                    src="/images/02_Cam1_Road_Front_Building_06.jpg"
-                    alt="Miraf Overview"
-                />,
-                <ImageCard
-                    src="/images/cam09_retail_interior_06.jpg"
-                    alt="Miraf Overview"
-                />,
-            ]}
+            items={
+                images.map((img: any) => (
+                    <ImageCard
+                        key={img.id}
+                        src={img.src}
+                        alt="Miraf Overview"
+                    />
+                ))
+            }
         />
     );
-
 }
+

@@ -26,7 +26,7 @@ type Props = {
     titleLine2: string;
     titleLine3: string;
     body: string;
-    iconSrc: string;
+    iconSrc?: string;
     iconAlt?: string;
     paddingStartClass?: string;
     titleSizeClass?: string;
@@ -74,13 +74,13 @@ export default function DistrictTitleCard(
                 <span className={`${gapClass}`}>
                     <span className="inline">{titleLine1}&nbsp;</span>
                     <span className="inline font-bold">{titleLine2}&nbsp;</span>
-                    <Image
+                    {iconSrc && <Image
                         src={iconSrc}
                         alt={iconAlt || titleLine2 || titleLine1}
                         width={92}
                         height={92}
                         className={`${iconSizeClass} inline align-middle object-contain shrink-0`}
-                    />
+                    />}
                 </span>
                 <span className="block font-bold -mt-2">{titleLine3}</span>
             </h2>
