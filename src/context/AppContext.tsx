@@ -48,7 +48,13 @@ export function langToDir(lang?: string): "rtl" | "ltr" {
 }
 
 export function getBaseUrl() {
-    return process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (apiUrl && apiUrl.includes('http://localhost:')) {
+        return apiUrl;
+    }
+
+    return '';
 }
 
 /*
@@ -132,7 +138,7 @@ export function AppProvider({children}: { children: React.ReactNode }) {
         const fetchData = async () => {
             try {
                 const res = await fetch(
-                        `${getBaseUrl()}/api/site-full?slug=miraf`,
+                        `${process.env.NEXT_PUBLIC_API_URL || "https://dazzling-treasure-fadd632c2a.strapiapp.com"}/api/site-full?slug=miraf`,
                         {
                             headers: {
                                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
