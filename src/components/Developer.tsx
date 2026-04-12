@@ -64,7 +64,7 @@ export default function Developer({section}: DeveloperSectionProps) {
             ? section?.button?.title_ar
             : section?.button?.title_en;
 
-    const ctaHref = section?.button?.href || "#";
+    const ctaHref = section?.button?.url || "#";
 
     /*
     |--------------------------------------------------------------------------

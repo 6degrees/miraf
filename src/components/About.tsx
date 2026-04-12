@@ -64,9 +64,15 @@ export default function About({section}: { section: any }) {
 
     const getImage = (item: any) => item?.image?.url ? `${getBaseUrl()}${item.image.url}` : null;
 
-    const getFirstIcon = (item: any) => item?.icons[0]?.url ? `${getBaseUrl()}${item?.icons[0]?.url}` : null;
+    const getFirstIcon = (item: any) =>
+        item?.icons?.length > 0 && item.icons[0]?.url
+            ? `${getBaseUrl()}${item.icons[0].url}`
+            : null;
 
-    const getSecondIcon = (item: any) => item?.icons[1]?.url ? `${getBaseUrl()}${item?.icons[1]?.url}` : null;
+    const getSecondIcon = (item: any) =>
+        item?.icons?.length > 1 && item.icons[1]?.url
+            ? `${getBaseUrl()}${item.icons[1].url}`
+            : null;
 
     /*
     |--------------------------------------------------------------------------

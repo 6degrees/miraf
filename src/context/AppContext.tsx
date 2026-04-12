@@ -20,6 +20,7 @@
 
 import {createContext, useContext, useEffect, useMemo, useRef, useState} from "react";
 import i18next from "i18next";
+import AppLoaderProvider from "@/providers/AppLoaderProvider";
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,13 @@ export function langToDir(lang?: string): "rtl" | "ltr" {
 }
 
 export function getBaseUrl() {
-    return process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (apiUrl && apiUrl.includes('http://localhost:')) {
+        return apiUrl;
+    }
+
+    return '';
 }
 
 /*
@@ -84,8 +91,8 @@ const AppContext = createContext<AppContextValue | null>(null);
 export function AppProvider({children}: { children: React.ReactNode }) {
     const [selectedLanguage, _setSelectedLanguage] = useState<string | null>(null);
     const [siteData, setSiteData] = useState<any>(null);
-
     const hasFetched = useRef(false);
+    const [loading, setLoading] = useState(true);
 
     // Load initial language from localStorage or default to "ar"
     useEffect(() => {
@@ -132,7 +139,7 @@ export function AppProvider({children}: { children: React.ReactNode }) {
         const fetchData = async () => {
             try {
                 const res = await fetch(
-                        `${getBaseUrl()}/api/site-full?slug=miraf`,
+                        `${process.env.NEXT_PUBLIC_API_URL || "https://dazzling-treasure-fadd632c2a.strapiapp.com"}/api/site-full?slug=miraf`,
                         {
                             headers: {
                                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
@@ -146,6 +153,8 @@ export function AppProvider({children}: { children: React.ReactNode }) {
                 setSiteData(data);
             } catch (err) {
                 console.error("Error fetching site data:", err);
+            } finally {
+                setLoading(false)
             }
         };
 
@@ -163,15 +172,10 @@ export function AppProvider({children}: { children: React.ReactNode }) {
     );
 
     return (
-        <AppContext.Provider
-            value={{
-                selectedLanguage,
-                setSelectedLanguage,
-                direction,
-                siteData,
-            }}
-        >
-            {children}
+        <AppContext.Provider value={{selectedLanguage, setSelectedLanguage, direction, siteData,}}>
+            <AppLoaderProvider loading={loading}>
+                {children}
+            </AppLoaderProvider>
         </AppContext.Provider>
     );
 }
