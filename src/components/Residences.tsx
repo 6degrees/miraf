@@ -165,7 +165,7 @@ export default function ResidencesSection({section}: Props) {
 
                             {primaryLabel && (
                                 <Link
-                                    href="#register"
+                                    href={section?.primary_button?.url || '#'}
                                     className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2.5 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition kanun text-center whitespace-nowrap"
                                 >
                                     {primaryLabel}
@@ -174,7 +174,7 @@ export default function ResidencesSection({section}: Props) {
 
                             {secondaryLabel && (
                                 <Link
-                                    href="/documents/miraf.pdf"
+                                    href={section?.secondary_button?.url || '#'}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-block rounded-full border border-[#F6E6DA] px-6 py-2.5 text-base text-[#F6E6DA] hover:bg-[#F6E6DA]/10 transition kanun text-center whitespace-nowrap"

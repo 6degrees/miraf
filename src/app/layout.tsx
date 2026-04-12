@@ -228,16 +228,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body className={[abcArizonaSerif.variable, angieSansPro.variable, graphikArabic.variable, kanunAR.variable, lyonArabic.variable,].join(" ")}>
         <CustomCursor />
         <ErrorBoundary>
-            <AppLoaderProvider>
-                <AppProvider>
-                    <I18nProvider>
-                        <LangDirEffect />
-                        {children}
-                    </I18nProvider>
-                </AppProvider>
-            </AppLoaderProvider>
+            <AppProvider>
+                <I18nProvider>
+                    <LangDirEffect />
+                    {children}
+                </I18nProvider>
+            </AppProvider>
         </ErrorBoundary>
-
         </body>
         </html>
     );

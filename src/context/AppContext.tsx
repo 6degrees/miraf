@@ -20,6 +20,7 @@
 
 import {createContext, useContext, useEffect, useMemo, useRef, useState} from "react";
 import i18next from "i18next";
+import AppLoaderProvider from "@/providers/AppLoaderProvider";
 
 /*
 |--------------------------------------------------------------------------
@@ -90,8 +91,8 @@ const AppContext = createContext<AppContextValue | null>(null);
 export function AppProvider({children}: { children: React.ReactNode }) {
     const [selectedLanguage, _setSelectedLanguage] = useState<string | null>(null);
     const [siteData, setSiteData] = useState<any>(null);
-
     const hasFetched = useRef(false);
+    const [loading, setLoading] = useState(true);
 
     // Load initial language from localStorage or default to "ar"
     useEffect(() => {
@@ -152,6 +153,8 @@ export function AppProvider({children}: { children: React.ReactNode }) {
                 setSiteData(data);
             } catch (err) {
                 console.error("Error fetching site data:", err);
+            } finally {
+                setLoading(false)
             }
         };
 
@@ -169,15 +172,10 @@ export function AppProvider({children}: { children: React.ReactNode }) {
     );
 
     return (
-        <AppContext.Provider
-            value={{
-                selectedLanguage,
-                setSelectedLanguage,
-                direction,
-                siteData,
-            }}
-        >
-            {children}
+        <AppContext.Provider value={{selectedLanguage, setSelectedLanguage, direction, siteData,}}>
+            <AppLoaderProvider loading={loading}>
+                {children}
+            </AppLoaderProvider>
         </AppContext.Provider>
     );
 }

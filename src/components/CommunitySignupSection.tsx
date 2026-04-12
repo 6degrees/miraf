@@ -69,7 +69,7 @@ export default function CommunitySignupSection(
         const surname   = (form.elements.namedItem("inp_2") as HTMLInputElement).value.trim();
         const email     = (form.elements.namedItem("inp_3") as HTMLInputElement).value.trim();
         const phone     = (form.elements.namedItem("inp_15") as HTMLInputElement).value.trim();
-        const reqType   = (form.elements.namedItem("inp_9143") as HTMLSelectElement).value;
+        const reqType   = (form.elements.namedItem("inp_10706") as HTMLSelectElement).value;
 
         if (!firstName) errors.inp_1 = required;
         if (!surname)   errors.inp_2 = required;
@@ -84,7 +84,7 @@ export default function CommunitySignupSection(
             errors.inp_15 = t("signup.form.errors.phone");
         }
 
-        if (!reqType) errors.inp_9143 = required;
+        if (!reqType) errors.inp_10706 = required;
 
         return errors;
     };
@@ -130,12 +130,21 @@ export default function CommunitySignupSection(
 
         // Add hidden Emarsys fields
         formData.set("CID", "788929414");
+        formData.set("SID", "");
+        formData.set("UID", "");
         formData.set("f", "1069");
         formData.set("p", "2");
         formData.set("a", "r");
+        formData.set("el", "");
+        formData.set("llid", "");
+        formData.set("c", "");
+        formData.set("counted", "");
+        formData.set("RID", "");
+        formData.set("mailnow", "");
         formData.set("inp_9142", countryCode);
-        formData.set("inp_9144", "26");
-        formData.set("inp_9145", "16");
+        formData.set("inp_9143", '1');
+        formData.set("inp_9144", "17");
+        formData.set("inp_9145", "20");
         formData.set("optin", "y");
 
         // Convert all fields to URL parameters
@@ -193,8 +202,8 @@ export default function CommunitySignupSection(
                                 <input type="hidden" name="p" value="2" />
                                 <input type="hidden" name="a" value="r" />
                                 <input type="hidden" name="inp_9142" value={countryCode} />
-                                <input type="hidden" name="inp_9144" value="26" />
-                                <input type="hidden" name="inp_9145" value="16" />
+                                <input type="hidden" name="inp_9144" value="17" />
+                                <input type="hidden" name="inp_9145" value="20" />
                                 <input type="hidden" name="optin" value="y" />
 
                                 {/* Form Fields Grid */}
@@ -229,16 +238,16 @@ export default function CommunitySignupSection(
 
                                     {/* Request Type */}
                                     <div>
-                                        <label htmlFor="inp_9143" className="block text-sm mb-2 font-kanun">{t("signup.form.requestType.label")}</label>
-                                        <select id="inp_9143" name="inp_9143" className={`appearance-none pr-6 ${inputClass("inp_9143")}`} defaultValue="" aria-required="true" aria-describedby={fieldErrors.inp_9143 ? "err-requestType" : undefined}>
+                                        <label htmlFor="inp_10706" className="block text-sm mb-2 font-kanun">{t("signup.form.requestType.label")}</label>
+                                        <select id="inp_10706" name="inp_10706" className={`appearance-none pr-6 ${inputClass("inp_10706")}`} defaultValue="" aria-required="true" aria-describedby={fieldErrors.inp_10706 ? "err-requestType" : undefined}>
                                             <option value="" disabled>{t("signup.form.requestType.options.0")}</option>
                                             {[1, 2, 3, 4, 5].map((i) => (
-                                                <option key={i} value={t(`signup.form.requestType.options.${i}`)}>
+                                                <option key={i} value={i}>
                                                     {t(`signup.form.requestType.options.${i}`)}
                                                 </option>
                                             ))}
                                         </select>
-                                        {fieldErrors.inp_9143 && <p id="err-requestType" className="mt-1 text-xs text-red-600">{fieldErrors.inp_9143}</p>}
+                                        {fieldErrors.inp_10706 && <p id="err-requestType" className="mt-1 text-xs text-red-600">{fieldErrors.inp_10706}</p>}
                                     </div>
 
                                     {/* Subject */}
